@@ -15,12 +15,9 @@ app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function 
 
 
     $scope.brand = 'LNU';
-    $scope.homeViewModel = 'Головна';
-    $scope.documentViewModel='Документи';
-    $scope.peerReviewViewModel='Експертна Оцінка';
-    $scope.auctionsViewModel='Аукціони';
-    $scope.contactsViewModel='Контакти';
-    $scope.partnersViewModel='Партнери';
+    $scope.personViewModel = 'Персони';
+    $scope.propositionViewModel='Пропозиції';
+
     // UI
 
     $('#testModal').on('shown.bs.modal', function () {
