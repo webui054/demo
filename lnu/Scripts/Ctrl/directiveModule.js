@@ -4,6 +4,11 @@ app.directive('personContent', function() {
         templateUrl: 'View/personView.html'
     };
 });
+app.directive('propositionContent', function() {
+    return {
+        templateUrl: 'View/propositionView.html'
+    };
+});
 
 
 app.controller("innerDirectCTRL",["$scope", function($scope){
