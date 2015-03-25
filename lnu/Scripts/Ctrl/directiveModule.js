@@ -9,23 +9,39 @@ app.directive('propositionContent', function() {
         templateUrl: 'View/propositionView.html'
     };
 });
+//proposition's view
+app.directive('propositionGeneralContent', function() {
+    return {
+        templateUrl: 'View/PropositionsView/generalView.html'
+    };
+});
+app.directive('propositionSubjectContent', function() {
+    return {
+        templateUrl: 'View/PropositionsView/subjectsView.html'
+    };
+});
+app.directive('propositionBenefitsContent', function() {
+    return {
+        templateUrl: 'View/PropositionsView/benefitsView.html'
+    };
+});
 
 
 app.controller("innerDirectCTRL",["$scope", function($scope){
-    $scope.personTab = 21;
+    $scope.propozTab = 21;
 
-    $scope.selectDocTab = function(setTab){
-        $scope.personTab = setTab;
-    };
-    $scope.isDocTabSelected = function(checkTab){
-        return $scope.personTab === checkTab;
-    };
-    $scope.propozTab = 31;
-
-    $scope.selectAucTab = function(setTab){
+    $scope.selectPropozTab = function(setTab){
         $scope.propozTab = setTab;
     };
-    $scope.isAucTabSelected = function(checkTab){
+    $scope.isPropozTabSelected = function(checkTab){
         return $scope.propozTab === checkTab;
+    };
+    $scope.personTab = 31;
+
+    $scope.selectAucTab = function(setTab){
+        $scope.personTab = setTab;
+    };
+    $scope.isAucTabSelected = function(checkTab){
+        return $scope.personTab === checkTab;
     };
 }]);
