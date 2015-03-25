@@ -36,12 +36,12 @@ app.controller("innerDirectCTRL",["$scope", function($scope){
     $scope.isPropozTabSelected = function(checkTab){
         return $scope.propozTab === checkTab;
     };
-    $scope.personTab = 31;
+    $scope.personTab = 1;
 
-    $scope.selectAucTab = function(setTab){
+    $scope.selectPersonTab = function(setTab){
         $scope.personTab = setTab;
     };
-    $scope.isAucTabSelected = function(checkTab){
+    $scope.isPersonTabSelected = function(checkTab){
         return $scope.personTab === checkTab;
     };
 }]);
