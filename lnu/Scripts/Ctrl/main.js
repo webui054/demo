@@ -18,7 +18,38 @@ app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function 
     $scope.brand = 'LNU';
     $scope.personViewModel = 'Персони';
     $scope.propositionViewModel='Пропозиції';
+    $scope.tempData = {};
 
+    $scope.make_base_auth = function(user, password) {
+        var tok = user + ':' + password;
+        var hash = btoa(tok); // encoding string in Base64
+        return "Basic " + hash;
+    };
+    $scope.BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
+
+
+    $scope.getTempData = function(){
+        $scope.username = "admin";
+        $scope.password = "nimda";
+        $.ajax
+        ({
+            type: "GET",
+            url: $scope.BASEURL + "api/specoffers",
+            dataType: 'json',
+            async: false,
+            data: '{}',
+            beforeSend: function (xhr){
+                xhr.setRequestHeader('Authorization', $scope.make_base_auth($scope.username, $scope.password));
+            },
+            success: function (data){
+                $scope.tempData = data;
+                //angular.forEach(data, function(item){
+                //    $scope.tempData.push(item);
+                //    console.log(item);
+                //});
+            }
+        });
+    };
     // UI
 
     $('#testModal').on('shown.bs.modal', function () {
@@ -38,6 +69,7 @@ app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function 
         }, 500);
     };
 }]);
+
 
 
 
