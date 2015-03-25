@@ -8,7 +8,7 @@ app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function 
     $scope.tab = 1;
 
     $scope.selectTab = function(setTab){
-        //$('#testtable').dataTable();
+        $scope.getTempData();
         $scope.tab = setTab;
     };
     $scope.isSelected = function(checkTab){
