@@ -1,24 +1,22 @@
-<div class="jumbotron" ng-show="isSelected(2)" ng-controller="innerDirectCTRL">
+<div class="container" ng-show="isSelected(2)" ng-controller="innerDirectCTRL">
 
+        <h1>PropositionView</h1>
 
+        <section>
+            <ul class="nav nav-tabs">
+                <li ng-class="{active:isPropozTabSelected(21)}">
+                    <a href="" ng-click="selectPropozTab(21)">Пропозиція</a>
+                </li>
+                <li ng-class="{active:isPropozTabSelected(22)}">
+                    <a href="" ng-click="selectPropozTab(22)" title="Предмети пропозиції">Предмети</a>
+                </li>
+                <li ng-class="{active:isPropozTabSelected(23)}">
+                    <a href="" ng-click="selectPropozTab(23)" title="Пільги пропозиції">Пільги</a>
+                </li>
+            </ul>
+        </section>
 
-    <h1>PropositionView</h1>
-
-    <section>
-        <ul class="nav nav-pills">
-            <li ng-class="{active:isPropozTabSelected(21)}">
-                <a href="" ng-click="selectPropozTab(21)">Пропозиція</a>
-            </li>
-            <li ng-class="{active:isPropozTabSelected(22)}">
-                <a href="" ng-click="selectPropozTab(22)" title="Предмети пропозиції">Предмети</a>
-            </li>
-            <li ng-class="{active:isPropozTabSelected(23)}">
-                <a href="" ng-click="selectPropozTab(23)" title="Пільги пропозиції">Пільги</a>
-            </li>
-        </ul>
-    </section>
-
-    <proposition-general-content></proposition-general-content>
-    <proposition-subject-content></proposition-subject-content>
-    <proposition-benefits-content></proposition-benefits-content>
+        <proposition-general-content></proposition-general-content>
+        <proposition-subject-content></proposition-subject-content>
+        <proposition-benefits-content></proposition-benefits-content>
 </div>
