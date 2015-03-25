@@ -25,7 +25,42 @@ app.directive('propositionBenefitsContent', function() {
         templateUrl: 'View/PropositionsView/benefitsView.html'
     };
 });
-
+//person's view
+app.directive('personGeneralContent', function() {
+    return {
+        templateUrl: 'View/PersonsView/generalView.html'
+    };
+});
+app.directive('personContactsContent', function() {
+    return {
+        templateUrl: 'View/PersonsView/contactsView.html'
+    };
+});
+app.directive('personAddressContent', function() {
+    return {
+        templateUrl: 'View/PersonsView/addressView.html'
+    };
+});
+app.directive('personDocumentsContent', function() {
+    return {
+        templateUrl: 'View/PersonsView/documentsView.html'
+    };
+});
+app.directive('personEnglishContent', function() {
+    return {
+        templateUrl: 'View/PersonsView/englishView.html'
+    };
+});
+app.directive('personManContent', function() {
+    return {
+        templateUrl: 'View/PersonsView/MANView.html'
+    };
+});
+app.directive('personZnoContent', function() {
+    return {
+        templateUrl: 'View/PersonsView/ZNOView.html'
+    };
+});
 
 app.controller("innerDirectCTRL",["$scope", function($scope){
     $scope.propozTab = 21;
