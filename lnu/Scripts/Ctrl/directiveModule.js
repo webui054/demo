@@ -12,12 +12,7 @@ directiveModule.directive('propositionContent', function() {
 //proposition's view
 directiveModule.directive('propositionGeneralContent', function() {
     return {
-        templateUrl: 'View/PropositionsView/generalView.html',
-        link: function(){
-            $timeout(function(){
-                $("#testtable").dataTable()
-            });
-        }
+        templateUrl: 'View/PropositionsView/generalView.html'
     };
 });
 directiveModule.directive('propositionSubjectContent', function() {
