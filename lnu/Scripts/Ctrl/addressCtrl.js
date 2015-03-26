@@ -53,7 +53,7 @@ app.controller('AddressCtrl', ["$scope", "$http", "$filter", "$interval", functi
             }
         });
     };
-    $scope.getTempData();
+    //$scope.getTempData();
 
 
 }]);/**
