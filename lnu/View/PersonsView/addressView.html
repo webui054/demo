@@ -1,20 +1,20 @@
-<div class="jumbotron" ng-show="isPersonTabSelected(2)">
-    <h1>Адреса</h1>
+<div class="container" ng-show="isPersonTabSelected(2)" ng-controller="AddressCtrl">
     <table class="table">
         <thead>
         <tr>
-            <th>Row</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>Id</th>
+            <th>SpesialtyId</th>
+            <th>Time Period Id</th>
+            <th>Lic Count</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="data in tempData">
-            <td>{{data}}</td>
-            <td>{{data}}</td>
-            <td>{{data}}</td>
-            <td>{{data}}</td>
+        <tr ng-repeat="data in tempData2" ng-class-odd="'odd-color-them'">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.timePeriodId}}</td>
+            <td>{{data.licCount}}</td>
+            <td><a>Edit</a><a>Delete</a></td>
         </tr>
         </tbody>
     </table>

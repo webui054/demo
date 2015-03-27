@@ -1,68 +1,68 @@
-var app = angular.module('directiveModule', []);
-app.directive('personContent', function() {
+var directiveModule = angular.module('directiveModule', []);
+directiveModule.directive('personContent', function() {
     return {
         templateUrl: 'View/personView.html'
     };
 });
-app.directive('propositionContent', function() {
+directiveModule.directive('propositionContent', function() {
     return {
         templateUrl: 'View/propositionView.html'
     };
 });
 //proposition's view
-app.directive('propositionGeneralContent', function() {
+directiveModule.directive('propositionGeneralContent', function() {
     return {
         templateUrl: 'View/PropositionsView/generalView.html'
     };
 });
-app.directive('propositionSubjectContent', function() {
+directiveModule.directive('propositionSubjectContent', function() {
     return {
         templateUrl: 'View/PropositionsView/subjectsView.html'
     };
 });
-app.directive('propositionBenefitsContent', function() {
+directiveModule.directive('propositionBenefitsContent', function() {
     return {
         templateUrl: 'View/PropositionsView/benefitsView.html'
     };
 });
 //person's view
-app.directive('personGeneralContent', function() {
+directiveModule.directive('personGeneralContent', function() {
     return {
         templateUrl: 'View/PersonsView/generalView.html'
     };
 });
-app.directive('personContactsContent', function() {
+directiveModule.directive('personContactsContent', function() {
     return {
         templateUrl: 'View/PersonsView/contactsView.html'
     };
 });
-app.directive('personAddressContent', function() {
+directiveModule.directive('personAddressContent', function() {
     return {
         templateUrl: 'View/PersonsView/addressView.html'
     };
 });
-app.directive('personDocumentsContent', function() {
+directiveModule.directive('personDocumentsContent', function() {
     return {
         templateUrl: 'View/PersonsView/documentsView.html'
     };
 });
-app.directive('personEnglishContent', function() {
+directiveModule.directive('personEnglishContent', function() {
     return {
         templateUrl: 'View/PersonsView/englishView.html'
     };
 });
-app.directive('personManContent', function() {
+directiveModule.directive('personManContent', function() {
     return {
         templateUrl: 'View/PersonsView/MANView.html'
     };
 });
-app.directive('personZnoContent', function() {
+directiveModule.directive('personZnoContent', function() {
     return {
         templateUrl: 'View/PersonsView/ZNOView.html'
     };
 });
 
-app.controller("innerDirectCTRL",["$scope", function($scope){
+directiveModule.controller("innerDirectCTRL",["$scope", function($scope){
     $scope.propozTab = 21;
 
     $scope.selectPropozTab = function(setTab){
