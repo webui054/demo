@@ -1,0 +1,43 @@
+.addSubject {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: right;
+}
+
+#subjectTable th {
+    font-weight: bold;
+    text-align: center;
+}
+
+#subjectTable td {
+    text-align: center;
+}
+
+#subjectTable td.nameSubject {
+    text-align: left;
+}
+
+.formSubject span {
+    font-weight: bold;
+}
+
+.addSubjectH {
+    color: #2d6aa0;
+}
+
+.showSubject p:first-child {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #2d6aa0;
+}
+
+.showSubject p:nth-child(2n) {
+    padding-top: 15px;
+}
+
+.showSubject p:last-child {
+    padding-top: 0px;
+    padding-left: 90%;
+}
+.odd-color-theme{
+    background-color: #e4e4e4;
+}

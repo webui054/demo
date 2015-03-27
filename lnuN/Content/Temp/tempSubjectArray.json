@@ -1,0 +1,11 @@
+[
+  { "specofferId": 560058, "enrolmentSubjectId": 26, "subjectName": "Математика", "isMajor": "Так", "alternative": "Ні", "mark": 4, "weightSubject": 1},
+  { "specofferId": 560059, "enrolmentSubjectId": 27, "subjectName": "Історія України", "isMajor": "Так", "alternative": "Ні", "mark": 4, "weightSubject": 1},
+  { "specofferId": 560060, "enrolmentSubjectId": 28, "subjectName": "Українська мова", "isMajor": "Так", "alternative": "Ні", "mark": 4, "weightSubject": 1},
+  { "specofferId": 560061, "enrolmentSubjectId": 29, "subjectName": "Англійська мова", "isMajor": "Ні", "alternative": "Так", "mark": 4, "weightSubject": 0.5},
+  { "specofferId": 560062, "enrolmentSubjectId": 30, "subjectName": "Німецька мова", "isMajor": "Ні", "alternative": "Так", "mark": 4, "weightSubject": 0.5},
+  { "specofferId": 560063, "enrolmentSubjectId": 31, "subjectName": "Творчий конкурс", "isMajor": "Ні", "alternative": "Так", "mark": 4, "weightSubject": 0.5},
+  { "specofferId": 560064, "enrolmentSubjectId": 32, "subjectName": "Фізика", "isMajor": "Так", "alternative": "Так", "mark": 4, "weightSubject": 0.5},
+  { "specofferId": 560065, "enrolmentSubjectId": 33, "subjectName": "Хімія", "isMajor": "Так", "alternative": "Ні", "mark": 4, "weightSubject": 0.5},
+  { "specofferId": 560066, "enrolmentSubjectId": 34, "subjectName": "Біологія", "isMajor": "Так", "alternative": "Ні", "mark": 4, "weightSubject": 0.5}
+]
