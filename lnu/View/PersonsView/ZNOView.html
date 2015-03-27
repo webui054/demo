@@ -1,39 +1,55 @@
 
-<div class="row" ng-show="isPersonTabSelected(7)" >
-    <h1>ЗНО</h1>
-
+<div class="row" ng-show="isPersonTabSelected(7)">
     <div class="col-sm-12">
-        <table id="testtablezno" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
+        <!-- Let user choose how many persons are supposed to be shown-->
+        <div id="testtablezno_wrapper" class="dataTables_wrapper form-inline dt_bootstrap">
+        <div class="col-sm-6">
+        <div class="dataTables_length" id="testTableszno_length">
+            <label> Показати
+            <select name="testtablezno_length" aria-controls="testtable" class="form-control input-sm">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                записів
+            </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="co-sm-12">
+        <table id="testtablezno" class="table table-striped table-bordered" cellspacing="0" width="100%" role="grid" aria-describedby="testtable_info" style="width:100%" >
             <thead>
-            <tr>
-                <th>№</th>
-                <th>Прізвище</th>
-                <th>Ім'я</th>
-                <th>По батькові</th>
-                <th>Паспорт</th>
-                <th>Сертифікат за предмет №1</th>
-                <th>Сертифікат за предмет №2</th>
-                <th>Сертифікат за предмет №3</th>
+            <tr role="row">
+
+                <th class="sorting" tabindex="0" aria-controls="testtable" rowspan="1" colspan="1" aria-label="Position: активувати для сортування стовпці по зростанню" style="width: 294px;" aria-sort="descending">Прізвище</th>
+                <th class="sorting" tabindex="0" aria-controls="testtable" rowspan="1" colspan="1" aria-label="Office: активувати для сортування стовпці по зростанню" style="width: 140px;">Ім'я</th>
+                <th class="sorting" tabindex="0" aria-controls="testtable" rowspan="1" colspan="1" aria-label="Age: активувати для сортування стовпці по зростанню" style="width: 67px;">По батькові</th>
+                <th class="sorting" tabindex="0" aria-controls="testtable" rowspan="1" colspan="1" aria-label="Start date: активувати для сортування стовпці по зростанню" style="width: 128px;">Паспорт</th>
+                <th class="sorting" tabindex="0" aria-controls="testtable" rowspan="1" colspan="1" aria-label="Salary: активувати для сортування стовпці по зростанню" style="width: 109px;">Сертифікат за предмет №1</th>
+                <th class="sorting" tabindex="0" aria-controls="testtable" rowspan="1" colspan="1" aria-label="Salary: активувати для сортування стовпці по зростанню" style="width: 109px;">Сертифікат за предмет №2</th>
+                <th class="sorting" tabindex="0" aria-controls="testtable" rowspan="1" colspan="1" aria-label="Salary: активувати для сортування стовпці по зростанню" style="width: 109px;">Сертифікат за предмет №3</th>
             </tr>
             </thead>
-
             <tfoot>
             <tr>
-                <th>№</th>
-                <th>Прізвище</th>
-                <th>Ім'я</th>
-                <th>По батькові</th>
-                <th>Паспорт</th>
-                <th>Сертифікат за предмет №1</th>
-                <th>Сертифікат за предмет №2</th>
-                <th>Сертифікат за предмет №3</th>
+
+                <th rowspan="1" colspan="1"> Прізвище</th>
+                <th rowspan="1" colspan="1">Ім'я</th>
+                <th rowspan="1" colspan="1">По батькові</th>
+                <th rowspan="1" colspan="1">Паспорт</th>
+                <th rowspan="1" colspan="1">Сертифікат за предмет №1</th>
+                <th rowspan="1" colspan="1">Сертифікат за предмет №2</th>
+                <th rowspan="1" colspan="1">Сертифікат за предмет №3</th>
+
 
             </tr>
             </tfoot>
             <tbody>
+            <tr role="row" class="odd">
 
-            <tr>
-                <td>1</td>
                 <td>Ерстенюк</td>
                 <td>Вікторія</td>
                 <td>Віталіївна</td>
@@ -41,7 +57,25 @@
                 <td>111222333</td>
                 <td>444555666</td>
                 <td>777888999</td>
+            </tr>
+            <tr role="row" class="odd">
+                <td>Дмитрук</td>
+                <td>Іван</td>
+                <td>Ваcильович</td>
+                <td>СЕ0000</td>
+                <td>111222333</td>
+                <td>444555666</td>
+                <td>777888999</td>
+            </tr>
+            <tr role="row" class="odd">
 
+                <td>Матусевич</td>
+                <td>Ірина</td>
+                <td>Романівна</td>
+                <td>СЕ0000</td>
+                <td>111222333</td>
+                <td>444555666</td>
+                <td>777888999</td>
             </tr>
             </tbody>
         </table>
