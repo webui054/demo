@@ -2,12 +2,12 @@ app.controller('AddressCtrl', ["$scope", "$http", "$filter", "$interval", functi
     $scope.tempData = [];
     $scope.tempData2 = [];
     $scope.tempData3 = {};
-    $scope.make_base_auth = function(user, password) {
-        var tok = user + ':' + password;
-        var hash = btoa(tok); // encoding string in Base64
-        return "Basic " + hash;
-    };
-    $scope.BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
+    //$scope.make_base_auth = function(user, password) {
+    //    var tok = user + ':' + password;
+    //    var hash = btoa(tok); // encoding string in Base64
+    //    return "Basic " + hash;
+    //};
+    //$scope.BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
 
     $scope.getTempDataById = function(id){
         $scope.username = localStorage.getItem("login");
