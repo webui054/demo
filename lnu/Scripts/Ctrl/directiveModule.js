@@ -1,7 +1,7 @@
 var directiveModule = angular.module('directiveModule', []);
 directiveModule.directive('personContent', function() {
     return {
-        templateUrl: 'View/personView.html'
+        templateUrl: 'persons/personsView.html'
     };
 });
 directiveModule.directive('propositionContent', function() {
@@ -12,7 +12,7 @@ directiveModule.directive('propositionContent', function() {
 // login view
 directiveModule.directive('loginContent', function() {
     return {
-        templateUrl: 'View/loginView.html'
+        templateUrl: 'login/loginView.html'
     };
 });
 //proposition's view

@@ -1,0 +1,24 @@
+<div class="container" ng-show="isLoggedIn && isSelected(1)" ng-controller="PersonsTableCTRL">
+    <div ng-show="!isShowGeneralInfo">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>SpesialtyId</th>
+                <th>Time Period Id</th>
+                <th>Lic Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in tempData123" ng-class-odd="'odd-color-them'">
+                <td>{{data}}</td>
+                <td>{{data + 1}}</td>
+                <td>{{data+23}}</td>
+                <td>{{data}}</td>
+                <td><a ng-click="showGeneralInfo(data)">Edit</a><a>Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <person-content></person-content>
+</div>

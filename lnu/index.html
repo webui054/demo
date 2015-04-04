@@ -14,6 +14,9 @@
     <script src="Scripts/Ctrl/main.js"></script>
     <script src="Scripts/Ctrl/directiveModule.js"></script>
     <script src="Scripts/Ctrl/addressCtrl.js"></script>
+    <script src="login/loginCtrl.js"></script>
+    <script src="persons/personsCtrl.js"></script>
+    <script src="personsTable/personsTableCtrl.js"></script>
 
 </head>
 <body ng-cloak ng-controller="MainCtrl">
@@ -43,8 +46,9 @@
         </div>
     </div>
 </div>
+<div ng-include="'personsTable/personsTableView.html'"></div>
 <login-content></login-content>
-<person-content></person-content>
+
 <proposition-content></proposition-content>
 
 

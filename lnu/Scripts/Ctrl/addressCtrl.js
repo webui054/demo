@@ -10,8 +10,7 @@ app.controller('AddressCtrl', ["$scope", "$http", "$filter", "$interval", functi
     //$scope.BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
 
     $scope.getTempDataById = function(id){
-        $scope.username = localStorage.getItem("login");
-        $scope.password2 = localStorage.getItem("password");
+
         $.ajax
         ({
             type: "GET",
@@ -20,7 +19,7 @@ app.controller('AddressCtrl', ["$scope", "$http", "$filter", "$interval", functi
             async: false,
             data: '{}',
             beforeSend: function (xhr){
-                xhr.setRequestHeader('Authorization', $scope.make_base_auth($scope.username, $scope.password2));
+                xhr.setRequestHeader('Authorization',  localStorage.getItem("baseAuthString"));
             },
             success: function (data){
                 $scope.tempData3 = angular.fromJson(data);
@@ -29,8 +28,7 @@ app.controller('AddressCtrl', ["$scope", "$http", "$filter", "$interval", functi
     };
 
     $scope.getTempData = function(){
-        $scope.username = localStorage.getItem("login");
-        $scope.password2 = localStorage.getItem("password");
+
         $.ajax
         ({
             type: "GET",
@@ -39,7 +37,7 @@ app.controller('AddressCtrl', ["$scope", "$http", "$filter", "$interval", functi
             async: false,
             data: '{}',
             beforeSend: function (xhr){
-                xhr.setRequestHeader('Authorization', $scope.make_base_auth($scope.username, $scope.password2));
+                xhr.setRequestHeader('Authorization', localStorage.getItem("baseAuthString"));
             },
             success: function (data){
                 $scope.tempData = angular.fromJson(data.resources);
