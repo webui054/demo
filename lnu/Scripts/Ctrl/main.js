@@ -1,11 +1,7 @@
-/**
- * Created by Dmytro on 16.03.2015.
- */
-
 var app = angular.module('LnuApp', ['directiveModule']);
 
 app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function ($scope, $http, $filter, $interval) {
-    //login logic
+
     $scope.isLoggedIn = false;
 
     $scope.tab = 1;
@@ -21,24 +17,12 @@ app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function 
     $scope.personViewModel = 'Персони';
     $scope.propositionViewModel='Пропозиції';
 
-    // UI
-
-    $('#testModal').on('shown.bs.modal', function () {
-
-    });
-
-    $('#testModal').on('hidden.bs.modal', function () {
-
-    });
-
-    $scope.showModal = function(id) {
-        if (id === null) {
-            return;
-        }
-        setTimeout(function() {
-            $(id).modal('show');
-        }, 500);
+    $scope.logout = function(){
+        $scope.isLoggedIn = false;
+        localStorage.setItem("token", "");
+        localStorage.setItem("baseAuthString", "");
     };
+
 }]);
 
 

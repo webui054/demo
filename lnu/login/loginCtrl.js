@@ -10,9 +10,8 @@ app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function
         $scope.userName = "";
         $scope.password = "";
         $scope.isLoggedIn = false;
-
-        localStorage.setItem("login", "");
-        localStorage.setItem("password", "");
+        localStorage.setItem("token", "");
+        localStorage.setItem("baseAuthString", "");
 
     };
     $scope.makeToken =function(user, password){
