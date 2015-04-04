@@ -10,7 +10,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="data in tempData123" ng-class-odd="'odd-color-them'">
+            <tr ng-repeat="data in tempData123" ng-class-odd="'odd-color-them'" ng-dblclick="showGeneralInfo(data)">
                 <td>{{data}}</td>
                 <td>{{data + 12}}</td>
                 <td>{{data+23}}</td>
