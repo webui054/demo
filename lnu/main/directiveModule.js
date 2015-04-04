@@ -31,40 +31,10 @@ directiveModule.directive('propositionBenefitsContent', function() {
         templateUrl: 'View/PropositionsView/benefitsView.html'
     };
 });
-//person's view
-directiveModule.directive('personGeneralContent', function() {
+
+directiveModule.directive('mainContent', function() {
     return {
-        templateUrl: 'View/PersonsView/generalView.html'
-    };
-});
-directiveModule.directive('personContactsContent', function() {
-    return {
-        templateUrl: 'View/PersonsView/contactsView.html'
-    };
-});
-directiveModule.directive('personAddressContent', function() {
-    return {
-        templateUrl: 'View/PersonsView/addressView.html'
-    };
-});
-directiveModule.directive('personDocumentsContent', function() {
-    return {
-        templateUrl: 'View/PersonsView/documentsView.html'
-    };
-});
-directiveModule.directive('personEnglishContent', function() {
-    return {
-        templateUrl: 'View/PersonsView/englishView.html'
-    };
-});
-directiveModule.directive('personManContent', function() {
-    return {
-        templateUrl: 'View/PersonsView/MANView.html'
-    };
-});
-directiveModule.directive('personZnoContent', function() {
-    return {
-        templateUrl: 'View/PersonsView/ZNOView.html'
+        templateUrl: 'main/main.html'
     };
 });
 
