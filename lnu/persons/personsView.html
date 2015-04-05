@@ -1,36 +1,58 @@
 <div class="container" ng-show="isLoggedIn && isShowGeneralInfo" ng-controller="PersonsCTRL">
-        <section>
-            <ul class="nav nav-tabs">
-                <li ng-class="{active:isPersonTabSelected(1)}">
-                    <a href="" ng-click="selectPersonTab(1)">Персона</a>
-                </li>
-                <li ng-class="{active:isPersonTabSelected(2)}">
-                    <a href="" ng-click="selectPersonTab(2)">Адреса</a>
-                </li>
-                <li ng-class="{active:isPersonTabSelected(3)}">
-                    <a href="" ng-click="selectPersonTab(3)">Контакти</a>
-                </li>
-                <li ng-class="{active:isPersonTabSelected(4)}">
-                    <a href="" ng-click="selectPersonTab(4)">Англійська</a>
-                </li>
-                <li ng-class="{active:isPersonTabSelected(5)}">
-                    <a href="" ng-click="selectPersonTab(5)">Олімпіади/МАН</a>
-                </li>
-                <li ng-class="{active:isPersonTabSelected(6)}">
-                    <a href="" ng-click="selectPersonTab(6)">Документи</a>
-                </li>
-                <li ng-class="{active:isPersonTabSelected(7)}">
-                    <a href="" ng-click="selectPersonTab(7)">ЗНО</a>
-                </li>
-            </ul>
-        </section>
-        <div ng-include="'persons/general/generalView.html'"></div>
-        <div ng-include="'persons/address/addressView.html'"></div>
-        <div ng-include="'persons/contacts/contactsView.html'"></div>
-        <div ng-include="'persons/documents/documentsView.html'"></div>
-        <div ng-include="'persons/foreigners/foreignersView.html'"></div>
-        <div ng-include="'persons/man/MANView.html'"></div>
-        <div ng-include="'persons/zno/ZNOView.html'"></div>
+    <div class="navbar navbar-inverse navbar-static-top custom-nav-person-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="custom-navbar-header-for-persons">
+                    <img height="50em" width="50em" src="http://upload.wikimedia.org/wikipedia/en/e/e7/Somebody_talked.jpg">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 persons-header-text">
+                    Кузнєцов Дмитро Олександрович
+                </div>
 
 
+            </div><!--/.navbar-header-->
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{active:isPersonTabSelected(1)}">
+                        <a href="" ng-click="selectPersonTab(1)" class="color-white" style="color: #ffffff">Персона</a>
+                    </li>
+                    <li ng-class="{active:isPersonTabSelected(2)}">
+                        <a href="" ng-click="selectPersonTab(2)" class="color-white" style="color: #ffffff">Адреса</a>
+                    </li>
+                    <li ng-class="{active:isPersonTabSelected(3)}">
+                        <a href="" ng-click="selectPersonTab(3)" class="color-white" style="color: #ffffff">Контакти</a>
+                    </li>
+                    <li ng-class="{active:isPersonTabSelected(4)}">
+                        <a href="" ng-click="selectPersonTab(4)" class="color-white" style="color: #ffffff">Іноземці</a>
+                    </li>
+                    <li ng-class="{active:isPersonTabSelected(5)}">
+                        <a href="" ng-click="selectPersonTab(5)" class="color-white" style="color: #ffffff">Олімпіади/МАН</a>
+                    </li>
+                    <li ng-class="{active:isPersonTabSelected(6)}">
+                        <a href="" ng-click="selectPersonTab(6)" class="color-white" style="color: #ffffff">Документи</a>
+                    </li>
+                    <li ng-class="{active:isPersonTabSelected(7)}">
+                        <a href="" ng-click="selectPersonTab(7)" class="color-white" style="color: #ffffff">ЗНО</a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="backToTheTable()" class="color-white" style="color: #ffffff">Назад</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'persons/general/generalView.html'"></div>
+    <div ng-include="'persons/address/addressView.html'"></div>
+    <div ng-include="'persons/contacts/contactsView.html'"></div>
+    <div ng-include="'persons/documents/documentsView.html'"></div>
+    <div ng-include="'persons/foreigners/foreignersView.html'"></div>
+    <div ng-include="'persons/man/MANView.html'"></div>
+    <div ng-include="'persons/zno/ZNOView.html'"></div>
 </div>

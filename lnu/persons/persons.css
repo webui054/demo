@@ -1,0 +1,22 @@
+.custom-navbar-header-for-persons{
+    display: inline;
+}
+.max-width-109{
+    max-width: 109%;
+}
+.persons-header-text{
+    cursor: default;
+    float: none;
+    display: inline;
+    color: #ffffff;
+}
+
+.custom-nav-person-header {
+    color: #ffffff;
+    background-color: cadetblue;
+    background-image: none;
+    border-color: cadetblue;
+}
+.color-white{
+    color: #ffffff;
+}
