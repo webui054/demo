@@ -10,7 +10,7 @@ app.factory("PersonRepo",[function(){
     factory.pushPerson = function(data){
         return pushData(data);
     };
-    factory.popPerson =function(){
+    factory.popPerson = function(){
       return person;
     };
 

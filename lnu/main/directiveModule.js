@@ -42,6 +42,12 @@ directiveModule.directive('mainContent', function() {
         templateUrl: 'main/main.html'
     };
 });
+//person views
+directiveModule.directive('personGeneral', function() {
+    return {
+        templateUrl: 'persons/general/generalView.html'
+    };
+});
 
 directiveModule.controller("innerDirectCTRL",["$scope", function($scope){
     $scope.propozTab = 21;

@@ -1,4 +1,4 @@
-<div class="container" ng-show="isLoggedIn && isSelected(1)" ng-controller="PersonsTableCTRL">
+<div class="container" ng-show="isLoggedIn" ng-controller="PersonsTableCTRL">
     <div ng-show="!isShowGeneralInfo">
         <table class="table">
             <thead>
@@ -20,5 +20,6 @@
             </tbody>
         </table>
     </div>
+
     <person-content></person-content>
 </div>
