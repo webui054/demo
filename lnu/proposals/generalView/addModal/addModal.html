@@ -1,0 +1,136 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="btn-text btn-primary pull-right border-none" ng-click="close()" aria-hidden="true">
+            <span title="Закрити" class="glyphicon glyphicon-remove"></span>
+        </button>
+        <h4>Додати пропозицію на вступ</h4>
+    </div>
+    <div class="modal-body">
+        <form name="addProposalForm" class="form-horizontal" ng-submit="addProposalForm.$valid && AddNewProposal()"
+              novalidate="">
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="proposalName">Назва</label>
+
+                <div class="col-xs-9">
+                    <input class="form-control" type="text" id="proposalName" placeholder="Назва пропозиції" required autofocus/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="proposalDepartment" title="Стуктурний підрозділ">
+                    Стр. підрозділ*</label>
+
+                <div class="col-xs-9">
+                    <select class="form-control" id="proposalDepartment" required>
+                        <option>Додати безпосередньо до НЗ</option>
+                        <option>Біологічний факультет</option>
+                        <option>Географічний факультет</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="eduForm">Форма навчання*</label>
+
+                <div class="col-xs-9">
+                    <select class="form-control" id="eduForm" required>
+                        <option>Денна</option>
+                        <option>Заочна</option>
+                        <option>Екстернат</option>
+                        <option>Вечірня</option>
+                        <option>Дистатнційна</option>
+                        <option>Інтернатура</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="specofferType">Кваліфікаційний рівень*</label>
+
+                <div class="col-xs-9">
+                    <select class="form-control" id="specofferType" required>
+                        <option>Бакалавр</option>
+                        <option>Магістр</option>
+                        <option>Спеціаліст</option>
+                        <option>Молодший спеціаліст</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="timePeriod">Курс зарахування*</label>
+
+                <div class="col-xs-2">
+                    <select class="form-control" id="timePeriod" required>
+                        <option value="">1 Курс</option>
+                        <option value="">2 Курс</option>
+                        <option value="">3 Курс</option>
+                        <option value="">4 Курс</option>
+                        <option value="">5 Курс</option>
+                        <option value="">6 Курс</option>
+                        <option value="">7 Курс</option>
+                    </select>
+                </div>
+                <label class="control-label col-xs-3">Термін навчання*</label>
+
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="0" title="Введіть кількість років" required/>
+                        <span class="input-group-addon">років</span>
+                    </div>
+                </div>
+
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="00" title="Введіть кількість місяців" required/>
+                        <span class="input-group-addon">місяців</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="begDate">Дата початку навчання*</label>
+
+                <div class="col-xs-3">
+                    <input class="form-control" id="begDate" type="text" placeholder="дд.мм.рррр" required/>
+                </div>
+                <label class="control-label col-xs-3" for="endDate">Дата закінчення навчання*</label>
+
+                <div class="col-xs-3">
+                    <input class="form-control" id="endDate" type="text" placeholder="дд.мм.рррр" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="specialtyId">Код напряму/спеціальності</label>
+
+                <div class="col-xs-7">
+                    <div class="input-group" id="specialtyId">
+                        <input type="text" class="form-control" placeholder="Пошук&hellip;">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default">Знайти</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Друга вища</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3">Держзамовлення</label>
+
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="0" title="Введіть кількість державних місць" required/>
+                </div>
+                <label class="control-label col-xs-3">Ліцензійний обсяг</label>
+
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="0"
+                           title="Введіть кількість ліцензійних місць" required/>
+                </div>
+            </div>
+            <div>form is {{addProposalForm.$valid}}</div>
+        </form>
+        <!-- addProposalForm -->
+    </div>
+    <div class="modal-footer">
+        <button class="btn">Створити</button>
+        <button class="btn" ng-click="close()">Закрити</button>
+    </div>
+</div>

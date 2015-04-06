@@ -1,6 +1,6 @@
-var app = angular.module('LnuApp', ['directiveModule']);
+var app = angular.module('LnuApp', ['directiveModule', 'ui.bootstrap']);
 
-app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function ($scope, $http, $filter, $interval) {
+    app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function ($scope, $http, $filter, $interval) {
 
     $scope.isLoggedIn = false;
 
