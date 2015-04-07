@@ -32,12 +32,14 @@
             <tbody>
             <tr class="PersonTableContentRow" dir-paginate="data in tempPersonData | itemsPerPage: 10" ng-class-odd="'odd-color-them'" ng-dblclick="showGeneralInfo(data)">
                 <td>{{data.personId}}</td>
-                <td><a ng-click="showGeneralInfo(data)">{{data.name + "Full Person Name"}}</a></td>
-                <td>{{data.genderTypeId}}</td>
+                <td><a ng-click="showGeneralInfo(data)">{{data.name}}</a></td>
+                <td>{{genderTypes2[data.genderTypeId]}}</td>
                 <td>{{data.begDate}}</td>
-                <td>{{data.personTypeId}}</td>
-                <td>{{data.resident}}</td>
-                <td>{{data.citizenCountryId}}</td>
+                <td>{{personsTypes2[data.personTypeId]}}</td>
+                <td>{{data.resident | checkYesNo}}</td>
+                <td> <span ng-repeat="citizen in citizenCountry2" ng-if="data.citizenCountryId === citizen.id">
+                        {{citizen.name}}
+                    </span></td>
                 <td>{{data.docNum + ':' + data.docSeries}}</td>
                 <td ng-controller="ModalDemoCtrl">
                     <button class="btn btn-primary btn-xs border-radius-0" data-toggle="modal" data-target="#editAddressModal" ng-click="showGeneralInfo(data)"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>

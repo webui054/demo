@@ -1,16 +1,16 @@
 <div ng-show="isPersonTabSelected(1)" ng-controller="GeneralPersonInfoCTRL" style="margin-top: 10px">
-    <div class="container" style="background-color: #337ab7; color: #ffffff; border-radius: 4px;">
-        <h2 class="pull-left" style="margin-top: 10px;margin-bottom: 10px;">Загальна Інформація</h2>
-        <button class="pull-right btn btn-primary border-none" style="margin: 5px;margin-top: 10px;margin-bottom: 10px; background-image: none;box-shadow: none" title="Видалити">
+    <div class="container" style="background-color: #337ab7; color: #ffffff;">
+        <h2 class="pull-left" style="margin-top: 15px;margin-bottom: 15px;">Загальна Інформація</h2>
+        <button class="pull-right btn btn-primary border-none" style="margin: 5px;margin-top: 15px;margin-bottom: 15px; background-image: none;box-shadow: none" title="Видалити">
             <span class="glyphicon glyphicon-remove glyphicon-white"></span>
         </button>
-        <button class="pull-right btn btn-primary border-none" style="margin: 5px;margin-top: 10px;margin-bottom: 10px; background-image: none;box-shadow: none" title="Редагувати">
+        <button class="pull-right btn btn-primary border-none" style="margin: 5px;margin-top: 15px;margin-bottom: 15px; background-image: none;box-shadow: none" title="Редагувати">
             <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
         </button>
     </div>
-    <div class="container" style="border: 3px solid #337ab7;  padding: 20px;  border-radius: 4px;">
+    <div class="container" style="border: 3px solid #337ab7;  padding: 20px;">
         <div class="col-lg-3 container">
-            <img height="320px" width="240px" src="{{tempPerson2.photo}}" style="display: inline">
+            <img height="320px" width="240px" src="{{tempPerson2.photo}}" style="display: inline; border: 3px solid #337ab7;">
             <div class="col-lg-4 " style="margin-top: 10px;  padding-left: 0;">
                 <label class="" for="ser">Серія :</label>
                 <div id="ser" class="form-control general-info-text">{{tempPerson2.docSeries}}</div>
