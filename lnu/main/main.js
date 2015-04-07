@@ -14,7 +14,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('proposition', {
             url: "/proposition",
-            templateUrl: "View/propositionView.html"
+            templateUrl: "proposals/generalView/generalView.html"
+        }).state('benefits', {
+            url: "/benefits",
+            templateUrl: "benefits/benefitsView.html"
         });
         //.state('person', {
         //    url: "/person",
