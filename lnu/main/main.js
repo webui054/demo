@@ -1,5 +1,5 @@
-var app = angular.module('LnuApp', ['directiveModule', 'angularUtils.directives.dirPagination', 'ui.bootstrap.demo']);
-var app = angular.module('LnuApp', ['directiveModule','ui.router']);
+var app = angular.module('LnuApp', ['directiveModule', 'angularUtils.directives.dirPagination', 'ui.bootstrap.demo','ui.router']);
+
 
 app.config(function($stateProvider, $urlRouterProvider) {
     //
