@@ -9,6 +9,11 @@ directiveModule.directive('propositionContent', function() {
         templateUrl: 'proposals/propositionView.html'
     };
 });
+directiveModule.directive('benefitsContent', function() {
+    return {
+        templateUrl: 'benefits/benefitsView.html'
+    };
+});
 // login view
 directiveModule.directive('loginContent', function() {
     return {
