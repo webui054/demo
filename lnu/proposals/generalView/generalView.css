@@ -1,4 +1,6 @@
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
 
 .controls {
     margin: 5px 0;
@@ -6,6 +8,10 @@
 
 #proposal-table {
     width: 100%;
+}
+
+#proposal-table > tbody > tr > td, #proposal-table > tbody > tr > th {
+    padding: 4px;
 }
 
 .search-row td {
@@ -26,6 +32,17 @@
 }
 
 #proposal-table th {
+    font-weight: bold;
+}
+
+#proposal-table .proposal-controls {
+    padding: 2px;
+    vertical-align: middle;
+}
+
+.selected {
+    background-color: green;
+    color: white;
     font-weight: bold;
 }
 

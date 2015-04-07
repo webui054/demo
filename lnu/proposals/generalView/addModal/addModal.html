@@ -6,13 +6,13 @@
         <h4>Додати пропозицію на вступ</h4>
     </div>
     <div class="modal-body">
-        <form name="addProposalForm" class="form-horizontal" ng-submit="addProposalForm.$valid && AddNewProposal()"
-              novalidate="">
+        <form name="addProposalForm" class="form-horizontal" ng-submit="addProposalForm.$valid && addNewProposal()" novalidate>
             <div class="form-group">
                 <label class="control-label col-xs-3" for="proposalName">Назва</label>
 
                 <div class="col-xs-9">
-                    <input class="form-control" type="text" id="proposalName" placeholder="Назва пропозиції" required autofocus/>
+                    <input class="form-control" ng-model="specialtyId" type="text" id="proposalName" placeholder="Назва пропозиції" required
+                           autofocus/>
                 </div>
             </div>
             <div class="form-group">
@@ -20,10 +20,10 @@
                     Стр. підрозділ*</label>
 
                 <div class="col-xs-9">
-                    <select class="form-control" id="proposalDepartment" required>
-                        <option>Додати безпосередньо до НЗ</option>
-                        <option>Біологічний факультет</option>
-                        <option>Географічний факультет</option>
+                    <select class="form-control" id="proposalDepartment" 
+                            ng-model="proposalDepartment" 
+                            ng-options="department.name for department in departmens" required>
+                        <option value>Виберіть департамент</option>
                     </select>
                 </div>
             </div>
@@ -31,13 +31,10 @@
                 <label class="control-label col-xs-3" for="eduForm">Форма навчання*</label>
 
                 <div class="col-xs-9">
-                    <select class="form-control" id="eduForm" required>
-                        <option>Денна</option>
-                        <option>Заочна</option>
-                        <option>Екстернат</option>
-                        <option>Вечірня</option>
-                        <option>Дистатнційна</option>
-                        <option>Інтернатура</option>
+                    <select class="form-control" id="eduForm"
+                            ng-model="eduForm"
+                            ng-options="form.name for form in forms" required>
+                        <option value>Виберіть форму навчання</option>
                     </select>
                 </div>
             </div>
@@ -45,11 +42,10 @@
                 <label class="control-label col-xs-3" for="specofferType">Кваліфікаційний рівень*</label>
 
                 <div class="col-xs-9">
-                    <select class="form-control" id="specofferType" required>
-                        <option>Бакалавр</option>
-                        <option>Магістр</option>
-                        <option>Спеціаліст</option>
-                        <option>Молодший спеціаліст</option>
+                    <select class="form-control" id="specofferType"
+                            ng-model="specofferType"
+                            ng-options="type.name for type in types" required>
+                        <option value>Виберіть кваліфікаціий рівень</option>
                     </select>
                 </div>
             </div>
@@ -57,28 +53,24 @@
                 <label class="control-label col-xs-3" for="timePeriod">Курс зарахування*</label>
 
                 <div class="col-xs-2">
-                    <select class="form-control" id="timePeriod" required>
-                        <option value="">1 Курс</option>
-                        <option value="">2 Курс</option>
-                        <option value="">3 Курс</option>
-                        <option value="">4 Курс</option>
-                        <option value="">5 Курс</option>
-                        <option value="">6 Курс</option>
-                        <option value="">7 Курс</option>
+                    <select class="form-control" id="timePeriod" title="Виберіть курс зарахування"
+                            ng-model="timePeriod"
+                            ng-options="time.name for time in times">
+                        <option value>Курс</option>
                     </select>
                 </div>
                 <label class="control-label col-xs-3">Термін навчання*</label>
 
                 <div class="col-xs-2">
                     <div class="input-group">
-                        <input class="form-control" type="text" placeholder="0" title="Введіть кількість років" required/>
+                        <input class="form-control" ng-model="timePeriodId" type="text" placeholder="років" title="Введіть кількість років"/>
                         <span class="input-group-addon">років</span>
                     </div>
                 </div>
 
                 <div class="col-xs-2">
                     <div class="input-group">
-                        <input class="form-control" type="text" placeholder="00" title="Введіть кількість місяців" required/>
+                        <input class="form-control" type="text" placeholder="міс." title="Введіть кількість місяців"/>
                         <span class="input-group-addon">місяців</span>
                     </div>
                 </div>
@@ -87,42 +79,50 @@
                 <label class="control-label col-xs-3" for="begDate">Дата початку навчання*</label>
 
                 <div class="col-xs-3">
-                    <input class="form-control" id="begDate" type="text" placeholder="дд.мм.рррр" required/>
+                    <input class="form-control" ng-model="begDate" id="begDate" type="text" placeholder="дд.мм.рррр"/>
                 </div>
                 <label class="control-label col-xs-3" for="endDate">Дата закінчення навчання*</label>
 
                 <div class="col-xs-3">
-                    <input class="form-control" id="endDate" type="text" placeholder="дд.мм.рррр" required/>
+                    <input class="form-control" ng-model="endDate" id="endDate" type="text" placeholder="дд.мм.рррр"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-3" for="specialtyId">Код напряму/спеціальності</label>
+                <label class="control-label col-xs-3" for="docSeries">Серія ліцензії</label>
 
-                <div class="col-xs-7">
-                    <div class="input-group" id="specialtyId">
-                        <input type="text" class="form-control" placeholder="Пошук&hellip;">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-default">Знайти</button>
-                        </span>
-                    </div>
+                <div class="col-xs-3">
+                    <input class="form-control" ng-model="docSeries" type="text" id="docSeries" placeholder="Серія"/>
                 </div>
-                <div class="col-xs-2">
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Друга вища</label>
-                    </div>
+
+                <label class="control-label col-xs-3" for="docNum">Номер ліцензії</label>
+
+                <div class="col-xs-3">
+                    <input class="form-control" ng-model="docNum" type="text" id="docNum" placeholder="Номер"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-3">Держзамовлення</label>
+                <label class="control-label col-xs-3" for="parentId">Додаток до ліцензії</label>
 
-                <div class="col-xs-3">
-                    <input class="form-control" type="text" placeholder="0" title="Введіть кількість державних місць" required/>
+                <div class="col-xs-9">
+                    <select class="form-control" id="parentId"
+                            ng-model="parentId"
+                            ng-options="parent.name for parent in parents" required>
+                        <option value>Виберіть додаток до ліцензії</option>
+                    </select>
                 </div>
-                <label class="control-label col-xs-3">Ліцензійний обсяг</label>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3" for="stateCount">Держзамовлення</label>
 
                 <div class="col-xs-3">
-                    <input class="form-control" type="text" placeholder="0"
-                           title="Введіть кількість ліцензійних місць" required/>
+                    <input class="form-control" ng-model="stateCount" id="stateCount" type="text"
+                           placeholder="Кількість місць" title="Введіть кількість державних місць"/>
+                </div>
+                <label class="control-label col-xs-3" for="licCount">Ліцензійний обсяг</label>
+
+                <div class="col-xs-3">
+                    <input class="form-control" ng-model="licCount" id="licCount" type="text" placeholder="Кількість місць"
+                           title="Введіть кількість ліцензійних місць"/>
                 </div>
             </div>
             <div>form is {{addProposalForm.$valid}}</div>
@@ -130,7 +130,7 @@
         <!-- addProposalForm -->
     </div>
     <div class="modal-footer">
-        <button class="btn">Створити</button>
+        <button class="btn" type="submit">Додати</button>
         <button class="btn" ng-click="close()">Закрити</button>
     </div>
 </div>

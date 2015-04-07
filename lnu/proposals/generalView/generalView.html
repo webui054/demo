@@ -13,7 +13,7 @@
                 <span class="glyphicon glyphicon-edit glyphicon-white"></span>
                 Редагувати
             </button>
-            <button class="btn btn-primary btn-sm" title="Видалити обрану пропозицію">
+            <button class="btn btn-primary btn-sm" title="Видалити обрану пропозицію" ng-click="removeRow(tempVar)">
                 <span class="glyphicon glyphicon-trash glyphicon-white"></span>
                 Видалити
             </button>
@@ -21,7 +21,7 @@
                 <span class="glyphicon glyphicon-refresh glyphicon-white"></span>
                 Оновити
             </button>
-            <button class="btn btn-primary btn-sm" title="Переглянути предмети обраної пропозиції">
+            <button class="btn btn-primary btn-sm" title="Переглянути предмети обраної пропозиції" ng-click="test(tempVar)">
                 <span class="glyphicon glyphicon-modal-window glyphicon-white"></span>
                 Предмети
             </button>
@@ -35,45 +35,73 @@
     <!-- .row -->
     <div class="row">
         <div class="col-sm-12 table-wrapper">
-            <table id="proposal-table" class="table table-striped table-bordered table-hover">
+            <table id="proposal-table" class="table table-bordered">
                 <thead>
-                <tr>
-                    <th>
-                        <a href="" ng-click="orderByField='specialtyName'; reverseSort = !reverseSort">
-                            Спеціальність</a>
-                    </th>
-                    <th><a href="" ng-click="orderByField='departmentId'; reverseSort = !reverseSort">Підрозділ</a></th>
-                    <th><a href="" ng-click="orderByField='timePeroiodId'; reverseSort = !reverseSort">Курс</a></th>
-                    <th title="Кваліфікаційний рівень"><a href=""
-                                                          ng-click="orderByField='specofferTypeId'; reverseSort = !reverseSort">ОКР</a>
-                    </th>
-                    <th><a href="" ng-cliick="orderByField='docSeries'; reverseSort = !reverseSort" title="Серія ліцензії">Cерія ліцензії</a>
-                    </th>
-                    <th><a href="" ng-cliick="orderByField='docNum'; reverseSort = !reverseSort" title="Номер ліцензії">Номер ліцензії</a></th>
-                    <th><a href="" ng-click="orderByField='eduFormTypeId'; reverseSort = !reverseSort">Форма
-                        навчання</a></th>
-                    <th title="Кількість ліцензованих місць"><a href=""
-                                                                ng-click="orderByField='licCount'; reverseSort = !reverseSort">КЛМ</a>
-                    </th>
-                    <th title="Кількість місць державного замовлення"
-                        ng-click="orderByField='stateCount'; reverseSort = !reverseSort"><a href="">ДЗ</a></th>
-                    <th><a href="" ng-click="orderByField='timePeriodCourseId'; reverseSort = !reverseSort"
-                           title="Термін навчання">Терм. навч</a></th>
-                    <th><a href="" ng-click="orderByField='begDate'; reverseSort = !reverseSort">Дата початку</a></th>
-                    <th><a href="" ng-click="orderByField='endDate'; reverseSort = !reverseSort">Дата закінчення</a>
-                    </th>
-                    <th>Управління пропозиції</th>
-                </tr>
+                    <tr>
+                        <th>
+                            <a href="" ng-click="orderByField='specialtyId'; reverseSort = !reverseSort">
+                                Спеціальність</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="orderByField='departmentId'; reverseSort = !reverseSort">
+                                Підрозділ</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="orderByField='timePeriodId'; reverseSort = !reverseSort">
+                            Курс</a>
+                        </th>
+                        <th title="Кваліфікаційний рівень">
+                            <a href="" ng-click="orderByField='specofferTypeId'; reverseSort = !reverseSort">
+                                ОКР</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="orderByField='docSeries'; reverseSort = !reverseSort" title="Серія ліцензії">
+                                CЛ</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="orderByField='docNum'; reverseSort = !reverseSort" title="Номер ліцензії">
+                                НЛ</a></th>
+                        <th>
+                            <a href="" ng-click="orderByField='parentId'; reverseSort = !reverseSort" title="Додаток до ліцензії">
+                                Додаток</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="orderByField='eduFormTypeId'; reverseSort = !reverseSort">
+                                Форма навчання</a>
+                        </th>
+                        <th title="Кількість ліцензованих місць">
+                            <a href="" ng-click="orderByField='licCount'; reverseSort = !reverseSort">
+                                КЛМ</a>
+                        </th>
+                        <th title="Кількість місць державного замовлення">
+                            <a href="" ng-click="orderByField='stateCount'; reverseSort = !reverseSort">
+                                ДЗ</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="orderByField='timePeriodCourseId'; reverseSort = !reverseSort" title="Термін навчання">
+                            Терм. навч</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="orderByField='begDate'; reverseSort = !reverseSort">
+                                Дата &nbsp;початку&nbsp;</a>
+                        </th>
+                        <th>
+                            <a href="" ng-click="orderByField='endDate'; reverseSort = !reverseSort">
+                                Дата закінчення</a>
+                        </th>
+                        <th>Управління пропозиції</th>
+                    </tr>
                 </thead>
                 <!-- thead -->
                 <tbody>
                 <tr class="search-row">
-                    <td><input type="text" ng-model="searchKeyword.specialtyName"/></td>
+                    <td><input type="text" ng-model="searchKeyword.specialtyId"/></td>
                     <td><input type="text" ng-model="searchKeyword.departmentId"/></td>
                     <td><input type="text" ng-model="searchKeyword.timePeroiodId"/></td>
                     <td><input type="text" ng-model="searchKeyword.specofferTypeId"/></td>
                     <td><input type="text" ng-model="searchKeyword.docSeries"/></td>
                     <td><input type="text" ng-model="searchKeyword.docNum"/></td>
+                    <td><input type="text" ng-model="searchKeyword.parentId"/></td>
                     <td><input type="text" ng-model="searchKeyword.eduFormTypeId"/></td>
                     <td><input type="text" ng-model="searchKeyword.licCount"/></td>
                     <td><input type="text" ng-model="searchKeyword.stateCount"/></td>
@@ -83,21 +111,24 @@
                     <td></td>
                 </tr>
                 <!-- .search-row -->
-                <tr ng-repeat="data in tempProposalArray | filter: searchKeyword | orderBy:orderByField:reverseSort">
-                    <td>{{data.specialtyName}}</td>
+                <tr ng-repeat="data in tempProposalArray | filter: searchKeyword | orderBy:orderByField:reverseSort"
+                    ng-click="setClickedRow($index)"
+                    ng-class="{'selected':$index == selectedRow}">
+                    <td>{{data.specialtyId}}</td>
                     <td>{{data.departmentId}}</td>
                     <td>{{data.timePeroiodId}}</td>
                     <td>{{data.specofferTypeId}}</td>
                     <td>{{data.docSeries}}</td>
                     <td>{{data.docNum}}</td>
+                    <td>{{data.parentId}}</td>
                     <td>{{data.eduFormTypeId}}</td>
                     <td>{{data.licCount}}</td>
                     <td>{{data.stateCount}}</td>
                     <td>{{data.timePeriodCourseId}}</td>
                     <td>{{data.begDate}}</td>
                     <td>{{data.endDate}}</td>
-                    <td>
-                        <button class="btn btn-primary btn-xs" title="Переглянути предмети для даної пропозиції">
+                    <td class="proposal-controls">
+                        <button class="btn btn-primary btn-xs" title="Переглянути предмети для даної пропозиції" ng-click="test($index)">
                             <span class="glyphicon glyphicon-modal-window"></span>
                         </button>
                         <button class="btn btn-primary btn-xs" title="Переглянути квоти для даної пропозиції">
@@ -106,7 +137,7 @@
                         <button class="btn btn-primary btn-xs" title="Редагувати пропозицію">
                             <span class="glyphicon glyphicon-edit"></span>
                         </button>
-                        <button class="btn btn-primary btn-xs" title="Видалити пропозицію">
+                        <button class="btn btn-primary btn-xs" title="Видалити пропозицію" data-ng-click="removeRow($index)">
                             <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </td>
@@ -121,58 +152,5 @@
     <!-- .row -->
 </div><!-- .container -->
 
-<!-- addProposalModal -->
-<div id="addProposalModal" class="modal fade border-radius-0">
-    <div class="modal-dialog modal-ml border-radius-0">
-        <div class="modal-content border-radius-0">
-            <div class="modal-header custom-modal-header">
-                <button type="button" class="btn-text btn-primary pull-right border-none" data-dismiss="modal"
-                        aria-hidden="true">
-                    <span title="Close" class="glyphicon glyphicon-remove"></span>
-                </button>
-                <h3 class="modal-title text-center create-group-modal-title-header-text addSubjectH">ТЕСТ МОДАЛКИ</h3>
-            </div>
-            <div class="modal-body border-radius-0 formSubject">
-                <form name="addSubjectForm" ng-submit="addSubjectForm.$valid && addNewProposal()" novalidate>
-                    <p><span>Введіть назву предмета:</span><br>
-                        <input type="text" class="form-control border-radius-0" placeholder="Назва предмета"
-                               ng-model="subjectName" name="subjectName" required autofocus></p>
-
-                    <p><span>Введіть ID предмета:</span><br>
-                        <input type="number" class="form-control border-radius-0" placeholder="ID предмета"
-                               ng-model="enrolmentSubjectId" name="enrolmentSubjectId" min="1" max="2000" required></p>
-
-                    <p><span>Введіть ID пропозиції:</span><br>
-                        <input type="number" class="form-control border-radius-0" placeholder="ID пропозиції"
-                               ng-model="specofferId" name="specofferId" min="1" max="1000000" required></p>
-
-                    <p><span>Профільний предмет:</span><br>
-                        <input type="radio" ng-model="isMajor" name="isMajor" value="true" required> Так<br>
-                        <input type="radio" ng-model="isMajor" name="isMajor" value="false" required> Ні</p>
-
-                    <p><span>Є альтернативний предмет:</span><br>
-                        <input type="radio" ng-model="alternative" name="alternative" value="true" required> Так<br>
-                        <input type="radio" ng-model="alternative" name="alternative" value="false" required> Ні</p>
-
-                    <p><span>Мінімальний бал з предмету згідно ЗНО:</span><br>
-                        <input type="number" class="form-control border-radius-0" placeholder="Мінімальний бал"
-                               ng-model="mark" name="mark" min="1" max="12" required></p>
-
-                    <p><span>Коефіцієнтр ваги предмету:</span><br>
-                        <input type="number" class="form-control border-radius-0" placeholder="Коефіцієнт"
-                               ng-model="weightSubject" name="weightSubject" min="0.1" max="10" required></p>
-                    <button class="btn btn-lg btn-primary btn-block border-radius-0 border-none" type="submit"
-                            value="Submit">
-                        Додати предмет
-                    </button>
-                    <div>form is {{addSubjectForm.$valid}}</div>
-                </form>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- #addProposalMOdal -->
 
 

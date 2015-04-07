@@ -1,11 +1,12 @@
 [
   {
-    "specialtyName": "журналістика",
+    "specialtyId": "журналістика",
     "departmentId": "Факультет журналістики",
     "timePeroiodId": 1,
     "specofferTypeId": "Бакалавр",
     "docSeries": "ЖК",
     "docNum": "030301",
+    "parentId": "",
     "eduFormTypeId": "Заочна",
     "licCount": 100,
     "stateCount": 0,
@@ -14,12 +15,13 @@
     "endDate": "2020-30-06"
   },
   {
-    "specialtyName": "географія",
+    "specialtyId": "географія",
     "departmentId": "Географічний факультет",
     "timePeroiodId": 1,
     "specofferTypeId": "Бакалавр",
     "docSeries": "ГФ",
     "docNum": "040104",
+    "parentId": "",
     "eduFormTypeId": "Заочна",
     "licCount": 180,
     "stateCount": 0,
@@ -28,12 +30,13 @@
     "endDate": "2020-30-06"
   },
   {
-    "specialtyName": "історія",
+    "specialtyId": "історія",
     "departmentId": "Історичний факультет",
     "timePeroiodId": 1,
     "specofferTypeId": "Бакалавр",
     "docSeries": "ІС",
     "docNum": "020302",
+    "parentId": "",
     "eduFormTypeId": "Заочна",
     "licCount": 310,
     "stateCount": 0,
@@ -42,12 +45,13 @@
     "endDate": "2020-30-06"
   },
   {
-    "specialtyName": "облік і аудит",
+    "specialtyId": "облік і аудит",
     "departmentId": "Економічний факультет",
     "timePeroiodId": 5,
     "specofferTypeId": "Магістр",
     "docSeries": "ОА",
     "docNum": "03050901",
+    "parentId": "",
     "eduFormTypeId": "Денна",
     "licCount": 30,
     "stateCount": 0,
@@ -56,12 +60,13 @@
     "endDate": "2016-30-06"
   },
   {
-    "specialtyName": "банківська справа",
+    "specialtyId": "банківська справа",
     "departmentId": "Економічний факультет",
     "timePeroiodId": 5,
     "specofferTypeId": "Магістр",
     "docSeries": "БС",
     "docNum": "03050802",
+    "parentId": "",
     "eduFormTypeId": "Денна",
     "licCount": 40,
     "stateCount": 0,
@@ -70,12 +75,13 @@
     "endDate": "2016-30-06"
   },
   {
-    "specialtyName": "прикладна статистика",
+    "specialtyId": "прикладна статистика",
     "departmentId": "Економічний факультет",
     "timePeroiodId": 5,
     "specofferTypeId": "Магістр",
     "docSeries": "ПС",
     "docNum": "03050601",
+    "parentId": "",
     "eduFormTypeId": "Денна",
     "licCount": 10,
     "stateCount": 0,
@@ -84,12 +90,13 @@
     "endDate": "2016-30-06"
   },
   {
-    "specialtyName": "переклад",
+    "specialtyId": "переклад",
     "departmentId": "Факультет іноземних мов",
     "timePeroiodId": 5,
     "specofferTypeId": "Магістр",
     "docSeries": "ПЛ",
     "docNum": "02030304",
+    "parentId": "",
     "eduFormTypeId": "Денна",
     "licCount": 20,
     "stateCount": 16,
@@ -98,12 +105,13 @@
     "endDate": "2016-30-06"
   },
   {
-    "specialtyName": "мікробіологія",
+    "specialtyId": "мікробіологія",
     "departmentId": "Біологічний факультет",
     "timePeroiodId": 6,
     "specofferTypeId": "Магістр",
     "docSeries": "МБ",
     "docNum": "04010202",
+    "parentId": "",
     "eduFormTypeId": "Заочна",
     "licCount": 10,
     "stateCount": 5,
@@ -112,12 +120,13 @@
     "endDate": "2016-30-06"
   },
   {
-    "specialtyName": "правознавство",
+    "specialtyId": "правознавство",
     "departmentId": "Юридичний факультет",
     "timePeroiodId": 3,
     "specofferTypeId": "Бакалавр",
     "docSeries": "ПР",
     "docNum": "030401",
+    "parentId": "",
     "eduFormTypeId": "Денна",
     "licCount": 0,
     "stateCount": 0,
@@ -126,12 +135,13 @@
     "endDate": "2017-30-06"
   },
   {
-    "specialtyName": "соціальна педагогіка",
+    "specialtyId": "соціальна педагогіка",
     "departmentId": "Філологічний факультет",
     "timePeroiodId": 3,
     "specofferTypeId": "Бакалавр",
     "docSeries": "СП",
     "docNum": "010106",
+    "parentId": "",
     "eduFormTypeId": "Денна",
     "licCount": 0,
     "stateCount": 0,

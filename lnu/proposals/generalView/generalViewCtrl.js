@@ -5,14 +5,18 @@ app.controller("GeneralViewCTRL", ["$scope", "$http", "$modal", function($scope,
 
     $scope.tempProposalArray = [];
     $scope.specialtyId = "";
-    $scope.specialtyName = "";
     $scope.departmentId = "";
     $scope.timePeroiodId = "";
     $scope.specofferTypeId = "";
+    $scope.docSeries = "";
+    $scope.docNum = "";
+    $scope.parentId = "";
     $scope.eduFormTypeId = "";
     $scope.licCount = "";
     $scope.stateCount = "";
+    $scope.timePeriodCourseId = "";
     $scope.begDate = "";
+    $scope.endDate = "";
 
     var tempPath = 'Content/Temp/tempProposalArray.json';
     var path = tempPath;
@@ -29,21 +33,7 @@ app.controller("GeneralViewCTRL", ["$scope", "$http", "$modal", function($scope,
     };
     $scope.getTempSubjectData();
 
-   /* $scope.showModal = function (id) {
-        if (id === null) {
-            return;
-        }
-        setTimeout(function () {
-            $(id).modal('show');
-        }, 500);
-    };
-
-    $scope.addNewProposal = function() {
-        $("#addProposalModal").modal("hide");
-        $scope.tempData = {};
-
-    };*/
-
+    // Open addProposal modal window
     $scope.open = function (size) {
 
         var modalInstance = $modal.open({
@@ -56,6 +46,26 @@ app.controller("GeneralViewCTRL", ["$scope", "$http", "$modal", function($scope,
                 }
             }
         });
-    }
+    };
+
+    $scope.test = function(index) {
+        alert(index);
+    };
+
+    $scope.test2 = function(index) {
+        $scope.tempVar = index;
+    };
+
+    // remove selected row
+    $scope.removeRow = function(index) {
+        $scope.tempProposalArray.splice(index, 1);
+    };
+
+    // highlighted selected row
+    $scope.selectedRow = 0;
+
+    $scope.setClickedRow = function (index) {
+      $scope.selectedRow = index;
+    };
 
 }]);
