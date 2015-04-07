@@ -1,50 +1,36 @@
 <div class="container" ng-show="isLoggedIn && isShowGeneralInfo" ng-controller="PersonsCTRL">
-    <div class="">
-        <div class="container">
-            <div class="navbar-header">
-                <div class="custom-navbar-header-for-persons">
-                    <img height="50em" width="50em" src="{{tempPerson2.photo}}">
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 persons-header-text">
-                    {{tempPerson2.name}}
-                </div>
+        <section>
+            <ul class="nav nav-tabs">
+                <li ng-class="{active:isPersonTabSelected(1)}">
+                    <a href="" ng-click="selectPersonTab(1)">Персона</a>
+                </li>
+                <li ng-class="{active:isPersonTabSelected(2)}">
+                    <a href="" ng-click="selectPersonTab(2)">Адреса</a>
+                </li>
+                <li ng-class="{active:isPersonTabSelected(3)}">
+                    <a href="" ng-click="selectPersonTab(3)">Контакти</a>
+                </li>
+                <li ng-class="{active:isPersonTabSelected(4)}">
+                    <a href="" ng-click="selectPersonTab(4)">Англійська</a>
+                </li>
+                <li ng-class="{active:isPersonTabSelected(5)}">
+                    <a href="" ng-click="selectPersonTab(5)">Олімпіади/МАН</a>
+                </li>
+                <li ng-class="{active:isPersonTabSelected(6)}">
+                    <a href="" ng-click="selectPersonTab(6)">Документи</a>
+                </li>
+                <li ng-class="{active:isPersonTabSelected(7)}">
+                    <a href="" ng-click="selectPersonTab(7)">ЗНО</a>
+                </li>
+            </ul>
+        </section>
+        <div ng-include="'persons/general/generalView.html'"></div>
+        <div ng-include="'persons/address/addressView.html'"></div>
+        <div ng-include="'persons/contacts/contactsView.html'"></div>
+        <div ng-include="'persons/documents/documentsView.html'"></div>
+        <div ng-include="'persons/foreigners/foreignersView.html'"></div>
+        <div ng-include="'persons/man/MANView.html'"></div>
+        <div ng-include="'persons/zno/ZNOView.html'"></div>
 
 
-            </div><!--/.navbar-header-->
-                <ul class="nav nav-pills">
-                    <li ng-class="{active:isPersonTabSelected(1)}">
-                        <a href="" ng-click="selectPersonTab(1)">Персона</a>
-                    </li>
-                    <li ng-class="{active:isPersonTabSelected(2)}">
-                        <a href="" ng-click="selectPersonTab(2)">Адреса</a>
-                    </li>
-                    <li ng-class="{active:isPersonTabSelected(3)}">
-                        <a href="" ng-click="selectPersonTab(3)">Контакти</a>
-                    </li>
-                    <li ng-class="{active:isPersonTabSelected(4)}">
-                        <a href="" ng-click="selectPersonTab(4)">Іноземці</a>
-                    </li>
-                    <li ng-class="{active:isPersonTabSelected(5)}">
-                        <a href="" ng-click="selectPersonTab(5)">Олімпіади/МАН</a>
-                    </li>
-                    <li ng-class="{active:isPersonTabSelected(6)}">
-                        <a href="" ng-click="selectPersonTab(6)">Документи</a>
-                    </li>
-                    <li ng-class="{active:isPersonTabSelected(7)}">
-                        <a href="" ng-click="selectPersonTab(7)">ЗНО</a>
-                    </li>
-                    <li>
-                        <a href="" ng-click="backToTheTable()">Назад</a>
-                    </li>
-                </ul>
-
-        </div>
-    </div>
-    <person-general></person-general>
-    <div ng-include="'persons/address/addressView.html'"></div>
-    <div ng-include="'persons/contacts/contactsView.html'"></div>
-    <div ng-include="'persons/documents/documentsView.html'"></div>
-    <div ng-include="'persons/foreigners/foreignersView.html'"></div>
-    <div ng-include="'persons/man/MANView.html'"></div>
-    <div ng-include="'persons/zno/ZNOView.html'"></div>
 </div>

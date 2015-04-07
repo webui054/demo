@@ -4,11 +4,6 @@ directiveModule.directive('personContent', function() {
         templateUrl: 'persons/personsView.html'
     };
 });
-directiveModule.directive('personTableContent', function() {
-    return {
-        templateUrl: 'personsTable/personsTableView.html'
-    };
-});
 directiveModule.directive('propositionContent', function() {
     return {
         templateUrl: 'View/propositionView.html'
@@ -40,12 +35,6 @@ directiveModule.directive('propositionBenefitsContent', function() {
 directiveModule.directive('mainContent', function() {
     return {
         templateUrl: 'main/main.html'
-    };
-});
-//person views
-directiveModule.directive('personGeneral', function() {
-    return {
-        templateUrl: 'persons/general/generalView.html'
     };
 });
 
