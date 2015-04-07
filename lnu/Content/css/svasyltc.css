@@ -21,3 +21,6 @@
     font-weight:bold;
     padding:10px;
 }
+.PersonTableContentRow a:hover{
+    cursor: pointer;
+}

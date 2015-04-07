@@ -12,7 +12,7 @@ app.controller("PersonsTableCTRL",["$scope", function($scope){
 app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
     $scope.tempPersonData = {};
     $scope.getPersonData = function () {
-        $http.get('Content/tempData/tempData.json').success(function (data) {
+        $http.get('Content/tempData/tempPersonData.json').success(function (data) {
             $scope.tempPersonData = data;
         });
     };
@@ -42,8 +42,7 @@ var personTabModal = angular.module('ui.bootstrap.demo', ['ui.bootstrap']);
 
 personTabModal.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
 
-    $scope.open = function (name, persId, index) {
-        alert(index);
+    $scope.open = function (name, persId) {
         var modalInstance = $modal.open({
             templateUrl: 'myModalContent.html',
             controller: 'ModalInstanceCtrl',
@@ -73,11 +72,7 @@ personTabModal.controller('ModalInstanceCtrl', function ($scope, $modalInstance,
     $scope.name = name;
     $scope.id = id;
 
-    /*$scope.items = items;
-    $scope.selected = {
-        item: $scope.items[0]
-    };
-     */
+
     $scope.ok = function () {
         $modalInstance.close(true);
 
