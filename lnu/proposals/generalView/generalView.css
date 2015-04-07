@@ -14,6 +14,10 @@
     padding: 4px;
 }
 
+.search-row {
+    display: none;
+}
+
 .search-row td {
     position: relative;
     height: 27px;
