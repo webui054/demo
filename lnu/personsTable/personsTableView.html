@@ -1,7 +1,9 @@
 <div class="container" ng-show="isLoggedIn && isSelected(1)" ng-controller="PersonsTableCTRL">
     <div ng-show="!isShowGeneralInfo">
+
         <div><h3>Персони</h3></div>
         <div class="svButtonContainer"><button class="btn btn-primary border-radius-0 svCreateNewPerson">Додати персону</button> </div>
+
         <table class="table table-bordered mainPersonTable" ng-controller="personInfoCtrl">
             <thead>
             <tr class="personTableHeaderRow">
@@ -37,14 +39,38 @@
                 <td>{{data.resident}}</td>
                 <td>{{data.citizenCountryId}}</td>
                 <td>{{data.docNum}}</td>
-                <td>
+                <td ng-controller="ModalDemoCtrl">
                     <button class="btn btn-primary btn-xs border-radius-0" data-toggle="modal" data-target="#editAddressModal" ng-click="showGeneralInfo(data)"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
-                    <button class="btn btn-primary btn-xs border-radius-0" data-toggle="modal" data-target="#deleteAddressModal" name="remove_address"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                    <button class="btn btn-primary btn-xs border-radius-0" ng-click="open(data.name, data.personId, $index)" data-toggle="modal" name="removePerson"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
                 </td>
             </tr>
             </tbody>
         </table>
+
         <dir-pagination-controls template-url="Content/template/dirPagination.tpl.html"></dir-pagination-controls>
     </div>
+    <div ng-controller="ModalDemoCtrl">
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title">Ви дійсно бажаєте видалити персону?</h3>
+            </div>
+            <div class="modal-body">
+              {{name}}
+              {{id}}
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" ng-click="ok()">Видалити</button>
+                <button class="btn btn-primary" ng-click="cancel()">Відміна</button>
+            </div>
+        </script>
+        <!--    Buttons
+
+        <button class="btn btn-default" ng-click="open()">Open me!</button>
+        <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+        <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+        <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+        -->
+    </div>
+
     <person-content></person-content>
 </div>

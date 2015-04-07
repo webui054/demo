@@ -1,4 +1,4 @@
-var app = angular.module('LnuApp', ['directiveModule', 'angularUtils.directives.dirPagination']);
+var app = angular.module('LnuApp', ['directiveModule', 'angularUtils.directives.dirPagination', 'ui.bootstrap.demo']);
 
 app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function ($scope, $http, $filter, $interval) {
 
