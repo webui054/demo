@@ -4,19 +4,9 @@ directiveModule.directive('personContent', function() {
         templateUrl: 'persons/personsView.html'
     };
 });
-directiveModule.directive('personTableContent', function() {
-    return {
-        templateUrl: 'personsTable/personsTableView.html'
-    };
-});
 directiveModule.directive('propositionContent', function() {
     return {
-        templateUrl: 'View/propositionView.html'
-    };
-});
-directiveModule.directive('benefitsContent', function() {
-    return {
-        templateUrl: 'benefits/benefitsView.html'
+        templateUrl: 'proposals/propositionView.html'
     };
 });
 // login view
@@ -28,29 +18,23 @@ directiveModule.directive('loginContent', function() {
 //proposition's view
 directiveModule.directive('propositionGeneralContent', function() {
     return {
-        templateUrl: 'View/PropositionsView/generalView.html'
+        templateUrl: 'proposals/generalView/generalView.html'
     };
 });
 directiveModule.directive('propositionSubjectContent', function() {
     return {
-        templateUrl: 'View/PropositionsView/subjectsView.html'
+        templateUrl: 'proposals/subjects/subjectsView.html'
     };
 });
 directiveModule.directive('propositionBenefitsContent', function() {
     return {
-        templateUrl: 'View/PropositionsView/benefitsView.html'
+        templateUrl: 'proposals/benefits/benefitsView.html'
     };
 });
 
 directiveModule.directive('mainContent', function() {
     return {
         templateUrl: 'main/main.html'
-    };
-});
-//person views
-directiveModule.directive('personGeneral', function() {
-    return {
-        templateUrl: 'persons/general/generalView.html'
     };
 });
 

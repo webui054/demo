@@ -4,17 +4,17 @@ var app = angular.module('LnuApp', ['directiveModule', 'angularUtils.directives.
 app.config(function($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/persons");
     //
     // Now set up the states
     $stateProvider
         .state('persons', {
-            url: "/",
+            url: "/persons",
             templateUrl: "personsTable/personsTableView.html"
         })
         .state('proposition', {
             url: "/proposition",
-            templateUrl: "proposals/generalView/generalView.html"
+            templateUrl: "proposals/propositionView.html"
         }).state('benefits', {
             url: "/benefits",
             templateUrl: "benefits/benefitsView.html"

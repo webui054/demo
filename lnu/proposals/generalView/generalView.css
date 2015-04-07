@@ -14,6 +14,10 @@
     padding: 4px;
 }
 
+.search-row {
+    display: none;
+}
+
 .search-row td {
     position: relative;
     height: 27px;
@@ -28,7 +32,7 @@
 
 #proposal-table th, #proposal-table td {
     text-align: center;
-    vertical-align: middle;
+    vertical-align: baseline;
 }
 
 #proposal-table th {
@@ -41,8 +45,8 @@
 }
 
 .selected {
-    background-color: limegreen;
-    color: black;
+    background-color: green;
+    color: white;
     font-weight: bold;
 }
 
