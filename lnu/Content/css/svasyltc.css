@@ -1,0 +1,23 @@
+.mainPersonTable tbody tr:hover{
+
+}
+.mainPersonTable-col-id{
+
+}
+.svCreateNewPerson{
+    float: right;
+}
+.svButtonContainer:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.mainPersonTable{
+    margin-top:15px;
+    border-top:2px solid gray;
+}
+.personTableHeaderRow th{
+    text-align: center;
+    font-weight:bold;
+    padding:10px;
+}
