@@ -21,7 +21,7 @@ app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function
     $scope.make_base_auth = function(token) {
         return "Basic " + token;
     };
-    $scope.BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
+    var BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
 
     //$scope.login = function(){
     //    if($scope.userName === ""){
@@ -32,34 +32,24 @@ app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function
     //        $('#pwrGroup').addClass('has-error');
     //        return;
     //    }
-    //    var token = $scope.makeToken($scope.username,$scope.password);
+    //    var token = $scope.makeToken($scope.userName,$scope.password);
     //    var baseAuthString = $scope.make_base_auth(token);
-    //    $.ajax
-    //    ({
-    //        type: "GET",
-    //        url: $scope.BASEURL + "api/specialties/" + 88,
-    //        dataType: 'json',
-    //        async: false,
-    //        data: '{}',
-    //        beforeSend: function (xhr){
-    //            xhr.setRequestHeader('Authorization', baseAuthString);
-    //        },
-    //        success: function (data){
-    //            $scope.parent.isLoggedIn = true;
-    //            localStorage.setItem("token", token);
-    //            localStorage.setItem("baseAuthString", baseAuthString);
-    //        },error: function(){
+    //    $http.defaults.headers.common.Authorization = baseAuthString; // задаємо хедер запиту по замовчуванню для всіх типів крім POST і PUT
+    //    $http.get(BASEURL + "api/adminunits")
+    //        .success(function (data) {
+    //        $scope.$parent.isLoggedIn = true;
+    //        localStorage.setItem("token", token);
+    //        localStorage.setItem("baseAuthString", baseAuthString)})
+    //        .error(function (){
     //            $('#userGroup').addClass('has-error');
     //            $('#pwrGroup').addClass('has-error');
-    //        }
-    //    });
+    //        });
     //};
+
     $scope.login = function(){
         $scope.$parent.isLoggedIn = true;
     };
 
 
 
-}]);/**
- * Created by student on 26.03.2015.
- */
+}]);
