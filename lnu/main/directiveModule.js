@@ -6,7 +6,7 @@ directiveModule.directive('personContent', function() {
 });
 directiveModule.directive('propositionContent', function() {
     return {
-        templateUrl: 'proposals/propositionView.html'
+        templateUrl: 'View/propositionView.html'
     };
 });
 // login view
@@ -18,17 +18,17 @@ directiveModule.directive('loginContent', function() {
 //proposition's view
 directiveModule.directive('propositionGeneralContent', function() {
     return {
-        templateUrl: 'proposals/generalView/generalView.html'
+        templateUrl: 'View/PropositionsView/generalView.html'
     };
 });
 directiveModule.directive('propositionSubjectContent', function() {
     return {
-        templateUrl: 'proposals/subjects/subjectsView.html'
+        templateUrl: 'View/PropositionsView/subjectsView.html'
     };
 });
 directiveModule.directive('propositionBenefitsContent', function() {
     return {
-        templateUrl: 'proposals/benefits/benefitsView.html'
+        templateUrl: 'View/PropositionsView/benefitsView.html'
     };
 });
 
