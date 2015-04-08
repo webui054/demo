@@ -14,7 +14,6 @@
 }
 .mainPersonTable{
     margin-top:15px;
-    border-top:2px solid gray;
 }
 .personTableHeaderRow th{
     text-align: center;
@@ -23,4 +22,7 @@
 }
 .PersonTableContentRow a:hover{
     cursor: pointer;
+}
+.svButtonContainerRow{
+    padding-left: 25px;
 }
