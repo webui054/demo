@@ -1,4 +1,151 @@
-<div class="jumbotron" ng-show="isPersonTabSelected(5)">
-    <h1>МАН</h1>
-    asdfasdfasdf<br>
+<div class="container" ng-show="isPersonTabSelected(5)" ng-controller="ManCtrl">
+    <div class="row">
+        <div class=" col-md-12">
+            <!-- CREATING PANEL -->
+            <br>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading clearfix">
+                    <h4 class="pull-left">Додаткові бали</h4>
+
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                data-target="#myModal4" style="background-image: none; border: none; box-shadow: none ">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row panel-body">
+                    <div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                        <table class="table table-bordered table-user-information " >
+                            <thead style="text-align: center">
+                            <tr>
+                                <th>#</th>
+                                <th>Тип активності</th>
+                                <th>Бал</th>
+                                <th>Примітка</th>
+                                <th>Управління</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="data in tempMan">
+                                <td>{{data.id}}</td>
+                                <td>{{data.name}}</td>
+                                <td>{{data.mark}}</td>
+                                <td> </td>
+                                <td style="width: 10%">
+
+                                    <!-- BUTTON 'EDITING' CALLS MODAL -->
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#myModal5"
+                                            style="background-image: none; border: none; box-shadow: none">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                    </button>
+
+                                    <!-- BUTTON 'DELETING' CALLS MODAL -->
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#myModal6"
+                                            style="background-image: none; border: none; box-shadow: none">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL 'ADDING' -->
+            <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel4">Додати дані ЗНО</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="sub5">Введіть тип активності:</label>
+                                    <input type="text" class="form-control" placeholder="Тип активності" id="sub5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sub6">Введіть бонусний бал:</label>
+                                    <input type="number" step="any" class="form-control" placeholder="Бонусний бал"
+                                           id="sub6">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                                Закрити
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm">Додати</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL 'EDITING' -->
+            <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel5">Редагувати додаткові бали</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="sub7">Виберіть тип активності:</label>
+                                    <input type="text" class="form-control" placeholder="Тип активності" id="sub7">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sub8">Введіть бонусний бал:</label>
+                                    <input type="number" step="any" class="form-control" placeholder="Бонусний бал"
+                                           id="sub8">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                                Закрити
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm">Зберегти зміни</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL 'DELETING' -->
+            <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel6">Видалення додаткових балів</h4>
+                        </div>
+                        <div class="modal-body">
+                            Ви впевнені?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                                Ні
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm">
+                                Так
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
