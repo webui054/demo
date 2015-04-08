@@ -1,0 +1,52 @@
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
+
+.controls {
+    margin: 5px 0;
+}
+
+#proposal-table {
+    width: 100%;
+}
+
+#proposal-table > tbody > tr > td, #proposal-table > tbody > tr > th {
+    padding: 4px;
+}
+
+.search-row {
+    display: none;
+}
+
+.search-row td {
+    position: relative;
+    height: 27px;
+}
+
+.search-row td input {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#proposal-table th, #proposal-table td {
+    text-align: center;
+    vertical-align: baseline;
+}
+
+#proposal-table th {
+    font-weight: bold;
+}
+
+#proposal-table .proposal-controls {
+    padding: 2px;
+    vertical-align: middle;
+}
+
+.selected {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
+

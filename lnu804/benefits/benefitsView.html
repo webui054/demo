@@ -1,0 +1,88 @@
+<div class="container" ng-show="isLoggedIn" ng-controller="BenefitsCTRL">
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary btn-sm addBenefit" ng-click="showModal('#addBenefitModal')">
+                <span class="glyphicon glyphicon-plus glyphicon-white"></span> Додати
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="benefitTable" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                <tr>
+                    <th>ID пільги</th>
+                    <th>Назва пільги</th>
+                    <th>Кількість</th>
+                    <th>Примітка</th>
+                    <th>Операції</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="data in tempBenefitArray" ng-class-odd="'odd-color-theme'">
+                    <td> {{data.benefitId}}</td>
+                    <td class="nameBenefit">{{data.benefitName}}</td>
+                    <td> {{data.benefitAmount}}</td>
+                    <td> {{data.benefitNote}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-xs"><span
+                                class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                        <button class="btn btn-primary btn-xs"><span
+                                class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!--add benefit modal-->
+    <div id="addBenefitModal" class="modal fade border-radius-0">
+        <div class="modal-dialog modal-ml border-radius-0">
+            <div class="modal-content border-radius-0">
+                <div class="modal-header custom-modal-header">
+                    <button type="button" class="btn-text btn-primary pull-right border-none" data-dismiss="modal"
+                            aria-hidden="true">
+                        <span title="Close" class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <h3 class="modal-title text-center create-group-modal-title-header-text addBenefitH">Додати
+                        пільгу</h3>
+                </div>
+                <div class="modal-body border-radius-0 formBenefit">
+                    <form name="addBenefitForm" ng-submit="addBenefitForm.$valid && AddNewBenefit()" novalidate>
+                        <div class="form-group">
+                            <label>Введіть назву пільги:</label>
+                            <input type="text" class="form-control border-radius-0" placeholder="Назва пільги"
+                                   ng-model="benefitName" name="benefitName" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть ID пільги:</label>
+                            <input type="number" class="form-control border-radius-0" placeholder="ID пільги"
+                                   ng-model="benefitId" name="benefitId" min="1" max="2000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть кількість пільгових місць:</label>
+                            <input type="number" class="form-control border-radius-0" placeholder="Кількість"
+                                   ng-model="benefitAmount" name="benefitAmount" min="1" max="1000000">
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть примітку:</label>
+                            <input type="text" class="form-control border-radius-0" placeholder="Примітка"
+                                   ng-model="benefitNote" name="benefitNote" autofocus>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block border-radius-0 border-none" type="submit"
+                                value="Submit">
+                            Додати пільгу
+                        </button>
+                        <div>form is {{addBenefitForm.$valid}}</div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+</div>
