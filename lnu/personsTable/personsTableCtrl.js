@@ -1,6 +1,6 @@
-app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", function($scope,PersonRepo,$rootScope,$http){
-    $scope.tempModalPerson = {};
+app.controller("PersonsTableCTRL",["$scope", function($scope){
     $scope.isShowGeneralInfo = false;
+<<<<<<< HEAD
     $scope.tempPerson2 = {};
     $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
     $scope.tempModalPerson2 ={}
@@ -85,71 +85,13 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
 app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
 
 
+=======
+    $scope.tempData123 = ["as1","as3","as4","as5","as6","as2"];
+    $scope.showGeneralInfo = function(data){
+>>>>>>> 00e26454215391a22d756f5f365fb3ddb46c6e78
 
-
-
-/*
-    $scope.tempAddress = {};
-    $scope.baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
-
-    $scope.getAddressData = function () {
-
-        $http.defaults.headers.common.Authorization = 'Basic YWRtaW46bmltZGE='; // задаємо хедер запиту по замовчуванню для всіх типів крім POST і PUT
-        $http.get($scope.baseUrl + "/api/adminunits").success(function (data) {
-            $scope.tempAddress = data.resources;
-            console.log($scope.tempAddress);
-        });
+        $scope.isShowGeneralInfo = true;
     };
-    $scope.getAddressData();
-*/
-
-}]);
-
-
-/*MODAL window controller*/
-
-var personTabModal = angular.module('ui.bootstrap.demo', ['ui.bootstrap']);
-
-personTabModal.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
-
-    $scope.open = function (name, persId) {
-        var modalInstance = $modal.open({
-            templateUrl: 'myModalContent',
-            controller: 'ModalInstanceCtrl',
-            size: "sm",
-            resolve: {name: function () {
-                      return name;
-                     },
-                    id: function () {
-                        return persId;
-                    }
-            }
-        });
-
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-        }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-    };
-});
-
-// Please note that $modalInstance represents a modal window (instance) dependency.
-// It is not the same as the $modal service used above.
-
-personTabModal.controller('ModalInstanceCtrl', function ($scope, $modalInstance, name, id) {
-
-    $scope.name = name;
-    $scope.id = id;
-
-
-    $scope.ok = function () {
-        $modalInstance.close(true);
-
-    };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
-
-});
+}]);/**
+ * Created by Dmytro on 04.04.2015.
+ */

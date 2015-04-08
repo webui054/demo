@@ -1,8 +1,7 @@
 <div class="container" ng-show="isPersonTabSelected(7)" ng-controller="ZnoCtrl">
     <div class="row">
         <div class=" col-md-12">
-
-            <!-- PANEL 1-->
+            <!-- CREATING PANEL -->
             <br>
 
             <div class="panel panel-primary">
@@ -14,25 +13,17 @@
                                 data-target="#myModal1" style="background-image: none; border: none; box-shadow: none ">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                data-target="#myModal2" style="background-image: none; border: none; box-shadow: none">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                data-target="#myModal3" style="background-image: none; border: none; box-shadow: none">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        </button>
                     </div>
                 </div>
                 <div class="row panel-body">
                     <div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
                         <table class="table table-bordered table-user-information " ng-controller="ZnoCtrl">
-                            <thead>
+                            <thead style="text-align: center">
                             <tr>
                                 <th>#</th>
                                 <th>Предмет</th>
                                 <th>Бал</th>
-
+                                <th>Управління</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -40,15 +31,30 @@
                                 <td>{{data.id}}</td>
                                 <td>{{data.name}}</td>
                                 <td>{{data.mark}}</td>
+                                <td style="width: 10%">
+
+                                    <!-- BUTTON 'EDITING' CALLS MODAL -->
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#myModal2"
+                                            style="background-image: none; border: none; box-shadow: none">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                    </button>
+
+                                    <!-- BUTTON 'DELETING' CALLS MODAL -->
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#myModal3"
+                                            style="background-image: none; border: none; box-shadow: none">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </button>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
 
-            <!-- Modal 'Creating' -->
+            <!-- MODAL 'ADDING' -->
             <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
@@ -56,22 +62,18 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel1">Редагувати дані ЗНО</h4>
+                            <h4 class="modal-title" id="myModalLabel1">Додати дані ЗНО</h4>
                         </div>
                         <div class="modal-body">
-
                             <form role="form">
                                 <div class="form-group">
-                                    <label for="sub1">Предмет #1</label>
-                                    <input type="number" step="any" class="form-control" id="sub1">
+                                    <label for="sub1">Введіть назву предмета:</label>
+                                    <input type="text" class="form-control" placeholder="Назва предмета" id="sub1">
                                 </div>
                                 <div class="form-group">
-                                    <label for="sub2">Предмет #2</label>
-                                    <input type="number" step="0.1" class="form-control" id="sub2">
-                                </div>
-                                <div class="form-group">
-                                    <label for="sub3">Предмет #3</label>
-                                    <input type="number" step="0.1" class="form-control" id="sub3">
+                                    <label for="sub2">Введіть бал за предмет:</label>
+                                    <input type="number" step="any" class="form-control" placeholder="Бал за предмет"
+                                           id="sub2">
                                 </div>
                             </form>
                         </div>
@@ -79,13 +81,13 @@
                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
                                 Закрити
                             </button>
-                            <button type="button" class="btn btn-primary btn-sm">Зберегти зміни</button>
+                            <button type="button" class="btn btn-primary btn-sm">Додати</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Modal 'Editing' -->
+            <!-- MODAL 'EDITING' -->
             <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
@@ -96,19 +98,15 @@
                             <h4 class="modal-title" id="myModalLabel2">Редагувати дані ЗНО</h4>
                         </div>
                         <div class="modal-body">
-
                             <form role="form">
                                 <div class="form-group">
-                                    <label for="sub4">Предмет</label>
-                                    <input type="number" step="any" class="form-control" id="sub4">
+                                    <label for="sub3">Виберіть предмет:</label>
+                                    <input type="text" class="form-control" placeholder="Назва предмета" id="sub3">
                                 </div>
                                 <div class="form-group">
-                                    <label for="sub5">Бал</label>
-                                    <input type="number" step="0.1" class="form-control" id="sub5">
-                                </div>
-                                <div class="form-group">
-                                    <label for="sub6">Предмет #3</label>
-                                    <input type="number" step="0.1" class="form-control" id="sub6">
+                                    <label for="sub4">Введіть бал за предмет:</label>
+                                    <input type="number" step="any" class="form-control" placeholder="Бал за предмет"
+                                           id="sub4">
                                 </div>
                             </form>
                         </div>
@@ -122,9 +120,9 @@
                 </div>
             </div>
 
-            <!-- Modal 'Deleting' -->
+            <!-- MODAL 'DELETING' -->
             <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
+                 aria-hidden="true" ng-controller="ZnoCtrl">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -139,13 +137,13 @@
                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
                                 Ні
                             </button>
-                            <button type="button" class="btn btn-primary btn-sm">Так</button>
+                            <button type="button" class="btn btn-primary btn-sm">
+                                Так
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
