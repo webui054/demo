@@ -1,7 +1,10 @@
 <div class="container" ng-show="isLoggedIn" ng-controller="PersonsTableCTRL">
     <div ng-show="!isShowGeneralInfo">
 
-        <div class="svButtonContainer"><button class="btn btn-primary border-radius-0 svCreateNewPerson">Додати персону</button> </div>
+        <div class="svButtonContainer">
+            <button class="btn btn-primary border-radius-0 svCreateNewPerson" data-toggle="modal"
+                    data-target="#addNewPersonModal">Додати персону</button>
+        </div>
 
         <table class="table table-bordered mainPersonTable" ng-controller="personInfoCtrl">
             <thead>
@@ -51,7 +54,7 @@
         <dir-pagination-controls template-url="Content/template/dirPagination.tpl.html"></dir-pagination-controls>
     </div>
     <div ng-controller="ModalDemoCtrl">
-        <script type="text/ng-template" id="myModalContent.html">
+        <script type="text/ng-template" id="myModalContent">
             <div class="modal-header">
                 <h3 class="modal-title">Ви дійсно бажаєте видалити персону?</h3>
             </div>
@@ -72,6 +75,6 @@
         <div ng-show="selected">Selection from a modal: {{ selected }}</div>
         -->
     </div>
-
+<div ng-include="'newPersonModal/addNewPersonModal.html'"></div>
     <person-content></person-content>
 </div>

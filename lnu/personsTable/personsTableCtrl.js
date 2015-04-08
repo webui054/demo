@@ -1,15 +1,10 @@
-app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope", function($scope,PersonRepo,$rootScope){
+app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", function($scope,PersonRepo,$rootScope,$http){
+    $scope.tempModalPerson = {};
     $scope.isShowGeneralInfo = false;
     $scope.tempPerson2 = {};
+    $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
 
-    $scope.showGeneralInfo = function(data){
-        $scope.tempPerson2 = data;
-        $scope.isShowGeneralInfo = true;
-    };
 
-}]);
-
-app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
     $scope.citizenCountry = [{id:0,name:"Українець"},
         {id:1,name:"Білорус"},
         {id:2,name:"Англієць"},
@@ -18,9 +13,13 @@ app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
     $scope.personsTypes = [];
     $scope.marriedType = [];
     $scope.genderTypes = [];
+    $scope.personsTypesArr = [];
+    $scope.marriedTypeArr = [];
+    $scope.genderTypesArr = [];
 
     $scope.getMarriedTypes = function(){
         $http.get('persons/general/marriedTypes.json').success(function (data) {
+            $scope.marriedTypeArr = data;
             angular.forEach(data,function(key){
                 $scope.marriedType[key.id] = key.name;
             });
@@ -31,6 +30,7 @@ app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
 
     $scope.getPersonsType = function(){
         $http.get('persons/general/personsTypeId.json').success(function (data) {
+            $scope.personsTypesArr = data;
             angular.forEach(data,function(key){
                 $scope.personsTypes[key.id] = key.name;
             });
@@ -42,6 +42,7 @@ app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
     $scope.getGenderTypes = function(){
         $http.get('persons/general/genderTypes.json')
             .success(function (data) {
+                $scope.genderTypesArr = data;
                 angular.forEach(data,function(key){
                     $scope.genderTypes[key.id] = key.name;
                 });
@@ -59,6 +60,20 @@ app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
         });
     };
     $scope.getPersonData();
+
+
+    $scope.showGeneralInfo = function(data){
+        $scope.tempPerson2 = data;
+        $scope.isShowGeneralInfo = true;
+    };
+
+}]);
+
+app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
+
+
+
+
 
 /*
     $scope.tempAddress = {};
@@ -86,7 +101,7 @@ personTabModal.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
 
     $scope.open = function (name, persId) {
         var modalInstance = $modal.open({
-            templateUrl: 'myModalContent.html',
+            templateUrl: 'myModalContent',
             controller: 'ModalInstanceCtrl',
             size: "sm",
             resolve: {name: function () {
