@@ -9,7 +9,8 @@
                         <button class="pull-right btn btn-primary border-none material-btn-person" title="Видалити">
                             <span class="glyphicon glyphicon-trash glyphicon-white"></span>
                         </button>
-                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Редагувати">
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Редагувати" data-toggle="modal"
+                                data-target="#editNewPersonModal2">
                             <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
                         </button>
                     </div>
@@ -77,9 +78,7 @@
                         <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="gr">Громадянство:</label>
                             <div id="gr" class="form-control general-info-text">
-                                <span ng-repeat="citizen in citizenCountry2" ng-if="tempPerson2.citizenCountryId === citizen.id">
-                                    {{citizen.name}}
-                                </span>
+                                {{citizenCountry2[tempPerson2.citizenCountryId]}}
                             </div>
                         </div>
                         <div class=" col-md-12 col-lg-12 general-info-item">
@@ -93,5 +92,5 @@
             </div>
         </div>
     </div>
-
+<div ng-include="'editPersonModal/editNewPersonModal2.html'"></div>
 </div>
