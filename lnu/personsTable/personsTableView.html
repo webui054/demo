@@ -23,9 +23,6 @@
                     <th></th>
                     <th></th>
                     <th>
-                        <select>
-
-                        </select>
                     </th>
                     <th></th>
                     <th></th>
@@ -36,7 +33,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="PersonTableContentRow" dir-paginate="data in tempPersonData | itemsPerPage: 10" ng-class-odd="'odd-color-them'" ng-dblclick="showGeneralInfo(data)">
+                <tr class="PersonTableContentRow" dir-paginate="data in tempPersonData | itemsPerPage: 10 | orderBy:'-name'" ng-class-odd="'odd-color-them'" ng-dblclick="showGeneralInfo(data)">
                     <td>{{data.personId}}</td>
                     <td>
                         <a ng-click="showGeneralInfo(data)">{{data.name}}</a>

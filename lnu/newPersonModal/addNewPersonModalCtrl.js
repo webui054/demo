@@ -29,7 +29,7 @@ app.controller("AddNewPersonModalCtrl",["$scope", function($scope){
 
 
         console.log($scope.tempModalPerson);
-        
+        $scope.tempPersonData.push($scope.tempModalPerson);
     }
 
 }]);/**
