@@ -1,7 +1,7 @@
 <div class="container" ng-show="isPropozTabSelected(22)" ng-controller="subjectsCtrl">
     <div class="row">
         <div class="col-sm-6">
-            <p class="specofferName">Назва пропозиції</p>
+            <p class="specofferName">Журналістика</p>
         </div>
         <div class="col-sm-6">
             <button type="button" class="btn btn-primary btn-sm addSubject" ng-click="showModal('#addSubjectModal')" ><span class="glyphicon glyphicon-plus glyphicon-white"></span> Додати</button>
@@ -34,7 +34,7 @@
                     <td> {{data.mark}} </td>
                     <td> {{data.weightSubject}} </td>
                     <td><button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
-                        <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button></td>
+                        <button class="btn btn-primary btn-xs"  data-ng-click="removeRow($index)"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button></td>
 
                 </tr>
                 </tbody>

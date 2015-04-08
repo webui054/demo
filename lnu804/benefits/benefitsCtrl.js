@@ -55,6 +55,10 @@ app.controller("BenefitsCTRL", ["$scope","$http", function($scope,$http) {
         $scope.benefitId = "";
         $scope.benefitAmount = "";
         $scope.benefitNote = "";
+    };
 
-    }
+    $scope.removeRow = function (index) {
+        $scope.tempBenefitArray.splice(index, 1);
+    };
+
 }]);

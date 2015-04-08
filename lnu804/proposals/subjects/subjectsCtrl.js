@@ -51,7 +51,10 @@ app.controller('subjectsCtrl', ["$scope", "$http", "$filter", "$interval", funct
         $scope.alternative = "";
         $scope.mark = "";
         $scope.weightSubject = "";
+    };
 
+    $scope.removeRow = function (index) {
+        $scope.tempSubjectArray.splice(index, 1);
+    };
 
-    }
 }]);

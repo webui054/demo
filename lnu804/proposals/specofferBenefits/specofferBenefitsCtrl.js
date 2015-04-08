@@ -34,5 +34,10 @@ app.controller('specofferBenefitsCtrl', ["$scope", "$http", "$filter", "$interva
         $scope.benefitAmount = "";
         $scope.benefitNote = "";
 
-    }
+    };
+
+    $scope.removeRow = function (index) {
+        $scope.tempSpecofferBenefitArray.splice(index, 1);
+    };
+
 }]);

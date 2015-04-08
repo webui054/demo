@@ -1,7 +1,7 @@
 <div class="container" ng-show="isPropozTabSelected(23)" ng-controller="specofferBenefitsCtrl">
     <div class="row">
         <div class="col-sm-6">
-            <p class="specofferName">Назва пропозиції</p>
+            <p class="specofferName">Журналістика</p>
         </div>
         <div class="col-sm-6">
             <button type="button" class="btn btn-primary btn-sm addBenefit" ng-click="showModal('#addSpecofferBenefitModal')">
@@ -31,7 +31,7 @@
                         <button class="btn btn-primary btn-xs"><span
                                 class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
                         <button class="btn btn-primary btn-xs"><span
-                                class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                                class="glyphicon glyphicon-trash glyphicon-white"  data-ng-click="removeRow($index)"></span></button>
                     </td>
                 </tr>
                 </tbody>
