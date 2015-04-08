@@ -1,63 +1,58 @@
-app.controller("PersonsTableCTRL",["$scope","PersonRepo", function($scope,PersonRepo){
+app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope", function($scope,PersonRepo,$rootScope){
     $scope.isShowGeneralInfo = false;
-
-
+    $scope.tempPerson2 = {};
 
     $scope.showGeneralInfo = function(data){
-        PersonRepo.pushPerson(data);
+        $scope.tempPerson2 = data;
         $scope.isShowGeneralInfo = true;
     };
 
 }]);
 
 app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
-    $scope.citizenCountry2 = [{id:0,name:"Українець"},
+    $scope.citizenCountry = [{id:0,name:"Українець"},
         {id:1,name:"Білорус"},
         {id:2,name:"Англієць"},
         {id:3,name:"Росіянин"}];
 
-    $scope.personsTypes2 = [];
-    $scope.marriedType2 = [];
-    $scope.genderTypes2 = [];
+    $scope.personsTypes = [];
+    $scope.marriedType = [];
+    $scope.genderTypes = [];
 
-    $scope.getMarriedTypes2 = function(){
-        //PersonDataMappingArray.getMappedArray('persons/general/marriedTypes.json').then(function(data){
-        //    $scope.marriedType = data;
-        //});
+    $scope.getMarriedTypes = function(){
         $http.get('persons/general/marriedTypes.json').success(function (data) {
             angular.forEach(data,function(key){
-                $scope.marriedType2[key.id] = key.name;
+                $scope.marriedType[key.id] = key.name;
             });
         });
     };
 
-    $scope.getMarriedTypes2();
+    $scope.getMarriedTypes();
 
-
-
-    $scope.getPersonsType2 = function(){
+    $scope.getPersonsType = function(){
         $http.get('persons/general/personsTypeId.json').success(function (data) {
             angular.forEach(data,function(key){
-                $scope.personsTypes2[key.id] = key.name;
+                $scope.personsTypes[key.id] = key.name;
             });
 
         });
     };
-    $scope.getPersonsType2();
+    $scope.getPersonsType();
 
-
-
-    $scope.getGenderTypes2 = function(){
+    $scope.getGenderTypes = function(){
         $http.get('persons/general/genderTypes.json')
             .success(function (data) {
                 angular.forEach(data,function(key){
-                    $scope.genderTypes2[key.id] = key.name;
+                    $scope.genderTypes[key.id] = key.name;
                 });
 
             });
     };
-    $scope.getGenderTypes2();
+    $scope.getGenderTypes();
+
+
     $scope.tempPersonData = {};
+
     $scope.getPersonData = function () {
         $http.get('Content/tempData/tempPersonData.json').success(function (data) {
             $scope.tempPersonData = data;

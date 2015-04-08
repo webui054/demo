@@ -1,87 +1,97 @@
-<div ng-show="isPersonTabSelected(1)" ng-controller="GeneralPersonInfoCTRL" style="margin-top: 10px">
-    <div class="container" style="background-color: #337ab7; color: #ffffff;">
-        <h2 class="pull-left" style="margin-top: 15px;margin-bottom: 15px;">Загальна Інформація</h2>
-        <button class="pull-right btn btn-primary border-none" style="margin: 5px;margin-top: 15px;margin-bottom: 15px; background-image: none;box-shadow: none" title="Видалити">
-            <span class="glyphicon glyphicon-remove glyphicon-white"></span>
-        </button>
-        <button class="pull-right btn btn-primary border-none" style="margin: 5px;margin-top: 15px;margin-bottom: 15px; background-image: none;box-shadow: none" title="Редагувати">
-            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
-        </button>
-    </div>
-    <div class="container" style="border: 3px solid #337ab7;  padding: 20px;">
-        <div class="col-lg-3 container">
-            <img height="320px" width="240px" src="{{tempPerson2.photo}}" style="display: inline; border: 3px solid #337ab7;">
-            <div class="col-lg-4 " style="margin-top: 10px;  padding-left: 0;">
-                <label class="" for="ser">Серія :</label>
-                <div id="ser" class="form-control general-info-text">{{tempPerson2.docSeries}}</div>
-            </div>
-            <div class="col-lg-8" style="margin-top: 10px;  padding-left: 0;">
-                <label class="" for="num">№ :</label>
-                <div id="num" class="form-control general-info-text" style="padding-left: 2px">{{tempPerson2.docNum}}</div>
-            </div>
+<div class="container" ng-show="isPersonTabSelected(1)" ng-controller="GeneralPersonInfoCTRL">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="pull-left">Загальна Інформація</h4>
+                    <div class="pull-right">
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Видалити">
+                            <span class="glyphicon glyphicon-trash glyphicon-white"></span>
+                        </button>
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Редагувати">
+                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row panel-body">
+                    <div class="col-md-4 col-lg-3 container">
+                        <img height="320px" width="240px" src="{{tempPerson2.photo}}">
+                        <div class="col-md-4 col-lg-4 general-info-item">
+                            <label class="" for="ser">Серія :</label>
+                            <div id="ser" class="form-control general-info-text">{{tempPerson2.docSeries}}</div>
+                        </div>
+                        <div class="col-md-8 col-lg-8 general-info-item">
+                            <label class="" for="num">№ :</label>
+                            <div id="num" class="form-control general-info-text">{{tempPerson2.docNum}}</div>
+                        </div>
 
-        </div>
-        <div class="col-lg-5 container">
-            <div class="col-lg-12" style="margin-top: 10px">
-                <label class="" for="PIB" style="font-size: 16px;">ПІБ:</label>
-                <div id="PIB" class="form-control general-info-text">{{tempPerson2.name}}</div>
-            </div>
-            <div class="col-lg-12" style="margin-top: 10px">
-                <label class="" for="birthdayPlace" style="font-size: 16px;">Місце Народження:</label>
-                <div id="birthdayPlace" class="form-control general-info-text">{{tempPerson2.birthPlace}}</div>
-            </div>
-            <div class="col-lg-12" style="margin-top: 10px">
-                <label class="" for="birthdayDate" style="font-size: 16px;">Дата Народження:</label>
-                <div id="birthdayDate" class="form-control general-info-text">
-                    {{tempPerson2.begDate}}
-                </div>
-            </div>
-            <div class="col-lg-12" style="margin-top: 10px">
-                <label class="" for="personTypeId" style="font-size: 16px;">Зайнятість:</label>
-                <div id="personTypeId" class="form-control general-info-text">
-                    {{personsTypes[tempPerson2.personTypeId]}}
-                </div>
-            </div>
-            <div class="col-lg-6" style="margin-top: 10px">
-                <label class="" for="military" style="font-size: 16px;">Військовозобовязаний:</label>
-                <div id="military" class="form-control general-info-text">
-                    {{tempPerson2.isMilitary | checkYesNo}}
-                </div>
-            </div>
-            <div class="col-lg-6" style="margin-top: 10px">
-                <label class="" for="hostel" style="font-size: 16px;">Потреба в Гуртожитку:</label>
-                <div id="hostel" class="form-control general-info-text">
-                    {{tempPerson2.isHotel | checkYesNo}}
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 container">
-            <div class="col-lg-12" style="margin-top: 10px">
-                <label class="" for="Sex" style="font-size: 16px;">Стать:</label>
-                <div id="Sex" class="form-control general-info-text">
-                    {{genderTypes[tempPerson2.genderTypeId]}}
-                </div>
-            </div>
-            <div class="col-lg-12" style="margin-top: 10px">
-                <label class="" for="married" style="font-size: 16px;">Громадянський стан:</label>
-                <div id="married" class="form-control general-info-text">
-                    {{marriedType[tempPerson2.marriedTypeId]}}
-                </div>
-            </div>
-            <div class="col-lg-12" style="margin-top: 10px">
-                <label class="" for="gr" style="font-size: 16px;">Громадянство:</label>
-                <div id="gr" class="form-control general-info-text">
-                    <span ng-repeat="citizen in citizenCountry" ng-if="tempPerson2.citizenCountryId === citizen.id">
-                        {{citizen.name}}
-                    </span>
-                </div>
-            </div>
-            <div class="col-lg-12" style="margin-top: 10px">
-                <label class="" for="rez" style="font-size: 16px;">Резидент:</label>
-                <div id="rez" class="form-control general-info-text">
-                    {{tempPerson2.resident | checkYesNo}}
+                    </div>
+                    <div class="col-md-5 col-lg-5 container">
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="PIB">ПІБ:</label>
+                            <div id="PIB" class="form-control general-info-text">{{tempPerson2.name}}</div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="birthdayPlace">Місце Народження:</label>
+                            <div id="birthdayPlace" class="form-control general-info-text">{{tempPerson2.birthPlace}}</div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="birthdayDate">Дата Народження:</label>
+                            <div id="birthdayDate" class="form-control general-info-text">
+                                {{tempPerson2.begDate}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="personTypeId">Зайнятість:</label>
+                            <div id="personTypeId" class="form-control general-info-text">
+                                {{personsTypes2[tempPerson2.personTypeId]}}
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-6 general-info-item">
+                            <label class="label-font-size-16" for="military">Військовозобовязаний:</label>
+                            <div id="military" class="form-control general-info-text">
+                                {{tempPerson2.isMilitary | checkYesNo}}
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-lg-6 general-info-item">
+                            <label class="label-font-size-16" for="hostel">Гуртожиток:</label>
+                            <div id="hostel" class="form-control general-info-text">
+                                {{tempPerson2.isHotel | checkYesNo}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3 container">
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="Sex">Стать:</label>
+                            <div id="Sex" class="form-control general-info-text">
+                                {{genderTypes2[tempPerson2.genderTypeId]}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 ol-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="married">Громадянський стан:</label>
+                            <div id="married" class="form-control general-info-text">
+                                {{marriedType2[tempPerson2.marriedTypeId]}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="gr">Громадянство:</label>
+                            <div id="gr" class="form-control general-info-text">
+                                <span ng-repeat="citizen in citizenCountry2" ng-if="tempPerson2.citizenCountryId === citizen.id">
+                                    {{citizen.name}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="rez">Резидент:</label>
+                            <div id="rez" class="form-control general-info-text">
+                                {{tempPerson2.resident | checkYesNo}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>

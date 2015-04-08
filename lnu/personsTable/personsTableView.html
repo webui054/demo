@@ -1,7 +1,6 @@
 <div class="container" ng-show="isLoggedIn" ng-controller="PersonsTableCTRL">
     <div ng-show="!isShowGeneralInfo">
 
-        <div><h3>Персони</h3></div>
         <div class="svButtonContainer"><button class="btn btn-primary border-radius-0 svCreateNewPerson">Додати персону</button> </div>
 
         <table class="table table-bordered mainPersonTable" ng-controller="personInfoCtrl">
@@ -33,11 +32,11 @@
             <tr class="PersonTableContentRow" dir-paginate="data in tempPersonData | itemsPerPage: 10" ng-class-odd="'odd-color-them'" ng-dblclick="showGeneralInfo(data)">
                 <td>{{data.personId}}</td>
                 <td><a ng-click="showGeneralInfo(data)">{{data.name}}</a></td>
-                <td>{{genderTypes2[data.genderTypeId]}}</td>
+                <td>{{genderTypes[data.genderTypeId]}}</td>
                 <td>{{data.begDate}}</td>
-                <td>{{personsTypes2[data.personTypeId]}}</td>
+                <td>{{personsTypes[data.personTypeId]}}</td>
                 <td>{{data.resident | checkYesNo}}</td>
-                <td> <span ng-repeat="citizen in citizenCountry2" ng-if="data.citizenCountryId === citizen.id">
+                <td> <span ng-repeat="citizen in citizenCountry" ng-if="data.citizenCountryId === citizen.id">
                         {{citizen.name}}
                     </span></td>
                 <td>{{data.docNum + ':' + data.docSeries}}</td>

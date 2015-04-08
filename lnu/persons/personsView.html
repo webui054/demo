@@ -3,14 +3,20 @@
         <div class="container">
             <div class="navbar-header">
                 <div class="custom-navbar-header-for-persons">
-                    <img height="50em" width="50em" src="{{tempPerson2.photo}}">
+                    <img height="50em" width="38em" src="{{tempPerson2.photo}}">
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 persons-header-text">
                     {{tempPerson2.name}}
                 </div>
-
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>//
+                </button>
 
             </div><!--/.navbar-header-->
+            <div class="collapse navbar-collapse">
                 <ul class="nav nav-pills">
                     <li ng-class="{active:isPersonTabSelected(1)}">
                         <a href="" ng-click="selectPersonTab(1)">Персона</a>
@@ -25,7 +31,7 @@
                         <a href="" ng-click="selectPersonTab(4)">Іноземці</a>
                     </li>
                     <li ng-class="{active:isPersonTabSelected(5)}">
-                        <a href="" ng-click="selectPersonTab(5)">Олімпіади/МАН</a>
+                        <a href="" ng-click="selectPersonTab(5)">Олімпіади</a>
                     </li>
                     <li ng-class="{active:isPersonTabSelected(6)}">
                         <a href="" ng-click="selectPersonTab(6)">Документи</a>
@@ -37,7 +43,7 @@
                         <a href="" ng-click="backToTheTable()">Назад</a>
                     </li>
                 </ul>
-
+        </div>
         </div>
     </div>
 
