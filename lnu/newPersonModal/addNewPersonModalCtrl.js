@@ -15,6 +15,7 @@ app.controller("AddNewPersonModalCtrl",["$scope", function($scope){
         $scope.tempModalPerson.parentId = 0;
         console.log($scope.tempModalPerson);
         $scope.tempPersonData.push($scope.tempModalPerson);
+        $scope.tempModalPerson ={};
     }
 
 }]);

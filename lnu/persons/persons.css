@@ -1,13 +1,25 @@
 .custom-navbar-header-for-persons{
     display: inline;
+    margin-right: 15px;
 }
 .max-width-109{
     max-width: 109%;
 }
 .persons-header-text{
-    cursor: default;
+    cursor: pointer;
     float: none;
     display: inline;
+
+}
+.persons-header-text:hover{
+    cursor: pointer;
+    float: none;
+    display: inline;
+    color: #1e86ba;
+
+}
+.persons-header-text-active{
+    font-weight: bold;
 
 }
 
