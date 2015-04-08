@@ -1,14 +1,16 @@
-app.controller("PersonsCTRL",["$scope", function($scope){
-
+app.controller("PersonsCTRL",["$scope","PersonRepo", function($scope,PersonRepo){
     $scope.personTab = 1;
 
     $scope.selectPersonTab = function(setTab){
-
         $scope.personTab = setTab;
     };
+
     $scope.isPersonTabSelected = function(checkTab){
         return $scope.personTab === checkTab;
     };
-}]);/**
- * Created by Dmytro on 04.04.2015.
- */
+
+    $scope.backToTheTable = function(){
+        $scope.personTab = 1;
+        $scope.$parent.isShowGeneralInfo = false;
+    };
+}]);

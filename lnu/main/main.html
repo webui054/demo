@@ -13,10 +13,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav" ng-show="isLoggedIn">
                     <li ng-class="{active:isSelected(1)}">
-                        <a href="#" ng-click="selectTab(1)">{{personViewModel}}</a>
+                        <a href="#" ng-click="selectTab(1)" ui-sref="persons">{{personViewModel}}</a>
                     </li>
                     <li ng-class="{active:isSelected(2)}">
-                        <a href="#" ng-click="selectTab(2)">{{propositionViewModel}}</a>
+                        <a href="#" ng-click="selectTab(2)" ui-sref="proposition">{{propositionViewModel}}</a>
+                    </li>
+                    <li ng-class="{active:isSelected(3)}">
+                        <a href="#" ng-click="selectTab(3)" ui-sref="benefits">{{benefitsViewModel}}</a>
                     </li>
                     <li>
                         <a href="#" ng-click="logout()">Вийти</a>
@@ -25,8 +28,9 @@
             </div>
         </div>
     </div>
-    <div ng-include="'personsTable/personsTableView.html'"></div>
+    <div ui-view></div>
+
     <login-content></login-content>
 
-    <proposition-content></proposition-content>
+
 </div>
