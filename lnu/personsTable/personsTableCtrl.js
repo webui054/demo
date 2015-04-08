@@ -3,12 +3,9 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
     $scope.isShowGeneralInfo = false;
     $scope.tempPerson2 = {};
     $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
+    $scope.tempModalPerson2 ={}
 
-
-    $scope.citizenCountry = [{id:0,name:"Українець"},
-        {id:1,name:"Білорус"},
-        {id:2,name:"Англієць"},
-        {id:3,name:"Росіянин"}];
+    $scope.citizenCountry = [];
 
     $scope.personsTypes = [];
     $scope.marriedType = [];
@@ -16,6 +13,18 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
     $scope.personsTypesArr = [];
     $scope.marriedTypeArr = [];
     $scope.genderTypesArr = [];
+    $scope.citizenCountryArr = [];
+
+    $scope.getCitizenCountry = function(){
+
+        $http.get('persons/general/citizenCountry.json').success(function (data) {
+            $scope.citizenCountryArr = data;
+            angular.forEach(data,function(key){
+                $scope.citizenCountry[key.id] = key.name;
+            });
+        });
+    };
+    $scope.getCitizenCountry();
 
     $scope.getMarriedTypes = function(){
         $http.get('persons/general/marriedTypes.json').success(function (data) {
@@ -63,8 +72,12 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
 
 
     $scope.showGeneralInfo = function(data){
+        $scope.tempModalPerson2 = data;
         $scope.tempPerson2 = data;
         $scope.isShowGeneralInfo = true;
+    };
+    $scope.pushPersonToObj= function(data){
+        $scope.tempModalPerson2 = data;
     };
 
 }]);

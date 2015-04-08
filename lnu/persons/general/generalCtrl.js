@@ -3,14 +3,22 @@
 app.controller("GeneralPersonInfoCTRL",["$scope","PersonRepo","$http",
     function($scope,PersonRepo,$http){
 
-        $scope.citizenCountry2 = [{id:0,name:"Українець"},
-            {id:1,name:"Білорус"},
-            {id:2,name:"Англієць"},
-            {id:3,name:"Росіянин"}];
-
+        $scope.citizenCountry2 = [];
         $scope.personsTypes2 = [];
         $scope.marriedType2 = [];
         $scope.genderTypes2 = [];
+
+        $scope.getCitizenCountry2 = function(){
+
+            $http.get('persons/general/citizenCountry.json').success(function (data) {
+                angular.forEach(data,function(key){
+                    $scope.citizenCountry2[key.id] = key.name;
+                });
+            });
+        };
+        $scope.getCitizenCountry2();
+
+
 
         $scope.getMarriedTypes2 = function(){
 
