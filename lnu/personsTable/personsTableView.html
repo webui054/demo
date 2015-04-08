@@ -1,50 +1,61 @@
 <div class="container" ng-show="isLoggedIn" ng-controller="PersonsTableCTRL">
     <div ng-show="!isShowGeneralInfo">
 
-        <div class="svButtonContainer"><button class="btn btn-primary border-radius-0 svCreateNewPerson">Додати персону</button> </div>
-
+        <div class="svButtonContainer">
+            <button class="btn btn-primary border-radius-0 svCreateNewPerson">Додати персону</button>
+        </div>
         <table class="table table-bordered mainPersonTable" ng-controller="personInfoCtrl">
             <thead>
-            <tr class="personTableHeaderRow">
-                <th class="mainPersonTable-col-id">Id</th>
-                <th class="mainPersonTable-col-name">ПІБ</th>
-                <th class="mainPersonTable-col-gender">Стать</th>
-                <th class="mainPersonTable-col-birth">Народження</th>
-                <th class="mainPersonTable-col-type">Тип </th>
-                <th class="mainPersonTable-col-resid">Резидент</th>
-                <th class="mainPersonTable-col-citiz">Громадянство </th>
-                <th class="mainPersonTable-col-doc">Особова справа</th>
-                <th class="mainPersonTable-col-edit">Редагувати</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
+                <tr class="personTableHeaderRow">
+                    <th class="mainPersonTable-col-id">Id</th>
+                    <th class="mainPersonTable-col-name">ПІБ</th>
+                    <th class="mainPersonTable-col-gender">Стать</th>
+                    <th class="mainPersonTable-col-birth">Народження</th>
+                    <th class="mainPersonTable-col-type">Тип </th>
+                    <th class="mainPersonTable-col-resid">Резидент</th>
+                    <th class="mainPersonTable-col-citiz">Громадянство </th>
+                    <th class="mainPersonTable-col-doc">Особова справа</th>
+                    <th class="mainPersonTable-col-edit">Редагувати</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>
+                        <select>
+
+                        </select>
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
-            <tr class="PersonTableContentRow" dir-paginate="data in tempPersonData | itemsPerPage: 10" ng-class-odd="'odd-color-them'" ng-dblclick="showGeneralInfo(data)">
-                <td>{{data.personId}}</td>
-                <td><a ng-click="showGeneralInfo(data)">{{data.name}}</a></td>
-                <td>{{genderTypes[data.genderTypeId]}}</td>
-                <td>{{data.begDate}}</td>
-                <td>{{personsTypes[data.personTypeId]}}</td>
-                <td>{{data.resident | checkYesNo}}</td>
-                <td> <span ng-repeat="citizen in citizenCountry" ng-if="data.citizenCountryId === citizen.id">
-                        {{citizen.name}}
-                    </span></td>
-                <td>{{data.docNum + ':' + data.docSeries}}</td>
-                <td ng-controller="ModalDemoCtrl">
-                    <button class="btn btn-primary btn-xs border-radius-0" data-toggle="modal" data-target="#editAddressModal" ng-click="showGeneralInfo(data)"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
-                    <button class="btn btn-primary btn-xs border-radius-0" ng-click="open(data.name, data.personId)" data-toggle="modal" name="removePerson"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
-                </td>
-            </tr>
+                <tr class="PersonTableContentRow" dir-paginate="data in tempPersonData | itemsPerPage: 10" ng-class-odd="'odd-color-them'" ng-dblclick="showGeneralInfo(data)">
+                    <td>{{data.personId}}</td>
+                    <td>
+                        <a ng-click="showGeneralInfo(data)">{{data.name}}</a>
+                    </td>
+                    <td>{{genderTypes[data.genderTypeId]}}</td>
+                    <td>{{data.begDate}}</td>
+                    <td>{{personsTypes[data.personTypeId]}}</td>
+                    <td>{{data.resident | checkYesNo}}</td>
+                    <td>
+                        <span ng-repeat="citizen in citizenCountry" ng-if="data.citizenCountryId === citizen.id">
+                            {{citizen.name}}
+                        </span>
+                    </td>
+                    <td>{{data.docNum + ':' + data.docSeries}}</td>
+                    <td ng-controller="ModalDemoCtrl">
+                        <div class="svButtonContainerRow">
+                            <button class="btn btn-primary btn-xs border-radius-0" data-toggle="modal" data-target="#editAddressModal" ng-click="showGeneralInfo(data)"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                            <button class="btn btn-primary btn-xs border-radius-0" ng-click="open(data.name, data.personId)" data-toggle="modal" name="removePerson"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -64,13 +75,6 @@
                 <button class="btn btn-primary" ng-click="cancel()">Відміна</button>
             </div>
         </script>
-        <!--    Buttons
-
-        <button class="btn btn-default" ng-click="open()">Open me!</button>
-        <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
-        <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
-        <div ng-show="selected">Selection from a modal: {{ selected }}</div>
-        -->
     </div>
 
     <person-content></person-content>
