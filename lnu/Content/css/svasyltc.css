@@ -1,8 +1,8 @@
 .mainPersonTable tbody tr:hover{
-
+    background-color: lightcyan;
 }
-.mainPersonTable-col-id{
-
+.PersonTableContentRow td{
+    text-align: center
 }
 .svCreateNewPerson{
     float: right;
@@ -16,6 +16,7 @@
     margin-top:15px;
 }
 .personTableHeaderRow th{
+    color: #337ab7;
     text-align: center;
     font-weight:bold;
     padding:10px;
@@ -25,4 +26,56 @@
 }
 .svButtonContainerRow{
     padding-left: 25px;
+}
+.svAddressContainer{
+    padding-left: 15px;
+}
+.svAddressContainer:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.svAddressRegContainer:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.svAddressPostContainer{
+    margin-top: 15px;
+}
+.svAddressPostContainer:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.svContactsContainer{
+    background: yellowgreen;
+    height: 100px;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+.svAddressEditButton{
+    float: right;
+    margin-right: 5px;
+}
+.svAddressDeleteButton{
+    float: right;
+}
+.svAddressFields{
+    float: left;
+    width: 92%;
+}
+.svAddressButtons{
+    float: right;
+    margin-right: 15px;
+}
+.svModal-title{
+    text-align: center;
+}
+.svModalContent{
+    text-align: center;
+}
+.general-info-text{
+    border-bottom: 1px solid lightskyblue;
+    border-left: 1px solid lightskyblue;
 }
