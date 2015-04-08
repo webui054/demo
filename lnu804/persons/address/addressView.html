@@ -1,0 +1,23 @@
+<div class="container" ng-show="isPersonTabSelected(2)" ng-controller="AddressCtrl">
+    <button ng-click="getTempData()">click me! </button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>SpesialtyId</th>
+            <th>Time Period Id</th>
+            <th>Lic Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in tempData2" ng-class-odd="'odd-color-them'">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.timePeriodId}}</td>
+            <td>{{data.licCount}}</td>
+            <td><a>Edit</a><a>Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

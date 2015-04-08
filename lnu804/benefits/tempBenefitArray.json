@@ -1,0 +1,7 @@
+[
+  { "benefitId": 1, "benefitName": "Пільги для Львівської області", "benefitAmount": 20, "benefitNote": ""},
+  { "benefitId": 2, "benefitName": "Пільги для Львівської області", "benefitAmount": 18, "benefitNote": ""},
+  { "benefitId": 3, "benefitName": "Пільги для Львівської області", "benefitAmount": 19, "benefitNote": ""},
+  { "benefitId": 4, "benefitName": "Пільги для Львівської області", "benefitAmount": 21, "benefitNote": ""},
+  { "benefitId": 5, "benefitName": "Іноземці", "benefitAmount": 30, "benefitNote": "МОН"}
+]

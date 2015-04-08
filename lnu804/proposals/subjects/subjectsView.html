@@ -1,0 +1,98 @@
+<div class="container" ng-show="isPropozTabSelected(22)" ng-controller="subjectsCtrl">
+    <div class="row">
+        <div class="col-sm-6">
+            <p class="specofferName">Назва пропозиції</p>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary btn-sm addSubject" ng-click="showModal('#addSubjectModal')" ><span class="glyphicon glyphicon-plus glyphicon-white"></span> Додати</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="subjectTable" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                <tr>
+                    <th>ID пропозиції</th>
+                    <th>ID предмета</th>
+                    <th>Назва предмета</th>
+                    <th>Додаткова назва</th>
+                    <th>Профільний</th>
+                    <th>Альтернатива</th>
+                    <th>Мінімальний бал</th>
+                    <th>Коефіцієнт</th>
+                    <th>Операції</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="data in tempSubjectArray" ng-class-odd="'odd-color-theme'">
+                    <td> {{data.specofferId}} </td>
+                    <td> {{data.enrolmentSubjectId}} </td>
+                    <td nameSubject> {{data.subjectName}}</td>
+                    <td nameSubject> </td>
+                    <td> {{data.isMajor}} </td>
+                    <td> {{data.alternative}} </td>
+                    <td> {{data.mark}} </td>
+                    <td> {{data.weightSubject}} </td>
+                    <td><button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                        <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button></td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!--add subject modal-->
+    <div id="addSubjectModal" class="modal fade border-radius-0">
+        <div class="modal-dialog modal-ml border-radius-0">
+            <div class="modal-content border-radius-0">
+                <div class="modal-header custom-modal-header">
+                    <button type="button" class="btn-text btn-primary pull-right border-none" data-dismiss="modal" aria-hidden="true">
+                        <span title="Close" class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <h3 class="modal-title text-center create-group-modal-title-header-text addSubjectH">Додати предмет</h3>
+                </div>
+                <div class="modal-body border-radius-0 formSubject">
+                    <form name="addSubjectForm" ng-submit="addSubjectForm.$valid && AddNewSubject()" novalidate>
+                        <div class="form-group">
+                            <label>Введіть назву предмета:</label>
+                            <input type="text" class="form-control border-radius-0" placeholder="Назва предмета" ng-model="subjectName" name="subjectName" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть ID предмета:</label>
+                            <input type="number" class="form-control border-radius-0" placeholder="ID предмета" ng-model="enrolmentSubjectId" name="enrolmentSubjectId" min="1" max="2000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть ID пропозиції:</label>
+                            <input type="number" class="form-control border-radius-0" placeholder="ID пропозиції" ng-model="specofferId" name="specofferId" min="1" max="1000000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Профільний предмет:</label><br>
+                            <input type="radio" ng-model="isMajor" name="isMajor" value="true" required> Так<br>
+                            <input type="radio" ng-model="isMajor" name="isMajor" value="false" required> Ні
+                        </div>
+                        <div class="form-group">
+                            <label>Є альтернативний предмет:</label><br>
+                            <input type="radio" ng-model="alternative" name="alternative" value="true" required> Так<br>
+                            <input type="radio" ng-model="alternative" name="alternative" value="false" required> Ні
+                        </div>
+                        <div class="form-group">
+                            <label>Мінімальний бал з предмету згідно ЗНО:</label>
+                            <input type="number" class="form-control border-radius-0" placeholder="Мінімальний бал" ng-model="mark" name="mark" min="1" max="12" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Коефіцієнтр ваги предмету:</label>
+                            <input type="number" class="form-control border-radius-0" placeholder="Коефіцієнт" ng-model="weightSubject" name="weightSubject" min="0.1" max="10" required></div>
+                        <button class="btn btn-lg btn-primary btn-block border-radius-0 border-none" type="submit" value="Submit">
+                            Додати предмет
+                        </button>
+                        <div>form is {{addSubjectForm.$valid}}</div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+</div><!-- /.container -->
