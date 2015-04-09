@@ -24,6 +24,26 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="form-group col-lg-3">
+                            <label for="f4">Мова:</label>
+                            <select class="form-control" id="f4" ng-model="tempModalPersonF.languageId"
+                            ng-options="trueFalse.id as trueFalse.name for trueFalse in languagesArr">
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="f1">Прізвище</label>
+                            <input type="text" class="form-control" id="f1" ng-model="tempModalPersonF.firstName">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="f2">Імя</label>
+                            <input type="text" class="form-control" id="f2" ng-model="tempModalPersonF.surname">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="f3">По-батькові</label>
+                            <input type="text" class="form-control" id="f3" ng-model="tempModalPersonF.fatherName">
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="form-group col-lg-6">
                             <label for="sub4">Місце Народження</label>
                             <input type="text" class="form-control" id="sub4" ng-model="tempModalPerson.birthPlace">
