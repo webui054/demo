@@ -49,10 +49,14 @@
     clear: both;
 }
 .svContactsContainer{
-    background: yellowgreen;
-    height: 100px;
     padding-left: 15px;
+    padding-right:15px;
     margin-top: 15px;
+}
+.svContactsContainer:after{
+    content: "";
+    display: block;
+    clear: both;
 }
 .svAddressEditButton{
     float: right;
@@ -78,4 +82,34 @@
 .general-info-text{
     border-bottom: 1px solid lightskyblue;
     border-left: 1px solid lightskyblue;
+}
+.svContactsCol-1{
+    width:45%;
+    float: left;
+}
+
+.svContactsCol-1 div.general-info-text{
+    float: left;
+    width:85%;
+}
+.svContactsCol-1 div .svContactButtons{
+    float: right;
+}
+.svContactsCol-2{
+     width:50%;
+     float: right;
+ }
+.svContactsCol-2 div.general-info-text{
+      float: left;
+      width:85%;
+}
+.svContactsCol-2 div .svContactButtons{
+    float: right;
+}
+.svContactsCol-2 div .label-font-size-16{
+    display: block;
+}
+.svAddressHeader,.svContactsHeader{
+    color: #2e6da4;
+    font-weight:bold;
 }
