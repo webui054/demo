@@ -1,17 +1,21 @@
 <div>
-    <div class="modal-header">
-        <button type="button" class="btn-text btn-primary pull-right border-none" ng-click="close()" aria-hidden="true">
-            <span title="Закрити" class="glyphicon glyphicon-remove"></span>
-        </button>
-        <h4>Додати пропозицію на вступ</h4>
-    </div>
-    <div class="modal-body">
-        <form name="addProposalForm" class="form-horizontal" ng-submit="addProposalForm.$valid && addNewProposal()" novalidate>
+    <form name="addProposalForm" class="form-horizontal" ng-submit="addProposalForm.$valid && addNewProposal()"
+          novalidate>
+        <div class="modal-header">
+            <button type="button" class="btn-text btn-primary pull-right border-none" ng-click="close()"
+                    aria-hidden="true">
+                <span title="Закрити" class="glyphicon glyphicon-remove"></span>
+            </button>
+            <h4>Додати пропозицію на вступ</h4>
+        </div>
+        <div class="modal-body">
+
             <div class="form-group">
                 <label class="control-label col-xs-3" for="proposalName">Назва</label>
 
                 <div class="col-xs-9">
-                    <input class="form-control" ng-model="specialtyId" type="text" id="proposalName" placeholder="Назва пропозиції" required
+                    <input class="form-control" ng-model="specialtyId" type="text" id="proposalName"
+                           placeholder="Назва пропозиції" required
                            autofocus/>
                 </div>
             </div>
@@ -20,8 +24,8 @@
                     Стр. підрозділ*</label>
 
                 <div class="col-xs-9">
-                    <select class="form-control" id="proposalDepartment" 
-                            ng-model="proposalDepartment" 
+                    <select class="form-control" id="proposalDepartment"
+                            ng-model="proposalDepartment"
                             ng-options="department.name for department in departmens" required>
                         <option value>Виберіть департамент</option>
                     </select>
@@ -63,7 +67,8 @@
 
                 <div class="col-xs-2">
                     <div class="input-group">
-                        <input class="form-control" ng-model="timePeriodId" type="text" placeholder="років" title="Введіть кількість років"/>
+                        <input class="form-control" ng-model="timePeriodId" type="text" placeholder="років"
+                               title="Введіть кількість років"/>
                         <span class="input-group-addon">років</span>
                     </div>
                 </div>
@@ -121,16 +126,18 @@
                 <label class="control-label col-xs-3" for="licCount">Ліцензійний обсяг</label>
 
                 <div class="col-xs-3">
-                    <input class="form-control" ng-model="licCount" id="licCount" type="text" placeholder="Кількість місць"
+                    <input class="form-control" ng-model="licCount" id="licCount" type="text"
+                           placeholder="Кількість місць"
                            title="Введіть кількість ліцензійних місць"/>
                 </div>
             </div>
             <div>form is {{addProposalForm.$valid}}</div>
-        </form>
-        <!-- addProposalForm -->
-    </div>
-    <div class="modal-footer">
-        <button class="btn" type="submit">Додати</button>
-        <button class="btn" ng-click="close()">Закрити</button>
-    </div>
+
+            <!-- addProposalForm -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">Додати</button>
+            <button class="btn btn-primary" ng-click="close()">Закрити</button>
+        </div>
+    </form>
 </div>

@@ -3,6 +3,23 @@
  */
 app.controller("ModalInstanceCtrl", ["$scope", "$http", "$modalInstance", function($scope, $http, $modalInstance) {
 
+    $scope.tempData = {};
+
+
+    $scope.specialtyId = "";
+    $scope.departmentId = "";
+    $scope.timePeriodId = "";
+    $scope.specofferTypeId = "";
+    $scope.docSeries = "";
+    $scope.docNum = "";
+    $scope.parentId = "";
+    $scope.eduFormTypeId = "";
+    $scope.licCount = "";
+    $scope.stateCount = "";
+    $scope.timePeriodCourseId = "";
+    $scope.begDate = "";
+    $scope.endDate = "";
+
     $scope.close = function () {
         $modalInstance.dismiss('cancel');
     };
@@ -50,11 +67,11 @@ app.controller("ModalInstanceCtrl", ["$scope", "$http", "$modalInstance", functi
     $scope.addNewProposal = function () {
         $modalInstance.close();
 
-        $scope.tempData = {};
+
 
         $scope.tempData.specialtyId = $scope.specialtyId;
         $scope.tempData.departmentId = $scope.departmentId;
-        $scope.tempData.timePeroiodId = $scope.timePeroiodId;
+        $scope.tempData.timePeriodId = $scope.timePeriodId;
         $scope.tempData.specofferTypeId = $scope.specofferTypeId;
         $scope.tempData.docSeries = $scope.docSeries;
         $scope.tempData.docNum = $scope.docNum;
@@ -66,11 +83,13 @@ app.controller("ModalInstanceCtrl", ["$scope", "$http", "$modalInstance", functi
         $scope.tempData.begDate = $scope.begDate;
         $scope.tempData.endDate = $scope.endDate;
 
+        console.log($scope.tempData);
+
         $scope.tempProposalArray.push($scope.tempData);
 
         $scope.specialtyId = "";
         $scope.departmentId = "";
-        $scope.timePeroiodId = "";
+        $scope.timePeriodId = "";
         $scope.specofferTypeId = "";
         $scope.docSeries = "";
         $scope.docNum = "";

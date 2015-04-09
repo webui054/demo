@@ -15,18 +15,34 @@ app.controller('specofferBenefitsCtrl', ["$scope", "$http", "$filter", "$interva
         }, 500);
     };
 
+    var realPath = "";
+    var tempPath = 'proposals/specofferBenefits/tempSpecofferBenefitArray.json';
+    var path = tempPath;
+    $scope.getTempSpecofferBenefitData = function () {
+        $http.get(path)
+            .success(function (data) {
+                //console.log(data);
+                //$scope.tempSpecofferBenefitArray = angular.fromJson(data);
+                $scope.tempSpecofferBenefitArray = (data);
+            })
+            .error(function (msg) {
+                console.log(msg);
+            });
+    };
+    $scope.getTempSpecofferBenefitData();
+
 
     $scope.AddNewSpecofferBenefit = function () {
-        $("#addPropBenefitModal").modal("hide");
+        $("#addSpecofferBenefitModal").modal("hide");
         $scope.tempData = {};
 
         $scope.tempData.benefitName = $scope.benefitName;
         $scope.tempData.benefitId = $scope.benefitId;
         $scope.tempData.benefitAmount = $scope.benefitAmount;
         $scope.tempData.benefitNote = $scope.benefitNote;
-        if($scope.tempSpecofferBenefitArray[0].a === ""){
-            $scope.tempSpecofferBenefitArray.splice(0,1)
-        }
+       if($scope.tempSpecofferBenefitArray[0].a === ""){
+           $scope.tempSpecofferBenefitArray.splice(0,1)
+       }
         $scope.tempSpecofferBenefitArray.push($scope.tempData);
 
         $scope.benefitName = "";

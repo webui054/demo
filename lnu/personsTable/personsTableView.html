@@ -17,7 +17,7 @@
                     <th class="mainPersonTable-col-resid">Резидент</th>
                     <th class="mainPersonTable-col-citiz">Громадянство </th>
                     <th class="mainPersonTable-col-doc">Особова справа</th>
-                    <th class="mainPersonTable-col-edit">Редагувати</th>
+                    <th class="mainPersonTable-col-edit">Управління</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -44,7 +44,7 @@
                     <td>
                         {{citizenCountry[data.citizenCountryId]}}
                     </td>
-                    <td>{{data.docNum + ':' + data.docSeries}}</td>
+                    <td>{{data.docSeries + ':' + data.docNum}}</td>
                     <td ng-controller="ModalDemoCtrl">
                         <div class="svButtonContainerRow">
                             <button class="btn btn-primary btn-xs border-radius-0"  data-toggle="modal" data-target="#editNewPersonModal" ng-click="pushPersonToObj(data)">
