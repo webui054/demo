@@ -18,6 +18,22 @@ app.controller('subjectsCtrl', ["$scope", "$http", "$filter", "$interval", funct
         }, 500);
     };
 
+    var realPath = "";
+    var tempPath = 'proposals/specofferBenefits/tempSpecofferBenefitArray.json';
+    var path = tempPath;
+    $scope.getTempSubjectData = function () {
+        $http.get(path)
+            .success(function (data) {
+                //console.log(data);
+                //$scope.tempSubjectArray = angular.fromJson(data);
+                $scope.tempSubjectArray = (data);
+            })
+            .error(function (msg) {
+                console.log(msg);
+            });
+    };
+    $scope.getTempSubjectData();
+
 
     $scope.AddNewSubject = function () {
         $("#addSubjectModal").modal("hide");

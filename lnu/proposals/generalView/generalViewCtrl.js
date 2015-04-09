@@ -23,8 +23,6 @@ app.controller("GeneralViewCTRL", ["$scope", "$http", "$modal", function($scope,
     $scope.getTempSubjectData = function () {
         $http.get(path)
             .success(function (data) {
-                //console.log(data);
-                $scope.tempProposalArray = angular.fromJson(data);
                 $scope.tempProposalArray = (data);
             })
             .error(function (msg) {
