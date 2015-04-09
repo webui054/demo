@@ -1,23 +1,187 @@
 <div class="container" ng-show="isPersonTabSelected(2)" ng-controller="AddressCtrl">
-    <button ng-click="getTempData()">click me! </button>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>SpesialtyId</th>
-            <th>Time Period Id</th>
-            <th>Lic Count</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="data in tempData2" ng-class-odd="'odd-color-them'">
-            <td>{{data.id}}</td>
-            <td>{{data.name}}</td>
-            <td>{{data.timePeriodId}}</td>
-            <td>{{data.licCount}}</td>
-            <td><a>Edit</a><a>Delete</a></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="pull-left">Адреси та Контакти</h4>
+                    <div class="pull-right">
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Видалити">
+                            <span class="glyphicon glyphicon-trash glyphicon-white"></span>
+                        </button>
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Редагувати">
+                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                        </button>
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Додати адресу або контакти">
+                            <span class="glyphicon glyphicon-plus glyphicon-white"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row panel-body">
+                    <div class="svAddressContainer">
+                        <div class="svAddressHeader"><h4>Адреси</h4></div>
+                        <div class="svAddressRegContainer">
+                            <label class="label-font-size-16" for="svAddressReg">Адреса реєстрації:</label>
+                            <div id="svAddressReg" class="form-control general-info-text svAddressFields">
+                                {{"м. Івано-Франківськ, вул. Берегова буд. 34а, кв. 9"}}
+                            </div>
+                            <div class="svAddressButtons">
+                                <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                                <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                            </div>
+                        </div>
+                        <div class="svAddressPostContainer">
+                            <label class="label-font-size-16" for="svAddressReg">Поштова адреса:</label>
+                            <div id="svAddressPosr" class="form-control general-info-text svAddressFields">
+                                {{"м. Івано-Франківськ, вул. Сахарова буд. 23, кв. 23"}}
+                            </div>
+                            <div class="svAddressButtons">
+                                <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                                <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr color="#337ab7">
+                    <div class="svContactsContainer">
+                        <div class="svContactsHeader"><h4>Контакти</h4></div>
+                        <div class="svContactsCol-1">
+                            <div class="col-md-12 col-lg-12 general-info-item">
+                                <label class="label-font-size-16" for="svMobPhone">Мобільний телефон:</label>
+                                <div id="svMobPhone" class="form-control general-info-text">{{"+38(068)144-20-23"}}</div>
+                                <div class="svContactButtons">
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 general-info-item">
+                                <label class="label-font-size-16" for="svWorkPhone">Робочий:</label>
+                                <div id="svWorkPhone" class="form-control general-info-text">{{"+38(050)833-84-83"}}</div>
+                                <div class="svContactButtons">
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 general-info-item">
+                                <label class="label-font-size-16" for="svHomePhone">Домашній телефон:</label>
+                                <div id="svHomePhone" class="form-control general-info-text">{{"(0342)6-61-83"}}</div>
+                                <div class="svContactButtons">
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svContactsCol-2">
+                            <div class="col-md-12 col-lg-12 general-info-item">
+                                <label class="label-font-size-16" for="svEmail">e-mail:</label>
+                                <div id="svEmail" class="form-control general-info-text">{{"webui054@gmail.com"}}</div>
+                                <div class="svContactButtons">
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 general-info-item">
+                                <label class="label-font-size-16" for="svSkype">Skype:</label>
+                                <div id="svSkype" class="form-control general-info-text">{{"KuznєcovDmitro"}}</div>
+                                <div class="svContactButtons">
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 general-info-item">
+                                <label class="label-font-size-16" for="svICQ">ICQ:</label>
+                                <div id="svICQ" class="form-control general-info-text">{{"833755721"}}</div>
+                                <div class="svContactButtons">
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
+                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!--
+                <div class="row panel-body">
+                    <div class="col-md-4 col-lg-3 container">
+                        <img height="320px" width="240px" src="{{tempPerson2.photo}}">
+                        <div class="col-md-4 col-lg-4 general-info-item">
+                            <label class="" for="ser">Серія :</label>
+                            <div id="ser" class="form-control general-info-text">{{tempPerson2.docSeries}}</div>
+                        </div>
+                        <div class="col-md-8 col-lg-8 general-info-item">
+                            <label class="" for="num">№ :</label>
+                            <div id="num" class="form-control general-info-text">{{tempPerson2.docNum}}</div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-5 col-lg-5 container">
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="PIB">ПІБ:</label>
+                            <div id="PIB" class="form-control general-info-text">{{tempPerson2.name}}</div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="birthdayPlace">Місце Народження:</label>
+                            <div id="birthdayPlace" class="form-control general-info-text">{{tempPerson2.birthPlace}}</div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="birthdayDate">Дата Народження:</label>
+                            <div id="birthdayDate" class="form-control general-info-text">
+                                {{tempPerson2.begDate}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="personTypeId">Зайнятість:</label>
+                            <div id="personTypeId" class="form-control general-info-text">
+                                {{personsTypes2[tempPerson2.personTypeId]}}
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-6 general-info-item">
+                            <label class="label-font-size-16" for="military">Військовозобовязаний:</label>
+                            <div id="military" class="form-control general-info-text">
+                                {{tempPerson2.isMilitary | checkYesNo}}
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-lg-6 general-info-item">
+                            <label class="label-font-size-16" for="hostel">Гуртожиток:</label>
+                            <div id="hostel" class="form-control general-info-text">
+                                {{tempPerson2.isHotel | checkYesNo}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3 container">
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="Sex">Стать:</label>
+                            <div id="Sex" class="form-control general-info-text">
+                                {{genderTypes2[tempPerson2.genderTypeId]}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 ol-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="married">Громадянський стан:</label>
+                            <div id="married" class="form-control general-info-text">
+                                {{marriedType2[tempPerson2.marriedTypeId]}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="gr">Громадянство:</label>
+                            <div id="gr" class="form-control general-info-text">
+                                <span ng-repeat="citizen in citizenCountry2" ng-if="tempPerson2.citizenCountryId === citizen.id">
+                                    {{citizen.name}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="rez">Резидент:</label>
+                            <div id="rez" class="form-control general-info-text">
+                                {{tempPerson2.resident | checkYesNo}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
 </div>
 

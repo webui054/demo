@@ -139,7 +139,7 @@ var personTabModal = angular.module('ui.bootstrap.demo', ['ui.bootstrap']);
 
 personTabModal.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
 
-    $scope.open = function (name, persId) {
+    $scope.open = function (name, persId, index) {
         var modalInstance = $modal.open({
             templateUrl: 'myModalContent',
             controller: 'ModalInstanceCtrl',
@@ -149,12 +149,16 @@ personTabModal.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
                      },
                     id: function () {
                         return persId;
+                    },
+                    currentIndex: function(){
+                        return index;
                     }
-            }
+                }
         });
 
         modalInstance.result.then(function (selectedItem) {
             $scope.selected = selectedItem;
+
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());
         });
@@ -164,15 +168,14 @@ personTabModal.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
 
-personTabModal.controller('ModalInstanceCtrl', function ($scope, $modalInstance, name, id) {
+personTabModal.controller('ModalInstanceCtrl', function ($scope, $modalInstance, name, id, currentIndex) {
 
     $scope.name = name;
     $scope.id = id;
-
+    $scope.currentIndex = currentIndex;
 
     $scope.ok = function () {
         $modalInstance.close(true);
-
     };
 
     $scope.cancel = function () {
@@ -180,3 +183,9 @@ personTabModal.controller('ModalInstanceCtrl', function ($scope, $modalInstance,
     };
 
 });
+
+/*
+$scope.removeRow = function(index) {
+    $scope.tempProposalArray.splice(index, 1);
+};
+*/
