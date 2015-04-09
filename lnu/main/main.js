@@ -1,12 +1,12 @@
-var app = angular.module('LnuApp', ['directiveModule', 'angularUtils.directives.dirPagination', 'ui.bootstrap.demo','ui.router']);
+var app = angular.module('LnuApp', ['directiveModule',
+    'angularUtils.directives.dirPagination',
+    'ui.bootstrap.demo','ui.router']);
 
 
 app.config(function($stateProvider, $urlRouterProvider) {
-    //
-    // For any unmatched url, redirect to /state1
+
     $urlRouterProvider.otherwise("/persons");
-    //
-    // Now set up the states
+
     $stateProvider
         .state('persons', {
             url: "/persons",
@@ -19,10 +19,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/benefits",
             templateUrl: "benefits/benefitsView.html"
         });
-        //.state('person', {
-        //    url: "/person",
-        //    templateUrl: "personsTable/personsTableView.html"
-        //})
 });
 
 app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function ($scope, $http, $filter, $interval) {
