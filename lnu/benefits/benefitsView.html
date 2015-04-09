@@ -11,15 +11,15 @@
             <table id="benefitTable" class="table table-striped table-bordered table-hover" width="100%">
                 <thead>
                 <tr>
-                    <th>ID пільги</th>
-                    <th>Назва пільги</th>
-                    <th>Кількість</th>
-                    <th>Примітка</th>
-                    <th>Операції</th>
+                    <th><a href="" ng-click="orderByField='benefitId'; reverseSort = !reverseSort">ID пільги</a></th>
+                    <th><a href="" ng-click="orderByField='benefitName'; reverseSort = !reverseSort">Назва пільги</a></th>
+                    <th><a href="" ng-click="orderByField='benefitAmount'; reverseSort = !reverseSort">Кількість</a></th>
+                    <th><a href="" ng-click="orderByField='benefitNote'; reverseSort = !reverseSort">Примітка</a></th>
+                    <th><a href="">Операції</a></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="data in tempBenefitArray" ng-class-odd="'odd-color-theme'">
+                <tr ng-repeat="data in tempBenefitArray | orderBy:orderByField:!reverseSort" ng-class-odd="'odd-color-theme'">
                     <td> {{data.benefitId}}</td>
                     <td class="nameBenefit">{{data.benefitName}}</td>
                     <td> {{data.benefitAmount}}</td>

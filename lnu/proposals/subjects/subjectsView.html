@@ -1,7 +1,7 @@
 <div class="container" ng-show="isPropozTabSelected(22)" ng-controller="subjectsCtrl">
     <div class="row">
         <div class="col-sm-6">
-            <p class="specofferName">Журналістика</p>
+            <p class="specofferName">Назва пропозиції</p>
         </div>
         <div class="col-sm-6">
             <button type="button" class="btn btn-primary btn-sm addSubject" ng-click="showModal('#addSubjectModal')" ><span class="glyphicon glyphicon-plus glyphicon-white"></span> Додати</button>
@@ -12,7 +12,7 @@
             <table id="subjectTable" class="table table-striped table-bordered table-hover" width="100%">
                 <thead>
                 <tr>
-                    <th>ID пропозиції</th>
+                    <!--<th>ID пропозиції</th> -->
                     <th>ID предмета</th>
                     <th>Назва предмета</th>
                     <th>Додаткова назва</th>
@@ -25,7 +25,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="data in tempSubjectArray" ng-class-odd="'odd-color-theme'">
-                    <td> {{data.specofferId}} </td>
+                    <!--<td> {{data.specofferId}} </td> -->
                     <td> {{data.enrolmentSubjectId}} </td>
                     <td nameSubject> {{data.subjectName}}</td>
                     <td nameSubject> </td>
@@ -63,10 +63,10 @@
                             <label>Введіть ID предмета:</label>
                             <input type="number" class="form-control border-radius-0" placeholder="ID предмета" ng-model="enrolmentSubjectId" name="enrolmentSubjectId" min="1" max="2000" required>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label>Введіть ID пропозиції:</label>
                             <input type="number" class="form-control border-radius-0" placeholder="ID пропозиції" ng-model="specofferId" name="specofferId" min="1" max="1000000" required>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label>Профільний предмет:</label><br>
                             <input type="radio" ng-model="isMajor" name="isMajor" value="true" required> Так<br>
