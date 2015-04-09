@@ -1,6 +1,6 @@
 [
   {
-    "personId":"a01",
+    "id": 1,
     "personTypeId":1,
     "name":"Кузнєцов Дмитро Олександрович",
     "firstName":"Дмитро",
@@ -21,7 +21,7 @@
     "parentId":1
   },
   {
-    "personId":"a02",
+    "id":2,
     "personTypeId":2,
     "name":"Васильченко Степан Сергійович",
     "firstName":"Степан",
