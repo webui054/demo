@@ -87,7 +87,6 @@
     width:45%;
     float: left;
 }
-
 .svContactsCol-1 div.general-info-text{
     float: left;
     width:85%;
@@ -112,4 +111,31 @@
 .svAddressHeader,.svContactsHeader{
     color: #2e6da4;
     font-weight:bold;
+}
+#svSearchPerson{
+    float: left;
+    width: 35%;
+}
+.mainPersonTable tbody tr td:nth-child(2){
+    text-align: left;
+}
+th.mainPersonTable-col-name:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+th.mainPersonTable-col-gender:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+th.mainPersonTable-col-type:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+th.mainPersonTable-col-resid:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+th.mainPersonTable-col-citiz:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
