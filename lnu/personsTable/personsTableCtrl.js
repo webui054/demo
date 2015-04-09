@@ -1,12 +1,14 @@
 app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", function($scope,PersonRepo,$rootScope,$http){
-    $scope.tempModalPerson = {};
-    $scope.tempModalPersonF = {};
-    $scope.isShowGeneralInfo = false;
-    $scope.tempPerson2 = {};
-    $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
-    $scope.tempModalPerson2 ={};
 
-    $scope.tempModalPersonF2 ={};
+    $scope.personGeneralInfoAddModalObj = {};
+    $scope.personForeignerInfoAddModalObj = {};
+
+    $scope.isShowGeneralInfo = false;
+    $scope.personGeneralInfoObj = {};
+    $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
+    $scope.personGeneralInfoEditModalObj ={};
+
+    $scope.personForeignerInfoEditModalObj ={};
 
     $scope.tempForeinerArrObj = [{ personId:1, languageId:2, name:"Kuznetsov Dmytro Oleksandrovych",firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}
         ,{ personId:2, languageId:3, name:"Kuznetsov Dmytro Oleksandrovych",firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}];
@@ -94,8 +96,8 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
 
 
     $scope.showGeneralInfo = function(data){
-        $scope.tempModalPerson2 = data;
-        $scope.tempPerson2 = data;
+        $scope.personGeneralInfoEditModalObj = data;
+        $scope.personGeneralInfoObj = data;
         angular.forEach($scope.tempForeinerArrObj,function(key){
             if(key.personId === data.personId){
             $scope.tempForeinerObj = key;
@@ -104,7 +106,7 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
         $scope.isShowGeneralInfo = true;
     };
     $scope.pushPersonToObj= function(data){
-        $scope.tempModalPerson2 = data;
+        $scope.personGeneralInfoEditModalObj = data;
     };
 
 }]);
