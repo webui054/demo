@@ -11,19 +11,19 @@
             <table id="benefitTable" class="table table-striped table-bordered table-hover" width="100%">
                 <thead>
                 <tr>
-                    <th><a href="" ng-click="orderByField='benefitId'; reverseSort = !reverseSort">ID пільги</a></th>
-                    <th><a href="" ng-click="orderByField='benefitName'; reverseSort = !reverseSort">Назва пільги</a></th>
-                    <th><a href="" ng-click="orderByField='benefitAmount'; reverseSort = !reverseSort">Кількість</a></th>
-                    <th><a href="" ng-click="orderByField='benefitNote'; reverseSort = !reverseSort">Примітка</a></th>
-                    <th><a href="">Операції</a></th>
+                    <th><a href="" ng-click="orderByField='id'; reverse = !reverse">ID пільги</a></th>
+                    <th class="nameBenefit"><a href="" ng-click="orderByField='name'; reverse = !reverse">Назва пільги</a></th>
+                    <th><a href="">Кількість</a></th>
+                    <th><a href="" ng-click="orderByField='abbrName'; reverse = !reverse">Примітка</a></th>
+                    <th><a href="">Управління</a></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="data in tempBenefitArray | orderBy:orderByField:!reverseSort" ng-class-odd="'odd-color-theme'">
-                    <td> {{data.benefitId}}</td>
-                    <td class="nameBenefit">{{data.benefitName}}</td>
+                <tr ng-repeat="data in tempBenefitArray | orderBy:orderByField:!reverse" ng-class-odd="'odd-color-theme'">
+                    <td> {{data.id}}</td>
+                    <td class="nameBenefit">{{data.name}}</td>
                     <td> {{data.benefitAmount}}</td>
-                    <td> {{data.benefitNote}}</td>
+                    <td> {{data.abbrName}}</td>
                     <td>
                         <button class="btn btn-primary btn-xs"><span
                                 class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
@@ -54,12 +54,12 @@
                         <div class="form-group">
                             <label>Введіть назву пільги:</label>
                             <input type="text" class="form-control border-radius-0" placeholder="Назва пільги"
-                                   ng-model="benefitName" name="benefitName" required autofocus>
+                                   ng-model="name" name="name" required autofocus>
                         </div>
                         <div class="form-group">
                             <label>Введіть ID пільги:</label>
                             <input type="number" class="form-control border-radius-0" placeholder="ID пільги"
-                                   ng-model="benefitId" name="benefitId" min="1" max="2000" required>
+                                   ng-model="id" name="id" min="1" max="2000" required>
                         </div>
                         <div class="form-group">
                             <label>Введіть кількість пільгових місць:</label>
@@ -69,7 +69,7 @@
                         <div class="form-group">
                             <label>Введіть примітку:</label>
                             <input type="text" class="form-control border-radius-0" placeholder="Примітка"
-                                   ng-model="benefitNote" name="benefitNote" autofocus>
+                                   ng-model="abbrName" name="abbrName" autofocus>
                         </div>
                         <button class="btn btn-lg btn-primary btn-block border-radius-0 border-none" type="submit"
                                 value="Submit">

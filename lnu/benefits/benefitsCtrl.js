@@ -11,10 +11,10 @@ app.controller("BenefitsCTRL", ["$scope","$http", function($scope,$http) {
     };
 
     $scope.tempBenefitArray = [];
-    $scope.benefitName = "";
-    $scope.benefitId = "";
+    $scope.name = "";
+    $scope.id = "";
     $scope.benefitAmount = "";
-    $scope.benefitNote = "";
+    $scope.abbrName = "";
 
     $scope.showModal = function (id) {
         if (id === null) {
@@ -45,16 +45,16 @@ app.controller("BenefitsCTRL", ["$scope","$http", function($scope,$http) {
         $("#addBenefitModal").modal("hide");
         $scope.tempData = {};
 
-        $scope.tempData.benefitName = $scope.benefitName;
-        $scope.tempData.benefitId = $scope.benefitId;
+        $scope.tempData.name = $scope.name;
+        $scope.tempData.id = $scope.id;
         $scope.tempData.benefitAmount = $scope.benefitAmount;
-        $scope.tempData.benefitNote = $scope.benefitNote;
+        $scope.tempData.abbrName = $scope.abbrName;
         $scope.tempBenefitArray.push($scope.tempData);
 
-        $scope.benefitName = "";
-        $scope.benefitId = "";
+        $scope.name = "";
+        $scope.id = "";
         $scope.benefitAmount = "";
-        $scope.benefitNote = "";
+        $scope.abbrName = "";
     };
 
     $scope.removeRow = function (index) {
