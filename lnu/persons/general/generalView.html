@@ -34,6 +34,12 @@
                             <div id="PIB" class="form-control general-info-text">{{tempPerson2.name}}</div>
                         </div>
                         <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="PIBF">{{languages[tempForeinerObj.languageId]}}:</label>
+                            <div id="PIBF" class="form-control general-info-text">
+                                <span ng-show="tempForeinerObj.personId == tempPerson2.personId">{{tempForeinerObj.name}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="birthdayPlace">Місце Народження:</label>
                             <div id="birthdayPlace" class="form-control general-info-text">{{tempPerson2.birthPlace}}</div>
                         </div>

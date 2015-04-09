@@ -31,12 +31,12 @@ app.controller("GeneralPersonInfoCTRL",["$scope","PersonRepo","$http",
         $scope.getMarriedTypes2();
 
         $scope.getPersonsType2 = function(){
-            $http.get('persons/general/personsTypeId.json').success(function (data) {
-                angular.forEach(data,function(key){
-                    $scope.personsTypes2[key.id] = key.name;
-                });
+                $http.get('persons/general/personsTypeId.json').success(function (data) {
 
-            });
+                    angular.forEach(data,function(key){
+                        $scope.personsTypes2[key.id] = key.name;
+                    });
+                });
         };
         $scope.getPersonsType2();
 

@@ -16,12 +16,12 @@
                 <!--<li ng-class="{active:isPersonTabSelected(3)}">-->
                 <!--<a href="" ng-click="selectPersonTab(3)">Контакти</a>-->
                 <!--</li>-->
-                <!--<li ng-class="{active:isPersonTabSelected(4)}">-->
-                <!--<a href="" ng-click="selectPersonTab(4)">Іноземці</a>-->
-                <!--</li>-->
-                <!--<li ng-class="{active:isPersonTabSelected(5)}">-->
-                <!--<a href="" ng-click="selectPersonTab(5)">Олімпіади</a>-->
-                <!--</li>-->
+                <li ng-class="{active:isPersonTabSelected(4)}">
+                <a href="" ng-click="selectPersonTab(4)">Іноземці</a>
+                </li>
+                <li ng-class="{active:isPersonTabSelected(5)}">
+                <a href="" ng-click="selectPersonTab(5)">Олімпіади</a>
+                </li>
                 <li ng-class="{active:isPersonTabSelected(6)}">
                     <a href="" ng-click="selectPersonTab(6)">Документи</a>
                 </li>
@@ -40,7 +40,7 @@
     <div ng-include="'persons/address/addressView.html'"></div>
     <div ng-include="'persons/contacts/contactsView.html'"></div>
     <div ng-include="'persons/documents/documentsView.html'"></div>
-    <!--<div ng-include="'persons/foreigners/foreignersView.html'"></div>-->
+    <div ng-include="'persons/foreigners/foreignersView.html'"></div>
     <div ng-include="'persons/man/MANView.html'"></div>
     <div ng-include="'persons/zno/ZNOView.html'"></div>
 </div>

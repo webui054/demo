@@ -35,7 +35,7 @@ app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function
     //    var token = $scope.makeToken($scope.userName,$scope.password);
     //    var baseAuthString = $scope.make_base_auth(token);
     //    $http.defaults.headers.common.Authorization = baseAuthString; // задаємо хедер запиту по замовчуванню для всіх типів крім POST і PUT
-    //    $http.get(BASEURL + "api/adminunits")
+    //    $http.get(BASEURL + "api/persons")
     //        .success(function (data) {
     //        $scope.$parent.isLoggedIn = true;
     //        localStorage.setItem("token", token);

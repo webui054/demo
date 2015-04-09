@@ -1,9 +1,17 @@
 app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", function($scope,PersonRepo,$rootScope,$http){
     $scope.tempModalPerson = {};
+    $scope.tempModalPersonF = {};
     $scope.isShowGeneralInfo = false;
     $scope.tempPerson2 = {};
     $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
-    $scope.tempModalPerson2 ={}
+    $scope.tempModalPerson2 ={};
+
+    $scope.tempModalPersonF2 ={};
+
+    $scope.tempForeinerArrObj = [{ personId:1, languageId:2, name:"Kuznetsov Dmytro Oleksandrovych",firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}
+        ,{ personId:2, languageId:3, name:"Kuznetsov Dmytro Oleksandrovych",firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}];
+
+    $scope.tempForeinerObj ={};
 
     $scope.citizenCountry = [];
 
@@ -14,6 +22,8 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
     $scope.marriedTypeArr = [];
     $scope.genderTypesArr = [];
     $scope.citizenCountryArr = [];
+    $scope.languagesArr =[];
+    $scope.languages = [];
 
     $scope.getCitizenCountry = function(){
 
@@ -25,6 +35,18 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
         });
     };
     $scope.getCitizenCountry();
+
+    $scope.getLanguages = function(){
+
+        $http.get('persons/general/languages.json').success(function (data) {
+            $scope.languagesArr = data;
+            angular.forEach(data,function(key){
+                $scope.languages[key.id] = key.name;
+            });
+        });
+    };
+    $scope.getLanguages();
+
 
     $scope.getMarriedTypes = function(){
         $http.get('persons/general/marriedTypes.json').success(function (data) {
@@ -74,6 +96,11 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
     $scope.showGeneralInfo = function(data){
         $scope.tempModalPerson2 = data;
         $scope.tempPerson2 = data;
+        angular.forEach($scope.tempForeinerArrObj,function(key){
+            if(key.personId === data.personId){
+            $scope.tempForeinerObj = key;
+            }
+        });
         $scope.isShowGeneralInfo = true;
     };
     $scope.pushPersonToObj= function(data){
