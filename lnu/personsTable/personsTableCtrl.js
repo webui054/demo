@@ -137,7 +137,7 @@ app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
 
 /*MODAL window controller*/
 
-var personTabModal = angular.module('ui.bootstrap.demo', ['ui.bootstrap']);
+var personTabModal = angular.module('PersonTableModule', ['ui.bootstrap']);
 
 personTabModal.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
 
