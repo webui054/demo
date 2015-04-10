@@ -1,4 +1,170 @@
-<div class="jumbotron" ng-show="isPersonTabSelected(6)">
-    <h1>Докі</h1>
-    asdfasdfasdf<br>
+<div class="container" ng-show="isPersonTabSelected(6)" ng-controller="AddressCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="pull-left">Документи персони</h4>
+
+                    <div class="pull-right">
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Видалити">
+                            <span class="glyphicon glyphicon-trash glyphicon-white"></span>
+                        </button>
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Редагувати"  data-toggle="modal" data-target="#editModal1">
+                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                        </button>
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Додати">
+                            <span class="glyphicon glyphicon-plus glyphicon-white"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="">
+                        <div class="svAddressHeader"><h4>Документи про освіту</h4></div>
+                        <div class="row ">
+                            <div class="col-md-6 col-lg-6 container">
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="PIB">Тип:</label>
+
+                                    <div id="PIB" class="form-control general-info-text">{{"Атестат про повну загальну середню освіту"}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 general-info-item">
+                                    <label class="label-font-size-16" for="birthdayPlace">Система оцінювання:</label>
+
+                                    <div id="birthdayPlace" class="form-control general-info-text">{{"12"}}</div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 general-info-item">
+                                    <label class="label-font-size-16" for="birthdayPlaceM">Бал:</label>
+
+                                    <div id="birthdayPlaceM" class="form-control general-info-text">{{"10,5"}}</div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="birthdayPlaceN">Оригінал:</label>
+
+                                    <div id="birthdayPlaceN" class="form-control general-info-text">{{"відповідає"}}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 col-lg-6 container">
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="birthdayPlace1">Виданий:</label>
+
+                                    <div id="birthdayPlace1" class="form-control general-info-text">{{"Технічний коледж НУЛП"}}
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 general-info-item">
+                                    <label class="label-font-size-16" for="ser">Серія:</label>
+
+                                    <div id="ser" class="form-control general-info-text">{{"ВК"}}</div>
+                                </div>
+                                <div class="col-md-8 col-lg-8 general-info-item">
+                                    <label class="label-font-size-16" for="num">№:</label>
+
+                                    <div id="num" class="form-control general-info-text">{{"37406514"}}</div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="birthdayPlaceD">Дата видачі:</label>
+
+                                    <div id="birthdayPlaceD" class="form-control general-info-text">{{"30.06.2009"}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr color="#337ab7">
+                    <div class="">
+                        <div class="svAddressHeader"><h4>Посвідчення особи</h4></div>
+                        <div class="row ">
+                            <div class="col-md-6 col-lg-6 container">
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="TypeP">Тип:</label>
+
+                                    <div id="TypeP" class="form-control general-info-text">{{"Паспорт"}}
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="Comment">Оригінал:</label>
+
+                                    <div id="Comment" class="form-control general-info-text">{{"відповідає"}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 container">
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="gaveBy">Виданий:</label>
+
+                                    <div id="gaveBy" class="form-control general-info-text">{{"Коломийським РВ УМВС в Івано-Франківській області"}}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-lg-2 general-info-item">
+                                    <label class="label-font-size-16" for="serP">Серія:</label>
+
+                                    <div id="serP" class="form-control general-info-text">{{"КС"}}</div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 general-info-item">
+                                    <label class="label-font-size-16" for="numP">№:</label>
+
+                                    <div id="numP" class="form-control general-info-text">{{"830240"}}</div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 general-info-item">
+                                    <label class="label-font-size-16" for="dateP">Дата видачі:</label>
+
+                                    <div id="dateP" class="form-control general-info-text">{{"24.03.2011"}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+
+
+<!-- Man creating -->
+<!--<div class="">-->
+<!--<div class="svContactsHeader"><h4>Додаткові бали</h4></div>-->
+<!--<div class="row">-->
+<!--<div class="col-md-8 col-lg-8 ">-->
+<!--<label class="label-font-size-16" for="svAddressReg2">Тип активності:</label>-->
+
+<!--<div id="manType" class="form-control general-info-text svAddressFields">-->
+<!--{{"Підготовчі курси"}}-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="col-md-4 col-lg-4 ">-->
+<!--<label class="label-font-size-16" for="svAddressReg3"-->
+<!--style="display: block">Бонус:</label>-->
+
+<!--<div id="subOneMAN" class="form-control general-info-text svAddressFields">-->
+<!--{{"15"}}-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<br>-->
+
+<!--<div class="row">-->
+<!--<div class="col-md-12 col-lg-12 ">-->
+<!--<label class="label-font-size-16" for="svAddressReg"-->
+<!--style="display: block">Примітка:</label>-->
+
+<!--<div id="Man28" class="form-control general-info-text">-->
+<!--{{"-"}}-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+
+

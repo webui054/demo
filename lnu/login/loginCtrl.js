@@ -22,7 +22,7 @@ app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function
         return "Basic " + token;
     };
     var BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
-
+    //
     //$scope.login = function(){
     //    var token = $scope.makeToken($scope.userName,$scope.password);
     //    var baseAuthString = $scope.makeBaseAuth(token);

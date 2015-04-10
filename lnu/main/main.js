@@ -1,6 +1,4 @@
-var app = angular.module('LnuApp', ['directiveModule',
-    'angularUtils.directives.dirPagination',
-    'ui.bootstrap.demo','ui.router']);
+var app = angular.module('LnuApp', ['directiveModule', 'angularUtils.directives.dirPagination','PersonTableModule','ui.router']);
 
 
 app.config(function($stateProvider, $urlRouterProvider) {
@@ -34,7 +32,7 @@ app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function 
         return $scope.tab === checkTab;
     };
 
-    $scope.brand = 'LNU';
+    $scope.brand = 'ЛНУ';
     $scope.personViewModel = 'Персони';
     $scope.propositionViewModel = 'Пропозиції';
     $scope.benefitsViewModel = 'Пільги';
