@@ -146,7 +146,7 @@ personTabModal.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
             templateUrl: 'myModalContent',
             controller: 'ModalInstanceCtrl',
             size: "sm",
-            resolve: {name: function () {
+            resolve: { name: function () {
                       return name;
                      },
                     id: function () {
@@ -185,9 +185,3 @@ personTabModal.controller('ModalInstanceCtrl', function ($scope, $modalInstance,
     };
 
 });
-
-/*
-$scope.removeRow = function(index) {
-    $scope.tempProposalArray.splice(index, 1);
-};
-*/

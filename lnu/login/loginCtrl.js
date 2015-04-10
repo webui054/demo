@@ -23,22 +23,22 @@ app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function
     };
     var BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
 
-    $scope.login = function(){
-        var token = $scope.makeToken($scope.userName,$scope.password);
-        var baseAuthString = $scope.makeBaseAuth(token);
-        $http.defaults.headers.common.Authorization = baseAuthString; // задаємо хедер запиту по замовчуванню для всіх типів крім POST і PUT
-        $http.get(BASEURL + "api/persons?limit=1")
-            .success(function (data) {
-            $scope.$parent.isLoggedIn = true;
-            localStorage.setItem("token", token);
-            localStorage.setItem("baseAuthString", baseAuthString)})
-            .error(function (){
-            });
-    };
-
     //$scope.login = function(){
-    //    $scope.$parent.isLoggedIn = true;
+    //    var token = $scope.makeToken($scope.userName,$scope.password);
+    //    var baseAuthString = $scope.makeBaseAuth(token);
+    //    $http.defaults.headers.common.Authorization = baseAuthString; // задаємо хедер запиту по замовчуванню для всіх типів крім POST і PUT
+    //    $http.get(BASEURL + "api/persons?limit=1")
+    //        .success(function (data) {
+    //        $scope.$parent.isLoggedIn = true;
+    //        localStorage.setItem("token", token);
+    //        localStorage.setItem("baseAuthString", baseAuthString)})
+    //        .error(function (){
+    //        });
     //};
+
+    $scope.login = function(){
+        $scope.$parent.isLoggedIn = true;
+    };
 
 
 
