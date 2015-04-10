@@ -39,21 +39,5 @@ directiveModule.directive('mainContent', function() {
 });
 
 directiveModule.controller("innerDirectCTRL",["$scope", function($scope){
-    $scope.propozTab = 21;
 
-    $scope.selectPropozTab = function(setTab){
-        $scope.propozTab = setTab;
-    };
-    $scope.isPropozTabSelected = function(checkTab){
-        return $scope.propozTab === checkTab;
-    };
-    $scope.personTab = 1;
-
-    $scope.selectPersonTab = function(setTab){
-
-        $scope.personTab = setTab;
-    };
-    $scope.isPersonTabSelected = function(checkTab){
-        return $scope.personTab === checkTab;
-    };
 }]);
