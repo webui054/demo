@@ -19,7 +19,7 @@ app.controller('subjectsCtrl', ["$scope", "$http", "$filter", "$interval", funct
     };
 
     var realPath = "";
-    var tempPath = 'proposals/specofferBenefits/tempSpecofferBenefitArray.json';
+    var tempPath = 'proposals/subjects/tempSubjectArray.json';
     var path = tempPath;
     $scope.getTempSubjectData = function () {
         $http.get(path)
