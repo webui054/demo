@@ -28,6 +28,9 @@
                 <!--<li ng-class="{active:isPersonTabSelected(7)}">-->
                 <!--<a href="" ng-click="selectPersonTab(7)">ЗНО</a>-->
                 <!--</li>-->
+                <li ng-class="{active:isPersonTabSelected(8)}">
+                    <a href="" ng-click="selectPersonTab(8)">Бали</a>
+                </li>
                 <li>
                     <a href="" ng-click="backToTheTable()">Назад</a>
                 </li>
@@ -43,4 +46,5 @@
     <!--<div ng-include="'persons/foreigners/foreignersView.html'"></div>-->
     <div ng-include="'persons/man/MANView.html'"></div>
     <div ng-include="'persons/zno/ZNOView.html'"></div>
+    <div ng-include="'persons/mark/markView.html'"></div>
 </div>
