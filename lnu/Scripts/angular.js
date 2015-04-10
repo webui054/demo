@@ -8574,7 +8574,7 @@ function defaultHttpResponseTransform(data, headers) {
     var tempData = data.replace(JSON_PROTECTION_PREFIX, '').trim();
 
     if (tempData) {
-      var contentType = headers('Content-Type');
+      var contentType = headers('content-Type');
       if ((contentType && (contentType.indexOf(APPLICATION_JSON) === 0)) || isJsonLike(tempData)) {
         data = fromJson(tempData);
       }
@@ -8899,9 +8899,9 @@ function $HttpProvider() {
      * - `$httpProvider.defaults.headers.common` (headers that are common for all requests):
      *   - `Accept: application/json, text/plain, * / *`
      * - `$httpProvider.defaults.headers.post`: (header defaults for POST requests)
-     *   - `Content-Type: application/json`
+     *   - `content-Type: application/json`
      * - `$httpProvider.defaults.headers.put` (header defaults for PUT requests)
-     *   - `Content-Type: application/json`
+     *   - `content-Type: application/json`
      *
      * To add or overwrite these defaults, simply add or remove a property from these configuration
      * objects. To add headers for an HTTP method other than POST or PUT, simply add a new object
@@ -8928,7 +8928,7 @@ function $HttpProvider() {
      *  method: 'POST',
      *  url: 'http://example.com',
      *  headers: {
-     *    'Content-Type': undefined
+     *    'content-Type': undefined
      *  },
      *  data: { test: 'test' },
      * }
@@ -21207,7 +21207,7 @@ var ngControllerDirective = [function() {
  *
  * @element html
  * @description
- * Enables [CSP (Content Security Policy)](https://developer.mozilla.org/en/Security/CSP) support.
+ * Enables [CSP (content Security Policy)](https://developer.mozilla.org/en/Security/CSP) support.
  *
  * This is necessary when developing things like Google Chrome Extensions or Universal Windows Apps.
  *
@@ -21231,7 +21231,7 @@ var ngControllerDirective = [function() {
  *
  * ```
  * Refused to evaluate a string as JavaScript because 'unsafe-eval' is not an allowed source of
- * script in the following Content Security Policy directive: "default-src 'self'". Note that
+ * script in the following content Security Policy directive: "default-src 'self'". Note that
  * 'script-src' was not explicitly set, so 'default-src' is used as a fallback.
  * ```
  *
@@ -21363,8 +21363,8 @@ var ngControllerDirective = [function() {
 
           it('should throw and report an error when using "eval"', function() {
             evilBtn.click();
-            expect(evilError.getText()).toMatch(/Content Security Policy/);
-            expectError(/Content Security Policy/);
+            expect(evilError.getText()).toMatch(/content Security Policy/);
+            expectError(/content Security Policy/);
           });
         </file>
       </example>
@@ -22048,10 +22048,10 @@ var ngIfDirective = ['$animate', function($animate) {
         }]);
      </file>
     <file name="template1.html">
-      Content of template1.html
+      content of template1.html
     </file>
     <file name="template2.html">
-      Content of template2.html
+      content of template2.html
     </file>
     <file name="animations.css">
       .slide-animate-container {
@@ -22098,7 +22098,7 @@ var ngIfDirective = ['$animate', function($animate) {
       var includeElem = element(by.css('[ng-include]'));
 
       it('should load template1.html', function() {
-        expect(includeElem.getText()).toMatch(/Content of template1.html/);
+        expect(includeElem.getText()).toMatch(/content of template1.html/);
       });
 
       it('should load template2.html', function() {
@@ -22109,7 +22109,7 @@ var ngIfDirective = ['$animate', function($animate) {
         }
         templateSelect.click();
         templateSelect.all(by.css('option')).get(2).click();
-        expect(includeElem.getText()).toMatch(/Content of template2.html/);
+        expect(includeElem.getText()).toMatch(/content of template2.html/);
       });
 
       it('should change to blank', function() {
@@ -25261,7 +25261,7 @@ var ngTranscludeDirective = ngDirective({
   <example>
     <file name="index.html">
       <script type="text/ng-template" id="/tpl.html">
-        Content of the template.
+        content of the template.
       </script>
 
       <a ng-click="currentTpl='/tpl.html'" id="tpl-link">Load inlined template</a>
@@ -25270,7 +25270,7 @@ var ngTranscludeDirective = ngDirective({
     <file name="protractor.js" type="protractor">
       it('should load template defined inside script tag', function() {
         element(by.css('#tpl-link')).click();
-        expect(element(by.css('#tpl-content')).getText()).toMatch(/Content of the template/);
+        expect(element(by.css('#tpl-content')).getText()).toMatch(/content of the template/);
       });
     </file>
   </example>

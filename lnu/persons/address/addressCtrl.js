@@ -2,7 +2,7 @@ app.controller('AddressCtrl', ["$scope", "$http", "$filter", "$interval", functi
     $scope.tempData = [];
     $scope.tempData2 = [];
     $scope.tempData3 = {};
-    //$scope.make_base_auth = function(user, password) {
+    //$scope.makeBaseAuth = function(user, password) {
     //    var tok = user + ':' + password;
     //    var hash = btoa(tok); // encoding string in Base64
     //    return "Basic " + hash;

@@ -1,7 +1,8 @@
 app.controller("EditNewPersonModalCtrl",["$scope", function($scope){
 
 
-    $scope.editNewPerson = function(){
+    $scope.editPerson = function(elId){
+        $(elId).modal("hide");
         $scope.personGeneralInfoEditModalObj.name = $scope.personGeneralInfoEditModalObj.firstName + " " + $scope.personGeneralInfoEditModalObj.surname + " " + $scope.personGeneralInfoEditModalObj.fatherName;
 
         $scope.personGeneralInfoEditModalObj.identifier = "";

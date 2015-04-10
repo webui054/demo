@@ -88,7 +88,7 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
     $scope.tempPersonData = {};
 
     $scope.getPersonData = function () {
-        $http.get('Content/tempData/tempPersonData.json').success(function (data) {
+        $http.get('content/tempData/tempPersonData.json').success(function (data) {
             $scope.tempPersonData = data;
         });
     };
@@ -99,7 +99,7 @@ app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", f
         $scope.personGeneralInfoEditModalObj = data;
         $scope.personGeneralInfoObj = data;
         angular.forEach($scope.tempForeinerArrObj,function(key){
-            if(key.personId === data.personId){
+            if(key.personId === data.id){
             $scope.tempForeinerObj = key;
             }
         });
