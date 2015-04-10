@@ -34,7 +34,7 @@ app.controller('MainCtrl', ["$scope", "$http", "$filter", "$interval", function 
         return $scope.tab === checkTab;
     };
 
-    $scope.brand = 'LNU';
+    $scope.brand = 'ЛНУ';
     $scope.personViewModel = 'Персони';
     $scope.propositionViewModel = 'Пропозиції';
     $scope.benefitsViewModel = 'Пільги';

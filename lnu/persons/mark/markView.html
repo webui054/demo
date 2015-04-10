@@ -1,4 +1,4 @@
-<div class="container" ng-show="isPersonTabSelected(8)" ng-controller="AddressCtrl">
+<div class="container" ng-show="isPersonTabSelected(8)" ng-controller="MarkCtrl">
     <div class="row">
         <div class="col-md-12">
             <br>
@@ -91,7 +91,9 @@
                     <hr color="#337ab7">
                     <!-- Man creating -->
                     <div class="">
+
                         <div class="svContactsHeader"><h4>Додаткові бали</h4></div>
+                        <br>
                         <div class="row">
                             <div class="col-md-8 col-lg-8 ">
                                 <label class="label-font-size-16" for="svAddressReg">Тип активності:</label>
@@ -203,8 +205,11 @@
                                                 <div class="row">
                                                     <div class="form-group col-lg-9">
                                                         <label for="act1">Тип активності:</label>
-                                                        <input class="form-control" id="act1"
-                                                               required>
+                                                        <select class="form-control border-radius-0" id="act1"
+                                                        ng-options="action.type for type in actions" required>
+                                                            <option value="">Виберіть предмет</option>
+                                                        </select>
+
                                                     </div>
                                                     <div class="form-group col-lg-3">
                                                         <label for="act2">Бонус:</label>
