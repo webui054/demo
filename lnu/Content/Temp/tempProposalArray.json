@@ -2,7 +2,7 @@
   {
     "specialtyId": "журналістика",
     "departmentId": "Факультет журналістики",
-    "timePeroiodId": 1,
+    "timePeriodId": 1,
     "specofferTypeId": "Бакалавр",
     "docSeries": "ЖК",
     "docNum": "030301",
@@ -17,7 +17,7 @@
   {
     "specialtyId": "географія",
     "departmentId": "Географічний факультет",
-    "timePeroiodId": 1,
+    "timePeriodId": 1,
     "specofferTypeId": "Бакалавр",
     "docSeries": "ГФ",
     "docNum": "040104",
@@ -32,7 +32,7 @@
   {
     "specialtyId": "історія",
     "departmentId": "Історичний факультет",
-    "timePeroiodId": 1,
+    "timePeriodId": 1,
     "specofferTypeId": "Бакалавр",
     "docSeries": "ІС",
     "docNum": "020302",
@@ -47,7 +47,7 @@
   {
     "specialtyId": "облік і аудит",
     "departmentId": "Економічний факультет",
-    "timePeroiodId": 5,
+    "timePeriodId": 5,
     "specofferTypeId": "Магістр",
     "docSeries": "ОА",
     "docNum": "03050901",
@@ -62,7 +62,7 @@
   {
     "specialtyId": "банківська справа",
     "departmentId": "Економічний факультет",
-    "timePeroiodId": 5,
+    "timePeriodId": 5,
     "specofferTypeId": "Магістр",
     "docSeries": "БС",
     "docNum": "03050802",
@@ -77,7 +77,7 @@
   {
     "specialtyId": "прикладна статистика",
     "departmentId": "Економічний факультет",
-    "timePeroiodId": 5,
+    "timePeriodId": 5,
     "specofferTypeId": "Магістр",
     "docSeries": "ПС",
     "docNum": "03050601",
@@ -92,7 +92,7 @@
   {
     "specialtyId": "переклад",
     "departmentId": "Факультет іноземних мов",
-    "timePeroiodId": 5,
+    "timePeriodId": 5,
     "specofferTypeId": "Магістр",
     "docSeries": "ПЛ",
     "docNum": "02030304",
@@ -107,7 +107,7 @@
   {
     "specialtyId": "мікробіологія",
     "departmentId": "Біологічний факультет",
-    "timePeroiodId": 6,
+    "timePeriodId": 6,
     "specofferTypeId": "Магістр",
     "docSeries": "МБ",
     "docNum": "04010202",
@@ -122,7 +122,7 @@
   {
     "specialtyId": "правознавство",
     "departmentId": "Юридичний факультет",
-    "timePeroiodId": 3,
+    "timePeriodId": 3,
     "specofferTypeId": "Бакалавр",
     "docSeries": "ПР",
     "docNum": "030401",
@@ -137,7 +137,7 @@
   {
     "specialtyId": "соціальна педагогіка",
     "departmentId": "Філологічний факультет",
-    "timePeroiodId": 3,
+    "timePeriodId": 3,
     "specofferTypeId": "Бакалавр",
     "docSeries": "СП",
     "docNum": "010106",

@@ -12,23 +12,19 @@
             <table id="subjectTable" class="table table-striped table-bordered table-hover" width="100%">
                 <thead>
                 <tr>
-                    <th>ID пропозиції</th>
-                    <th>ID предмета</th>
                     <th>Назва предмета</th>
                     <th>Додаткова назва</th>
                     <th>Профільний</th>
                     <th>Альтернатива</th>
                     <th>Мінімальний бал</th>
                     <th>Коефіцієнт</th>
-                    <th>Операції</th>
+                    <th>Управління</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="data in tempSubjectArray" ng-class-odd="'odd-color-theme'">
-                    <td> {{data.specofferId}} </td>
-                    <td> {{data.enrolmentSubjectId}} </td>
-                    <td nameSubject> {{data.subjectName}}</td>
-                    <td nameSubject> </td>
+                    <td> {{data.subjectName}}</td>
+                    <td> </td>
                     <td> {{data.isMajor}} </td>
                     <td> {{data.alternative}} </td>
                     <td> {{data.mark}} </td>
@@ -56,16 +52,15 @@
                 <div class="modal-body border-radius-0 formSubject">
                     <form name="addSubjectForm" ng-submit="addSubjectForm.$valid && AddNewSubject()" novalidate>
                         <div class="form-group">
-                            <label>Введіть назву предмета:</label>
-                            <input type="text" class="form-control border-radius-0" placeholder="Назва предмета" ng-model="subjectName" name="subjectName" required autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Введіть ID предмета:</label>
-                            <input type="number" class="form-control border-radius-0" placeholder="ID предмета" ng-model="enrolmentSubjectId" name="enrolmentSubjectId" min="1" max="2000" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Введіть ID пропозиції:</label>
-                            <input type="number" class="form-control border-radius-0" placeholder="ID пропозиції" ng-model="specofferId" name="specofferId" min="1" max="1000000" required>
+                            <label for="subjectName" title="Назва предмета">
+                                Назва предмета:</label>
+                            <div>
+                                <select class="form-control border-radius-0" id="subjectName"
+                                        ng-model="subjectName"
+                                        ng-options="subject.name for subject in subjects" required>
+                                    <option value="">Виберіть предмет</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Профільний предмет:</label><br>

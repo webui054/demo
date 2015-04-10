@@ -18,7 +18,14 @@ p.specofferName {
 
 #benefitTable td {
     text-align: center;
+    vertical-align: middle;
 }
+
+
+#benefitTable th.nameBenefit {
+    width: 60%;
+}
+
 
 #benefitTable td.nameBenefit {
     text-align: left;

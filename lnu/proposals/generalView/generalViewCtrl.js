@@ -18,13 +18,11 @@ app.controller("GeneralViewCTRL", ["$scope", "$http", "$modal", function($scope,
     $scope.begDate = "";
     $scope.endDate = "";
 
-    var tempPath = 'Content/Temp/tempProposalArray.json';
+    var tempPath = 'content/Temp/tempProposalArray.json';
     var path = tempPath;
     $scope.getTempSubjectData = function () {
         $http.get(path)
             .success(function (data) {
-                //console.log(data);
-                $scope.tempProposalArray = angular.fromJson(data);
                 $scope.tempProposalArray = (data);
             })
             .error(function (msg) {

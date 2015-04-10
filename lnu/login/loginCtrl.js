@@ -18,7 +18,7 @@ app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function
         var tok = user + ':' + password;
         return btoa(tok);
     };
-    $scope.make_base_auth = function(token) {
+    $scope.makeBaseAuth = function(token) {
         return "Basic " + token;
     };
     var BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
@@ -33,9 +33,9 @@ app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function
     //        return;
     //    }
     //    var token = $scope.makeToken($scope.userName,$scope.password);
-    //    var baseAuthString = $scope.make_base_auth(token);
+    //    var baseAuthString = $scope.makeBaseAuth(token);
     //    $http.defaults.headers.common.Authorization = baseAuthString; // задаємо хедер запиту по замовчуванню для всіх типів крім POST і PUT
-    //    $http.get(BASEURL + "api/papers/types")
+    //    $http.get(BASEURL + "api/persons")
     //        .success(function (data) {
     //        $scope.$parent.isLoggedIn = true;
     //        localStorage.setItem("token", token);

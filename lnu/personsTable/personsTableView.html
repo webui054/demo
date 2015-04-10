@@ -1,23 +1,23 @@
 <div class="container" ng-show="isLoggedIn" ng-controller="PersonsTableCTRL">
     <div ng-show="!isShowGeneralInfo">
-
         <div class="svButtonContainer">
+            <input type="text" class="form-control col-lg-3" id="svSearchPerson" placeholder="Пошук персони..." ng-model="searchText">
             <button class="btn btn-primary border-radius-0 svCreateNewPerson" data-toggle="modal"
-                    data-target="#addNewPersonModal">Додати персону</button>
+                    data-target="#addNewPersonModal"><span class="glyphicon glyphicon-plus"></span>&nbsp;Додати персону</button>
         </div>
 
         <table class="table table-bordered mainPersonTable" ng-controller="personInfoCtrl">
             <thead>
                 <tr class="personTableHeaderRow">
                     <th class="mainPersonTable-col-id">Id</th>
-                    <th class="mainPersonTable-col-name">ПІБ</th>
-                    <th class="mainPersonTable-col-gender">Стать</th>
+                    <th class="mainPersonTable-col-name" ng-click="orderByField='name'; reverseSort = !reverseSort">ПІБ</th>
+                    <th class="mainPersonTable-col-gender" ng-click="orderByField='genderTypeId'; reverseSort = !reverseSort">Стать</th>
                     <th class="mainPersonTable-col-birth">Народження</th>
-                    <th class="mainPersonTable-col-type">Тип </th>
-                    <th class="mainPersonTable-col-resid">Резидент</th>
-                    <th class="mainPersonTable-col-citiz">Громадянство </th>
+                    <th class="mainPersonTable-col-type" ng-click="orderByField='personTypeId'; reverseSort = !reverseSort">Тип </th>
+                    <th class="mainPersonTable-col-resid" ng-click="orderByField='resident'; reverseSort = !reverseSort">Резидент</th>
+                    <th class="mainPersonTable-col-citiz" ng-click="orderByField='citizenCountryId'; reverseSort = !reverseSort">Громадянство </th>
                     <th class="mainPersonTable-col-doc">Особова справа</th>
-                    <th class="mainPersonTable-col-edit">Редагувати</th>
+                    <th class="mainPersonTable-col-edit">Управління</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -32,10 +32,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="PersonTableContentRow" dir-paginate="data in tempPersonData | itemsPerPage: 10 | orderBy:'name'" ng-class-odd="'odd-color-them'" ng-dblclick="showGeneralInfo(data)">
-                    <td>{{data.personId}}</td>
+                <tr class="PersonTableContentRow" dir-paginate="data in tempPersonData | itemsPerPage: 10 | orderBy:'name' | filter:searchText | orderBy:orderByField:reverseSort" ng-class-odd="'odd-color-them'" ng-dblclick="showGeneralInfo(data)">
+                    <td>{{data.id}}</td>
                     <td>
-                        <a ng-click="showGeneralInfo(data)">{{data.name}}</a>
+                        <a href="" ng-click="showGeneralInfo(data)">{{data.name}}</a>
                     </td>
                     <td>{{genderTypes[data.genderTypeId]}}</td>
                     <td>{{data.begDate  | date: "dd.MM.yyyy'р.'"}}</td>
@@ -44,13 +44,13 @@
                     <td>
                         {{citizenCountry[data.citizenCountryId]}}
                     </td>
-                    <td>{{data.docNum + ':' + data.docSeries}}</td>
+                    <td>{{data.docSeries + ':' + data.docNum}}</td>
                     <td ng-controller="ModalDemoCtrl">
                         <div class="svButtonContainerRow">
                             <button class="btn btn-primary btn-xs border-radius-0"  data-toggle="modal" data-target="#editNewPersonModal" ng-click="pushPersonToObj(data)">
                                 <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
                             </button>
-                            <button class="btn btn-primary btn-xs border-radius-0" ng-click="open(data.name, data.personId, $index)" data-toggle="modal" name="removePerson">
+                            <button class="btn btn-primary btn-xs border-radius-0" ng-click="open(data.name, data.id, $index)" data-toggle="modal" name="removePerson">
                                 <span class="glyphicon glyphicon-trash glyphicon-white"></span>
                             </button>
                         </div>
@@ -60,7 +60,7 @@
         </table>
 
         <dir-pagination-controls template-url="Content/template/dirPagination.tpl.html"></dir-pagination-controls>
-        <div ng-include="'editPersonModal/editNewPersonModal.html'"></div>
+        <div ng-include="'persons/modals/editPersonModal/editPersonModal.html'"></div>
     </div>
     <div ng-controller="ModalDemoCtrl">
         <script type="text/ng-template" id="myModalContent">
@@ -76,6 +76,6 @@
             </div>
         </script>
     </div>
-<div ng-include="'newPersonModal/addNewPersonModal.html'"></div>
+<div ng-include="'persons/modals/newPersonModal/addNewPersonModal.html'"></div>
     <person-content></person-content>
 </div>
