@@ -17,6 +17,18 @@ app.factory("PersonDataMappingArray",["$http","$q",function($http,$q){
         });
         return deferred.promise;
     };
+
+    factory.getMappedArray = function(str){
+        var arr = [];
+        return $http.get(str).success(function (data) {
+            angular.forEach(data,function(key){
+                arr[key.id] = key.name;
+            });
+            return arr;
+        });
+
+    };
+
     return factory;
 
 

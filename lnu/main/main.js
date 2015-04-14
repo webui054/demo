@@ -1,4 +1,5 @@
-var app = angular.module('LnuApp', ['directiveModule', 'angularUtils.directives.dirPagination','PersonTableModule','ui.router']);
+var app = angular.module('LnuApp', ['directiveModule', 'angularUtils.directives.dirPagination',
+    'PersonTableModule','ui.router']);
 
 
 app.config(function($stateProvider, $urlRouterProvider) {
