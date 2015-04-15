@@ -46,7 +46,7 @@
                         <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="personTypeId">Зайнятість:</label>
                             <div id="personTypeId" class="form-control general-info-text">
-                                {{personsTypes2[personGeneralInfoObj.personTypeId]}}
+                                {{personDataArrFOrGeneralView.personTypes[personGeneralInfoObj.personTypeId]}}
                             </div>
                         </div>
                         <div class="col-md-7 col-lg-6 general-info-item">
@@ -66,24 +66,24 @@
                         <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="Sex">Стать:</label>
                             <div id="Sex" class="form-control general-info-text">
-                                {{genderTypes2[personGeneralInfoObj.genderTypeId]}}
+                                {{personDataArrFOrGeneralView.genderTypes[personGeneralInfoObj.genderTypeId]}}
                             </div>
                         </div>
                         <div class="col-md-12 ol-lg-12 general-info-item">
                             <label class="label-font-size-16" for="married">Громадянський стан:</label>
                             <div id="married" class="form-control general-info-text">
-                                {{marriedType2[personGeneralInfoObj.marriedTypeId]}}
+                                {{personDataArrFOrGeneralView.marriedTypes[personGeneralInfoObj.marriedTypeId]}}
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="gr">Громадянство:</label>
-                            <div id="gr" class="form-control general-info-text">
-                                {{citizenCountry2[personGeneralInfoObj.citizenCountryId]}}
+                            <label class="label-font-size-16" for="citizen">Громадянство:</label>
+                            <div id="citizen" class="form-control general-info-text">
+                                {{personDataArrFOrGeneralView.citizenCountries[personGeneralInfoObj.citizenCountryId]}}
                             </div>
                         </div>
                         <div class=" col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="rez">Резидент:</label>
-                            <div id="rez" class="form-control general-info-text">
+                            <label class="label-font-size-16" for="resident">Резидент:</label>
+                            <div id="resident" class="form-control general-info-text">
                                 {{personGeneralInfoObj.resident | checkYesNo}}
                             </div>
                         </div>

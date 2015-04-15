@@ -1,7 +1,7 @@
 /**
  * Created by Dmytro on 04.04.2015.
  */
-app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function ($scope, $http, $filter, $interval) {
+app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval",'Authentication', function ($scope, $http, $filter, $interval,Authentication) {
 
     $scope.userName = "";
     $scope.password = "";
@@ -37,6 +37,7 @@ app.controller('LoginCtrl', ["$scope", "$http", "$filter", "$interval", function
     //};
 
     $scope.login = function(){
+        Authentication.setUser($scope.userName);
         $scope.$parent.isLoggedIn = true;
     };
 

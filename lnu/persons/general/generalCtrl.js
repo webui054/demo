@@ -1,53 +1,37 @@
 
 
-app.controller("GeneralPersonInfoCTRL",["$scope","PersonRepo","$http",
-    function($scope,PersonRepo,$http){
+app.controller("GeneralPersonInfoCTRL",["$scope","PersonRepo","$http","PersonDataMappingArray",
+    function($scope,PersonRepo,$http,PersonDataMappingArray){
 
-        $scope.citizenCountry2 = [];
-        $scope.personsTypes2 = [];
-        $scope.marriedType2 = [];
-        $scope.genderTypes2 = [];
+        $scope.personDataArrFOrGeneralView = [];
+        $scope.personDataArrFOrGeneralView.citizenCountries = [];
+        $scope.personDataArrFOrGeneralView.personTypes = [];
+        $scope.personDataArrFOrGeneralView.marriedTyps = [];
+        $scope.personDataArrFOrGeneralView.genderTypes = [];
 
-        $scope.getCitizenCountry2 = function(){
-
-            $http.get('persons/general/citizenCountry.json').success(function (data) {
-                angular.forEach(data,function(key){
-                    $scope.citizenCountry2[key.id] = key.name;
-                });
+        $scope.getCitizenCountries = function(){
+            PersonDataMappingArray.getMappedArray('persons/general/citizenCountry.json').then(function(data){
+                $scope.personDataArrFOrGeneralView.citizenCountries = data;
             });
         };
-        $scope.getCitizenCountry2();
-
-
-
-        $scope.getMarriedTypes2 = function(){
-
-            $http.get('persons/general/marriedTypes.json').success(function (data) {
-                angular.forEach(data,function(key){
-                    $scope.marriedType2[key.id] = key.name;
-                });
+        $scope.getMarriedTypes = function(){
+            PersonDataMappingArray.getMappedArray('persons/general/marriedTypes.json').then(function(data){
+                $scope.personDataArrFOrGeneralView.marriedTypes = data;
             });
         };
-        $scope.getMarriedTypes2();
-
-        $scope.getPersonsType2 = function(){
-                $http.get('persons/general/personsTypeId.json').success(function (data) {
-
-                    angular.forEach(data,function(key){
-                        $scope.personsTypes2[key.id] = key.name;
-                    });
-                });
+        $scope.getPersonTypes = function(){
+            PersonDataMappingArray.getMappedArray('persons/general/personsTypeId.json').then(function(data){
+                $scope.personDataArrFOrGeneralView.personTypes = data;
+            });
         };
-        $scope.getPersonsType2();
-
-        $scope.getGenderTypes2 = function(){
-            $http.get('persons/general/genderTypes.json')
-                .success(function (data) {
-                    angular.forEach(data,function(key){
-                        $scope.genderTypes2[key.id] = key.name;
-                    });
-
-                });
+        $scope.getGenderTypes = function(){
+            PersonDataMappingArray.getMappedArray('persons/general/genderTypes.json').then(function(data){
+                $scope.personDataArrFOrGeneralView.genderTypes = data;
+            });
         };
-        $scope.getGenderTypes2();
+
+        $scope.getGenderTypes();
+        $scope.getPersonTypes();
+        $scope.getCitizenCountries();
+        $scope.getMarriedTypes();
     }]);

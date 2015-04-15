@@ -37,12 +37,12 @@
                     <td>
                         <a href="" ng-click="showGeneralInfo(data)">{{data.name}}</a>
                     </td>
-                    <td>{{genderTypes[data.genderTypeId]}}</td>
+                    <td>{{allMappedArrData.genderTypes[data.genderTypeId]}}</td>
                     <td>{{data.begDate  | date: "dd.MM.yyyy'р.'"}}</td>
-                    <td>{{personsTypes[data.personTypeId]}}</td>
+                    <td>{{allMappedArrData.personsTypes[data.personTypeId]}}</td>
                     <td>{{data.resident | checkYesNo}}</td>
                     <td>
-                        {{citizenCountry[data.citizenCountryId]}}
+                        {{allMappedArrData.citizenCountry[data.citizenCountryId]}}
                     </td>
                     <td>{{data.docSeries + ':' + data.docNum}}</td>
                     <td ng-controller="ModalDemoCtrl">

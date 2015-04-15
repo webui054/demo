@@ -1,122 +1,91 @@
-app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http", function($scope,PersonRepo,$rootScope,$http){
+app.controller("PersonsTableCTRL",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray",
+    function($scope,PersonRepo,$rootScope,$http,PersonDataMappingArray){
 
-    $scope.personGeneralInfoAddModalObj = {};
-    $scope.personForeignerInfoAddModalObj = {};
+        $scope.personGeneralInfoAddModalObj = {};
+        $scope.personForeignerInfoAddModalObj = {};
 
-    $scope.isShowGeneralInfo = false;
-    $scope.personGeneralInfoObj = {};
-    $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
-    $scope.personGeneralInfoEditModalObj ={};
+        $scope.isShowGeneralInfo = false;
+        $scope.personGeneralInfoObj = {};
+        $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
+        $scope.personGeneralInfoEditModalObj ={};
 
-    $scope.personForeignerInfoEditModalObj ={};
+        $scope.personForeignerInfoEditModalObj ={};
 
-    $scope.tempForeinerArrObj = [{ personId:1, languageId:2, name:"Kuznetsov Dmytro Oleksandrovych",firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}
-        ,{ personId:2, languageId:3, name:"Kuznetsov Dmytro Oleksandrovych",firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}];
+        $scope.tempForeinerArrObj = [{ personId:1, languageId:2, name:"Kuznetsov Dmytro Oleksandrovych",
+            firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}
+            ,{ personId:2, languageId:3, name:"Kuznetsov Dmytro Oleksandrovych",
+                firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}];
 
-    $scope.tempForeinerObj ={};
+        $scope.tempForeinerObj ={};
 
-    $scope.citizenCountry = [];
+        $scope.allMappedArrData = [];
+        $scope.allMappedArrData.citizenCountry = [];
+        $scope.allMappedArrData.personsTypes = [];
+        $scope.allMappedArrData.marriedType = [];
+        $scope.allMappedArrData.genderTypes = [];
+        $scope.allMappedArrData.languages = [];
 
-    $scope.personsTypes = [];
-    $scope.marriedType = [];
-    $scope.genderTypes = [];
-    $scope.personsTypesArr = [];
-    $scope.marriedTypeArr = [];
-    $scope.genderTypesArr = [];
-    $scope.citizenCountryArr = [];
-    $scope.languagesArr =[];
-    $scope.languages = [];
-
-    $scope.getCitizenCountry = function(){
-
-        $http.get('persons/general/citizenCountry.json').success(function (data) {
-            $scope.citizenCountryArr = data;
-            angular.forEach(data,function(key){
-                $scope.citizenCountry[key.id] = key.name;
+        // persons mapped array getters
+        $scope.getCitizenCountry = function(){
+            PersonDataMappingArray.getMappedArray('persons/general/citizenCountry.json').then(function(data){
+                $scope.allMappedArrData.citizenCountry = data;
             });
-        });
-    };
-    $scope.getCitizenCountry();
-
-    $scope.getLanguages = function(){
-
-        $http.get('persons/general/languages.json').success(function (data) {
-            $scope.languagesArr = data;
-            angular.forEach(data,function(key){
-                $scope.languages[key.id] = key.name;
+        };
+        $scope.getLanguages = function(){
+            PersonDataMappingArray.getMappedArray('persons/general/languages.json').then(function(data){
+                $scope.allMappedArrData.languages = data;
             });
-        });
-    };
-    $scope.getLanguages();
-
-
-    $scope.getMarriedTypes = function(){
-        $http.get('persons/general/marriedTypes.json').success(function (data) {
-            $scope.marriedTypeArr = data;
-            angular.forEach(data,function(key){
-                $scope.marriedType[key.id] = key.name;
+        };
+        $scope.getMarriedTypes = function(){
+            PersonDataMappingArray.getMappedArray('persons/general/marriedTypes.json').then(function(data){
+                $scope.allMappedArrData.marriedType = data;
             });
-        });
-    };
-
-    $scope.getMarriedTypes();
-
-    $scope.getPersonsType = function(){
-        $http.get('persons/general/personsTypeId.json').success(function (data) {
-            $scope.personsTypesArr = data;
-            angular.forEach(data,function(key){
-                $scope.personsTypes[key.id] = key.name;
+        };
+        $scope.getPersonsType = function(){
+            PersonDataMappingArray.getMappedArray('persons/general/personsTypeId.json').then(function(data){
+                $scope.allMappedArrData.personsTypes = data;
             });
 
-        });
-    };
-    $scope.getPersonsType();
-
-    $scope.getGenderTypes = function(){
-        $http.get('persons/general/genderTypes.json')
-            .success(function (data) {
-                $scope.genderTypesArr = data;
-                angular.forEach(data,function(key){
-                    $scope.genderTypes[key.id] = key.name;
-                });
-
+        };
+        $scope.getGenderTypes = function(){
+            PersonDataMappingArray.getMappedArray('persons/general/genderTypes.json').then(function(data){
+                $scope.allMappedArrData.genderTypes = data;
             });
-    };
-    $scope.getGenderTypes();
+        };
+        // run persons mapped array getters
+        $scope.getCitizenCountry();
+        $scope.getLanguages();
+        $scope.getMarriedTypes();
+        $scope.getPersonsType();
+        $scope.getGenderTypes();
 
 
-    $scope.tempPersonData = {};
+        $scope.tempPersonData = {};
 
-    $scope.getPersonData = function () {
-        $http.get('content/tempData/tempPersonData.json').success(function (data) {
-            $scope.tempPersonData = data;
-        });
-    };
-    $scope.getPersonData();
+        $scope.getPersonData = function () {
+            $http.get('content/tempData/tempPersonData.json').success(function (data) {
+                $scope.tempPersonData = data;
+            });
+        };
+        $scope.getPersonData();
 
+        $scope.showGeneralInfo = function(data){
+            $scope.personGeneralInfoEditModalObj = data;
+            $scope.personGeneralInfoObj = data;
+            angular.forEach($scope.tempForeinerArrObj,function(key){
+                if(key.personId === data.id){
+                    $scope.tempForeinerObj = key;
+                }
+            });
+            $scope.isShowGeneralInfo = true;
+        };
+        $scope.pushPersonToObj= function(data){
+            $scope.personGeneralInfoEditModalObj = data;
+        };
 
-    $scope.showGeneralInfo = function(data){
-        $scope.personGeneralInfoEditModalObj = data;
-        $scope.personGeneralInfoObj = data;
-        angular.forEach($scope.tempForeinerArrObj,function(key){
-            if(key.personId === data.id){
-            $scope.tempForeinerObj = key;
-            }
-        });
-        $scope.isShowGeneralInfo = true;
-    };
-    $scope.pushPersonToObj= function(data){
-        $scope.personGeneralInfoEditModalObj = data;
-    };
-
-}]);
+    }]);
 
 app.controller("personInfoCtrl", ["$scope", "$http", function($scope, $http){
-
-
-
-
-
 /*
     $scope.tempAddress = {};
     $scope.baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
@@ -147,15 +116,15 @@ personTabModal.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
             controller: 'ModalInstanceCtrl',
             size: "sm",
             resolve: { name: function () {
-                      return name;
-                     },
-                    id: function () {
-                        return persId;
-                    },
-                    currentIndex: function(){
-                        return index;
-                    }
+                return name;
+            },
+                id: function () {
+                    return persId;
+                },
+                currentIndex: function(){
+                    return index;
                 }
+            }
         });
 
         modalInstance.result.then(function (selectedItem) {
