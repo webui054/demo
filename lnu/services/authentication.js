@@ -1,4 +1,4 @@
-app.factory('Authentication', function(){
+app.factory('Authentication2', function(){
     var factory = {};
     var user;
 

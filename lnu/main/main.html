@@ -11,19 +11,19 @@
                 <a class="navbar-brand" id="brand" href="" ng-click="selectTab(1)">{{brand}}</a>
             </div>
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav" ng-show="isLoggedIn">
+                <ul class="nav navbar-nav" ng-show="">
                     <li ng-class="{active:isSelected(1)}">
-                        <a href="" ng-click="selectTab(1)" ui-sref="persons">{{personViewModel}}</a>
+                        <a href="/persons" ng-click="selectTab(1)">{{personViewModel}}</a>
                     </li>
                     <li ng-class="{active:isSelected(2)}">
-                        <a href="" ng-click="selectTab(2)" ui-sref="proposition">{{propositionViewModel}}</a>
+                        <a href="/proposals" ng-click="selectTab(2)">{{propositionViewModel}}</a>
                     </li>
                     <li ng-class="{active:isSelected(3)}">
-                        <a href="" ng-click="selectTab(3)" ui-sref="benefits">{{benefitsViewModel}}</a>
+                        <a href="/benefits" ng-click="selectTab(3)">{{benefitsViewModel}}</a>
                     </li>
 
                 </ul>
-                <ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn">
+                <ul class="nav navbar-nav navbar-right" ng-show="">
                     <li>
                         <a href="" ng-click="logout()">Вийти</a>
                     </li>
@@ -31,6 +31,6 @@
             </div>
         </div>
     </div>
-    <div ui-view></div>
-    <login-content></login-content>
+    <div ng-view></div>
+    <!--<login-content></login-content>-->
 </div>
