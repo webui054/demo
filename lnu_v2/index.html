@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="LnuApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="content/css/normalize.css">
+    <link rel="stylesheet" href="content/css/reset.css">
+    <link rel="stylesheet" href="content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="content/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="layout/layout.css">
+
+    <script src="libs/angular.js"></script>
+    <script src="libs/bower-angular-cookies/angular-cookies.js"></script>
+    <script src="libs/bower-angular-route/angular-route.js"></script>
+    <script src="libs/angular-ui-router.min.js"></script>
+
+    <script src="libs/jquery-1.11.2.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+
+    <script src="app.js"></script>
+
+
+    <script src="layout/layoutCtrl.js"></script>
+    <script src="services/auth.js"></script>
+    <script src="login/loginCtrl.js"></script>
+</head>
+<body>
+<div ng-include="'layout/layout.html'"></div>
+<div ng-view=""></div>
+</body>
+</html>
