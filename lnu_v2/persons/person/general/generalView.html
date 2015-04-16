@@ -1,0 +1,96 @@
+<div class="container" ng-show="isPersonTabSelected(1)" ng-controller="GeneralPersonInfoCTRL">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="pull-left">Загальна Інформація</h4>
+                    <div class="pull-right">
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Видалити">
+                            <span class="glyphicon glyphicon-trash glyphicon-white"></span>
+                        </button>
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Редагувати"
+                                data-toggle="modal" data-target="#editPersonModal">
+                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row panel-body">
+                    <div class="col-md-4 col-lg-3 container">
+                        <img height="320px" width="240px" src="{{personGeneralInfoObj.photo}}">
+                        <div class="col-md-4 col-lg-4 general-info-item">
+                            <label class="" for="ser">Серія :</label>
+                            <div id="ser" class="form-control general-info-text">{{personGeneralInfoObj.docSeries}}</div>
+                        </div>
+                        <div class="col-md-8 col-lg-8 general-info-item">
+                            <label class="" for="num">№ :</label>
+                            <div id="num" class="form-control general-info-text">{{personGeneralInfoObj.docNum}}</div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-5 col-lg-5 container">
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="PIB">ПІБ:</label>
+                            <div id="PIB" class="form-control general-info-text">{{personGeneralInfoObj.name}}</div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="birthdayPlace">Місце Народження:</label>
+                            <div id="birthdayPlace" class="form-control general-info-text">{{personGeneralInfoObj.birthPlace}}</div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="birthdayDate">Дата Народження:</label>
+                            <div id="birthdayDate" class="form-control general-info-text">
+                                {{personGeneralInfoObj.begDate | date:"dd.MM.yyyy'р.'"}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="personTypeId">Зайнятість:</label>
+                            <div id="personTypeId" class="form-control general-info-text">
+                                {{personDataArrFOrGeneralView.personTypes[personGeneralInfoObj.personTypeId]}}
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-6 general-info-item">
+                            <label class="label-font-size-16" for="military">Військовозобовязаний:</label>
+                            <div id="military" class="form-control general-info-text">
+                                {{personGeneralInfoObj.isMilitary | checkYesNo}}
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-lg-6 general-info-item">
+                            <label class="label-font-size-16" for="hostel">Гуртожиток:</label>
+                            <div id="hostel" class="form-control general-info-text">
+                                {{personGeneralInfoObj.isHotel | checkYesNo}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3 container">
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="Sex">Стать:</label>
+                            <div id="Sex" class="form-control general-info-text">
+                                {{personDataArrFOrGeneralView.genderTypes[personGeneralInfoObj.genderTypeId]}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 ol-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="married">Громадянський стан:</label>
+                            <div id="married" class="form-control general-info-text">
+                                {{personDataArrFOrGeneralView.marriedTypes[personGeneralInfoObj.marriedTypeId]}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="citizen">Громадянство:</label>
+                            <div id="citizen" class="form-control general-info-text">
+                                {{personDataArrFOrGeneralView.citizenCountries[personGeneralInfoObj.citizenCountryId]}}
+                            </div>
+                        </div>
+                        <div class=" col-md-12 col-lg-12 general-info-item">
+                            <label class="label-font-size-16" for="resident">Резидент:</label>
+                            <div id="resident" class="form-control general-info-text">
+                                {{personGeneralInfoObj.resident | checkYesNo}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div ng-include="'persons/modals/editPersonModal/editPersonModalForGeneralInfoView.html'"></div>
+</div>

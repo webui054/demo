@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="Main">
+<div ng-repeat="data in dataArr">
+    <div ng-cloak="">{{data}}</div>
+    <!--<div ng-bind="data"></div>-->
+</div>
+</body>
+</html>

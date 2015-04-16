@@ -1,8 +1,9 @@
 var auth = angular.module('Authentication', []);
-var main = angular.module('Persons', []);
+var persons = angular.module('Persons', ['ui.bootstrap','angularUtils.directives.dirPagination']);
+var propositions = angular.module('Propositions', []);
+var benefits = angular.module('Benefits', []);
 
-
-var app = angular.module('LnuApp', ['ngRoute','Authentication','Persons'])
+var app = angular.module('LnuApp', ['ngRoute','Authentication','Persons','Propositions','Benefits'])
     .config(['$routeProvider',function ($routeProvider) {
         $routeProvider.when('/login', {
             templateUrl: 'login/login.html',
@@ -12,9 +13,18 @@ var app = angular.module('LnuApp', ['ngRoute','Authentication','Persons'])
         $routeProvider.when('/persons', {
             templateUrl: 'persons/persons.html'
         });
-        $routeProvider.when('/some', {
-            templateUrl: 'someView/someView.html',
-            controller: 'SomeCtrl'
+        $routeProvider.when('/propositions', {
+            templateUrl: 'propositions/propositionView.html',
+            controller: 'ProposalsCTRL'
+        });
+        $routeProvider.when('/person/:personId', {
+            templateUrl: 'persons/person/person.html',
+            controller: 'PersonCtrl'
+
+        });
+        $routeProvider.when('/benefits', {
+            templateUrl: 'benefits/benefitsView.html',
+            controller: 'BenefitsCTRL'
         });
         $routeProvider.when('/logout', {
             resolve: ['AuthenticationService','$location', function(AuthenticationService,$location){

@@ -18,6 +18,9 @@ var app = angular.module('LnuApp', ['directiveModule','angularUtils.directives.d
         $routeProvider.when('/benefits', {
                 templateUrl: 'benefits/benefitsView.html'
             });
+        $routeProvider.when('/person/:personId', {
+            templateUrl: 'benefits/benefitsView.html'
+        });
 
         $routeProvider.otherwise({ redirectTo: '/login' });
     }])

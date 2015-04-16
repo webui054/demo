@@ -1,0 +1,246 @@
+<div class="container" ng-show="isPersonTabSelected(8)" ng-controller="MarkCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="pull-left">Бали</h4>
+
+                    <div class="pull-right">
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Видалити">
+                            <span class="glyphicon glyphicon-trash glyphicon-white"></span>
+                        </button>
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Редагувати">
+                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                        </button>
+                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Додати"
+                                data-toggle="modal" data-target="#addModal1">
+                            <span class="glyphicon glyphicon-plus glyphicon-white"></span>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="">
+                        <div class="svAddressHeader"><h4>Зовнішнє незалежне оцінювання</h4></div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 container">
+                                <label class="label-font-size-16" for="svAddressReg">Номер сертифіката:</label>
+
+                                <div id="svAddressReg" class="form-control general-info-text svAddressFields">
+                                    {{"120004444"}}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="label-font-size-16" for="svAddressReg" style="display: block">Рік
+                                    видачі:</label>
+
+                                <div id="subOne" class="form-control general-info-text svAddressFields">
+                                    {{"2014"}}
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="label-font-size-16" for="svAddressReg" style="display: block">PIN
+                                    ЗНО:</label>
+
+                                <div id="svAddressPosr2" class="form-control general-info-text svAddressFields">
+                                    {{"2222"}}
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3">
+                                <label class="label-font-size-16" for="svAddressReg"
+                                       style="display: block">Математика:</label>
+
+                                <div id="subject1" class="form-control general-info-text svAddressFields">
+                                    {{"195"}}
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3">
+                                <label class="label-font-size-16" for="svAddressReg"
+                                       style="display: block">Фізика:</label>
+
+                                <div id="subject2" class="form-control general-info-text svAddressFields">
+                                    {{"175"}}
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3">
+                                <label class="label-font-size-16"
+                                       style="display: block">Біологія:</label>
+
+                                <div id="subject3" class="form-control general-info-text svAddressFields">
+                                    {{"150"}}
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-3">
+                                <label class="label-font-size-16" for="svAddressReg"
+                                       style="display: block">Хімія:</label>
+
+                                <div id="subjet4" class="form-control general-info-text svAddressFields">
+                                    {{"199"}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr color="#337ab7">
+                    <!-- Man creating -->
+                    <div class="">
+
+                        <div class="svContactsHeader"><h4>Додаткові бали</h4></div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-8 col-lg-8 ">
+                                <label class="label-font-size-16" for="svAddressReg">Тип активності:</label>
+
+                                <div id="manType" class="form-control general-info-text svAddressFields">
+                                    {{"Підготовчі курси"}}
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-lg-4 ">
+                                <label class="label-font-size-16" for="svAddressReg"
+                                       style="display: block">Бонус:</label>
+
+                                <div id="subOneMAN" class="form-control general-info-text svAddressFields">
+                                    {{"15"}}
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 ">
+                                <label class="label-font-size-16" for="svAddressReg"
+                                       style="display: block">Примітка:</label>
+
+                                <div id="Man28" class="form-control general-info-text">
+                                    {{" "}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal fade" id="addModal1" tabindex="-1" role="dialog" aria-labelledby="addModal1"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#tab1" data-toggle="tab">Додати дані ЗНО</a></li>
+                                        <li><a href="#tab2" data-toggle="tab">Додати інші бали</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab1">
+                                            <br>
+
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label for="sub1">Номер сертифіката:</label>
+                                                    <input type="text" class="form-control" id="sub1">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="sub2">Рік видачі:</label>
+                                                        <input type="date" class="form-control" id="sub2" required>
+                                                    </div>
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="sub3">PIN ЗНО:</label>
+                                                        <input type="text" class="form-control" id="sub3">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-8">
+                                                        <label for="sub4">Предмет #1:</label>
+                                                        <input type="text" class="form-control" id="sub4">
+                                                    </div>
+                                                    <div class="form-group col-lg-4">
+                                                        <label for="sub5">Бал:</label>
+                                                        <input type="number" step="0.1" class="form-control" id="sub5"
+                                                               required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-8">
+                                                        <label for="sub41">Предмет #2:</label>
+                                                        <input type="text" class="form-control" id="sub41">
+                                                    </div>
+                                                    <div class="form-group col-lg-4">
+                                                        <label for="sub51">Бал:</label>
+                                                        <input type="number" step="0.1" class="form-control" id="sub51">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-8">
+                                                        <label for="sub42">Предмет #3:</label>
+                                                        <input type="text" class="form-control" id="sub42">
+                                                    </div>
+                                                    <div class="form-group col-lg-4">
+                                                        <label for="sub52">Бал:</label>
+                                                        <input type="number" step="0.1" class="form-control" id="sub52">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-8">
+                                                        <label for="sub43">Предмет #4:</label>
+                                                        <input type="text" class="form-control" id="sub43">
+                                                    </div>
+                                                    <div class="form-group col-lg-4">
+                                                        <label for="sub53">Бал:</label>
+                                                        <input type="number" step="0.1" class="form-control" id="sub53">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane" id="tab2">
+                                            <br>
+
+                                            <form role="form">
+                                                <div class="row">
+                                                    <div class="form-group col-lg-9">
+                                                        <label for="act1">Тип активності:</label>
+                                                        <select class="form-control border-radius-0" id="act1"
+                                                        ng-options="action.type for type in actions" required>
+                                                            <option value="">Виберіть предмет</option>
+                                                        </select>
+
+                                                    </div>
+                                                    <div class="form-group col-lg-3">
+                                                        <label for="act2">Бонус:</label>
+                                                        <input type="number" step="any" class="form-control" id="act2">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-12">
+                                                        <label for="act3">Примітка:</label>
+                                                        <input type="text" class="form-control" id="act3">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                                        Закрити
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-sm">Додати</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

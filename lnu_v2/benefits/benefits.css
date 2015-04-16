@@ -1,0 +1,53 @@
+.addBenefit {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: right;
+}
+
+p.specofferName {
+    margin-top: 10px;
+    margin-left: 10%;
+    font-weight: bold;
+    color: #2d6aa0;
+}
+
+#benefitTable th {
+    font-weight: bold;
+    text-align: center;
+}
+
+#benefitTable td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+#benefitTable th.nameBenefit {
+    width: 60%;
+}
+
+
+#benefitTable td.nameBenefit {
+    text-align: left;
+}
+
+#specofferBenefitTable th {
+    font-weight: bold;
+    text-align: center;
+}
+
+#specofferBenefitTable td {
+    text-align: center;
+}
+
+#specofferBenefitTable td.nameBenefit {
+    text-align: left;
+}
+
+.addBenefitH {
+    color: #2d6aa0;
+}
+
+.odd-color-theme{
+    background-color: #e4e4e4;
+}

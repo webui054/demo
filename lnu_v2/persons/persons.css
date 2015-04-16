@@ -1,0 +1,141 @@
+.mainPersonTable tbody tr:hover{
+    background-color: lightcyan;
+}
+.PersonTableContentRow td{
+    text-align: center
+}
+.svCreateNewPerson{
+    float: right;
+}
+.svButtonContainer:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.mainPersonTable{
+    margin-top:15px;
+}
+.personTableHeaderRow th{
+    color: #337ab7;
+    text-align: center;
+    font-weight:bold;
+    padding:10px;
+}
+.PersonTableContentRow a:hover{
+    cursor: pointer;
+}
+.svButtonContainerRow{
+    padding-left: 25px;
+}
+.svAddressContainer{
+    padding-left: 15px;
+}
+.svAddressContainer:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.svAddressRegContainer:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.svAddressPostContainer{
+    margin-top: 15px;
+}
+.svAddressPostContainer:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.svContactsContainer{
+    padding-left: 15px;
+    padding-right:15px;
+    margin-top: 15px;
+}
+.svContactsContainer:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.svAddressEditButton{
+    float: right;
+    margin-right: 5px;
+}
+.svAddressDeleteButton{
+    float: right;
+}
+.svAddressFields{
+    float: left;
+    width: 92%;
+}
+.svAddressButtons{
+    float: right;
+    margin-right: 15px;
+}
+.svModal-title{
+    text-align: center;
+}
+.svModalContent{
+    text-align: center;
+}
+.general-info-text{
+    border-bottom: 1px solid lightskyblue;
+    border-left: 1px solid lightskyblue;
+}
+.svContactsCol-1{
+    width:45%;
+    float: left;
+}
+.svContactsCol-1 div.general-info-text{
+    float: left;
+    width:85%;
+}
+.svContactsCol-1 div .svContactButtons{
+    float: right;
+}
+.svContactsCol-2{
+     width:50%;
+     float: right;
+ }
+.svContactsCol-2 div.general-info-text{
+      float: left;
+      width:85%;
+}
+.svContactsCol-2 div .svContactButtons{
+    float: right;
+}
+.svContactsCol-2 div .label-font-size-16{
+    display: block;
+}
+.svAddressHeader,.svContactsHeader{
+    color: #2e6da4;
+    font-weight:bold;
+}
+#svSearchPerson{
+    float: left;
+    width: 35%;
+}
+.mainPersonTable tbody tr td:nth-child(2){
+    text-align: left;
+}
+th.mainPersonTable-col-name:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+th.mainPersonTable-col-gender:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+th.mainPersonTable-col-type:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+th.mainPersonTable-col-resid:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+th.mainPersonTable-col-citiz:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
