@@ -36,4 +36,72 @@ main.controller('Main',['$scope','$http', function($scope,$http){
     };
     $scope.login();
 
+    $scope.addPerson = function(){
+        var url = BASEURL+" ";
+
+        var data = {
+            personTypeId: 1,
+            citizenCountryId: 1,
+            genderTypeId: 2,
+            marriedTypeId: 2,
+            begDate: "2014-01-01",
+            endDate: "2015-01-01",
+            firstName: "Дмитро",
+            surname: "Кузнєцов",
+            fatherName: "Олександрович",
+            name: "Кузнєцов" +" "+ "Дмитро" +" "+ "Олександрович",
+            identifier: "12345",
+            isHostel: 1,
+            isMilitary: 1,
+            resident: 1,
+            photo: "",
+            birthPlace: "Україна, м.Івано-Франківськ",
+            docNum: "123456",
+            docSeries: "СЕ"
+        };
+
+        $http.post(url,data).success(function(data){
+            $scope.dataArr.push(data);
+            console.log(data)
+        })
+    };
+    $scope.deletePerson = function(){
+        var url = BASEURL+"api/persons2/" + 12;
+
+        $http.delete(url).success(function(data){
+
+            console.log(data)
+        }).error(function(err){
+            console.log(err);
+        })
+    };
+    $scope.updatePerson = function(){
+        var data = {
+            personTypeId: 1,
+            citizenCountryId: 1,
+            genderTypeId: 2,
+            marriedTypeId: 2,
+            begDate: "2014-01-01",
+            endDate: "2015-01-01",
+            firstName: "Дмитро",
+            surname: "Кузнєцов",
+            fatherName: "Олександрович",
+            name: "Кузнєцов" +" "+ "Дмитро" +" "+ "Олександрович",
+            identifier: "12345",
+            isHostel: 1,
+            isMilitary: 1,
+            resident: 1,
+            photo: "",
+            birthPlace: "Україна, м.Івано-Франківськ",
+            docNum: "123456",
+            docSeries: "СЕ"
+        };
+        var url = BASEURL+"api/persons/" + 13;
+
+        $http.put(url,data).success(function(data){
+
+            console.log(data)
+        })
+    }
+
 }]);

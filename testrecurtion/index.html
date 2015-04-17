@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="angular.js"></script>
+    <script src="jquery-1.11.2.js"></script>
     <script src="app.js"></script>
 </head>
 <body ng-controller="Main">
+<button ng-click="addPerson()">add person</button>
+<button ng-click="deletePerson()">delete person</button>
+<button ng-click="updatePerson()">update person</button>
 <div ng-repeat="data in dataArr">
     <div ng-cloak="">{{data}}</div>
     <!--<div ng-bind="data"></div>-->

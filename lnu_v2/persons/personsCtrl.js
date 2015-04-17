@@ -18,7 +18,9 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
 
         $scope.tempForeinerObj ={};
 
-        $scope.allMappedArrData = [];
+        $scope.allMappedArrData = {
+            citizenCountry: []
+        };
         $scope.allMappedArrData.citizenCountry = [];
         $scope.allMappedArrData.personsTypes = [];
         $scope.allMappedArrData.marriedType = [];
@@ -48,7 +50,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
 
         };
         $scope.getGenderTypes = function(){
-            PersonDataMappingArray.getMappedArray('persons/person/general/genderTypes.json').then(function(data){
+            PersonDataMappingArray.getMappedArray('persons/person/general3/genderTypes.json').then(function(data){
                 $scope.allMappedArrData.genderTypes = data;
             });
         };
@@ -87,6 +89,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
 
 
         $scope.showGeneralInfo = function(data){
+
             $scope.personGeneralInfoEditModalObj = data;
             $scope.personGeneralInfoObj = data;
             angular.forEach($scope.tempForeinerArrObj,function(key){

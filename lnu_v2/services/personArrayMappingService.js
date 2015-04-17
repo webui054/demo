@@ -1,7 +1,12 @@
 app.factory("PersonDataMappingArray",["$http","$q",function($http,$q){
 
         var factory = {};
-
+var getTempData = function(str){
+    $http.get(str).success(function (data){
+       return data;
+    }).error(function(){
+    });
+};
 
     factory.getMappedArray = function(str){
         var arr = [];
@@ -12,17 +17,21 @@ app.factory("PersonDataMappingArray",["$http","$q",function($http,$q){
                 });
             deferred.resolve(arr);
 
-            }).error(function(){
-            deferred.reject();
+            }).error(function(err){
+            deferred.resolve(err);
+            //deferred.reject();
         });
         return deferred.promise;
     };
+
     factory.getDataArray = function(str){
         var deferred = $q.defer();
         $http.get(str).success(function (data){
             deferred.resolve(data);
-        }).error(function(){
-            deferred.reject();
+        }).error(function(err){
+            //ExeptionHandler.Handle(err);
+            deferred.resolve(err);
+            //deferred.reject();
         });
         return deferred.promise;
     };
