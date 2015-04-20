@@ -5,7 +5,7 @@ app.controller("MarkCtrl", ["$scope", "$http", "PersonDataMappingArray",
     function ($scope, $http, PersonDataMappingArray) {
 
         $scope.personDataArrForMark = [];
-        $scope.personDataArrForMark.citizenCountries = [];
+        $scope.personDataArrForMark.enrolmentSubjects = [];
         $scope.personDataArrForMark.personTypes = [];
         $scope.personDataArrForMark.marriedTyps = [];
         $scope.personDataArrForMark.genderTypes = [];
