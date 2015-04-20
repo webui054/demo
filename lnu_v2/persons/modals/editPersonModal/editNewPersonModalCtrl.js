@@ -1,5 +1,5 @@
-persons.controller("EditNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http",
-    function($scope,PersonDataMappingArray,$http){
+persons.controller("EditNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http","PersonsService",
+    function($scope,PersonDataMappingArray,$http,PersonsService){
     $scope.allPersonsArrData = [];
     $scope.allPersonsArrData.personsTypes = [];
     $scope.allPersonsArrData.marriedTypes = [];
@@ -77,19 +77,21 @@ persons.controller("EditNewPersonModalCtrl",["$scope","PersonDataMappingArray","
 
 
 
-
-
-
-
-
-
-        var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
-        $http.put(baseUrl+"api/persons/"+ $scope.personGeneralInfoEditModalObj.id,data)
-            .success(function(data){
-
+        PersonsService.editPerson($scope.personGeneralInfoEditModalObj.id,data).success(function(data){
             console.log(data)
         });
-        console.log($scope.personGeneralInfoEditModalObj);
+
+
+
+
+
+        //var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
+        //$http.put(baseUrl+"api/persons/"+ $scope.personGeneralInfoEditModalObj.id,data)
+        //    .success(function(data){
+        //
+        //    console.log(data)
+        //});
+        //console.log($scope.personGeneralInfoEditModalObj);
     }
 
 }]);
