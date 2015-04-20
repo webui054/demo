@@ -11,6 +11,7 @@
                 <a ng-click="showSearch(true)" ng-show="!isMoreSearch">Show more search!!!</a>
                 <a ng-click="showSearch(false)" ng-show="isMoreSearch">Hide more search!!!</a>
             </div>
+            <span>з {{personsOffset+1}} по {{personData.length+personsOffset}} з {{personsCount}}</span>
             <button class="btn btn-primary border-radius-0 svCreateNewPerson border-none" data-toggle="modal"
                     data-target="#addNewPersonModal"><span class="glyphicon glyphicon-plus"></span>&nbsp;Додати персону</button>
         </div>

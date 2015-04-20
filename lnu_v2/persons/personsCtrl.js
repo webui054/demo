@@ -8,7 +8,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.personGeneralInfoObj = {};
         $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
         $scope.personGeneralInfoEditModalObj ={};
-        $scope.offset = 0;
+        $scope.personsOffset = 0;
 
         $scope.personForeignerInfoEditModalObj ={};
 
@@ -115,31 +115,32 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.getLanguages();
         // end: search data content array getters
 
-        $scope.tempPersonData = {};
+        $scope.personData = {};
 
         $scope.getPersonData = function (offset,orderByKey) {
             PersonsService.getAll(offset,orderByKey,$scope.searchObj.personName,$scope.searchObj.genderTypeId
                 ,$scope.searchObj.personTypeId,$scope.searchObj.citizenCountryId,$scope.searchObj.marriedTypeId)
                 .success(function(data){
                 $scope.personsCount = data.count;
-                $scope.tempPersonData = data.resources;
+                $scope.personData = data.resources;
                 PersonRepo.pushPerson(data.resources);
             });
         };
-        $scope.getPersonData(0,'name-asc');//todo remove after create service. DK
+
+        $scope.getPersonData(0,'name-asc');
 
 
 
         $scope.getNextData = function(){
-            if(($scope.offset+10) < $scope.personsCount){
-            $scope.offset += 10;
-            $scope.getPersonData($scope.offset,'name-asc')
+            if(($scope.personsOffset+10) < $scope.personsCount){
+            $scope.personsOffset += 10;
+            $scope.getPersonData($scope.personsOffset,'name-asc')
             }
         };
         $scope.getPrevData = function(){
-            if($scope.offset > 0){
-            $scope.offset -= 10;
-            $scope.getPersonData($scope.offset,'name-asc')
+            if($scope.personsOffset > 0){
+            $scope.personsOffset -= 10;
+            $scope.getPersonData($scope.personsOffset,'name-asc')
             }
         };
 
@@ -163,6 +164,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         };
 
         $scope.showSearch= function(iff){
+
             $scope.searchObj = {};
             var el = document.getElementById("personsTable");
             if(iff){
@@ -175,6 +177,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
             $scope.isMoreSearch = iff;
         };
         $scope.searchPersonsByName = function(){
+            $scope.personsOffset = 0;
             $scope.getPersonData(0,'name-asc');
         };
 

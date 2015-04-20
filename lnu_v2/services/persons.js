@@ -31,6 +31,9 @@ persons.factory("PersonsService",["$q","$http",function($q, $http){
                 return data;
             });
     };
+    factory.addNewPerson = function(person){
+        return $http.post(baseUrl+"api/persons/",person);
+    };
 
 
     return factory;

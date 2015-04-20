@@ -1,5 +1,5 @@
-persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http",
-    function($scope,PersonDataMappingArray,$http){
+persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http","PersonsService",
+    function($scope,PersonDataMappingArray,$http,PersonsService){
     $scope.allPersonsArrData = [];
     $scope.allPersonsArrData = {
         citizenCountries: [],
@@ -57,12 +57,12 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$
         " " + $scope.personGeneralInfoAddModalObj.surname + " " + $scope.personGeneralInfoAddModalObj.fatherName;
 
         $scope.personGeneralInfoAddModalObj.identifier = "123123";
-        $scope.personGeneralInfoAddModalObj.endDate = "2015-01-01";
+        //$scope.personGeneralInfoAddModalObj.endDate = "2015-01-01";
 
-        $http.post(baseUrl+"api/persons/",$scope.personGeneralInfoAddModalObj).success(function(data){
-            $scope.tempPersonData.push(data);
-            console.log(data)
+        PersonsService.addNewPerson($scope.personGeneralInfoAddModalObj).success(function(data){
+            $scope.personData.push(data);
         });
+
         $scope.personGeneralInfoAddModalObj = {};
     }
 
