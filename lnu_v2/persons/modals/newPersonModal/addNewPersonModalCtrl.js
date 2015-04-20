@@ -1,11 +1,13 @@
-persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray", function($scope,PersonDataMappingArray){
+persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http",
+    function($scope,PersonDataMappingArray,$http){
     $scope.allPersonsArrData = [];
-    $scope.allPersonsArrData.personsTypes = [];
-    $scope.allPersonsArrData.marriedTypes = [];
-    $scope.allPersonsArrData.genderTypes = [];
-    $scope.allPersonsArrData.citizenCountries = [];
-    $scope.allPersonsArrData.languages = [];
-
+    $scope.allPersonsArrData = {
+        citizenCountries: [],
+        genderTypes : [],
+        personsTypes : [],
+        marriedTypes : [],
+        languages : []
+    };
 
     $scope.getCitizenCountry = function(){
         PersonDataMappingArray.getDataArray('persons/person/general/citizenCountry.json').then(function(data){
@@ -45,7 +47,7 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray", f
     };
     $scope.getGenderTypes();
 
-
+    var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
 
 
 
@@ -54,12 +56,13 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray", f
         $scope.personGeneralInfoAddModalObj.name = $scope.personGeneralInfoAddModalObj.firstName +
         " " + $scope.personGeneralInfoAddModalObj.surname + " " + $scope.personGeneralInfoAddModalObj.fatherName;
 
-        $scope.personGeneralInfoAddModalObj.id = ($scope.tempPersonData.length + 2);
-        $scope.personGeneralInfoAddModalObj.identifier = "";
-        $scope.personGeneralInfoAddModalObj.parentId = 0;
+        $scope.personGeneralInfoAddModalObj.identifier = "123123";
+        $scope.personGeneralInfoAddModalObj.endDate = "2015-01-01";
 
-        $scope.tempPersonData.push($scope.personGeneralInfoAddModalObj);
-
+        $http.post(baseUrl+"api/persons/",$scope.personGeneralInfoAddModalObj).success(function(data){
+            $scope.tempPersonData.push(data);
+            console.log(data)
+        });
         $scope.personGeneralInfoAddModalObj = {};
     }
 

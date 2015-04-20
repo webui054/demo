@@ -1,9 +1,9 @@
-persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray",
-    function($scope,PersonRepo,$rootScope,$http,PersonDataMappingArray){
-
+persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray","$location",'PersonsService',
+    function($scope,PersonRepo,$rootScope,$http,PersonDataMappingArray,$location,PersonsService){
+        var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/"; //todo remove after create service. DK
         $scope.personGeneralInfoAddModalObj = {};
         $scope.personForeignerInfoAddModalObj = {};
-
+        $scope.searchObj = {};
         $scope.isShowGeneralInfo = false;
         $scope.personGeneralInfoObj = {};
         $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
@@ -19,13 +19,13 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.tempForeinerObj ={};
 
         $scope.allMappedArrData = {
-            citizenCountry: []
+            citizenCountry: [],
+            genderTypes : [],
+            personsTypes : [],
+            marriedType : [],
+            languages : []
         };
-        $scope.allMappedArrData.citizenCountry = [];
-        $scope.allMappedArrData.personsTypes = [];
-        $scope.allMappedArrData.marriedType = [];
-        $scope.allMappedArrData.genderTypes = [];
-        $scope.allMappedArrData.languages = [];
+        $scope.isMoreSearch = false;
 
         // persons mapped array getters
         $scope.getCitizenCountry = function(){
@@ -50,7 +50,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
 
         };
         $scope.getGenderTypes = function(){
-            PersonDataMappingArray.getMappedArray('persons/person/general3/genderTypes.json').then(function(data){
+            PersonDataMappingArray.getMappedArray('persons/person/general/genderTypes.json').then(function(data){
                 $scope.allMappedArrData.genderTypes = data;
             });
         };
@@ -61,31 +61,82 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.getPersonsType();
         $scope.getGenderTypes();
 
+        // search data content array getters
+        $scope.dataForSearchContent = [];
+        $scope.dataForSearchContent = {
+            citizenCountries: [],
+            genderTypes : [],
+            personsTypes : [],
+            marriedTypes : [],
+            languages : []
+        };
+
+        $scope.getCitizenCountry = function(){
+            PersonDataMappingArray.getDataArray('persons/person/general/citizenCountry.json').then(function(data){
+                $scope.dataForSearchContent.citizenCountries = data;
+            });
+        };
+
+        $scope.getLanguages = function(){
+            PersonDataMappingArray.getDataArray('persons/person/general/languages.json').then(function(data){
+                $scope.dataForSearchContent.languages = data;
+            });
+        };
+
+        $scope.getMarriedTypes = function(){
+            PersonDataMappingArray.getDataArray('persons/person/general/marriedTypes.json').then(function(data){
+                $scope.dataForSearchContent.marriedTypes = data;
+            });
+        };
+
+        $scope.getPersonsType = function(){
+            PersonDataMappingArray.getDataArray('persons/person/general/personsTypeId.json').then(function(data){
+                $scope.dataForSearchContent.personsTypes = data;
+            });
+
+        };
+
+        $scope.getGenderTypes = function(){
+            PersonDataMappingArray.getDataArray('persons/person/general/genderTypes.json').then(function(data){
+                $scope.dataForSearchContent.genderTypes = data;
+            });
+        };
+
+        $scope.getGenderTypes();
+        $scope.getCitizenCountry();
+        $scope.getPersonsType();
+        $scope.getMarriedTypes();
+        $scope.getLanguages();
+        // end: search data content array getters
 
         $scope.tempPersonData = {};
 
-        $scope.getPersonData = function () {
-            $http.get('persons/tempData/tempPersonData.json').success(function (data) {
-                $scope.tempPersonData = data;
-                PersonRepo.pushPerson(data);
+        $scope.getPersonData = function (offset,orderByKey,name) {
+            PersonsService.getAll(offset,orderByKey,name).success(function(data){
+                $scope.personsCount = data.count;
+                $scope.tempPersonData = data.resources;
+                PersonRepo.pushPerson(data.resources);
             });
+            //$http.get(baseUrl + "api/persons?limit=10&offset="+ offset+"&orderBy="+orderByKey+"&name="+name)
+            //    .success(function (data) {
+            //
+            //});
         };
-        $scope.getPersonData();
+        $scope.getPersonData(0,'name-asc');//todo remove after create service. DK
+        $scope.offset = 0;
+        $scope.getNextData = function(){
+            if($scope.offset < $scope.personsCount){
+            $scope.offset += 10;
+            $scope.getPersonData($scope.offset,'name-asc')
+            }
+        };
+        $scope.getPrevData = function(){
+            if($scope.offset > 0){
+            $scope.offset -= 10;
+            $scope.getPersonData($scope.offset,'name-asc')
+            }
+        };
 
-        /*
-         $scope.tempAddress = {};
-         $scope.baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
-
-         $scope.getAddressData = function () {
-
-         $http.defaults.headers.common.Authorization = 'Basic YWRtaW46bmltZGE='; // задаємо хедер запиту по замовчуванню для всіх типів крім POST і PUT
-         $http.get($scope.baseUrl + "/api/adminunits").success(function (data) {
-         $scope.tempAddress = data.resources;
-         console.log($scope.tempAddress);
-         });
-         };
-         $scope.getAddressData();
-         */
 
 
         $scope.showGeneralInfo = function(data){
@@ -97,12 +148,16 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
                     $scope.tempForeinerObj = key;
                 }
             });
-            $scope.isShowGeneralInfo = true;
+            $location.path('/person/'+ data.id);
         };
 
 
         $scope.pushPersonToObj= function(data){
             $scope.personGeneralInfoEditModalObj = data;
+        };
+        $scope.showSearch= function(iff){
+            $scope.searchObj = {};
+            $scope.isMoreSearch = iff;
         };
 
     }]);

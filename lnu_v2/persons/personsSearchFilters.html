@@ -1,0 +1,29 @@
+
+<div class="alert alert-info border-none border-radius-0 mainPersonTable">
+    <a href="#" class="alert-link">search filters content</a>
+
+    <div class="form-group">
+        <label for="sub9">Громадянство:</label>
+        <select class="form-control" id="sub9" ng-model="searchObj.citizenCountryId"
+                ng-options="citizenCountry.id as citizenCountry.name for citizenCountry in dataForSearchContent.citizenCountries">
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="sub10">Громадянський стан:</label>
+        <select id="sub10" class="form-control" ng-model="searchObj.marriedTypeId"
+                ng-options="marriedType.id as marriedType.name for marriedType in dataForSearchContent.marriedTypes">
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="sub11">Стать:</label>
+        <select id="sub11" class="form-control" ng-model="searchObj.genderTypeId"
+                ng-options="genderType.id as genderType.name for genderType in dataForSearchContent.genderTypes">
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="sub12">Зайнятість:</label>
+        <select id="sub12" class="form-control" ng-model="searchObj.personTypeId"
+                ng-options="personType.id as personType.name for personType in dataForSearchContent.personsTypes">
+        </select>
+    </div>
+</div>

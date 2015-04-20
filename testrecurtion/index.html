@@ -11,6 +11,11 @@
 <button ng-click="addPerson()">add person</button>
 <button ng-click="deletePerson()">delete person</button>
 <button ng-click="updatePerson()">update person</button>
+<button ng-click="getZnoData(11)">zno person</button>
+<form name="searchForm" ng-submit="getDataByName(searchByName)">
+    <input type="search" placeholder="search" name="searchByName" ng-model="searchByName">
+    <input type="submit" value="search">
+</form>
 <div ng-repeat="data in dataArr">
     <div ng-cloak="">{{data}}</div>
     <!--<div ng-bind="data"></div>-->

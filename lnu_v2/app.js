@@ -1,5 +1,5 @@
 var auth = angular.module('Authentication', []);
-var persons = angular.module('Persons', ['ui.bootstrap','angularUtils.directives.dirPagination']);
+var persons = angular.module('Persons', ['ui.bootstrap']);
 var propositions = angular.module('Propositions', []);
 var benefits = angular.module('Benefits', []);
 
