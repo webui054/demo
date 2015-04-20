@@ -8,6 +8,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.personGeneralInfoObj = {};
         $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
         $scope.personGeneralInfoEditModalObj ={};
+        $scope.offset = 0;
 
         $scope.personForeignerInfoEditModalObj ={};
 
@@ -68,7 +69,12 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
             genderTypes : [],
             personsTypes : [],
             marriedTypes : [],
-            languages : []
+            languages : [],
+            personName : ""
+        };
+        $scope.searchObj ={
+            personName : ""
+
         };
 
         $scope.getCitizenCountry = function(){
@@ -111,21 +117,21 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
 
         $scope.tempPersonData = {};
 
-        $scope.getPersonData = function (offset,orderByKey,name) {
-            PersonsService.getAll(offset,orderByKey,name).success(function(data){
+        $scope.getPersonData = function (offset,orderByKey) {
+            PersonsService.getAll(offset,orderByKey,$scope.searchObj.personName,$scope.searchObj.genderTypeId
+                ,$scope.searchObj.personTypeId,$scope.searchObj.citizenCountryId,$scope.searchObj.marriedTypeId)
+                .success(function(data){
                 $scope.personsCount = data.count;
                 $scope.tempPersonData = data.resources;
                 PersonRepo.pushPerson(data.resources);
             });
-            //$http.get(baseUrl + "api/persons?limit=10&offset="+ offset+"&orderBy="+orderByKey+"&name="+name)
-            //    .success(function (data) {
-            //
-            //});
         };
         $scope.getPersonData(0,'name-asc');//todo remove after create service. DK
-        $scope.offset = 0;
+
+
+
         $scope.getNextData = function(){
-            if($scope.offset < $scope.personsCount){
+            if(($scope.offset+10) < $scope.personsCount){
             $scope.offset += 10;
             $scope.getPersonData($scope.offset,'name-asc')
             }
@@ -155,9 +161,21 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.pushPersonToObj= function(data){
             $scope.personGeneralInfoEditModalObj = data;
         };
+
         $scope.showSearch= function(iff){
             $scope.searchObj = {};
+            var el = document.getElementById("personsTable");
+            if(iff){
+                angular.element(el).removeClass("col-lg-12 col-md-12");
+                angular.element(el).addClass("col-lg-9 col-md-9")
+            }else{
+                angular.element(el).removeClass("col-lg-9 col-md-9");
+                angular.element(el).addClass("col-lg-12 col-md-12")
+            }
             $scope.isMoreSearch = iff;
+        };
+        $scope.searchPersonsByName = function(){
+            $scope.getPersonData(0,'name-asc');
         };
 
     }]);
