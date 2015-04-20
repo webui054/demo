@@ -1,12 +1,12 @@
 var main = angular.module('main', []);
-main.controller('Main',['$scope','$http', function($scope,$http){
-    $scope.dataArr= [];
+main.controller('Main', ['$scope', '$http', function ($scope, $http) {
+    $scope.dataArr = [];
 
-    $scope.makeToken =function(){
+    $scope.makeToken = function () {
         var tok = 'admin:nimda';
         return btoa(tok);
     };
-    $scope.makeBaseAuth = function(token) {
+    $scope.makeBaseAuth = function (token) {
         return "Basic " + token;
     };
     var BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
@@ -31,6 +31,13 @@ var  name = "";
                 })
                 .error(function (){
                 });
+                if ($scope.dataArr.length < data.count) {
+                    offset += 5;
+                    getData(offset);
+                }
+            })
+            .error(function () {
+            });
     };
     $scope.getZnoData = function(personId){
 
@@ -64,7 +71,7 @@ var  name = "";
             firstName: "Дмитро",
             surname: "Кузнєцов",
             fatherName: "Олександрович",
-            name: "Кузнєцов" +" "+ "Дмитро" +" "+ "Олександрович",
+            name: "Кузнєцов" + " " + "Дмитро" + " " + "Олександрович",
                 identifier: "12345",
             isHostel: 0,
             isMilitary: 0,
@@ -75,22 +82,22 @@ var  name = "";
             docSeries: "СЕ"
         };
 
-        $http.post(url,data).success(function(data){
+        $http.post(url, data).success(function (data) {
             $scope.dataArr.push(data);
             console.log(data)
         })
     };
-    $scope.deletePerson = function(){
-        var url = BASEURL+"api/persons2/" + 12;
+    $scope.deletePerson = function () {
+        var url = BASEURL + "api/persons2/" + 12;
 
-        $http.delete(url).success(function(data){
+        $http.delete(url).success(function (data) {
 
             console.log(data)
-        }).error(function(err){
+        }).error(function (err) {
             console.log(err);
         })
     };
-    $scope.updatePerson = function(){
+    $scope.updatePerson = function () {
         var data = {
             personTypeId: 1,
             citizenCountryId: 1,
@@ -101,7 +108,7 @@ var  name = "";
             firstName: "Дмитро",
             surname: "Кузнєцов",
             fatherName: "Олександрович",
-            name: "Кузнєцов" +" "+ "Дмитро" +" "+ "Олександрович",
+            name: "Кузнєцов" + " " + "Дмитро" + " " + "Олександрович",
             //identifier: "12345",
             isHostel: 1,
             isMilitary: 1,
@@ -111,9 +118,9 @@ var  name = "";
             docNum: "123456",
             docSeries: "СЕ"
         };
-        var url = BASEURL+"api/persons/" + 13;
+        var url = BASEURL + "api/persons/" + 13;
 
-        $http.put(url,data).success(function(data){
+        $http.put(url, data).success(function (data) {
 
             console.log(data)
         })

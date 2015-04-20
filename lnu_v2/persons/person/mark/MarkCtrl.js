@@ -1,40 +1,39 @@
 /**
  * Created by Oksana on 09.04.2015.
  */
-persons.controller('MarkCtrl', ["$scope", "$http", function ($scope, $http) {
+app.controller("MarkCtrl", ["$scope", "$http", "PersonDataMappingArray",
+    function ($scope, $http, PersonDataMappingArray) {
 
+        $scope.personDataArrForMark = [];
+        $scope.personDataArrForMark.citizenCountries = [];
+        $scope.personDataArrForMark.personTypes = [];
+        $scope.personDataArrForMark.marriedTyps = [];
+        $scope.personDataArrForMark.genderTypes = [];
 
-    $scope.tempMarkZno = [];
-    $scope.personId = "";
-    $scope.personPaperId = "";
-    $scope.enrolSubId = "";
-    $scope.mark = "";
+        $scope.getCitizenCountries = function () {
+            PersonDataMappingArray.getMappedArray('persons/person/mark/citizenCountry.json').then(function (data) {
+                $scope.personDataArrForMark.citizenCountries = data;
+            });
+        };
+        $scope.getMarriedTypes = function () {
+            PersonDataMappingArray.getMappedArray('persons/person/mark/marriedTypes.json').then(function (data) {
+                $scope.personDataArrForMark.marriedTypes = data;
+            });
+        };
+        $scope.getPersonTypes = function () {
+            PersonDataMappingArray.getMappedArray('persons/person/mark/personsTypeId.json').then(function (data) {
+                $scope.personDataArrForMark.personTypes = data;
+            });
+        };
+        $scope.getGenderTypes = function () {
+            PersonDataMappingArray.getMappedArray('persons/person/mark/genderTypes.json').then(function (data) {
+                $scope.personDataArrForMark.genderTypes = data;
+            });
+        };
 
-    var tempPath1 = 'persons/person/zno/tempZno.json';
-    var path1 = tempPath1;
-    $scope.getZnoData = function () {
-        $http.get(path1).success(function (data) {
-            $scope.tempMarkZno = angular.fromJson(data);
-            $scope.tempMarkZno = (data);
-        });
-    };
-
-    $scope.tempMan = [];
-    $scope.personId = "";
-    $scope.personPaperId = "";
-    $scope.enrolSubId = "";
-    $scope.mark = "";
-
-
-    var tempPath2 = 'persons/person/man/tempMan.json';
-    var path2 = tempPath2;
-    $scope.getZnoData = function () {
-        $http.get(path2).success(function (data) {
-            $scope.tempMarkMan = angular.fromJson(data);
-            $scope.tempMarkMan = (data);
-        });
-    };
-    $scope.getZnoData();
-}])
-
+        $scope.getGenderTypes();
+        $scope.getPersonTypes();
+        $scope.getCitizenCountries();
+        $scope.getMarriedTypes();
+    }]);
 
