@@ -16,7 +16,7 @@
         ng-dblclick="showGeneralInfo(data)">
 
         <td>
-            <a href="#/person/{{data.id}}">{{data.name}}</a>
+            <a href="#/person/{{data.id}}" class="txt-decor-none">{{data.name}}</a>
         </td>
         <td>{{allMappedArrData.genderTypes[data.genderTypeId]}}</td>
         <td>{{data.begDate  | date: "dd.MM.yyyy'р.'"}}</td>

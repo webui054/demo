@@ -1,6 +1,6 @@
 persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray","$location",'PersonsService',
     function($scope,PersonRepo,$rootScope,$http,PersonDataMappingArray,$location,PersonsService){
-        var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/"; //todo remove after create service. DK
+
         $scope.personGeneralInfoAddModalObj = {};
         $scope.personForeignerInfoAddModalObj = {};
         $scope.searchObj = {};
@@ -63,7 +63,6 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.getGenderTypes();
 
         // search data content array getters
-        $scope.dataForSearchContent = [];
         $scope.dataForSearchContent = {
             citizenCountries: [],
             genderTypes : [],
@@ -74,7 +73,6 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         };
         $scope.searchObj ={
             personName : ""
-
         };
 
         $scope.getCitizenCountry = function(){
@@ -130,21 +128,19 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.getPersonData(0,'name-asc');
 
 
-
         $scope.getNextData = function(){
             if(($scope.personsOffset+10) < $scope.personsCount){
             $scope.personsOffset += 10;
             $scope.getPersonData($scope.personsOffset,'name-asc')
             }
         };
+
         $scope.getPrevData = function(){
             if($scope.personsOffset > 0){
             $scope.personsOffset -= 10;
             $scope.getPersonData($scope.personsOffset,'name-asc')
             }
         };
-
-
 
         $scope.showGeneralInfo = function(data){
 
@@ -169,20 +165,20 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
             var el = document.getElementById("personsTable");
             if(iff){
                 angular.element(el).removeClass("col-lg-12 col-md-12");
-                angular.element(el).addClass("col-lg-9 col-md-9")
+                angular.element(el).addClass("col-lg-9 col-md-8")
             }else{
                 angular.element(el).removeClass("col-lg-9 col-md-9");
                 angular.element(el).addClass("col-lg-12 col-md-12")
             }
             $scope.isMoreSearch = iff;
         };
+
         $scope.searchPersonsByName = function(){
             $scope.personsOffset = 0;
             $scope.getPersonData(0,'name-asc');
         };
 
     }]);
-
 
 persons.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
 

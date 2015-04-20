@@ -44,7 +44,6 @@ var app = angular.module('LnuApp', ['ngRoute','Authentication','Persons','Propos
             }
 
             $rootScope.$on('$locationChangeStart', function (event, next, current) {
-                console.log($location.path());
                 if ($location.path() !== '/login' && $rootScope.token === "") {
                     $location.path('/login');
                 }
