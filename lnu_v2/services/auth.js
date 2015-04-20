@@ -30,7 +30,9 @@ auth.factory('AuthenticationService',
 
                 $rootScope.token = authdata;
                 $rootScope.isLoggedIn = true;
+
                 $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+                $http.defaults.headers.common.Authorization = 'Basic YWRtaW46bmltZGE=';
                 //$cookieStore.put('globals', $rootScope.globals);
             };
 

@@ -11,43 +11,48 @@ main.controller('Main', ['$scope', '$http', function ($scope, $http) {
     };
     var BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
     //
+var  name = "";
+    $scope.getDataByName = function(name){
+        $scope.dataArr =[];
+        getData(0,'name-asc',name);
+    };
 
-    var getData = function (offset) {
-        return $http.get(BASEURL + "api/persons?limit=5&offset=" + offset)
-            .success(function (data) {
-                angular.forEach(data.resources, function (elem) {
-                    $scope.dataArr.push(elem);
+    var getData = function(offset,orderByKey,name){
+
+        return $http.get(BASEURL + "api/persons?limit=5&offset="+ offset+"&orderBy="+orderByKey+"&name="+name)
+                .success(function (data) {
+                    angular.forEach(data.resources,function(elem){
+                        $scope.dataArr.push(elem);
+                    });
+                    if($scope.dataArr.length < data.count){
+                        offset += 5;
+                        getData(offset,orderByKey,name);
+                    }
+                })
+                .error(function (){
                 });
-                if ($scope.dataArr.length < data.count) {
-                    offset += 5;
-                    getData(offset);
-                }
-            })
-            .error(function () {
-            });
     };
+    $scope.getZnoData = function(personId){
 
-    $scope.getZnoData = function () {
-
-        return $http.get(BASEURL + "api/papers/types/")
+        return $http.get(BASEURL + "api/persons/"+personId+"/enrolmentsubjects")
             .success(function (data) {
+
             })
-            .error(function () {
+            .error(function (){
             });
     };
 
-
-    $scope.login = function () {
+    $scope.login = function(){
         var token = $scope.makeToken();
         var baseAuthString = $scope.makeBaseAuth(token);
         $http.defaults.headers.common['Authorization'] = baseAuthString;
-        getData(0);
+        getData(0,'','');
 
     };
     $scope.login();
 
-    $scope.addPerson = function () {
-        var url = BASEURL + " ";
+    $scope.addPerson = function(){
+        var url = BASEURL+"api/persons/";
 
         var data = {
             personTypeId: 1,
@@ -60,10 +65,10 @@ main.controller('Main', ['$scope', '$http', function ($scope, $http) {
             surname: "Кузнєцов",
             fatherName: "Олександрович",
             name: "Кузнєцов" + " " + "Дмитро" + " " + "Олександрович",
-            identifier: "12345",
-            isHostel: 1,
-            isMilitary: 1,
-            resident: 1,
+                identifier: "12345",
+            isHostel: 0,
+            isMilitary: 0,
+            resident: 0,
             photo: "",
             birthPlace: "Україна, м.Івано-Франківськ",
             docNum: "123456",
@@ -97,7 +102,7 @@ main.controller('Main', ['$scope', '$http', function ($scope, $http) {
             surname: "Кузнєцов",
             fatherName: "Олександрович",
             name: "Кузнєцов" + " " + "Дмитро" + " " + "Олександрович",
-            identifier: "12345",
+            //identifier: "12345",
             isHostel: 1,
             isMilitary: 1,
             resident: 1,

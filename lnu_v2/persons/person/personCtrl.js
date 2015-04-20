@@ -15,8 +15,9 @@ persons.controller("PersonCtrl",["$scope","PersonRepo",'$routeParams', function(
     };
     (function (){
         var tempPerson = PersonRepo.getPersonById(parseInt($routeParams.personId,10));
-        $scope.personGenSeralInfoEditModalObj = tempPerson.$$state.value;
+        $scope.personGeneralInfoEditModalObj = tempPerson.$$state.value;
         $scope.personGeneralInfoObj = tempPerson.$$state.value;
+
         $scope.isShowGeneralInfo = true;
     }())
 }]);
