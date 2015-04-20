@@ -151,3 +151,9 @@ th.mainPersonTable-col-citiz:hover{
 .txt-decor-none:hover{
     text-decoration: none;
 }
+.crs-pntr{
+      cursor: pointer;
+  }
+.crs-dflt{
+    cursor: default;
+}

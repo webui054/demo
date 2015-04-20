@@ -116,29 +116,52 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.personData = {};
 
         $scope.getPersonData = function (offset,orderByKey) {
-            PersonsService.getAll(offset,orderByKey,$scope.searchObj.personName,$scope.searchObj.genderTypeId
+            return PersonsService.getAll(offset,orderByKey,$scope.searchObj.personName,$scope.searchObj.genderTypeId
                 ,$scope.searchObj.personTypeId,$scope.searchObj.citizenCountryId,$scope.searchObj.marriedTypeId)
                 .success(function(data){
-                $scope.personsCount = data.count;
-                $scope.personData = data.resources;
-                PersonRepo.pushPerson(data.resources);
-            });
+                    var prevBtn = document.getElementById("prevBtn");
+                    var nextBtn = document.getElementById("nextBtn");
+                    if (($scope.personsOffset) === 0) {
+                        nextBtn.removeAttribute('disabled');
+                        prevBtn.setAttribute('disabled', 'disabled');
+                    }
+                    $scope.personsCount = data.count;
+                    $scope.personData = data.resources;
+                    PersonRepo.pushPerson(data.resources);
+                });
         };
 
         $scope.getPersonData(0,'name-asc');
 
 
         $scope.getNextData = function(){
+            var prevBtn = document.getElementById("prevBtn");
+            var nextBtn = document.getElementById("nextBtn");
             if(($scope.personsOffset+10) < $scope.personsCount){
-            $scope.personsOffset += 10;
-            $scope.getPersonData($scope.personsOffset,'name-asc')
+                $scope.personsOffset += 10;
+                $scope.getPersonData($scope.personsOffset,'name-asc');
+                if(($scope.personData.length+$scope.personsOffset) >= $scope.personsCount) {
+                    nextBtn.setAttribute('disabled','disabled');
+                }
+                else{
+
+                    prevBtn.removeAttribute('disabled');}
             }
         };
 
         $scope.getPrevData = function(){
-            if($scope.personsOffset > 0){
-            $scope.personsOffset -= 10;
-            $scope.getPersonData($scope.personsOffset,'name-asc')
+            var prevBtn = document.getElementById("prevBtn");
+            var nextBtn = document.getElementById("nextBtn");
+            if($scope.personsOffset > 0) {
+                $scope.personsOffset -= 10;
+                $scope.getPersonData($scope.personsOffset, 'name-asc');
+                if (($scope.personsOffset) === 0) {
+                    prevBtn.setAttribute('disabled', 'disabled');
+                }
+                else {
+                    nextBtn.removeAttribute('disabled');
+                    prevBtn.removeAttribute('disabled');
+                }
             }
         };
 
