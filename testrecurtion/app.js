@@ -31,13 +31,6 @@ var  name = "";
                 })
                 .error(function (){
                 });
-                if ($scope.dataArr.length < data.count) {
-                    offset += 5;
-                    getData(offset);
-                }
-            })
-            .error(function () {
-            });
     };
     $scope.getZnoData = function(personId){
 
