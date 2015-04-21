@@ -40,20 +40,6 @@
         </div>
         <div ng-include="'persons/modals/editPersonModal/editPersonModal.html'"></div>
     </div>
-    <div ng-controller="ModalDemoCtrl">
-        <script type="text/ng-template" id="myModalContent">
-            <div class="modal-header">
-                <h4 class="modal-title svModal-title">Ви дійсно бажаєте видалити персону?</h4>
-            </div>
-            <div class="modal-body">
-                <h5 class="svModalContent">{{name}}</h5>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger" ng-click="ok()">Видалити</button>
-                <button class="btn btn-primary" ng-click="cancel()">Відміна</button>
-            </div>
-        </script>
-    </div>
     <div ng-include="'persons/modals/newPersonModal/addNewPersonModal.html'"></div>
     <person-content></person-content>
 </div>

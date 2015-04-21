@@ -1,5 +1,5 @@
-persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray","$location",'PersonsService',
-    function($scope,PersonRepo,$rootScope,$http,PersonDataMappingArray,$location,PersonsService){
+persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray","$location",'PersonsService','$modal',
+    function($scope,PersonRepo,$rootScope,$http,PersonDataMappingArray,$location,PersonsService,$modal){
 
         $scope.personGeneralInfoAddModalObj = {};
         $scope.personForeignerInfoAddModalObj = {};
@@ -213,50 +213,14 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
             $scope.getPersonData(0,'name-asc');
         };
 
+        $scope.open = function (data) {
+            $scope.pushPersonToObj(data);
+            $modal.open({
+                templateUrl: 'persons/modals/deletePersonModal/deletePersonModal.html',
+                controller: 'DeletePersonModalCtrl',
+                size: "sm"
+            });
+        };
+
     }]);
-
-persons.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
-
-    $scope.open = function (name, persId, index) {
-        var modalInstance = $modal.open({
-            templateUrl: 'myModalContent',
-            controller: 'ModalInstanceCtrl',
-            size: "sm",
-            resolve: { name: function () {
-                return name;
-            },
-                id: function () {
-                    return persId;
-                },
-                currentIndex: function(){
-                    return index;
-                }
-            }
-        });
-
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-
-        }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-    };
-});
-
-
-persons.controller('ModalInstanceCtrl', function ($scope, $modalInstance, name, id, currentIndex) {
-
-    $scope.name = name;
-    $scope.id = id;
-    $scope.currentIndex = currentIndex;
-
-    $scope.ok = function () {
-        $modalInstance.close(true);
-    };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
-
-});
 
