@@ -31,60 +31,62 @@
                     <div class="col-md-5 col-lg-5 container">
                         <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="PIB">ПІБ:</label>
-                            <div id="PIB" class="form-control general-info-text">{{personGeneralInfoObj.name}}</div>
+                            <div id="PIB" class="form-control general-info-text" ng-bind="personGeneralInfoObj.name"></div>
                         </div>
                         <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="birthdayPlace">Місце Народження:</label>
-                            <div id="birthdayPlace" class="form-control general-info-text">{{personGeneralInfoObj.birthPlace}}</div>
+                            <div id="birthdayPlace" class="form-control general-info-text"
+                                 ng-bind="personGeneralInfoObj.birthPlace"></div>
                         </div>
                         <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="birthdayDate">Дата Народження:</label>
-                            <div id="birthdayDate" class="form-control general-info-text">
-                                {{personGeneralInfoObj.begDate | date:"dd.MM.yyyy'р.'"}}
+                            <div id="birthdayDate" class="form-control general-info-text"
+                                 ng-bind="personGeneralInfoObj.begDate | date:'dd.MM.yyyy'">
+
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="personTypeId">Зайнятість:</label>
-                            <div id="personTypeId" class="form-control general-info-text">
-                                {{personDataArrFOrGeneralView.personTypes[personGeneralInfoObj.personTypeId]}}
+                            <div id="personTypeId" class="form-control general-info-text"
+                                 ng-bind="personDataArrFOrGeneralView.personTypes[personGeneralInfoObj.personTypeId]">
                             </div>
                         </div>
                         <div class="col-md-7 col-lg-6 general-info-item">
                             <label class="label-font-size-16" for="military">Військовозобовязаний:</label>
-                            <div id="military" class="form-control general-info-text">
-                                {{personGeneralInfoObj.isMilitary | checkYesNo}}
+                            <div id="military" class="form-control general-info-text"
+                                 ng-bind="personGeneralInfoObj.isMilitary | checkYesNo">
                             </div>
                         </div>
                         <div class="col-md-5 col-lg-6 general-info-item">
                             <label class="label-font-size-16" for="hostel">Гуртожиток:</label>
-                            <div id="hostel" class="form-control general-info-text">
-                                {{personGeneralInfoObj.isHotel | checkYesNo}}
+                            <div id="hostel" class="form-control general-info-text"
+                                 ng-bind="personGeneralInfoObj.isHotel | checkYesNo">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-lg-3 container">
                         <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="Sex">Стать:</label>
-                            <div id="Sex" class="form-control general-info-text">
-                                {{personDataArrFOrGeneralView.genderTypes[personGeneralInfoObj.genderTypeId]}}
+                            <div id="Sex" class="form-control general-info-text"
+                                 ng-bind="personDataArrFOrGeneralView.genderTypes[personGeneralInfoObj.genderTypeId]">
                             </div>
                         </div>
                         <div class="col-md-12 ol-lg-12 general-info-item">
                             <label class="label-font-size-16" for="married">Громадянський стан:</label>
-                            <div id="married" class="form-control general-info-text">
-                                {{personDataArrFOrGeneralView.marriedTypes[personGeneralInfoObj.marriedTypeId]}}
+                            <div id="married" class="form-control general-info-text"
+                                 ng-bind="personDataArrFOrGeneralView.marriedTypes[personGeneralInfoObj.marriedTypeId]">
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="citizen">Громадянство:</label>
-                            <div id="citizen" class="form-control general-info-text">
-                                {{personDataArrFOrGeneralView.citizenCountries[personGeneralInfoObj.citizenCountryId]}}
+                            <div id="citizen" class="form-control general-info-text"
+                                 ng-bind="personDataArrFOrGeneralView.citizenCountries[personGeneralInfoObj.citizenCountryId]">
                             </div>
                         </div>
                         <div class=" col-md-12 col-lg-12 general-info-item">
                             <label class="label-font-size-16" for="resident">Резидент:</label>
-                            <div id="resident" class="form-control general-info-text">
-                                {{personGeneralInfoObj.resident | checkYesNo}}
+                            <div id="resident" class="form-control general-info-text"
+                                 ng-bind="personGeneralInfoObj.resident | checkYesNo">
                             </div>
                         </div>
                     </div>
@@ -92,5 +94,5 @@
             </div>
         </div>
     </div>
-<div ng-include="'persons/modals/editPersonModal/editPersonModalForGeneralInfoView.html'"></div>
+    <div ng-include="'persons/modals/editPersonModal/editPersonModalForGeneralInfoView.html'"></div>
 </div>

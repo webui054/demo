@@ -56,6 +56,9 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$
         $scope.personGeneralInfoAddModalObj.name = $scope.personGeneralInfoAddModalObj.firstName +
         " " + $scope.personGeneralInfoAddModalObj.surname + " " + $scope.personGeneralInfoAddModalObj.fatherName;
 
+        $scope.personGeneralInfoAddModalObj.begDate = new Date($scope.personGeneralInfoAddModalObj.begDate.year +"-"
+        +($scope.personGeneralInfoAddModalObj.begDate.month)+"-"+$scope.personGeneralInfoAddModalObj.begDate.day);
+
         $scope.personGeneralInfoAddModalObj.identifier = "123123";
         //$scope.personGeneralInfoAddModalObj.endDate = "2015-01-01";
 

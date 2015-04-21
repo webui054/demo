@@ -6,7 +6,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.searchObj = {};
         $scope.isShowGeneralInfo = false;
         $scope.personGeneralInfoObj = {};
-        $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
+        //$scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
         $scope.personGeneralInfoEditModalObj ={};
         $scope.personsOffset = 0;
 
@@ -18,6 +18,10 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
                 firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}];
 
         $scope.tempForeinerObj ={};
+
+        $scope.tableHeaderDataObj = [ 'ПІБ','Стать','Народження','Тип','Резидент',
+            'Громадянство','Особова справа','Управління'];
+
 
         $scope.allMappedArrData = {
             citizenCountry: [],
@@ -142,9 +146,9 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
                 $scope.getPersonData($scope.personsOffset,'name-asc');
                 if(($scope.personData.length+$scope.personsOffset) >= $scope.personsCount) {
                     nextBtn.setAttribute('disabled','disabled');
+                    prevBtn.removeAttribute('disabled')
                 }
                 else{
-
                     prevBtn.removeAttribute('disabled');}
             }
         };
@@ -168,6 +172,10 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.showGeneralInfo = function(data){
 
             $scope.personGeneralInfoEditModalObj = data;
+            var tempDate = new Date(data.begDate);
+            $scope.personGeneralInfoEditModalObj.day = tempDate.getDate();
+            $scope.personGeneralInfoEditModalObj.month = (tempDate.getMonth()+1);
+            $scope.personGeneralInfoEditModalObj.year = tempDate.getFullYear();
             $scope.personGeneralInfoObj = data;
             angular.forEach($scope.tempForeinerArrObj,function(key){
                 if(key.personId === data.id){
@@ -180,6 +188,10 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
 
         $scope.pushPersonToObj= function(data){
             $scope.personGeneralInfoEditModalObj = data;
+            var tempDate = new Date(data.begDate);
+            $scope.personGeneralInfoEditModalObj.day = tempDate.getDate();
+            $scope.personGeneralInfoEditModalObj.month = (tempDate.getMonth()+1);
+            $scope.personGeneralInfoEditModalObj.year = tempDate.getFullYear();
         };
 
         $scope.showSearch= function(iff){
