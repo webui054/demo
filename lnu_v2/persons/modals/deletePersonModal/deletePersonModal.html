@@ -1,14 +1,14 @@
-<div>
-    <div id="deletePersonModalContent">
-        <div class="modal-header">
-            <h4 class="modal-title svModal-title">Ви дійсно бажаєте видалити персону?</h4>
-        </div>
+<div class="modal fade" id="deletePersonModalContent" tabindex="-1" role="dialog" aria-labelledby="editNewPersonModal"
+     aria-hidden="true" ng-controller="DeletePersonModalCtrl">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
         <div class="modal-body">
-            <h5 class="svModalContent" ng-bind="personGeneralInfoEditModalObj.name"></h5>
+            <h3 class="svModalContent" ng-bind="'Ви дійсно бажаєте видалити: ' + personGeneralInfoEditModalObj.name"></h3>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-danger" ng-click="ok()">Видалити</button>
-            <button class="btn btn-primary" ng-click="cancel()">Відміна</button>
+            <button class="btn btn-primary material-btn border-radius-0 border-none" ng-click="ok()">Видалити</button>
+            <button class="btn btn-default material-btn border-radius-0" ng-click="cancel()">Відміна</button>
+        </div>
         </div>
     </div>
 </div>

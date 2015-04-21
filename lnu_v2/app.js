@@ -1,9 +1,9 @@
 var auth = angular.module('Authentication', []);
-var persons = angular.module('Persons', ['ui.bootstrap']);
+var persons = angular.module('Persons', []);
 var propositions = angular.module('Propositions', []);
 var benefits = angular.module('Benefits', []);
 
-var app = angular.module('LnuApp', ['ngRoute','Authentication','Persons','Propositions','Benefits'])
+var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','Persons','Propositions','Benefits'])
     .config(['$routeProvider',function ($routeProvider) {
         $routeProvider.when('/login', {
             templateUrl: 'login/login.html',

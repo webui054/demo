@@ -6,7 +6,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.searchObj = {};
         $scope.isShowGeneralInfo = false;
         $scope.personGeneralInfoObj = {};
-        //$scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
+
         $scope.personGeneralInfoEditModalObj ={};
         $scope.personsOffset = 0;
 
@@ -211,15 +211,6 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.searchPersonsByName = function(){
             $scope.personsOffset = 0;
             $scope.getPersonData(0,'name-asc');
-        };
-
-        $scope.open = function (data) {
-            $scope.pushPersonToObj(data);
-            $modal.open({
-                templateUrl: 'persons/modals/deletePersonModal/deletePersonModal.html',
-                controller: 'DeletePersonModalCtrl',
-                size: "sm"
-            });
         };
 
     }]);
