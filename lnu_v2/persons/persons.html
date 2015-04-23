@@ -18,6 +18,18 @@
                         </button>
                     </span>
                 </div>
+                <div class="form-group">
+                    <label for="addrsC">Countries</label>
+                    <select id="addrsC" class="form-control" ng-model="addressData.countryId"
+                            ng-options="countries.id as countries.name for countries in addressData.countries">
+                    </select>
+                </div>
+                <div class="form-group" ng-show="isCountrySelected">
+                    <label for="addrsR">Countries</label>
+                    <select id="addrsR" class="form-control" ng-model="addressData.regionId"
+                            ng-options="regions.id as regions.name for regions in addressData.regions">
+                    </select>
+                </div>
             </div>
 
             <span ng-bind="'з '+ (personsOffset+1) + ' по ' + (personData.length+personsOffset) + ' з ' + personsCount">

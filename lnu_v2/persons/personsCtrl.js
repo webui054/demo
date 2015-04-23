@@ -22,6 +22,41 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.tableHeaderDataObj = [ 'ПІБ','Стать','Народження','Тип','Резидент',
             'Громадянство','Особова справа','Управління'];
 
+        //Address Select for person adress
+        $scope.addressData = {
+            countries:[],
+            regions:[],
+            asdTypes:[],
+            cities:[],
+            districts:[],
+            villageType:[],
+            villages:[],
+            countryId:{},
+            regionId:{}
+        }
+
+        var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
+        $scope.getCountries = function(){
+            $http.get(baseUrl + "api/adminunits?adminUnitTypeId=6").success(function(data){
+                var addEl = document.getElementById("addrsC");
+                addEl.addEventListener('change',function(){
+                    $scope.getChildAddressData($scope.addressData.countryId);
+                });
+              $scope.addressData.countries = data.resources;
+            });
+
+        };
+        $scope.getCountries();
+
+
+        $scope.getChildAddressData = function(parentId){
+            $http.get(baseUrl + "api/adminunits?parentId="+parentId).success(function(data){
+                $scope.addressData.regions = data.resources;
+                $scope.isCountrySelected = true;
+            });
+        };
+
+        //end for adress
 
         $scope.allMappedArrData = {
             citizenCountry: [],
