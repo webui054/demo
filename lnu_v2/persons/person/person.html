@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav nav-pills">
                 <li ng-class="{active:isPersonTabSelected(1)}">
-                    <a href="" ng-click="selectPersonTab(1)">{{personGeneralInfoObj.name}}</a>
+                    <a href="" ng-click="selectPersonTab(1)" ng-bind="personGeneralInfoObj.name"></a>
                 </li>
                 <li ng-class="{active:isPersonTabSelected(2)}">
                     <a href="" ng-click="selectPersonTab(2)">Адреса/Контакти</a>

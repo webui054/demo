@@ -37,7 +37,7 @@ auth.factory('AuthenticationService',
             };
 
             service.ClearCredentials = function () {
-                $rootScope.token = {};
+                $rootScope.token = "";
                 $rootScope.isLoggedIn = false;
                 //$cookieStore.remove('globals');
                 $http.defaults.headers.common.Authorization = 'Basic ';

@@ -1,5 +1,5 @@
-persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http",
-    function($scope,PersonDataMappingArray,$http){
+persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http","PersonsService",
+    function($scope,PersonDataMappingArray,$http,PersonsService){
     $scope.allPersonsArrData = [];
     $scope.allPersonsArrData = {
         citizenCountries: [],
@@ -56,13 +56,16 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$
         $scope.personGeneralInfoAddModalObj.name = $scope.personGeneralInfoAddModalObj.firstName +
         " " + $scope.personGeneralInfoAddModalObj.surname + " " + $scope.personGeneralInfoAddModalObj.fatherName;
 
-        $scope.personGeneralInfoAddModalObj.identifier = "123123";
-        $scope.personGeneralInfoAddModalObj.endDate = "2015-01-01";
+        $scope.personGeneralInfoAddModalObj.begDate = new Date($scope.personGeneralInfoAddModalObj.begDate.year +"-"
+        +($scope.personGeneralInfoAddModalObj.begDate.month)+"-"+$scope.personGeneralInfoAddModalObj.begDate.day);
 
-        $http.post(baseUrl+"api/persons/",$scope.personGeneralInfoAddModalObj).success(function(data){
-            $scope.tempPersonData.push(data);
-            console.log(data)
+        $scope.personGeneralInfoAddModalObj.identifier = "123123";
+        //$scope.personGeneralInfoAddModalObj.endDate = "2015-01-01";
+
+        PersonsService.addNewPerson($scope.personGeneralInfoAddModalObj).success(function(data){
+            $scope.personData.push(data);
         });
+
         $scope.personGeneralInfoAddModalObj = {};
     }
 

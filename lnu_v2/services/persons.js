@@ -32,7 +32,17 @@ persons.factory("PersonsService",["$q","$http",function($q, $http){
             });
     };
 
+    factory.addNewPerson = function(person){
+        return $http.post(baseUrl+"api/persons/",person);
+    };
 
+    factory.editPerson = function(id,person){
+        return $http.put(baseUrl+"api/persons/"+id,person);
+    };
+
+    factory.deletePerson = function(personId){
+        return $http.delete(baseUrl+"api/persons/"+personId);
+    };
     return factory;
 
 }]);

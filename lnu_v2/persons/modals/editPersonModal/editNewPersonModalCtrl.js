@@ -1,5 +1,5 @@
-persons.controller("EditNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http",
-    function($scope,PersonDataMappingArray,$http){
+persons.controller("EditNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http","PersonsService",
+    function($scope,PersonDataMappingArray,$http,PersonsService){
     $scope.allPersonsArrData = [];
     $scope.allPersonsArrData.personsTypes = [];
     $scope.allPersonsArrData.marriedTypes = [];
@@ -46,50 +46,54 @@ persons.controller("EditNewPersonModalCtrl",["$scope","PersonDataMappingArray","
     };
     $scope.getGenderTypes();
 
-    $scope.editPerson = function(elId){
-        $(elId).modal("hide");
-        $scope.personGeneralInfoEditModalObj.name = $scope.personGeneralInfoEditModalObj.firstName +
-        " " + $scope.personGeneralInfoEditModalObj.surname + " " + $scope.personGeneralInfoEditModalObj.fatherName;
+        $scope.editPerson = function(elId){
+            $(elId).modal("hide");
+            $scope.personGeneralInfoEditModalObj.name = $scope.personGeneralInfoEditModalObj.firstName +
+            " " + $scope.personGeneralInfoEditModalObj.surname + " " + $scope.personGeneralInfoEditModalObj.fatherName;
 
-        //$scope.personGeneralInfoEditModalObj.identifier = "";
-        //$scope.personGeneralInfoEditModalObj.parentId = 01;
-
-        var data = {
-            personTypeId:  $scope.personGeneralInfoEditModalObj.personTypeId,
-            citizenCountryId: $scope.personGeneralInfoEditModalObj.citizenCountryId,
-            genderTypeId: $scope.personGeneralInfoEditModalObj.genderTypeId,
-            marriedTypeId: $scope.personGeneralInfoEditModalObj.marriedTypeId,
-            begDate: $scope.personGeneralInfoEditModalObj.begDate,
-            endDate: "2015-01-01",
-            firstName: $scope.personGeneralInfoEditModalObj.firstName,
-            surname: $scope.personGeneralInfoEditModalObj.surname,
-            fatherName: $scope.personGeneralInfoEditModalObj.fatherName,
-            name: $scope.personGeneralInfoEditModalObj.name,
-            identifier: $scope.personGeneralInfoEditModalObj.identifier,
-            isHostel:  $scope.personGeneralInfoEditModalObj.isHostel ,
-            isMilitary:  $scope.personGeneralInfoEditModalObj.isMilitary ,
-            resident:  $scope.personGeneralInfoEditModalObj.resident ,
-            photo:  $scope.personGeneralInfoEditModalObj.photo ,
-            birthPlace:  $scope.personGeneralInfoEditModalObj.birthPlace ,
-            docNum:  $scope.personGeneralInfoEditModalObj.docNum ,
-            docSeries:  $scope.personGeneralInfoEditModalObj.docSeries
-        };
-
-
-
-
+            //$scope.personGeneralInfoEditModalObj.identifier = "";
+            //$scope.personGeneralInfoEditModalObj.parentId = 01;
+            var tempDate = $scope.personGeneralInfoEditModalObj.year + "-"+$scope.personGeneralInfoEditModalObj.month +
+                "-"+$scope.personGeneralInfoEditModalObj.day;
+            $scope.personGeneralInfoEditModalObj.begDate = tempDate;
+            var data = {
+                personTypeId:  $scope.personGeneralInfoEditModalObj.personTypeId,
+                citizenCountryId: $scope.personGeneralInfoEditModalObj.citizenCountryId,
+                genderTypeId: $scope.personGeneralInfoEditModalObj.genderTypeId,
+                marriedTypeId: $scope.personGeneralInfoEditModalObj.marriedTypeId,
+                begDate: tempDate,
+                endDate: "2015-01-01",
+                firstName: $scope.personGeneralInfoEditModalObj.firstName,
+                surname: $scope.personGeneralInfoEditModalObj.surname,
+                fatherName: $scope.personGeneralInfoEditModalObj.fatherName,
+                name: $scope.personGeneralInfoEditModalObj.name,
+                identifier: $scope.personGeneralInfoEditModalObj.identifier,
+                isHostel:  $scope.personGeneralInfoEditModalObj.isHostel ,
+                isMilitary:  $scope.personGeneralInfoEditModalObj.isMilitary ,
+                resident:  $scope.personGeneralInfoEditModalObj.resident ,
+                photo:  $scope.personGeneralInfoEditModalObj.photo ,
+                birthPlace:  $scope.personGeneralInfoEditModalObj.birthPlace ,
+                docNum:  $scope.personGeneralInfoEditModalObj.docNum ,
+                docSeries:  $scope.personGeneralInfoEditModalObj.docSeries
+            };
 
 
 
+            PersonsService.editPerson($scope.personGeneralInfoEditModalObj.id,data).success(function(data){
+                console.log(data)
+            });
 
 
-        var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
-        $http.put(baseUrl+"api/persons/"+ $scope.personGeneralInfoEditModalObj.id,data)
-            .success(function(data){
 
-            console.log(data)
-        });
-        console.log($scope.personGeneralInfoEditModalObj);
-    }
 
-}]);
+
+            //var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
+            //$http.put(baseUrl+"api/persons/"+ $scope.personGeneralInfoEditModalObj.id,data)
+            //    .success(function(data){
+            //
+            //    console.log(data)
+            //});
+            //console.log($scope.personGeneralInfoEditModalObj);
+        }
+
+    }]);

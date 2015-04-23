@@ -12,49 +12,55 @@
                     <div class="row">
                         <div class="form-group col-lg-4 col-md-4">
                             <label for="sub1">Прізвище</label>
-                            <input type="text" class="form-control" id="sub1" ng-model="personGeneralInfoAddModalObj.firstName">
+                            <input type="text" class="form-control" id="sub1" ng-model="personGeneralInfoAddModalObj.firstName" required>
                         </div>
                         <div class="form-group col-lg-4 col-md-4">
                             <label for="sub2">Імя</label>
-                            <input type="text" class="form-control" id="sub2" ng-model="personGeneralInfoAddModalObj.surname">
+                            <input type="text" class="form-control" id="sub2" ng-model="personGeneralInfoAddModalObj.surname" required>
                         </div>
                         <div class="form-group col-lg-4 col-md-4">
                             <label for="sub3">По-батькові</label>
-                            <input type="text" class="form-control" id="sub3" ng-model="personGeneralInfoAddModalObj.fatherName">
+                            <input type="text" class="form-control" id="sub3" ng-model="personGeneralInfoAddModalObj.fatherName" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-8 col-md-8">
                             <label for="sub4">Місце Народження</label>
-                            <input type="text" class="form-control" id="sub4" ng-model="personGeneralInfoAddModalObj.birthPlace">
+                            <input type="text" class="form-control" id="sub4" ng-model="personGeneralInfoAddModalObj.birthPlace" required>
                         </div>
                         <div class="form-group col-lg-4 col-md-4">
-                            <label for="sub5">Дата Народження:</label>
-                            <input type="date" class="form-control" id="sub5" ng-model="personGeneralInfoAddModalObj.begDate">
+                            <label class="col-lg-12 col-md-12">Дата Народження:</label>
+                            <input type="number"  min="1" max="31" placeholder="день" ng-maxlength="2"
+                                   class="form-control wtd-33 dspl-inline" id="day" ng-model="personGeneralInfoAddModalObj.begDate.day" required>
+                            <input type="number"  min="1" max="12" placeholder="місяць" ng-maxlength="2"
+                                   class="form-control wtd-33 dspl-inline" id="month" ng-model="personGeneralInfoAddModalObj.begDate.month" required>
+                            <input type="number"  min='0' max="9999" placeholder="рік" ng-maxlength="4"
+                                   class="form-control wtd-33 dspl-inline" id="year" ng-model="personGeneralInfoAddModalObj.begDate.year" required>
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-3 col-md-3">
                             <label for="sub9">Громадянство:</label>
-                            <select class="form-control" id="sub9" ng-model="personGeneralInfoAddModalObj.citizenCountryId"
+                            <select class="form-control" id="sub9" ng-model="personGeneralInfoAddModalObj.citizenCountryId" required
                                     ng-options="citizenCountry.id as citizenCountry.name for citizenCountry in allPersonsArrData.citizenCountries">
                             </select>
                         </div>
                         <div class="form-group col-lg-3 col-md-3">
                             <label for="sub10">Громадянський стан:</label>
-                            <select id="sub10" class="form-control" ng-model="personGeneralInfoAddModalObj.marriedTypeId"
+                            <select id="sub10" class="form-control" ng-model="personGeneralInfoAddModalObj.marriedTypeId" required
                                     ng-options="marriedType.id as marriedType.name for marriedType in allPersonsArrData.marriedTypes">
                             </select>
                         </div>
                         <div class="form-group col-lg-3 col-md-3">
                             <label for="sub11">Стать:</label>
-                            <select id="sub11" class="form-control" ng-model="personGeneralInfoAddModalObj.genderTypeId"
+                            <select id="sub11" class="form-control" ng-model="personGeneralInfoAddModalObj.genderTypeId" required
                                     ng-options="genderType.id as genderType.name for genderType in allPersonsArrData.genderTypes">
                             </select>
                         </div>
                         <div class="form-group col-lg-3 col-md-3">
                             <label for="sub12">Зайнятість:</label>
-                            <select id="sub12" class="form-control" ng-model="personGeneralInfoAddModalObj.personTypeId"
+                            <select id="sub12" class="form-control" ng-model="personGeneralInfoAddModalObj.personTypeId" required
                                     ng-options="personType.id as personType.name for personType in allPersonsArrData.personsTypes">
                             </select>
                         </div>
@@ -63,15 +69,15 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group col-lg-12" style="padding-left: 0;padding-right: 0">
                                 <label for="sub23">Шлях до фото</label>
-                                <input type="text" class="form-control" id="sub23" ng-model="personGeneralInfoAddModalObj.photo">
+                                <input type="text" class="form-control" id="sub23" ng-model="personGeneralInfoAddModalObj.photo" required>
                             </div>
                             <div class="form-group col-lg-5 col-md-5" style="padding-left: 0">
                                 <label class="" for="ser2">Серія :</label>
-                                <input type="text" class="form-control" id="ser2" ng-model="personGeneralInfoAddModalObj.docSeries">
+                                <input type="text" class="form-control" id="ser2" ng-model="personGeneralInfoAddModalObj.docSeries" required>
                             </div>
                             <div class="form-group col-lg-7 col-md-7" style="padding-left: 0;padding-right: 0">
                                 <label class="" for="num2">№ :</label>
-                                <input type="text" class="form-control" id="num2" ng-model="personGeneralInfoAddModalObj.docNum">
+                                <input type="text" class="form-control" id="num2" ng-model="personGeneralInfoAddModalObj.docNum" required>
                             </div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4">
@@ -101,7 +107,7 @@
 
                     </div>
                     <div class="">
-                        <input type="submit" class="btn btn-primary border-radius-0 border-none" value="Зберегти зміни">
+                        <input type="submit" ng-disabled="addNewPersonModalForm.$invalid" class="btn btn-primary border-radius-0 border-none" value="Зберегти зміни">
                     </div>
                 </form>
             </div>

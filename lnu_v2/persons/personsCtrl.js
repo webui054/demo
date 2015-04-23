@@ -1,13 +1,14 @@
-persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray","$location",'PersonsService',
-    function($scope,PersonRepo,$rootScope,$http,PersonDataMappingArray,$location,PersonsService){
-        var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/"; //todo remove after create service. DK
+persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray","$location",'PersonsService','$modal',
+    function($scope,PersonRepo,$rootScope,$http,PersonDataMappingArray,$location,PersonsService,$modal){
+
         $scope.personGeneralInfoAddModalObj = {};
         $scope.personForeignerInfoAddModalObj = {};
         $scope.searchObj = {};
         $scope.isShowGeneralInfo = false;
         $scope.personGeneralInfoObj = {};
-        $scope.trueFalseArr= [{id:0 , name: "Ні",val: false},{id:1 , name: "Так",val: true}];
+
         $scope.personGeneralInfoEditModalObj ={};
+        $scope.personsOffset = 0;
 
         $scope.personForeignerInfoEditModalObj ={};
 
@@ -17,6 +18,45 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
                 firstName:"Dmytro",fatherName:"Oleksandrovych",surname:"Kuznetsov"}];
 
         $scope.tempForeinerObj ={};
+
+        $scope.tableHeaderDataObj = [ 'ПІБ','Стать','Народження','Тип','Резидент',
+            'Громадянство','Особова справа','Управління'];
+
+        //Address Select for person adress
+        $scope.addressData = {
+            countries:[],
+            regions:[],
+            asdTypes:[],
+            cities:[],
+            districts:[],
+            villageType:[],
+            villages:[],
+            countryId:{},
+            regionId:{}
+        }
+
+        var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
+        $scope.getCountries = function(){
+            $http.get(baseUrl + "api/adminunits?adminUnitTypeId=6").success(function(data){
+                var addEl = document.getElementById("addrsC");
+                addEl.addEventListener('change',function(){
+                    $scope.getChildAddressData($scope.addressData.countryId);
+                });
+              $scope.addressData.countries = data.resources;
+            });
+
+        };
+        $scope.getCountries();
+
+
+        $scope.getChildAddressData = function(parentId){
+            $http.get(baseUrl + "api/adminunits?parentId="+parentId).success(function(data){
+                $scope.addressData.regions = data.resources;
+                $scope.isCountrySelected = true;
+            });
+        };
+
+        //end for adress
 
         $scope.allMappedArrData = {
             citizenCountry: [],
@@ -62,13 +102,16 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.getGenderTypes();
 
         // search data content array getters
-        $scope.dataForSearchContent = [];
         $scope.dataForSearchContent = {
             citizenCountries: [],
             genderTypes : [],
             personsTypes : [],
             marriedTypes : [],
-            languages : []
+            languages : [],
+            personName : ""
+        };
+        $scope.searchObj ={
+            personName : ""
         };
 
         $scope.getCitizenCountry = function(){
@@ -109,39 +152,65 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         $scope.getLanguages();
         // end: search data content array getters
 
-        $scope.tempPersonData = {};
+        $scope.personData = {};
 
-        $scope.getPersonData = function (offset,orderByKey,name) {
-            PersonsService.getAll(offset,orderByKey,name).success(function(data){
-                $scope.personsCount = data.count;
-                $scope.tempPersonData = data.resources;
-                PersonRepo.pushPerson(data.resources);
-            });
-            //$http.get(baseUrl + "api/persons?limit=10&offset="+ offset+"&orderBy="+orderByKey+"&name="+name)
-            //    .success(function (data) {
-            //
-            //});
+        $scope.getPersonData = function (offset,orderByKey) {
+            return PersonsService.getAll(offset,orderByKey,$scope.searchObj.personName,$scope.searchObj.genderTypeId
+                ,$scope.searchObj.personTypeId,$scope.searchObj.citizenCountryId,$scope.searchObj.marriedTypeId)
+                .success(function(data){
+                    var prevBtn = document.getElementById("prevBtn");
+                    var nextBtn = document.getElementById("nextBtn");
+                    if (($scope.personsOffset) === 0) {
+                        nextBtn.removeAttribute('disabled');
+                        prevBtn.setAttribute('disabled', 'disabled');
+                    }
+                    $scope.personsCount = data.count;
+                    $scope.personData = data.resources;
+                    PersonRepo.pushPerson(data.resources);
+                });
         };
-        $scope.getPersonData(0,'name-asc');//todo remove after create service. DK
-        $scope.offset = 0;
+
+        $scope.getPersonData(0,'name-asc');
+
+
         $scope.getNextData = function(){
-            if($scope.offset < $scope.personsCount){
-            $scope.offset += 10;
-            $scope.getPersonData($scope.offset,'name-asc')
+            var prevBtn = document.getElementById("prevBtn");
+            var nextBtn = document.getElementById("nextBtn");
+            if(($scope.personsOffset+10) < $scope.personsCount){
+                $scope.personsOffset += 10;
+                $scope.getPersonData($scope.personsOffset,'name-asc');
+                if(($scope.personData.length+$scope.personsOffset) >= $scope.personsCount) {
+                    nextBtn.setAttribute('disabled','disabled');
+                    prevBtn.removeAttribute('disabled')
+                }
+                else{
+                    prevBtn.removeAttribute('disabled');}
             }
         };
+
         $scope.getPrevData = function(){
-            if($scope.offset > 0){
-            $scope.offset -= 10;
-            $scope.getPersonData($scope.offset,'name-asc')
+            var prevBtn = document.getElementById("prevBtn");
+            var nextBtn = document.getElementById("nextBtn");
+            if($scope.personsOffset > 0) {
+                $scope.personsOffset -= 10;
+                $scope.getPersonData($scope.personsOffset, 'name-asc');
+                if (($scope.personsOffset) === 0) {
+                    prevBtn.setAttribute('disabled', 'disabled');
+                }
+                else {
+                    nextBtn.removeAttribute('disabled');
+                    prevBtn.removeAttribute('disabled');
+                }
             }
         };
-
-
 
         $scope.showGeneralInfo = function(data){
 
             $scope.personGeneralInfoEditModalObj = data;
+            var tempDate = new Date(data.begDate);
+            $scope.personGeneralInfoEditModalObj.day = tempDate.getDate();
+            $scope.personGeneralInfoEditModalObj.month = (tempDate.getMonth()+1);
+            $scope.personGeneralInfoEditModalObj.year = tempDate.getFullYear();
             $scope.personGeneralInfoObj = data;
             angular.forEach($scope.tempForeinerArrObj,function(key){
                 if(key.personId === data.id){
@@ -154,57 +223,30 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
 
         $scope.pushPersonToObj= function(data){
             $scope.personGeneralInfoEditModalObj = data;
+            var tempDate = new Date(data.begDate);
+            $scope.personGeneralInfoEditModalObj.day = tempDate.getDate();
+            $scope.personGeneralInfoEditModalObj.month = (tempDate.getMonth()+1);
+            $scope.personGeneralInfoEditModalObj.year = tempDate.getFullYear();
         };
+
         $scope.showSearch= function(iff){
+
             $scope.searchObj = {};
+            var el = document.getElementById("personsTable");
+            if(iff){
+                angular.element(el).removeClass("col-lg-12 col-md-12");
+                angular.element(el).addClass("col-lg-9 col-md-8")
+            }else{
+                angular.element(el).removeClass("col-lg-9 col-md-9");
+                angular.element(el).addClass("col-lg-12 col-md-12")
+            }
             $scope.isMoreSearch = iff;
         };
 
+        $scope.searchPersonsByName = function(){
+            $scope.personsOffset = 0;
+            $scope.getPersonData(0,'name-asc');
+        };
+
     }]);
-
-
-persons.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
-
-    $scope.open = function (name, persId, index) {
-        var modalInstance = $modal.open({
-            templateUrl: 'myModalContent',
-            controller: 'ModalInstanceCtrl',
-            size: "sm",
-            resolve: { name: function () {
-                return name;
-            },
-                id: function () {
-                    return persId;
-                },
-                currentIndex: function(){
-                    return index;
-                }
-            }
-        });
-
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-
-        }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-    };
-});
-
-
-persons.controller('ModalInstanceCtrl', function ($scope, $modalInstance, name, id, currentIndex) {
-
-    $scope.name = name;
-    $scope.id = id;
-    $scope.currentIndex = currentIndex;
-
-    $scope.ok = function () {
-        $modalInstance.close(true);
-    };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
-
-});
 

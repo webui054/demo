@@ -1,39 +1,29 @@
 <table class="table table-bordered mainPersonTable col-lg-12 col-md-12">
     <thead>
-    <tr class="personTableHeaderRow">
-        <th>ПІБ</th>
-        <th>Стать</th>
-        <th>Народження</th>
-        <th>Тип </th>
-        <th>Резидент</th>
-        <th>Громадянство </th>
-        <th>Особова справа</th>
-        <th>Управління</th>
+    <tr class="personTableHeaderRow crs-dflt">
+        <th ng-repeat="data in tableHeaderDataObj" ng-bind="data"></th>
     </tr>
     </thead>
     <tbody>
-    <tr class="PersonTableContentRow" ng-repeat="data in tempPersonData" ng-class-odd="'odd-color-them'"
+    <tr class="PersonTableContentRow crs-pntr" ng-repeat="data in personData" ng-class-odd="'odd-color-them'"
         ng-dblclick="showGeneralInfo(data)">
-
         <td>
-            <a href="#/person/{{data.id}}">{{data.name}}</a>
+            <a href="#/person/{{data.id}}" class="txt-decor-none" ng-bind="data.name"></a>
         </td>
-        <td>{{allMappedArrData.genderTypes[data.genderTypeId]}}</td>
-        <td>{{data.begDate  | date: "dd.MM.yyyy'р.'"}}</td>
-        <td>{{allMappedArrData.personsTypes[data.personTypeId]}}</td>
-        <td>{{data.resident | checkYesNo}}</td>
+        <td ng-bind="allMappedArrData.genderTypes[data.genderTypeId]"></td>
+        <td ng-bind="data.begDate  | date: 'dd.MM.yyyy'"></td>
+        <td ng-bind="allMappedArrData.personsTypes[data.personTypeId]"></td>
+        <td ng-bind="data.resident | checkYesNo"></td>
+        <td ng-bind="allMappedArrData.citizenCountry[data.citizenCountryId]"></td>
+        <td ng-bind="data.docSeries + ':' + data.docNum"></td>
         <td>
-            {{allMappedArrData.citizenCountry[data.citizenCountryId]}}
-        </td>
-        <td>{{data.docSeries + ':' + data.docNum}}</td>
-        <td ng-controller="ModalDemoCtrl">
             <div class="">
                 <button class="btn btn-primary btn-xs border-radius-0 border-none"
                         data-toggle="modal" data-target="#editNewPersonModal" ng-click="pushPersonToObj(data)">
                     <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
                 </button>
                 <button class="btn btn-primary btn-xs border-radius-0 border-none"
-                        ng-click="open(data.name, data.id, $index)" data-toggle="modal" name="removePerson">
+                        data-target="#deletePersonModalContent" ng-click="pushPersonToObj(data)" data-toggle="modal">
                     <span class="glyphicon glyphicon-trash glyphicon-white"></span>
                 </button>
             </div>

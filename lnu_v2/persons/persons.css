@@ -116,9 +116,9 @@
     float: left;
     width: 35%;
 }
-.mainPersonTable tbody tr td:nth-child(2){
-    text-align: left;
-}
+/*.mainPersonTable tbody tr td:nth-child(2){*/
+    /*text-align: left;*/
+/*}*/
 th.mainPersonTable-col-name:hover{
     text-decoration: underline;
     cursor: pointer;
@@ -141,4 +141,25 @@ th.mainPersonTable-col-citiz:hover{
 }
 .pd-lf-0{
   padding-left: 0;
+}
+.pd-rt-15{
+    padding-right: 15px;
+}
+.txt-decor-none{
+    text-decoration: none;
+}
+.txt-decor-none:hover{
+    text-decoration: none;
+}
+.crs-pntr{
+      cursor: pointer;
+  }
+.crs-dflt{
+    cursor: default;
+}
+.wtd-33{
+    width: 32%;
+}
+.dspl-inline{
+    display: inline;
 }

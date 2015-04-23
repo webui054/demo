@@ -6,29 +6,36 @@
                 <div class="panel-heading clearfix only-border-radius-0 background-image-none">
                     <h4 class="pull-left">Адреси та Контакти</h4>
                     <div class="pull-right">
-                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Видалити">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Видалити">
                             <span class="glyphicon glyphicon-trash glyphicon-white"></span>
                         </button>
-                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Редагувати">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати">
                             <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
                         </button>
-                        <button class="pull-right btn btn-primary border-none material-btn-person" title="Додати адресу або контакти">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Додати адресу або контакти">
                             <span class="glyphicon glyphicon-plus glyphicon-white"></span>
                         </button>
                     </div>
                 </div>
                 <div class="row panel-body">
+                    <div class="form-group">
+                        <label for="addrsC">Countries</label>
+                        <select id="addrsC" class="form-control" ng-model="addressData.countryId"
+                                ng-options="countries.id as countries.name for countries in addressData.countries">
+                        </select>
+                    </div>
                     <div class="svAddressContainer">
                         <div class="svAddressHeader"><h4>Адреси</h4></div>
                         <div class="svAddressRegContainer">
-                            <label class="label-font-size-16" for="svAddressReg">Адреса реєстрації:</label>
-                            <div id="svAddressReg" class="form-control general-info-text svAddressFields">
-                                {{"м. Івано-Франківськ, вул. Берегова буд. 34а, кв. 9"}}
-                            </div>
+                            <!--<label class="label-font-size-16" for="svAddressReg">Адреса реєстрації:</label>-->
+                            <!--<div id="svAddressReg" class="form-control general-info-text svAddressFields">-->
+                                <!--{{"м. Івано-Франківськ, вул. Берегова буд. 34а, кв. 9"}}-->
+                            <!--</div>-->
+
                             
                         </div>
                         <div class="svAddressPostContainer">
-                            <label class="label-font-size-16" for="svAddressReg">Поштова адреса:</label>
+                            <label class="label-font-size-16" for="svAddressPosr">Поштова адреса:</label>
                             <div id="svAddressPosr" class="form-control general-info-text svAddressFields">
                                 {{"м. Івано-Франківськ, вул. Сахарова буд. 23, кв. 23"}}
                             </div>
