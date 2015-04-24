@@ -18,6 +18,42 @@
                         </button>
                     </span>
                 </div>
+                <div class="form-group">
+                    <label for="addrsC">Країна</label>
+                    <select id="addrsC" class="form-control" ng-model="addressData.countryId"
+                            ng-options="countries.id as countries.name for countries in addressData.countries">
+                    </select>
+                </div>
+                <div class="form-group" ng-show="isCountrySelected">
+                    <label for="addrsR">Область</label>
+                    <select id="addrsR" class="form-control" ng-model="addressData.regionId"
+                            ng-options="regions.id as regions.name for regions in addressData.regions">
+                    </select>
+                </div>
+                <div class="form-group" ng-show="isRegionSelected">
+                    <label for="addrsCD">Підпорядкування</label>
+                    <select id="addrsCD" class="form-control" ng-model="addressData.cdTypeId"
+                            ng-options="cdTypes.id as cdTypes.name for cdTypes in addressData.cdTypes">
+                    </select>
+                </div>
+                <div class="form-group" ng-show="iscdTypeSelected">
+                    <label for="addrsD">Місто/Район</label>
+                    <select id="addrsD" class="form-control" ng-model="addressData.districtId"
+                            ng-options="districts.id as districts.name for districts in addressData.districts">
+                    </select>
+                </div>
+                <div class="form-group" ng-show="isDistrictSelected">
+                    <label for="addrsV">Місто/Село/смт</label>
+                    <select id="addrsV" class="form-control" ng-model="addressData.vTypeId"
+                            ng-options="vTypes.id as vTypes.name for vTypes in addressData.vTypes">
+                    </select>
+                </div>
+                <div class="form-group" ng-show="isvTypeSelected">
+                    <label for="addrsVi">Назва міста/селища</label>
+                    <select id="addrsVi" class="form-control" ng-model="addressData.villageId"
+                            ng-options="villages.id as villages.name for villages in addressData.villages">
+                    </select>
+                </div>
             </div>
 
             <span ng-bind="'з '+ (personsOffset+1) + ' по ' + (personData.length+personsOffset) + ' з ' + personsCount">

@@ -3,7 +3,7 @@
  */
 
 
-app.controller("DocumentsCTRL",["$scope","$http","PersonDataMappingArray",
+app.controller("DocumentsCtrl",["$scope","$http","PersonDataMappingArray",
     function($scope,$http,PersonDataMappingArray){
 
         $scope.personDataArrForDocuments = [];
