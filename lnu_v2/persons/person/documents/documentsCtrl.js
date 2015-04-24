@@ -3,7 +3,7 @@
  */
 
 
-app.controller("DocumentsCtrl",["$scope","$http","PersonDataMappingArray",
+persons.controller("DocumentsCtrl",["$scope","$http","PersonDataMappingArray",
     function($scope,$http,PersonDataMappingArray){
 
         $scope.personDataArrForDocuments = [];
@@ -21,7 +21,7 @@ app.controller("DocumentsCtrl",["$scope","$http","PersonDataMappingArray",
             });
         };
 
-        $scope.getGenderTypes();
-        $scope.getPersonTypes();
+        $scope.getDocTypes();
+        $scope.getDocUsages();
 
     }]);

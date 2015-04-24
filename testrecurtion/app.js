@@ -34,7 +34,7 @@ var  name = "";
     };
     $scope.getZnoData = function(personId){
 
-        return $http.get(BASEURL + "api/adminunits?parentId=13264")
+        return $http.get(BASEURL + "api/persons/11/addresses")
             .success(function (data) {
 
             })

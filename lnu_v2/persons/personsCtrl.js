@@ -1,4 +1,5 @@
-persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray","$location",'PersonsService','$modal',
+persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","PersonDataMappingArray","$location",
+    'PersonsService','$modal',
     function($scope,PersonRepo,$rootScope,$http,PersonDataMappingArray,$location,PersonsService,$modal){
 
         $scope.personGeneralInfoAddModalObj = {};
@@ -37,7 +38,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
             districtId:{},
             vTypeId:{},
             villageId:{}
-        }
+        };
 
         var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
         $scope.getCountries = function(){
@@ -87,6 +88,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         };
 
         $scope.getvTypeAddressData = function(parentId){
+
             $http.get(baseUrl + "api/adminunits?parentId="+parentId).success(function(data){
                 var addEl = document.getElementById("addrsV");
                 addEl.addEventListener('change',function(){
