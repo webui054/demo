@@ -52,10 +52,11 @@ persons.controller("EditNewPersonModalCtrl",["$scope","PersonDataMappingArray","
             " " + $scope.personGeneralInfoEditModalObj.surname + " " + $scope.personGeneralInfoEditModalObj.fatherName;
 
             //$scope.personGeneralInfoEditModalObj.identifier = "";
-            //$scope.personGeneralInfoEditModalObj.parentId = 01;
+
             var tempDate = $scope.personGeneralInfoEditModalObj.year + "-"+$scope.personGeneralInfoEditModalObj.month +
                 "-"+$scope.personGeneralInfoEditModalObj.day;
             $scope.personGeneralInfoEditModalObj.begDate = tempDate;
+
             var data = {
                 personTypeId:  $scope.personGeneralInfoEditModalObj.personTypeId,
                 citizenCountryId: $scope.personGeneralInfoEditModalObj.citizenCountryId,
