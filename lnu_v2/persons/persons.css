@@ -158,8 +158,24 @@ th.mainPersonTable-col-citiz:hover{
     cursor: default;
 }
 .wtd-33{
+      width: 20%;
+  }
+.wtd-32{
     width: 32%;
 }
 .dspl-inline{
     display: inline;
+}
+.form-control {
+    padding: 5px 10px;
+}
+input.ng-invalid.ng-dirty {
+    color:#a94442;
+    border-color: #a94442;
+    background-color: #f2dede;
+}
+input.ng-valid.ng-dirty {
+    color:#3c763d;
+    border-color: #3c763d;
+    background-color: #dff0d8;
 }

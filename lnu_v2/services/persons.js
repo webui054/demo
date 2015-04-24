@@ -33,7 +33,19 @@ persons.factory("PersonsService",["$q","$http",function($q, $http){
     };
 
     factory.addNewPerson = function(person){
-        return $http.post(baseUrl+"api/persons/",person);
+        var deferred = $q.defer();
+        var tempPerson =  personValidator(person);
+        $http.get(person.photo).success(function(){
+            $http.post(baseUrl+"api/persons/",tempPerson).success(function(data){
+                deferred.resolve(data);
+            });
+        }).error(function(){
+            tempPerson.photo = 'content/photo/na.jpg';
+            $http.post(baseUrl+"api/persons/", tempPerson).success(function(data){
+                deferred.resolve(data);
+            });
+        });
+        return deferred.promise;
     };
 
     factory.editPerson = function(id,person){
@@ -43,6 +55,20 @@ persons.factory("PersonsService",["$q","$http",function($q, $http){
     factory.deletePerson = function(personId){
         return $http.delete(baseUrl+"api/persons/"+personId);
     };
+
+    var personValidator = function(person){
+        if(person.isMilitary === undefined){
+            person.isMilitary = 0;
+        }
+        if(person.isHostel === undefined){
+            person.isHostel = 0;
+        }
+        if(person.resident === undefined){
+            person.resident = 0;
+        }
+        return person;
+    };
+
     return factory;
 
 }]);
