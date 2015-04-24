@@ -104,7 +104,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
             });
         };
 
-        //end for adress
+        //end for adress selection
 
         $scope.allMappedArrData = {
             citizenCountry: [],
