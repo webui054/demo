@@ -1,5 +1,5 @@
-persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http","PersonsService",
-    function($scope,PersonDataMappingArray,$http,PersonsService){
+persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http","PersonsService","$location",
+    function($scope,PersonDataMappingArray,$http,PersonsService,$location){
         $scope.allPersonsArrData = [];
         $scope.allPersonsArrData = {
             citizenCountries: [],
@@ -83,6 +83,9 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$
                 var el = document.getElementById('addNewPerson'+i);
                     $scope.one = false;
                     el.addEventListener('keypress',function(e){
+                        //var asd = el.value;
+                        //var reg = /['а-яА-ЯіїєІЇЄ]/;
+                        //reg.match(asd);
                         var isNotUkrKeyPress =  (e.keyCode < 1025 || e.keyCode > 1097);
                         if(e.keyCode !== 39 || $scope.one){
                             if ((isNotUkrKeyPress) || (e.keyCode === 8)) {
@@ -118,6 +121,8 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$
 
             PersonsService.addNewPerson($scope.personGeneralInfoAddModalObj).then(function(data){
                 $scope.personData.push(data);
+               //.
+               // $location.path("/benefits");
             });
 
             $scope.personGeneralInfoAddModalObj = {};

@@ -13,16 +13,18 @@ persons.controller("PersonCtrl",["$scope","PersonRepo",'$routeParams', function(
         $scope.personTab = 1;
         $scope.$parent.isShowGeneralInfo = false;
     };
+
     (function (){
-        var tempPerson = PersonRepo.getPersonById(parseInt($routeParams.personId,10));
-        $scope.personGeneralInfoEditModalObj = tempPerson.$$state.value;
-        var tempDate = new Date(tempPerson.$$state.value.begDate);
+      PersonRepo.getPersonById2(parseInt($routeParams.personId,10)).then(function(data){
+          $scope.personGeneralInfoEditModalObj = data;
+          var tempDate = new Date(data.begDate);
 
-        $scope.personGeneralInfoEditModalObj.day = tempDate.getDate();
-        $scope.personGeneralInfoEditModalObj.month = (tempDate.getMonth()+1);
-        $scope.personGeneralInfoEditModalObj.year = tempDate.getFullYear();
-        $scope.personGeneralInfoObj = tempPerson.$$state.value;
+          $scope.personGeneralInfoEditModalObj.day = tempDate.getDate();
+          $scope.personGeneralInfoEditModalObj.month = (tempDate.getMonth()+1);
+          $scope.personGeneralInfoEditModalObj.year = tempDate.getFullYear();
+          $scope.personGeneralInfoObj = data;
 
-        $scope.isShowGeneralInfo = true;
+          $scope.isShowGeneralInfo = true;
+      });
     }())
 }]);

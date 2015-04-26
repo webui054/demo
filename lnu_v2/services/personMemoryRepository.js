@@ -1,6 +1,6 @@
-app.factory("PersonRepo",["$q",function($q){
+app.factory("PersonRepo",["$q","$http",function($q,$http){
     var person = [];
-
+    var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
     var factory = {};
 
     var pushData = function(data){
@@ -19,6 +19,16 @@ app.factory("PersonRepo",["$q",function($q){
                 deferred.resolve(elem);
             }
         });
+        return deferred.promise;
+    };
+    factory.getPersonById2 = function(id){
+        var deferred = $q.defer();
+        $http.get(baseUrl+"api/persons/"+id).success(function(data){
+            deferred.resolve(data);
+        }).error(function(msg){
+            deferred.resolve(msg);
+        });
+
         return deferred.promise;
     };
 

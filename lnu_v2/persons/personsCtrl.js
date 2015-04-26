@@ -203,73 +203,37 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
         // end: search data content array getters
 
         $scope.personData = {};
-
+        $scope.orderByKey = 'name-asc';
         $scope.getPersonData = function (offset,orderByKey) {
             return PersonsService.getAll(offset,orderByKey,$scope.searchObj.personName,$scope.searchObj.genderTypeId
                 ,$scope.searchObj.personTypeId,$scope.searchObj.citizenCountryId,$scope.searchObj.marriedTypeId)
                 .success(function(data){
-                    var prevBtn = document.getElementById("prevBtn");
-                    var nextBtn = document.getElementById("nextBtn");
-                    if (($scope.personsOffset) === 0) {
-                        nextBtn.removeAttribute('disabled');
-                        prevBtn.setAttribute('disabled', 'disabled');
-                    }
                     $scope.personsCount = data.count;
                     $scope.personData = data.resources;
                     PersonRepo.pushPerson(data.resources);
                 });
         };
 
-        $scope.getPersonData(0,'name-asc');
+        $scope.getPersonData(0,$scope.orderByKey);
 
 
         $scope.getNextData = function(){
-            var prevBtn = document.getElementById("prevBtn");
-            var nextBtn = document.getElementById("nextBtn");
             if(($scope.personsOffset+10) < $scope.personsCount){
                 $scope.personsOffset += 10;
-                $scope.getPersonData($scope.personsOffset,'name-asc');
-                if(($scope.personData.length+$scope.personsOffset) >= $scope.personsCount) {
-                    nextBtn.setAttribute('disabled','disabled');
-                    prevBtn.removeAttribute('disabled')
-                }
-                else{
-                    prevBtn.removeAttribute('disabled');}
+                $scope.getPersonData($scope.personsOffset,$scope.orderByKey);
             }
         };
 
         $scope.getPrevData = function(){
-            var prevBtn = document.getElementById("prevBtn");
-            var nextBtn = document.getElementById("nextBtn");
             if($scope.personsOffset > 0) {
                 $scope.personsOffset -= 10;
-                $scope.getPersonData($scope.personsOffset, 'name-asc');
-                if (($scope.personsOffset) === 0) {
-                    prevBtn.setAttribute('disabled', 'disabled');
-                }
-                else {
-                    nextBtn.removeAttribute('disabled');
-                    prevBtn.removeAttribute('disabled');
-                }
+                $scope.getPersonData($scope.personsOffset, $scope.orderByKey);
             }
         };
 
         $scope.showGeneralInfo = function(data){
-
-            $scope.personGeneralInfoEditModalObj = data;
-            var tempDate = new Date(data.begDate);
-            $scope.personGeneralInfoEditModalObj.day = tempDate.getDate();
-            $scope.personGeneralInfoEditModalObj.month = (tempDate.getMonth()+1);
-            $scope.personGeneralInfoEditModalObj.year = tempDate.getFullYear();
-            $scope.personGeneralInfoObj = data;
-            angular.forEach($scope.tempForeinerArrObj,function(key){
-                if(key.personId === data.id){
-                    $scope.tempForeinerObj = key;
-                }
-            });
             $location.path('/person/'+ data.id);
         };
-
 
         $scope.pushPersonToObj= function(data){
             $scope.personGeneralInfoEditModalObj = data;
@@ -279,23 +243,15 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
             $scope.personGeneralInfoEditModalObj.year = tempDate.getFullYear();
         };
 
+        $scope.isMoreSearch = false;
         $scope.showSearch= function(iff){
-
             $scope.searchObj = {};
-            var el = document.getElementById("personsTable");
-            if(iff){
-                angular.element(el).removeClass("col-lg-12 col-md-12");
-                angular.element(el).addClass("col-lg-9 col-md-8")
-            }else{
-                angular.element(el).removeClass("col-lg-9 col-md-9");
-                angular.element(el).addClass("col-lg-12 col-md-12")
-            }
             $scope.isMoreSearch = iff;
         };
 
         $scope.searchPersonsByName = function(){
             $scope.personsOffset = 0;
-            $scope.getPersonData(0,'name-asc');
+            $scope.getPersonData(0,$scope.orderByKey);
         };
 
     }]);
