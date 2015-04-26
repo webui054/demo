@@ -1,7 +1,12 @@
 <table class="table table-bordered mainPersonTable">
     <thead>
     <tr class="personTableHeaderRow crs-dflt">
-        <th ng-repeat="data in tableHeaderDataObj" ng-bind="data"></th>
+        <th ng-repeat="data in tableHeaderDataObj" ng-click="getOrderByPersonData(data.orderByKey)" ng-bind="data.name">
+            <a>
+            <span ng-show="reverseSort" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="!reverseSort" class="glyphicon glyphicon-chevron-down"></span>
+            </a>
+        </th>
     </tr>
     </thead>
     <tbody>

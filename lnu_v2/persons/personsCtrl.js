@@ -20,8 +20,14 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
 
         $scope.tempForeinerObj ={};
 
-        $scope.tableHeaderDataObj = [ 'ПІБ','Стать','Народження','Тип','Резидент',
-            'Громадянство','Особова справа','Управління'];
+        $scope.tableHeaderDataObj = [ {name:'ПІБ',orderByKey:'name'},
+            {name:'Стать',orderByKey:'genderTypeId'},
+            {name:'Народження',orderByKey:'begDate'},
+            {name:'Тип',orderByKey:'personTypeId'},
+            {name:'Резидент',orderByKey:'resident'},
+            {name:'Громадянство',orderByKey:'citizenCountryId'},
+            {name:'Особова справа',orderByKey:''},
+            {name:'Управління',orderByKey:''}];
 
         //Address Select for person adress
         $scope.addressData = {
@@ -51,7 +57,7 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
             });
 
         };
-        $scope.getCountries();
+        //$scope.getCountries();
 
 
         $scope.getRegionAddressData = function(parentId){
@@ -216,6 +222,23 @@ persons.controller("PersonsCtrl",["$scope","PersonRepo","$rootScope","$http","Pe
 
         $scope.getPersonData(0,$scope.orderByKey);
 
+        $scope.reverseSort = false;
+
+        $scope.getOrderByPersonData = function (orderByKey) {
+            if(orderByKey === ''){
+
+            }else{
+                $scope.reverseSort = !$scope.reverseSort;
+                if($scope.reverseSort){
+                    $scope.orderByKey = orderByKey +'-asc';
+                    $scope.getPersonData($scope.personsOffset,$scope.orderByKey);
+                }
+                else {
+                    $scope.orderByKey = orderByKey +'-desc';
+                    $scope.getPersonData($scope.personsOffset,$scope.orderByKey);
+                }
+            }
+        };
 
         $scope.getNextData = function(){
             if(($scope.personsOffset+10) < $scope.personsCount){
