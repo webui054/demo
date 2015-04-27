@@ -1,7 +1,6 @@
 <div class="container" ng-show="isPersonTabSelected(2)" ng-controller="AddressCtrl">
     <div class="row">
         <div class="col-md-12">
-            <br>
             <div class="panel panel-primary only-border-radius-0">
                 <div class="panel-heading clearfix only-border-radius-0 background-image-none">
                     <h4 class="pull-left">Адреси та Контакти</h4>
@@ -12,18 +11,12 @@
                         <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати">
                             <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
                         </button>
-                        <button class="pull-right btn btn-primary border-none material-btn" title="Додати адресу або контакти">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Додати" ng-click="showModal('#addAddressModal')">
                             <span class="glyphicon glyphicon-plus glyphicon-white"></span>
                         </button>
                     </div>
                 </div>
                 <div class="row panel-body">
-                    <div class="form-group">
-                        <label for="addrsC">Countries</label>
-                        <select id="addrsC" class="form-control" ng-model="addressData.countryId"
-                                ng-options="countries.id as countries.name for countries in addressData.countries">
-                        </select>
-                    </div>
                     <div class="svAddressContainer">
                         <div class="svAddressHeader"><h4>Адреси</h4></div>
                         <div class="svAddressRegContainer">
@@ -36,156 +29,139 @@
                         </div>
                         <div class="svAddressPostContainer">
                             <label class="label-font-size-16" for="svAddressPosr">Поштова адреса:</label>
-                            <div id="svAddressPosr" class="form-control general-info-text svAddressFields">
-                                {{"м. Івано-Франківськ, вул. Сахарова буд. 23, кв. 23"}}
-                            </div>
-                            <div class="svAddressButtons">
-                                <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
-                                <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
+                            <div id="svAddressPosr"  class="form-control general-info-text svAddressFields" ng-repeat="data in tempAddressArray">
+                                {{ data.index + data.house + data.apartment }}
                             </div>
                         </div>
                     </div>
-                    <hr color="#337ab7">
                     <div class="svContactsContainer">
                         <div class="svContactsHeader"><h4>Контакти</h4></div>
                         <div class="svContactsCol-1">
                             <div class="col-md-12 col-lg-12 general-info-item">
                                 <label class="label-font-size-16" for="svMobPhone">Мобільний телефон:</label>
-                                <div id="svMobPhone" class="form-control general-info-text">{{"+38(068)144-20-23"}}</div>
-                                <div class="svContactButtons">
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-12 general-info-item">
-                                <label class="label-font-size-16" for="svWorkPhone">Робочий:</label>
-                                <div id="svWorkPhone" class="form-control general-info-text">{{"+38(050)833-84-83"}}</div>
-                                <div class="svContactButtons">
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
-                                </div>
+                                <div id="svMobPhone" class="form-control general-info-text" ng-repeat="data in tempAddressArray">{{ data.mPhone }}</div>
                             </div>
                             <div class="col-md-12 col-lg-12 general-info-item">
                                 <label class="label-font-size-16" for="svHomePhone">Домашній телефон:</label>
-                                <div id="svHomePhone" class="form-control general-info-text">{{"(0342)6-61-83"}}</div>
-                                <div class="svContactButtons">
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
-                                </div>
+                                <div id="svHomePhone" class="form-control general-info-text" ng-repeat="data in tempAddressArray">{{ data.phone }}</div>
                             </div>
                         </div>
                         <div class="svContactsCol-2">
                             <div class="col-md-12 col-lg-12 general-info-item">
                                 <label class="label-font-size-16" for="svEmail">e-mail:</label>
-                                <div id="svEmail" class="form-control general-info-text">{{"webui054@gmail.com"}}</div>
-                                <div class="svContactButtons">
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-12 general-info-item">
-                                <label class="label-font-size-16" for="svSkype">Skype:</label>
-                                <div id="svSkype" class="form-control general-info-text">{{"KuznєcovDmitro"}}</div>
-                                <div class="svContactButtons">
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-12 general-info-item">
-                                <label class="label-font-size-16" for="svICQ">ICQ:</label>
-                                <div id="svICQ" class="form-control general-info-text">{{"833755721"}}</div>
-                                <div class="svContactButtons">
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressDeleteButton" title="Видалити"><span class="glyphicon glyphicon-trash glyphicon-white"></span></button>
-                                    <button class="btn btn-primary btn-xs border-radius-0 svAddressEditButton" title="Редагувати"><span class="glyphicon glyphicon-pencil glyphicon-white"></span></button>
-                                </div>
+                                <div id="svEmail" class="form-control general-info-text" ng-repeat="data in tempAddressArray">{{ data.email}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-                <!--
-                <div class="row panel-body">
-                    <div class="col-md-4 col-lg-3 container">
-                        <img height="320px" width="240px" src="{{personGeneralInfoObj.photo}}">
-                        <div class="col-md-4 col-lg-4 general-info-item">
-                            <label class="" for="ser">Серія :</label>
-                            <div id="ser" class="form-control general-info-text">{{personGeneralInfoObj.docSeries}}</div>
-                        </div>
-                        <div class="col-md-8 col-lg-8 general-info-item">
-                            <label class="" for="num">№ :</label>
-                            <div id="num" class="form-control general-info-text">{{personGeneralInfoObj.docNum}}</div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-5 col-lg-5 container">
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="PIB">ПІБ:</label>
-                            <div id="PIB" class="form-control general-info-text">{{personGeneralInfoObj.name}}</div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="birthdayPlace">Місце Народження:</label>
-                            <div id="birthdayPlace" class="form-control general-info-text">{{personGeneralInfoObj.birthPlace}}</div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="birthdayDate">Дата Народження:</label>
-                            <div id="birthdayDate" class="form-control general-info-text">
-                                {{personGeneralInfoObj.begDate}}
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="personTypeId">Зайнятість:</label>
-                            <div id="personTypeId" class="form-control general-info-text">
-                                {{personsTypes2[personGeneralInfoObj.personTypeId]}}
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-lg-6 general-info-item">
-                            <label class="label-font-size-16" for="military">Військовозобовязаний:</label>
-                            <div id="military" class="form-control general-info-text">
-                                {{personGeneralInfoObj.isMilitary | checkYesNo}}
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-lg-6 general-info-item">
-                            <label class="label-font-size-16" for="hostel">Гуртожиток:</label>
-                            <div id="hostel" class="form-control general-info-text">
-                                {{personGeneralInfoObj.isHotel | checkYesNo}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-lg-3 container">
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="Sex">Стать:</label>
-                            <div id="Sex" class="form-control general-info-text">
-                                {{genderTypes2[personGeneralInfoObj.genderTypeId]}}
-                            </div>
-                        </div>
-                        <div class="col-md-12 ol-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="married">Громадянський стан:</label>
-                            <div id="married" class="form-control general-info-text">
-                                {{marriedType2[personGeneralInfoObj.marriedTypeId]}}
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="gr">Громадянство:</label>
-                            <div id="gr" class="form-control general-info-text">
-                                <span ng-repeat="citizen in citizenCountry2" ng-if="personGeneralInfoObj.citizenCountryId === citizen.id">
-                                    {{citizen.name}}
-                                </span>
-                            </div>
-                        </div>
-                        <div class=" col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="rez">Резидент:</label>
-                            <div id="rez" class="form-control general-info-text">
-                                {{personGeneralInfoObj.resident | checkYesNo}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                -->
             </div>
         </div>
     </div>
+
+
+    <!--add address modal-->
+    <div id="addAddressModal" class="modal fade border-radius-0">
+        <div class="modal-dialog modal-ml border-radius-0">
+            <div class="modal-content border-radius-0">
+                <div class="modal-header custom-modal-header">
+                    <button type="button" class="btn-text btn-primary pull-right border-none" data-dismiss="modal"
+                            aria-hidden="true">
+                        <span title="Close" class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <h3 class="modal-title text-center create-group-modal-title-header-text addBenefitH">Додати
+                        адресу</h3>
+                </div>
+                <div class="modal-body border-radius-0 formBenefit">
+                    <form name="addAddressForm" ng-submit="addAddressForm.$valid && AddNewAddress()" novalidate>
+                        <div class="form-group">
+                            <label>Введіть індекс:</label>
+                            <input type="text" class="form-control border-radius-0" placeholder="Індекс"
+                                   ng-model="index" name="index" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="addrsC">Виберіть країну:</label>
+                            <select id="addrsC" class="form-control" ng-model="addressData.countryId"
+                                    ng-options="countries.id as countries.name for countries in addressData.countries">
+                            </select>
+                        </div>
+                        <div class="form-group" ng-show="isCountrySelected">
+                            <label for="addrsR">Виберіть область:</label>
+                            <select id="addrsR" class="form-control" ng-model="addressData.regionId"
+                                    ng-options="regions.id as regions.name for regions in addressData.regions">
+                            </select>
+                        </div>
+                        <div class="form-group" ng-show="isRegionSelected">
+                            <label for="addrsCD">Виберіть підпорядкування:</label>
+                            <select id="addrsCD" class="form-control" ng-model="addressData.cdTypeId"
+                                    ng-options="cdTypes.id as cdTypes.name for cdTypes in addressData.cdTypes">
+                            </select>
+                        </div>
+                        <div class="form-group" ng-show="iscdTypeSelected">
+                            <label for="addrsD">Виберіть місто/район:</label>
+                            <select id="addrsD" class="form-control" ng-model="addressData.districtId"
+                                    ng-options="districts.id as districts.name for districts in addressData.districts">
+                            </select>
+                        </div>
+                        <div class="form-group" ng-show="isDistrictSelected">
+                            <label for="addrsV">Виберіть містечко/село/смт</label>
+                            <select id="addrsV" class="form-control" ng-model="addressData.vTypeId"
+                                    ng-options="vTypes.id as vTypes.name for vTypes in addressData.vTypes">
+                            </select>
+                        </div>
+                        <div class="form-group" ng-show="isvTypeSelected">
+                            <label for="addrsVi">Виберіть назву міста/селища:</label>
+                            <select id="addrsVi" class="form-control" ng-model="addressData.villageId"
+                                    ng-options="villages.id as villages.name for villages in addressData.villages">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="addrsTypeStr">Виберіть тип - вулицю/проспект/інше:</label>
+                            <select id="addrsTypeStr" class="form-control" ng-model="addressData.typeStreet"
+                                    ng-options="typeStreets.id as typeStreets.name for typeStreets in addressData.typeStreets">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть назву вулиці/проспекту:</label>
+                            <input type="text" class="form-control border-radius-0" placeholder="Назва"
+                                   ng-model="addrsStreet" name="addrsStreet" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть номер будинку:</label>
+                            <input type="number" class="form-control border-radius-0" placeholder="Будинок"
+                                   ng-model="house" name="house" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть номер квартири:</label>
+                            <input type="number" class="form-control border-radius-0" placeholder="Квартира"
+                                   ng-model="apartment" name="apartment">
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть номер мобільного телефону:</label>
+                            <input type="text" class="form-control border-radius-0" placeholder="Мобільний"
+                                   ng-model="mPhone" name="mPhone" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть номер домашнього телефону:</label>
+                            <input type="text" class="form-control border-radius-0" placeholder="Домашній"
+                                   ng-model="phone" name="phone" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label>Введіть e-mail:</label>
+                            <input type="text" class="form-control border-radius-0" placeholder="E-mail"
+                                   ng-model="email" name="email" autofocus>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block border-radius-0 border-none" type="submit"
+                                value="Submit">
+                            Додати адресу
+                        </button>
+                        <div>form is {{addAddressForm.$valid}}</div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </div>
 
