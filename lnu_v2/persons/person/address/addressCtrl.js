@@ -1,60 +1,89 @@
-persons.controller('AddressCtrl', ["$scope", "$http", "$filter", "$interval", function ($scope, $http, $filter, $interval) {
+persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", "$filter", "$interval", function ($scope, $http, $filter, $interval) {
     $scope.tempData = [];
     $scope.tempData2 = [];
     $scope.tempData3 = {};
-    //$scope.makeBaseAuth = function(user, password) {
-    //    var tok = user + ':' + password;
-    //    var hash = btoa(tok); // encoding string in Base64
-    //    return "Basic " + hash;
-    //};
-    //$scope.BASEURL = "http://104.236.29.16:8080/is-lnu-rest-api/";
 
-    $scope.getTempDataById = function(id){
+        //Address Select for person adress
+        $scope.addressData = {
+            countries:[],
+            regions:[],
+            cdTypes:[],
+            cities:[],
+            districts:[],
+            vType:[],
+            villages:[],
+            countryId:{},
+            regionId:{},
+            cdTypeId:{},
+            districtId:{},
+            vTypeId:{},
+            villageId:{}
+        };
 
-        $.ajax
-        ({
-            type: "GET",
-            url: $scope.BASEURL + "api/specialties/" + id,
-            dataType: 'json',
-            async: false,
-            data: '{}',
-            beforeSend: function (xhr){
-                xhr.setRequestHeader('Authorization',  localStorage.getItem("baseAuthString"));
-            },
-            success: function (data){
-                $scope.tempData3 = angular.fromJson(data);
-            }
-        });
-    };
-
-    $scope.getTempData = function(){
-
-        $.ajax
-        ({
-            type: "GET",
-            url: $scope.BASEURL + "api/specoffers",
-            dataType: 'json',
-            async: false,
-            data: '{}',
-            beforeSend: function (xhr){
-                xhr.setRequestHeader('Authorization', localStorage.getItem("baseAuthString"));
-            },
-            success: function (data){
-                $scope.tempData = angular.fromJson(data.resources);
-                angular.forEach($scope.tempData,function(item){
-                    $scope.getTempDataById(item.specialtyId);
-                    item.name = $scope.tempData3.name;
-                    $scope.tempData2.push(item);
-                    $scope.tempData3 = {};
+        var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
+        $scope.getCountries = function(){
+            $http.get(baseUrl + "api/adminunits?adminUnitTypeId=6").success(function(data){
+                var addEl = document.getElementById("addrsC");
+                addEl.addEventListener('change',function(){
+                    $scope.getRegionAddressData($scope.addressData.countryId);
                 });
+              $scope.addressData.countries = data.resources;
+            });
 
-            }
-        });
-    };
-
-    //$scope.getTempData();
+        };
+        //$scope.getCountries();
 
 
-}]);/**
- * Created by student on 26.03.2015.
- */
+        $scope.getRegionAddressData = function(parentId){
+            $http.get(baseUrl + "api/adminunits?parentId="+parentId).success(function(data){
+                var addEl = document.getElementById("addrsR");
+                addEl.addEventListener('change',function(){
+                    $scope.getCdTypesAddressData($scope.addressData.regionId);
+                });
+                $scope.addressData.regions = data.resources;
+                $scope.isCountrySelected = true;
+            });
+        };
+
+        $scope.getCdTypesAddressData = function(parentId){
+            $http.get(baseUrl + "api/adminunits?parentId="+parentId).success(function(data){
+                var addEl = document.getElementById("addrsCD");
+                addEl.addEventListener('change',function(){
+                    $scope.getDistrictAddressData($scope.addressData.cdTypeId);
+                });
+                $scope.addressData.cdTypes = data.resources;
+                $scope.isRegionSelected = true;
+            });
+        };
+
+        $scope.getDistrictAddressData = function(parentId){
+            $http.get(baseUrl + "api/adminunits?parentId="+parentId).success(function(data){
+                var addEl = document.getElementById("addrsD");
+                addEl.addEventListener('change',function(){
+                    $scope.getvTypeAddressData($scope.addressData.districtId);
+                });
+                $scope.addressData.districts = data.resources;
+                $scope.iscdTypeSelected = true;
+            });
+        };
+
+        $scope.getvTypeAddressData = function(parentId){
+
+            $http.get(baseUrl + "api/adminunits?parentId="+parentId).success(function(data){
+                var addEl = document.getElementById("addrsV");
+                addEl.addEventListener('change',function(){
+                    $scope.getVillageAddressData($scope.addressData.vTypeId);
+                });
+                $scope.addressData.vTypes = data.resources;
+                $scope.isDistrictSelected = true;
+            });
+        };
+
+        $scope.getVillageAddressData = function(parentId){
+            $http.get(baseUrl + "api/adminunits?parentId="+parentId).success(function(data){
+                $scope.addressData.villages = data.resources;
+                $scope.isvTypeSelected = true;
+            });
+        };
+
+        //end for adress selection
