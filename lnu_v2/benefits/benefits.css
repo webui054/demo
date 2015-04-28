@@ -48,6 +48,19 @@ p.specofferName {
     color: #2d6aa0;
 }
 
+.addAddrs {
+    color: #2d6aa0;
+}
+
 .odd-color-theme{
     background-color: #e4e4e4;
+}
+
+#addrsP {
+    margin-left: 20px;
+}
+
+.addAddrsBut {
+    margin-left: 83.5%;
+    margin-top: 15px;
 }

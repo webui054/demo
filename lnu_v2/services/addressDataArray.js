@@ -13,7 +13,7 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
       return address;
     };
   
-    factory.getAddressById = function(id){
+    factory.getAddressById = function(){
         return $http.get(baseUrl + "api/adminunits?adminUnitTypeId=6").success(function(data){
             return data;
         }).error(function(msg){

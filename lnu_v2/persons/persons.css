@@ -116,6 +116,31 @@
     float: left;
     width: 35%;
 }
+
+fieldset {
+    padding: 0;
+}
+
+.form-group.col-md-2.col-lg-2 {
+    padding: 0 5px;
+}
+
+.form-group.col-md-4.col-lg-4 {
+    padding: 0 5px;
+}
+
+.form-group.col-md-6.col-lg-6 {
+    padding: 0 5px;
+
+.addAddrs {
+    color: #2d6aa0;
+}
+
+#addrsP {
+    margin-left: 20px;
+}
+
+
 /*.mainPersonTable tbody tr td:nth-child(2){*/
     /*text-align: left;*/
 /*}*/

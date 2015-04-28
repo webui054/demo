@@ -20,37 +20,33 @@
                     <div class="svAddressContainer">
                         <div class="svAddressHeader"><h4>Адреси</h4></div>
                         <div class="svAddressRegContainer">
-                            <!--<label class="label-font-size-16" for="svAddressReg">Адреса реєстрації:</label>-->
-                            <!--<div id="svAddressReg" class="form-control general-info-text svAddressFields">-->
-                                <!--{{"м. Івано-Франківськ, вул. Берегова буд. 34а, кв. 9"}}-->
-                            <!--</div>-->
+                            <label class="label-font-size-16" for="svAddressReg">Адреса реєстрації:</label>
+                            <div id="svAddressReg" class="form-control general-info-text svAddressFields">
+                                {{ data.index + data.house + data.apartment }}
+                            </div>
 
                             
                         </div>
                         <div class="svAddressPostContainer">
                             <label class="label-font-size-16" for="svAddressPosr">Поштова адреса:</label>
-                            <div id="svAddressPosr"  class="form-control general-info-text svAddressFields" ng-repeat="data in tempAddressArray">
-                                {{ data.index + data.house + data.apartment }}
+                            <div id="svAddressPosr"  class="form-control general-info-text svAddressFields">
+                                {{ data.indexPost + data.housePost + data.apartmentPost }}
                             </div>
                         </div>
                     </div>
                     <div class="svContactsContainer">
                         <div class="svContactsHeader"><h4>Контакти</h4></div>
-                        <div class="svContactsCol-1">
-                            <div class="col-md-12 col-lg-12 general-info-item">
-                                <label class="label-font-size-16" for="svMobPhone">Мобільний телефон:</label>
-                                <div id="svMobPhone" class="form-control general-info-text" ng-repeat="data in tempAddressArray">{{ data.mPhone }}</div>
-                            </div>
-                            <div class="col-md-12 col-lg-12 general-info-item">
-                                <label class="label-font-size-16" for="svHomePhone">Домашній телефон:</label>
-                                <div id="svHomePhone" class="form-control general-info-text" ng-repeat="data in tempAddressArray">{{ data.phone }}</div>
-                            </div>
+                        <div class="col-md-4 col-lg-4 general-info-item">
+                            <label class="label-font-size-16" for="svMobPhone">Мобільний телефон:</label>
+                            <div id="svMobPhone" class="form-control general-info-text">{{ data.mPhone }}</div>
                         </div>
-                        <div class="svContactsCol-2">
-                            <div class="col-md-12 col-lg-12 general-info-item">
+                        <div class="col-md-4 col-lg-4 general-info-item">
+                            <label class="label-font-size-16" for="svHomePhone">Домашній телефон:</label>
+                            <div id="svHomePhone" class="form-control general-info-text">{{ data.phone }}</div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 general-info-item">
                                 <label class="label-font-size-16" for="svEmail">e-mail:</label>
-                                <div id="svEmail" class="form-control general-info-text" ng-repeat="data in tempAddressArray">{{ data.email}}</div>
-                            </div>
+                                <div id="svEmail" class="form-control general-info-text">{{ data.email}}</div>
                         </div>
                     </div>
                 </div>
@@ -61,107 +57,196 @@
 
     <!--add address modal-->
     <div id="addAddressModal" class="modal fade border-radius-0">
-        <div class="modal-dialog modal-ml border-radius-0">
+        <div class="modal-dialog modal-lg border-radius-0">
             <div class="modal-content border-radius-0">
                 <div class="modal-header custom-modal-header">
                     <button type="button" class="btn-text btn-primary pull-right border-none" data-dismiss="modal"
                             aria-hidden="true">
                         <span title="Close" class="glyphicon glyphicon-remove"></span>
                     </button>
-                    <h3 class="modal-title text-center create-group-modal-title-header-text addBenefitH">Додати
+                    <h3 class="modal-title text-center create-group-modal-title-header-text addAddrs">Додати
                         адресу</h3>
                 </div>
-                <div class="modal-body border-radius-0 formBenefit">
+                <div class="modal-body border-radius-0 formAddress">
                     <form name="addAddressForm" ng-submit="addAddressForm.$valid && AddNewAddress()" novalidate>
+                        <h4 class="addAddrs">Адреса прописки</h4>
+                        <fieldset title="Виберіть населений пункт"  class="col-md-12 col-lg-12">
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label>Введіть індекс:</label>
+                                <input type="text" class="form-control border-radius-0" placeholder="Індекс"
+                                       ng-model="index" name="index" autofocus>
+                            </div>
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label for="addrsC">Виберіть країну:</label>
+                                <select id="addrsC" class="form-control border-radius-0" ng-model="addressData.countryId"
+                                        ng-options="countries.id as countries.name for countries in addressData.countries">
+                                </select>
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4" ng-show="isCountrySelected">
+                                <label for="addrsR">Виберіть область:</label>
+                                <select id="addrsR" class="form-control border-radius-0" ng-model="addressData.regionId"
+                                        ng-options="regions.id as regions.name for regions in addressData.regions">
+                                </select>
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4" ng-show="isRegionSelected">
+                                <label for="addrsCD">Виберіть підпорядкування:</label>
+                                <select id="addrsCD" class="form-control border-radius-0" ng-model="addressData.cdTypeId"
+                                        ng-options="cdTypes.id as cdTypes.name for cdTypes in addressData.cdTypes">
+                                </select>
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4" ng-show="iscdTypeSelected">
+                                <label for="addrsD">Виберіть місто/район:</label>
+                                <select id="addrsD" class="form-control border-radius-0" ng-model="addressData.districtId"
+                                        ng-options="districts.id as districts.name for districts in addressData.districts">
+                                </select>
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4" ng-show="isDistrictSelected">
+                                <label for="addrsV">Виберіть містечко/село/смт</label>
+                                <select id="addrsV" class="form-control border-radius-0" ng-model="addressData.vTypeId"
+                                        ng-options="vTypes.id as vTypes.name for vTypes in addressData.vTypes">
+                                </select>
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4" ng-show="isVTypeSelected">
+                                <label for="addrsVi">Виберіть назву міста/селища:</label>
+                                <select id="addrsVi" class="form-control border-radius-0" ng-model="addressData.villageId"
+                                        ng-options="villages.id as villages.name for villages in addressData.villages">
+                                </select>
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4" ng-show="isVillageSelected">
+                                <label for="addrsAd">Додатково:</label>
+                                <select id="addrsAd" class="form-control border-radius-0" ng-model="addressData.additionId"
+                                        ng-options="additions.id as additions.name for additions in addressData.additions">
+                                </select>
+                            </div>
+                        </fieldset>
+                        <fieldset title="Додайте адресу"  class="col-md-12 col-lg-12">
+                            <div class="form-group  col-md-2 col-lg-2">
+                                <label for="addrsTypeStr">Тип вулиці:</label>
+                                <select id="addrsTypeStr" class="form-control border-radius-0" ng-model="addressData.typeStreet"
+                                        ng-options="typeStreets.id as typeStreets.name for typeStreets in addressData.typeStreets">
+                                </select>
+                            </div>
+                            <div class="form-group  col-md-6 col-lg-6">
+                                <label>Введіть назву вулиці/проспекту:</label>
+                                <input type="text" class="form-control border-radius-0" placeholder="Назва"
+                                       ng-model="addrsStreet" name="addrsStreet" autofocus>
+                            </div>
+                            <div class="form-group  col-md-2 col-lg-2">
+                                <label>№ будинка:</label>
+                                <input type="number" class="form-control border-radius-0" placeholder="Будинок"
+                                       ng-model="house" name="house" required>
+                            </div>
+                            <div class="form-group  col-md-2 col-lg-2">
+                                <label>№ квартири:</label>
+                                <input type="number" class="form-control border-radius-0" placeholder="Квартира"
+                                       ng-model="apartment" name="apartment">
+                            </div>
+                        </fieldset>
+                        <h4 class="addAddrs">Поштова адреса</h4>
                         <div class="form-group">
-                            <label>Введіть індекс:</label>
-                            <input type="text" class="form-control border-radius-0" placeholder="Індекс"
-                                   ng-model="index" name="index" autofocus>
+                            <input id="addrsP" type="checkbox" ng-model="addressData.isPostAddress"
+                                   ng-true-value="false" ng-false-value="true" ng-change="">
+                            <label for="addrsP">Така ж, як адреса прописки</label>
                         </div>
-                        <div class="form-group">
-                            <label for="addrsC">Виберіть країну:</label>
-                            <select id="addrsC" class="form-control" ng-model="addressData.countryId"
-                                    ng-options="countries.id as countries.name for countries in addressData.countries">
-                            </select>
+                        <div ng-show="addressData.isPostAddress">
+                            <fieldset title="Виберіть населений пункт"  class="col-md-12 col-lg-12">
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <label>Введіть індекс:</label>
+                                    <input type="text" class="form-control border-radius-0" placeholder="Індекс"
+                                           ng-model="indexPost" name="indexPost" autofocus>
+                                </div>
+                                <div class="form-group col-md-4 col-lg-4">
+                                    <label for="addrsCPost">Виберіть країну:</label>
+                                    <select id="addrsCPost" class="form-control border-radius-0" ng-model="addressData.countryIdPost"
+                                            ng-options="countriesPost.id as countriesPost.name for countriesPost in addressData.countriesPost">
+                                    </select>
+                                </div>
+                                <div class="form-group  col-md-4 col-lg-4" ng-show="isCountryPostSelected">
+                                    <label for="addrsRPost">Виберіть область:</label>
+                                    <select id="addrsRPost" class="form-control border-radius-0" ng-model="addressData.regionIdPost"
+                                            ng-options="regionsPost.id as regionsPost.name for regionsPost in addressData.regionsPost">
+                                    </select>
+                                </div>
+                                <div class="form-group  col-md-4 col-lg-4" ng-show="isRegionPostSelected">
+                                    <label for="addrsCDPost">Виберіть підпорядкування:</label>
+                                    <select id="addrsCDPost" class="form-control border-radius-0" ng-model="addressData.cdTypeIdPost"
+                                            ng-options="cdTypesPost.id as cdTypesPost.name for cdTypesPost in addressData.cdTypesPost">
+                                    </select>
+                                </div>
+                                <div class="form-group  col-md-4 col-lg-4" ng-show="iscdTypePostSelected">
+                                    <label for="addrsDPost">Виберіть місто/район:</label>
+                                    <select id="addrsDPost" class="form-control border-radius-0" ng-model="addressData.districtIdPost"
+                                            ng-options="districtsPost.id as districtsPost.name for districtsPost in addressData.districtsPost">
+                                    </select>
+                                </div>
+                                <div class="form-group  col-md-4 col-lg-4" ng-show="isDistrictPostSelected">
+                                    <label for="addrsVPost">Виберіть містечко/село/смт</label>
+                                    <select id="addrsVPost" class="form-control border-radius-0" ng-model="addressData.vTypeIdPost"
+                                            ng-options="vTypesPost.id as vTypesPost.name for vTypesPost in addressData.vTypesPost">
+                                    </select>
+                                </div>
+                                <div class="form-group  col-md-4 col-lg-4" ng-show="isVTypePostSelected">
+                                    <label for="addrsViPost">Виберіть назву міста/селища:</label>
+                                    <select id="addrsViPost" class="form-control border-radius-0" ng-model="addressData.villageIdPost"
+                                            ng-options="villagesPost.id as villagesPost.name for villagesPost in addressData.villagesPost">
+                                    </select>
+                                </div>
+                                <div class="form-group  col-md-4 col-lg-4" ng-show="isVillagePostSelected">
+                                    <label for="addrsAdPost">Додатково:</label>
+                                    <select id="addrsAdPost" class="form-control border-radius-0" ng-model="addressData.additionIdPost"
+                                            ng-options="additionsPost.id as additionsPost.name for additionsPost in addressData.additionsPost">
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <fieldset title="Додайте адресу"  class="col-md-12 col-lg-12">
+                                <div class="form-group  col-md-2 col-lg-2">
+                                    <label for="addrsTypeStrPost">Тип вулиці:</label>
+                                    <select id="addrsTypeStrPost" class="form-control border-radius-0" ng-model="addressData.typeStreetPost"
+                                            ng-options="typeStreetsPost.id as typeStreetsPost.name for typeStreetsPost in addressData.typeStreetsPost">
+                                    </select>
+                                </div>
+                                <div class="form-group  col-md-6 col-lg-6">
+                                    <label>Введіть назву вулиці/проспекту:</label>
+                                    <input type="text" class="form-control border-radius-0" placeholder="Назва"
+                                           ng-model="addrsStreetPost" name="addrsStreetPost" autofocus>
+                                </div>
+                                <div class="form-group  col-md-2 col-lg-2">
+                                    <label>№ будинка:</label>
+                                    <input type="number" class="form-control border-radius-0" placeholder="Будинок"
+                                           ng-model="housePost" name="housePost" required>
+                                </div>
+                                <div class="form-group  col-md-2 col-lg-2">
+                                    <label>№ квартири:</label>
+                                    <input type="number" class="form-control border-radius-0" placeholder="Квартира"
+                                           ng-model="apartmentPost" name="apartmentPost">
+                                </div>
+                            </fieldset>
                         </div>
-                        <div class="form-group" ng-show="isCountrySelected">
-                            <label for="addrsR">Виберіть область:</label>
-                            <select id="addrsR" class="form-control" ng-model="addressData.regionId"
-                                    ng-options="regions.id as regions.name for regions in addressData.regions">
-                            </select>
-                        </div>
-                        <div class="form-group" ng-show="isRegionSelected">
-                            <label for="addrsCD">Виберіть підпорядкування:</label>
-                            <select id="addrsCD" class="form-control" ng-model="addressData.cdTypeId"
-                                    ng-options="cdTypes.id as cdTypes.name for cdTypes in addressData.cdTypes">
-                            </select>
-                        </div>
-                        <div class="form-group" ng-show="iscdTypeSelected">
-                            <label for="addrsD">Виберіть місто/район:</label>
-                            <select id="addrsD" class="form-control" ng-model="addressData.districtId"
-                                    ng-options="districts.id as districts.name for districts in addressData.districts">
-                            </select>
-                        </div>
-                        <div class="form-group" ng-show="isDistrictSelected">
-                            <label for="addrsV">Виберіть містечко/село/смт</label>
-                            <select id="addrsV" class="form-control" ng-model="addressData.vTypeId"
-                                    ng-options="vTypes.id as vTypes.name for vTypes in addressData.vTypes">
-                            </select>
-                        </div>
-                        <div class="form-group" ng-show="isvTypeSelected">
-                            <label for="addrsVi">Виберіть назву міста/селища:</label>
-                            <select id="addrsVi" class="form-control" ng-model="addressData.villageId"
-                                    ng-options="villages.id as villages.name for villages in addressData.villages">
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="addrsTypeStr">Виберіть тип - вулицю/проспект/інше:</label>
-                            <select id="addrsTypeStr" class="form-control" ng-model="addressData.typeStreet"
-                                    ng-options="typeStreets.id as typeStreets.name for typeStreets in addressData.typeStreets">
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Введіть назву вулиці/проспекту:</label>
-                            <input type="text" class="form-control border-radius-0" placeholder="Назва"
-                                   ng-model="addrsStreet" name="addrsStreet" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Введіть номер будинку:</label>
-                            <input type="number" class="form-control border-radius-0" placeholder="Будинок"
-                                   ng-model="house" name="house" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Введіть номер квартири:</label>
-                            <input type="number" class="form-control border-radius-0" placeholder="Квартира"
-                                   ng-model="apartment" name="apartment">
-                        </div>
-                        <div class="form-group">
-                            <label>Введіть номер мобільного телефону:</label>
-                            <input type="text" class="form-control border-radius-0" placeholder="Мобільний"
-                                   ng-model="mPhone" name="mPhone" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Введіть номер домашнього телефону:</label>
-                            <input type="text" class="form-control border-radius-0" placeholder="Домашній"
-                                   ng-model="phone" name="phone" autofocus>
-                        </div>
-                        <div class="form-group">
-                            <label>Введіть e-mail:</label>
-                            <input type="text" class="form-control border-radius-0" placeholder="E-mail"
-                                   ng-model="email" name="email" autofocus>
-                        </div>
-                        <button class="btn btn-lg btn-primary btn-block border-radius-0 border-none" type="submit"
-                                value="Submit">
-                            Додати адресу
-                        </button>
+                        <h4 class="addAddrs">Контакти</h4>
+                        <fieldset title="Додайте контакти" class="col-md-12 col-lg-12">
+                            <div class="form-group  col-md-4 col-lg-4">
+                                <label>Номер мобільного:</label>
+                                <input type="text" class="form-control border-radius-0" placeholder="Мобільний"
+                                           ng-model="mPhone" name="mPhone" autofocus>
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4">
+                                <label>Номер дом. телефону:</label>
+                                <input type="text" class="form-control border-radius-0" placeholder="Домашній"
+                                           ng-model="phone" name="phone" autofocus>
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4">
+                                <label>Введіть e-mail:</label>
+                                <input type="text" class="form-control border-radius-0" placeholder="E-mail"
+                                           ng-model="email" name="email" autofocus>
+                            </div>
+                        </fieldset>
+                        <button class="btn btn-primary border-radius-0 border-none addAddrsBut" type="submit"
+                                value="Submit">Додати адресу</button>
                         <div>form is {{addAddressForm.$valid}}</div>
                     </form>
                 </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>
 
