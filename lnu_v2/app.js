@@ -36,16 +36,14 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
         $routeProvider.otherwise({ redirectTo: '/login' });
     }])
     .run(['$rootScope', '$location', '$http',
-        function ($rootScope, $location,$http) {
-
-            $rootScope.token = localStorage.getItem('token');
-            if ($rootScope.token !== "") {
-                $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.token;
-            }
-
-            $rootScope.$on('$locationChangeStart', function (event, next, current) {
-                if ($location.path() !== '/login' && $rootScope.token === "") {
+        function ($rootScope, $location, $http) {
+            $rootScope.$on('$locationChangeStart', function () {
+                if ($location.path() !== '/login' && (localStorage.getItem('token') === "" || localStorage.getItem('token') === null)) {
                     $location.path('/login');
+                }
+                else{
+                    $http.defaults.headers.common['Authorization'] = 'Basic ' + localStorage.getItem('token');
+                    $rootScope.isLoggedIn = true;
                 }
             });
         }]);

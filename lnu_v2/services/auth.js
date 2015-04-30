@@ -1,45 +1,25 @@
 auth.factory('AuthenticationService',
     ['$http', '$rootScope', '$timeout',
-        function ($http, $rootScope, $timeout) {
+        function ($http, $rootScope) {
             var service = {};
 
-            service.Login = function (username, password, callback) {
-
-                /* Dummy authentication for testing, uses $timeout to simulate api call
-                 ----------------------------------------------*/
-                $timeout(function(){
-                    var response = { success: username === 'test' && password === 'test' };
-                    if(!response.success) {
-                        response.message = 'Username or password is incorrect';
-                    }
-                    callback(response);
-                }, 1000);
-
-
-                /* Use this for real authentication
-                 ----------------------------------------------*/
-                //$http.post('/api/authenticate', { username: username, password: password })
-                //    .success(function (response) {
-                //        callback(response);
-                //    });
+            service.Login = function (username, password) {
+                var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
+                var authdata  = btoa(username + ':' + password);
+                $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
+                return $http.get(baseUrl + 'api/persons?limit=1');
 
             };
 
             service.SetCredentials = function (username, password) {
                 var authdata  = btoa(username + ':' + password);
-
-                $rootScope.token = authdata;
+                localStorage.setItem('token', authdata);
                 $rootScope.isLoggedIn = true;
-
-                $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-                $http.defaults.headers.common.Authorization = 'Basic YWRtaW46bmltZGE=';
-                //$cookieStore.put('globals', $rootScope.globals);
             };
 
             service.ClearCredentials = function () {
-                $rootScope.token = "";
                 $rootScope.isLoggedIn = false;
-                //$cookieStore.remove('globals');
+                localStorage.setItem('token', "");
                 $http.defaults.headers.common.Authorization = 'Basic ';
             };
 

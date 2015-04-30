@@ -18,65 +18,29 @@
                         </button>
                     </span>
                 </div>
-                <div class="form-group">
-                    <label for="addrsC">Країна</label>
-                    <select id="addrsC" class="form-control" ng-model="addressData.countryId"
-                            ng-options="countries.id as countries.name for countries in addressData.countries">
-                    </select>
-                </div>
-                <div class="form-group" ng-show="isCountrySelected">
-                    <label for="addrsR">Область</label>
-                    <select id="addrsR" class="form-control" ng-model="addressData.regionId"
-                            ng-options="regions.id as regions.name for regions in addressData.regions">
-                    </select>
-                </div>
-                <div class="form-group" ng-show="isRegionSelected">
-                    <label for="addrsCD">Підпорядкування</label>
-                    <select id="addrsCD" class="form-control" ng-model="addressData.cdTypeId"
-                            ng-options="cdTypes.id as cdTypes.name for cdTypes in addressData.cdTypes">
-                    </select>
-                </div>
-                <div class="form-group" ng-show="iscdTypeSelected">
-                    <label for="addrsD">Місто/Район</label>
-                    <select id="addrsD" class="form-control" ng-model="addressData.districtId"
-                            ng-options="districts.id as districts.name for districts in addressData.districts">
-                    </select>
-                </div>
-                <div class="form-group" ng-show="isDistrictSelected">
-                    <label for="addrsV">Місто/Село/смт</label>
-                    <select id="addrsV" class="form-control" ng-model="addressData.vTypeId"
-                            ng-options="vTypes.id as vTypes.name for vTypes in addressData.vTypes">
-                    </select>
-                </div>
-                <div class="form-group" ng-show="isvTypeSelected">
-                    <label for="addrsVi">Назва міста/селища</label>
-                    <select id="addrsVi" class="form-control" ng-model="addressData.villageId"
-                            ng-options="villages.id as villages.name for villages in addressData.villages">
-                    </select>
-                </div>
             </div>
-
             <span ng-bind="'з '+ (personsOffset+1) + ' по ' + (personData.length+personsOffset) + ' з ' + personsCount">
-                </span>
+            </span>
             <button class="btn btn-primary border-radius-0 svCreateNewPerson border-none" data-toggle="modal"
                     data-target="#addNewPersonModal"><span class="glyphicon glyphicon-plus"></span>&nbsp;Додати персону</button>
         </div>
-
         <div class="row">
-            <div class="col-lg-3 col-md-3" ng-include="'persons/personsSearchFilters.html'" ng-show="isMoreSearch">
+            <div class="col-lg-3 col-md-2" ng-include="'persons/personsSearchFilters.html'" ng-show="isMoreSearch">
 
             </div>
-            <div class="col-lg-12 col-md-12" ng-include="'persons/personsTable.html'" id="personsTable"></div>
+            <div class="" ng-include="'persons/personsTable.html'" id="personsTable"
+                 ng-class="{'col-lg-12 col-md-12': !isMoreSearch,'col-lg-9 col-md-8':isMoreSearch}"></div>
         </div>
         <div class="row">
             <div class="btn-group svCreateNewPerson pd-rt-15" role="group">
-                <button id="prevBtn" class="btn btn-default material-btn" ng-click="getPrevData()">Prev</button>
-                <button id="nextBtn" class="btn btn-default material-btn" ng-click="getNextData()">Next</button>
+                <button id="prevBtn" class="btn btn-default material-btn" ng-click="getPrevData()"
+                        ng-disabled="($scope.personData.length+$scope.personsOffset) >= $scope.personsCount">Prev</button>
+                <button id="nextBtn" class="btn btn-default material-btn" ng-click="getNextData()"
+                        ng-disabled="($scope.personsOffset) === 0">Next</button>
             </div>
         </div>
         <div ng-include="'persons/modals/editPersonModal/editPersonModal.html'"></div>
     </div>
     <div ng-include="'persons/modals/deletePersonModal/deletePersonModal.html'"></div>
     <div ng-include="'persons/modals/newPersonModal/addNewPersonModal.html'"></div>
-    <person-content></person-content>
 </div>

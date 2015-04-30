@@ -1,7 +1,12 @@
-<table class="table table-bordered mainPersonTable col-lg-12 col-md-12">
+<table class="table table-bordered mainPersonTable">
     <thead>
     <tr class="personTableHeaderRow crs-dflt">
-        <th ng-repeat="data in tableHeaderDataObj" ng-bind="data"></th>
+        <th ng-repeat="data in tableHeaderDataObj" ng-click="getOrderByPersonData(data.orderByKey)" ng-bind="data.name">
+            <a>
+            <span ng-show="reverseSort" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="!reverseSort" class="glyphicon glyphicon-chevron-down"></span>
+            </a>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -15,9 +20,9 @@
         <td ng-bind="allMappedArrData.personsTypes[data.personTypeId]"></td>
         <td ng-bind="data.resident | checkYesNo"></td>
         <td ng-bind="allMappedArrData.citizenCountry[data.citizenCountryId]"></td>
-        <td ng-bind="data.docSeries + ':' + data.docNum"></td>
+        <td ng-bind="data.docSeries + ': ' + data.docNum"></td>
         <td>
-            <div class="">
+
                 <button class="btn btn-primary btn-xs border-radius-0 border-none"
                         data-toggle="modal" data-target="#editNewPersonModal" ng-click="pushPersonToObj(data)">
                     <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
@@ -26,7 +31,7 @@
                         data-target="#deletePersonModalContent" ng-click="pushPersonToObj(data)" data-toggle="modal">
                     <span class="glyphicon glyphicon-trash glyphicon-white"></span>
                 </button>
-            </div>
+
         </td>
     </tr>
     </tbody>
