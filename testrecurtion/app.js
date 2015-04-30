@@ -1,4 +1,4 @@
-var main = angular.module('main', []);
+var main = angular.module('main', ['ui.bootstrap']);
 main.controller('Main', ['$scope', '$http', function ($scope, $http) {
     $scope.dataArr = [];
 
@@ -117,6 +117,42 @@ var  name = "";
 
             console.log(data)
         })
-    }
+    };
+
+
+    $scope.today = function() {
+        var date = new Date();
+        $scope.dt = date.getDate()+'-0'+(date.getMonth()+1)+ '-' + date.getFullYear();
+    };
+    $scope.today();
+
+    $scope.clear = function () {
+        $scope.dt = null;
+    };
+
+    // Disable weekend selection
+    $scope.disabled = function(date, mode) {
+        return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+    };
+
+    $scope.toggleMin = function() {
+        $scope.minDate = $scope.minDate ? null : new Date();
+    };
+    $scope.toggleMin();
+
+    $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.opened = true;
+    };
+
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+    };
+
+    $scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
 
 }]);
