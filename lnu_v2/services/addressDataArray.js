@@ -27,6 +27,13 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
         });
     };
 
+    factory.getStreetTypeById = function(){
+        return $http.get(baseUrl + "api/streets/types").success(function(data){
+            return data;
+        }).error(function(msg){
+        });
+    };
+
     return factory;
 
 }]);
