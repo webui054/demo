@@ -22,6 +22,12 @@ persons.factory("DocumentDataArray",["$q","$http",function($q,$http){
         }).error(function(msg){
         });
     };
+    factory.getPersonDocumentById = function(personId){
+        return $http.get(baseUrl + "api/persons/"+personId+"/papers").success(function(data){
+            return data;
+        }).error(function(msg){
+        });
+    };
 
     factory.getDocumentChildById = function(paperUsageId){
         return $http.get(baseUrl + "api/papers/types?paperUsageId=" + paperUsageId).success(function(data){
@@ -40,6 +46,13 @@ persons.factory("DocumentDataArray",["$q","$http",function($q,$http){
 
     };
 
+    factory.getHonorById = function(){
+        return $http.get(baseUrl + "api/honors/types").success(function(data){
+            return data;
+        }).error(function(msg){
+        });
+    };
+
     var documentValidator = function(document){
         if(document.isChecked === undefined){
             document.isChecked = 0;
@@ -50,6 +63,9 @@ persons.factory("DocumentDataArray",["$q","$http",function($q,$http){
         return document;
     };
 
+    factory.deleteDocument = function(personId){
+        return $http.delete(baseUrl+"api/persons/"+personId+"/papers");
+    };
 
     return factory;
 
