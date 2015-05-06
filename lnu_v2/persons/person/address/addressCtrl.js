@@ -36,6 +36,24 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
             apartment:""
         };
 
+        $scope.mPhoneObj = {
+            id: "",
+            contactTypeId: "",
+            value: ""
+        };
+
+        $scope.phoneObj = {
+            id: "",
+            contactTypeId: "",
+            value: ""
+        };
+
+        $scope.emailObj = {
+            id: "",
+            contactTypeId: "",
+            value: ""
+        };
+
     //Address Select for person address
     $scope.addressData = {
         countries:[],
@@ -335,6 +353,8 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
             $scope.addressObj = data.data;
             AddressDataArray.addAddress(parseInt($routeParams.personId,10),$scope.postAddressObj).then(function(data){
                 $scope.postAddressObj = data.data;
+                AddressDataArray.addContact(parseInt($routeParams.personId,10),$scope.mPhoneObj).then(function(data){
+                    $scope.mPhoneObj = data.data;
 
             });
         });

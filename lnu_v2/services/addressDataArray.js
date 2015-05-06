@@ -60,6 +60,14 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
         });
     };
 
+    factory.addContact = function(personId,contact){
+        return $http.post(baseUrl+"api/persons/"+personId+"/contacts",contact).success(function(data){
+            return data;
+        }).error(function(msg){
+            return msg;
+        });
+    };
+
     return factory;
 
 }]);
