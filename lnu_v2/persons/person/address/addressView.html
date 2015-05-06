@@ -70,10 +70,7 @@
         <div class="modal-dialog modal-lg border-radius-0">
             <div class="modal-content border-radius-0">
                 <div class="modal-header custom-modal-header">
-                    <button type="button" class="btn-text btn-primary pull-right border-none" data-dismiss="modal"
-                            aria-hidden="true">
-                        <span title="Close" class="glyphicon glyphicon-remove"></span>
-                    </button>
+                    <button type="button" class="close" title="Видалити" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
                     <h3 class="modal-title text-center create-group-modal-title-header-text addAddrs">Додати
                         адресу</h3>
                 </div>
@@ -252,7 +249,7 @@
                         </fieldset>
                         <button class="btn btn-primary border-radius-0 border-none addAddrsBut" type="submit"
                                 value="Submit">Додати адресу</button>
-                        <div>form is {{addAddressForm.$valid}}</div>
+                        <div class="addAddrsBut">form is {{addAddressForm.$valid}}</div>
                     </form>
                 </div>
             </div><!-- /.modal-content -->

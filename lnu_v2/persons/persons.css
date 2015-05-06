@@ -146,6 +146,10 @@ fieldset {
     margin-left: 20px;
 }
 
+.addAddrsBut {
+    margin-left: 82%;
+}
+
 
 /*.mainPersonTable tbody tr td:nth-child(2){*/
     /*text-align: left;*/
