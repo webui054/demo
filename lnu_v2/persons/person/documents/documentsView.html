@@ -82,7 +82,7 @@
                         документ</h3>
                 </div>
 
-                <form name="addDocumentForm" class="form-group" ng-submit="addDocumentForm.$valid && AddNewDocument()" novalidate>
+                <form name="addDocumentForm" class="form-group" ng-submit="addDoc()" novalidate>
                     <div class="modal-body">
                         <div class="row">
                             <div class="form-group col-md-6 col-lg-6">
@@ -149,8 +149,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary border-radius-0 border-none" type="submit"
-                                value="Submit">Додати</button>
+                        <input type="submit" class="btn btn-primary border-radius-0 border-none" value="Додати">
                     </div>
                 </form>
             </div>
