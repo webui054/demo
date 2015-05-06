@@ -1,4 +1,4 @@
-var main = angular.module('main', ['ui.bootstrap']);
+var main = angular.module('main', []);
 main.controller('Main', ['$scope', '$http', function ($scope, $http) {
     $scope.dataArr = [];
 
@@ -155,4 +155,23 @@ var  name = "";
     $scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[0];
 
+
+    $scope.getAddrsData = function(id){
+
+        $http.get(BASEURL + "api/adminunits?id=" + 1332)
+        .success(function(data){
+
+        }).error(function(msg){
+
+        });};
+
+
+    $scope.getContactsData = function(id){
+
+
+        $http.get(BASEURL+"api/persons/"+id+"/contacts").success(function(data){
+
+        }).error(function(msg){
+
+        });};
 }]);
