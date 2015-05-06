@@ -12,21 +12,29 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
         }, 500);
     };
 
-    $scope.AddNewAddress = function () {
-        $("#addAddressModal").modal("hide");
-        //$scope.tempAddressArray.push($scope.tempData); //todo change method.NN
+        $scope.addressObj = {
+                streetTypeId:"",
+                adminUnitId:"",
+                addressTypeId: 1,
+                begDate:"1212-12-12",
+                endDate:"1212-12-12",
+                house:"",
+                zipCode:"",
+                street:"",
+                apartment:""
+        };
 
-        $scope.addressObj.zipCode = "";
-        $scope.addressObj.streetTypeId = "";
-        $scope.addressObj.street = "";
-        $scope.addressObj.house = "";
-        $scope.addressObj.apartment = "";
-        $scope.postAddressObj.zipCode = "";
-        $scope.postAddressObj.streetTypeId = "";
-        $scope.postAddressObj.street = "";
-        $scope.postAddressObj.house = "";
-        $scope.postAddressObj.apartment = "";
-    };
+        $scope.postAddressObj = {
+            streetTypeId:"",
+            adminUnitId:"",
+            addressTypeId: 2,
+            begDate:"1212-12-12",
+            endDate:"1212-12-12",
+            house:"",
+            zipCode:"",
+            street:"",
+            apartment:""
+        };
 
     //Address Select for person address
     $scope.addressData = {
@@ -57,7 +65,7 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
         vTypePost:{},
         villagePost:{},
         isPostAddress: true,
-        streetType:{},
+        streetTypeId:{},
         streetTypes: [],
         streetTypePost:{},
         streetTypesPost: [],
@@ -316,8 +324,21 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
         };
 
 
-    $scope.addAddress = function(personId){
-        AddressDataArray.addAddress(personId)
+    $scope.addAddress = function(){
+        $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
+        $scope.addressObj.adminUnitId = $scope.addressData.village.id;
+        $scope.addressObj.personId = parseInt($routeParams.personId,10);
+        $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
+        $scope.postAddressObj.adminUnitId = $scope.addressData.villagePost.id;
+        $scope.postAddressObj.personId = parseInt($routeParams.personId,10);
+        AddressDataArray.addAddress(parseInt($routeParams.personId,10),$scope.addressObj).then(function(data){
+            $scope.addressObj = data.data;
+            AddressDataArray.addAddress(parseInt($routeParams.personId,10),$scope.postAddressObj).then(function(data){
+                $scope.postAddressObj = data.data;
+
+            });
+        });
+        $("#addAddressModal").modal("hide");
     };
 
 }]);

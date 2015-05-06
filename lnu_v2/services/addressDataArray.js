@@ -51,38 +51,14 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
 
             });
     };
-
-    //factory.getAddressData = function(id){
-    //    var deferred = $q.defer();
-    //    return $http.get(baseUrl +"api/persons/"+id+"/addresses")
-    //        .success(function(data){
-    //            angular.forEach(data.resources,function(obj,i){
-    //                $http.get(baseUrl + "api/adminunits?id=" + obj.adminUnitId).success(function(data){
-    //                    data.resources[i].addressName = data.resources.name;
-    //                });
-    //            })
-    //            deferred.resolve(data.resources);
-    //
-    //        }).error(function(msg){
-    //
-    //        });
-    //    return deferred.promise;
-    //};
+    
     factory.addAddress = function(personId,address){
-        return $http.post(baseUrl+"api/persons/"+personId+"/addresses").success(function(data){
+        return $http.post(baseUrl+"api/persons/"+personId+"/addresses",address).success(function(data){
             return data;
         }).error(function(msg){
             return msg;
         });
     };
-
-    //factory.editAddress = function(id){
-    //    return $http.put(baseUrl+"api/persons/"+id+"/addresses");
-    //};
-    //
-    //factory.deleteAddress = function(){
-    //    return $http.delete(baseUrl+"api/persons/"+id+"/addresses");
-    //};
 
     return factory;
 
