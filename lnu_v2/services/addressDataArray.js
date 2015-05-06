@@ -51,7 +51,7 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
 
             });
     };
-    
+
     factory.addAddress = function(personId,address){
         return $http.post(baseUrl+"api/persons/"+personId+"/addresses",address).success(function(data){
             return data;
