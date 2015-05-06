@@ -1,4 +1,4 @@
-persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http", function ($scope, DocumentDataArray, $http) {
+persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http",'$routeParams', function ($scope, DocumentDataArray, $http,$routeParams) {
 
     $scope.tempDocumentsArray = [];
     $scope.paperUsageId = "";
@@ -80,16 +80,18 @@ persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http", func
 
     $scope.getTypeDocumentsData = function(paperUsageId){
         DocumentDataArray.getDocumentChildById(paperUsageId).success(function(data){
-            var addEl = document.getElementById("docsT");
-            addEl.addEventListener('change',function(){
-                $scope.getDocData($scope.documentsData.typeId);
-            });
             $scope.documentsData.types = data.resources;
             $scope.isUsageSelected = true;
         });
     };
+
     $scope.getTypeDocumentsData();
 
+    $scope.addDoc= function(){
+    DocumentDataArray.addNewDocument(parseInt($routeParams.personId,10),$scope.documentsData).then(function(data){
+        $scope.documentsData = data;
+    })
+};
 
 
 }]);

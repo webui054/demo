@@ -14,7 +14,7 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.AddNewAddress = function () {
         $("#addAddressModal").modal("hide");
-        $scope.tempAddressArray.push($scope.tempData); //todo change method.NN
+        //$scope.tempAddressArray.push($scope.tempData); //todo change method.NN
 
         $scope.addressObj.zipCode = "";
         $scope.addressObj.streetTypeId = "";
@@ -290,6 +290,7 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
     }());
     $scope.getAddressData = function(id){
         AddressDataArray.getAddressData(id).success(function(data){
+            if(data.resources[0]){
             data.resources[0].house = parseInt( data.resources[0].house,10);
             data.resources[0].apartment = parseInt( data.resources[0].apartment,10);
             data.resources[1].house = parseInt( data.resources[0].house,10);
@@ -297,6 +298,7 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
             $scope.addressObj = data.resources[0];
             $scope.postAddressObj = data.resources[1];
+            };
         });
 
     };
@@ -309,10 +311,13 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
             AddressDataArray.getContactData(id).success(function(data){
                 $scope.mPhoneObj = data.resources[1];
                 $scope.phoneObj = data.resources[5];
-                $scope.emailObj = data.resources[0];
+                $scope.emailObj = data.resources[2];
             });
         };
 
 
+    $scope.addAddress = function(personId){
+        AddressDataArray.addAddress(personId)
+    };
 
 }]);
