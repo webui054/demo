@@ -16,6 +16,7 @@ persons.controller("PersonCtrl",["$scope","PersonRepo",'$routeParams', function(
 
     (function (){
       PersonRepo.getPersonById2(parseInt($routeParams.personId,10)).then(function(data){
+
           $scope.personGeneralInfoEditModalObj = data;
           var tempDate = new Date(data.begDate);
 
@@ -25,6 +26,8 @@ persons.controller("PersonCtrl",["$scope","PersonRepo",'$routeParams', function(
           $scope.personGeneralInfoObj = data;
 
           $scope.isShowGeneralInfo = true;
-      });
+              console.log(data)
+      }
+      );
     }())
 }]);

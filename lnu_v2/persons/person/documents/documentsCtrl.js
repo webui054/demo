@@ -1,59 +1,95 @@
-/**
- * Created by Oksana on 20.04.2015.
- */
+persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http", function ($scope, DocumentDataArray, $http) {
 
+    $scope.tempDocumentsArray = [];
+    $scope.paperUsageId = "";
+    $scope.paperTypeId = "";
+    $scope.docSeries = "";
+    $scope.docNum = "";
+    $scope.docDate = "";
+    $scope.docIssues = "";
+    $scope.docPin = "";
+    $scope.marl = "";
+    $scope.isChecked = "";
+    $scope.isForeign = "";
 
-persons.controller("DocumentsCtrl",["$scope","$http","PersonDataMappingArray",
-    function($scope,$http,PersonDataMappingArray){
-
-        $scope.personDataArrForDocuments = [];
-        $scope.personDataArrForDocuments.documentTypes = [];
-        $scope.personDataArrForDocuments.documentUsages = [];
-
-        $scope.getDocTypes = function(){
-            PersonDataMappingArray.getMappedArray('persons/person/documents/documentTypes.json').then(function(data){
-                $scope.personDataArrForDocuments.documentTypes = data;
-            });
-        };
-        $scope.getDocUsages = function(){
-            PersonDataMappingArray.getMappedArray('persons/person/documents/documentUsages.json').then(function(data){
-                $scope.personDataArrForDocuments.documentUsages = data;
-            });
-        };
-
-        $scope.getDocTypes();
-        $scope.getDocUsages();
-
-        $scope.documentsData = {
-            countries:[],
-            regions:[],
-            asdTypes:[],
-            cities:[],
-            districts:[],
-            villageType:[],
-            villages:[],
-            countryId:{},
-            regionId:{}
+    $scope.showModal = function (id) {
+        if (id === null) {
+            return;
         }
+        setTimeout(function () {
+            $(id).modal('show');
+        }, 500);
+    };
 
-        var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
-        $scope.getUsages = function(){
-            $http.get(baseUrl + "api/adminunits?adminUnitTypeId=6").success(function(data){
-                var addEl = document.getElementById("addrsC");
-                addEl.addEventListener('change',function(){
-                    $scope.getChildAddressData($scope.addressData.countryId);
-                });
-                $scope.addressData.countries = data.resources;
+    $scope.AddNewDocument = function () {
+        $("#addDocumentModal").modal("hide");
+        $scope.tempData = {};
+
+
+        $scope.tempData.paperUsageId = $scope.paperUsageId;
+        $scope.tempData.paperTypeId = $scope.paperTypeId;
+        $scope.tempData.docSeries = $scope.docSeries;
+        $scope.tempData.docNum = $scope.docNum;
+        $scope.tempData.docDate = $scope.docDate;
+        $scope.tempData.docIssues = $scope.docIssues;
+        $scope.tempData.docPin = $scope.docPin;
+        $scope.tempData.marl = $scope.marl;
+        $scope.tempData.isChecked = $scope.isChecked;
+        $scope.tempData.isForeign = $scope.isForeign;
+        $scope.tempDocumentsArray.push($scope.tempData);
+
+        $scope.paperUsageId = "";
+        $scope.paperTypeId = "";
+        $scope.docSeries = "";
+        $scope.docNum = "";
+        $scope.docDate = "";
+        $scope.docIssues = "";
+        $scope.docPin = "";
+        $scope.marl = "";
+        $scope.isChecked = "";
+        $scope.isForeign = "";
+    };
+
+
+    $scope.documentsData = {
+        usages:[],
+        types:[],
+        usageId: {},
+        typeId: {},
+        series:{},
+        num:{},
+        date:{},
+        issues:{},
+        pin:{},
+        mark: {},
+        isChecked: true,
+        isForeign : true
+    };
+
+    var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
+    $scope.getUsages = function(){
+        DocumentDataArray.getDocumentById().success(function(data){
+            var addEl = document.getElementById("docsU");
+            addEl.addEventListener('change',function(){
+                $scope.getTypeDocumentsData($scope.documentsData.usageId);
             });
+            $scope.documentsData.usages = data.resources;
+        });
+    };
+    $scope.getUsages();
 
-        };
-        $scope.getUsages();
-
-
-        $scope.getChildAddressData = function(parentId){
-            $http.get(baseUrl + "api/adminunits?parentId="+parentId).success(function(data){
-                $scope.documentsData.regions = data.resources;
-                $scope.isUsageSelected = true;
+    $scope.getTypeDocumentsData = function(paperUsageId){
+        DocumentDataArray.getDocumentChildById(paperUsageId).success(function(data){
+            var addEl = document.getElementById("docsT");
+            addEl.addEventListener('change',function(){
+                $scope.getDocData($scope.documentsData.typeId);
             });
-        };
-    }]);
+            $scope.documentsData.types = data.resources;
+            $scope.isUsageSelected = true;
+        });
+    };
+    $scope.getTypeDocumentsData();
+
+
+
+}]);
