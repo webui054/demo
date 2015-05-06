@@ -1,20 +1,8 @@
-persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", function ($scope,AddressDataArray, $http) {
-
+persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'PersonRepo','$routeParams',
+    function ($scope,AddressDataArray, $http, PersonRepo, $routeParams) {
+    $scope.tempData = {};
     $scope.tempAddressArray = [];
-    $scope.index = "";
-    $scope.typeStreets = "";
-    $scope.addrsStreet = "";
-    $scope.house = "";
-    $scope.apartment = "";
-    $scope.indexPost = "";
-    $scope.typeStreetsPost = "";
-    $scope.addrsStreetPost = "";
-    $scope.housePost = "";
-    $scope.apartmentPost = "";
-    $scope.mPhone = "";
-    $scope.phone = "";
-    $scope.email = "";
-
+    $scope.tempAddressObj = [];
     $scope.showModal = function (id) {
         if (id === null) {
             return;
@@ -26,36 +14,18 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
 
     $scope.AddNewAddress = function () {
         $("#addAddressModal").modal("hide");
-        $scope.tempData = {};
+        $scope.tempAddressArray.push($scope.tempData); //todo change method.NN
 
-        $scope.tempData.index = $scope.index;
-        $scope.tempData.typeStreets = $scope.typeStreets;
-        $scope.tempData.addrsStreet = $scope.addrsStreet;
-        $scope.tempData.house = $scope.house;
-        $scope.tempData.apartment = $scope.apartment;
-        $scope.tempData.indexPost = $scope.indexPost;
-        $scope.tempData.typeStreetsPost = $scope.typeStreetsPost;
-        $scope.tempData.addrsStreetPost = $scope.addrsStreetPost;
-        $scope.tempData.housePost = $scope.housePost;
-        $scope.tempData.apartmentPost = $scope.apartmentPost;
-        $scope.tempData.mPhone = $scope.mPhone;
-        $scope.tempData.phone = $scope.phone;
-        $scope.tempData.email = $scope.email;
-        $scope.tempAddressArray.push($scope.tempData);
-
-        $scope.index = "";
-        $scope.typeStreets = "";
-        $scope.addrsStreet = "";
-        $scope.house = "";
-        $scope.apartment = "";
-        $scope.indexPost = "";
-        $scope.typeStreetsPost = "";
-        $scope.addrsStreetPost = "";
-        $scope.housePost = "";
-        $scope.apartmentPost = "";
-        $scope.mPhone = "";
-        $scope.phone = "";
-        $scope.email = "";
+        $scope.addressObj.zipCode = "";
+        $scope.addressObj.streetTypeId = "";
+        $scope.addressObj.street = "";
+        $scope.addressObj.house = "";
+        $scope.addressObj.apartment = "";
+        $scope.postAddressObj.zipCode = "";
+        $scope.postAddressObj.streetTypeId = "";
+        $scope.postAddressObj.street = "";
+        $scope.postAddressObj.house = "";
+        $scope.postAddressObj.apartment = "";
     };
 
     //Address Select for person address
@@ -63,40 +33,43 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         countries:[],
         regions:[],
         cdTypes:[],
-        cities:[],
         districts:[],
-        vType:[],
+        vTypes:[],
         villages:[],
         additions: [],
-        countryId:{},
-        regionId:{},
-        cdTypeId:{},
-        districtId:{},
-        vTypeId:{},
-        villageId:{},
+        country:{},
+        region:{},
+        cdType:{},
+        district:{},
+        vType:{},
+        village:{},
         countriesPost:[],
         regionsPost:[],
         cdTypesPost:[],
-        citiesPost:[],
         districtsPost:[],
-        vTypePost:[],
+        vTypesPost:[],
         villagesPost:[],
         additionsPost: [],
-        countryIdPost:{},
-        regionIdPost:{},
-        cdTypeIdPost:{},
-        districtIdPost:{},
-        vTypeIdPost:{},
-        villageIdPost:{},
-        isPostAddress: true
+        countryPost:{},
+        regionPost:{},
+        cdTypePost:{},
+        districtPost:{},
+        vTypePost:{},
+        villagePost:{},
+        isPostAddress: true,
+        streetType:{},
+        streetTypes: [],
+        streetTypePost:{},
+        streetTypesPost: [],
+        streetTypeMap: [],
+        cityNameMap: []
     };
 
-    var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
     $scope.getCountries = function(){
         AddressDataArray.getAddressById().success(function(data){
             var addEl = document.getElementById("addrsC");
             addEl.addEventListener('change',function(){
-                $scope.getRegionAddressData($scope.addressData.countryId);
+                $scope.getRegionAddressData($scope.addressData.country.id);
             });
             $scope.addressData.countries = data.resources;
         });
@@ -108,10 +81,17 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsR");
             addEl.addEventListener('change',function(){
-                $scope.getCdTypesAddressData($scope.addressData.regionId);
+                $scope.getCdTypesAddressData($scope.addressData.region.id);
             });
             $scope.addressData.regions = data.resources;
-            $scope.isCountrySelected = true;
+            if(data.count !== 0){
+                $scope.isCountrySelected = true;
+            }
+            $scope.isRegionSelected = false;
+            $scope.iscdTypeSelected = false;
+            $scope.isDistrictSelected = false;
+            $scope.isVTypeSelected = false;
+            $scope.isVillageSelected = false;
         });
     };
 
@@ -119,10 +99,16 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsCD");
             addEl.addEventListener('change',function(){
-                $scope.getDistrictAddressData($scope.addressData.cdTypeId);
+                $scope.getDistrictAddressData($scope.addressData.cdType.id);
             });
             $scope.addressData.cdTypes = data.resources;
-            $scope.isRegionSelected = true;
+            if(data.count !== 0){
+                $scope.isRegionSelected = true;
+            }
+            $scope.iscdTypeSelected = false;
+            $scope.isDistrictSelected = false;
+            $scope.isVTypeSelected = false;
+            $scope.isVillageSelected = false;
         });
     };
 
@@ -130,10 +116,15 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsD");
             addEl.addEventListener('change',function(){
-                $scope.getVTypeAddressData($scope.addressData.districtId);
+                $scope.getVTypeAddressData($scope.addressData.district.id);
             });
             $scope.addressData.districts = data.resources;
-            $scope.iscdTypeSelected = true;
+            if(data.count !== 0){
+                $scope.iscdTypeSelected = true;
+            }
+            $scope.isDistrictSelected = false;
+            $scope.isVTypeSelected = false;
+            $scope.isVillageSelected = false;
         });
     };
 
@@ -141,10 +132,15 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsV");
             addEl.addEventListener('change',function(){
-                $scope.getVillageAddressData($scope.addressData.vTypeId);
+                $scope.getVillageAddressData($scope.addressData.vType.id);
             });
             $scope.addressData.vTypes = data.resources;
-            $scope.isDistrictSelected = true;
+            if(data.count !== 0){
+                $scope.isDistrictSelected = true;
+            }
+            $scope.isVTypeSelected = false;
+            $scope.isVillageSelected = false;
+
         });
     };
 
@@ -152,28 +148,32 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsVi");
             addEl.addEventListener('change',function(){
-                $scope.getAdditionAddressData($scope.addressData.villageId);
+                $scope.getAdditionAddressData($scope.addressData.village.id);
             });
             $scope.addressData.villages = data.resources;
-            $scope.isVTypeSelected = true;
+            if(data.count !== 0){
+                $scope.isVTypeSelected = true;
+            }
+            $scope.isVillageSelected = false;
         });
     };
 
     $scope.getAdditionAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             $scope.addressData.additions = data.resources;
-            $scope.isVillageSelected = true;
+            if(data.count !== 0){
+                $scope.isVillageSelected = true;
+            }
         });
     };
 
     //Post Address
 
-    var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
     $scope.getCountriesPost = function(){
         AddressDataArray.getAddressById().success(function(data){
             var addEl = document.getElementById("addrsCPost");
             addEl.addEventListener('change',function(){
-                $scope.getRegionPostAddressData($scope.addressData.countryIdPost);
+                $scope.getRegionPostAddressData($scope.addressData.countryPost.id);
             });
             $scope.addressData.countriesPost = data.resources;
         });
@@ -185,10 +185,17 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsRPost");
             addEl.addEventListener('change',function(){
-                $scope.getCdTypesPostAddressData($scope.addressData.regionIdPost);
+                $scope.getCdTypesPostAddressData($scope.addressData.regionPost.id);
             });
             $scope.addressData.regionsPost = data.resources;
-            $scope.isCountryPostSelected = true;
+            if(data.count !== 0){
+                $scope.isCountryPostSelected = true;
+            }
+            $scope.isRegionPostSelected = false;
+            $scope.iscdTypePostSelected = false;
+            $scope.isDistrictPostSelected = false;
+            $scope.isVTypePostSelected = false;
+            $scope.isVillagePostSelected = false;
         });
     };
 
@@ -196,10 +203,16 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsCDPost");
             addEl.addEventListener('change',function(){
-                $scope.getDistrictPostAddressData($scope.addressData.cdTypeIdPost);
+                $scope.getDistrictPostAddressData($scope.addressData.cdTypePost.id);
             });
             $scope.addressData.cdTypesPost = data.resources;
-            $scope.isRegionPostSelected = true;
+            if(data.count !== 0){
+                $scope.isRegionPostSelected = true;
+            }
+            $scope.iscdTypePostSelected = false;
+            $scope.isDistrictPostSelected = false;
+            $scope.isVTypePostSelected = false;
+            $scope.isVillagePostSelected = false;
         });
     };
 
@@ -207,10 +220,15 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsDPost");
             addEl.addEventListener('change',function(){
-                $scope.getVTypePostAddressData($scope.addressData.districtIdPost);
+                $scope.getVTypePostAddressData($scope.addressData.districtPost.id);
             });
             $scope.addressData.districtsPost = data.resources;
-            $scope.iscdTypePostSelected = true;
+            if(data.count !== 0){
+                $scope.iscdTypePostSelected = true;
+            }
+            $scope.isDistrictPostSelected = false;
+            $scope.isVTypePostSelected = false;
+            $scope.isVillagePostSelected = false;
         });
     };
 
@@ -218,10 +236,15 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsVPost");
             addEl.addEventListener('change',function(){
-                $scope.getVillagePostAddressData($scope.addressData.vTypeIdPost);
+                $scope.getVillagePostAddressData($scope.addressData.vTypePost.id);
             });
             $scope.addressData.vTypesPost = data.resources;
-            $scope.isDistrictPostSelected = true;
+            if(data.count !== 0){
+                $scope.isDistrictPostSelected = true;
+            }
+            $scope.isVTypePostSelected = false;
+            $scope.isVillagePostSelected = false;
+
         });
     };
 
@@ -229,20 +252,67 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http", functi
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             var addEl = document.getElementById("addrsViPost");
             addEl.addEventListener('change',function(){
-                $scope.getAdditionPostAddressData($scope.addressData.villageIdPost);
+                $scope.getAdditionPostAddressData($scope.addressData.villagePost.id);
             });
             $scope.addressData.villagesPost = data.resources;
-            $scope.isVTypePostSelected = true;
+            if(data.count !== 0){
+                $scope.isVTypePostSelected = true;
+            }
+            $scope.isVillagePostSelected = false;
         });
     };
 
     $scope.getAdditionPostAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
             $scope.addressData.additionsPost = data.resources;
-            $scope.isVillagePostSelected = true;
+            if(data.count !== 0){
+                $scope.isVillagePostSelected = true;
+            }
         });
     };
-        //end for adress selection
+        //end for address selection
+
+    $scope.getStreetTypes = function(){
+        AddressDataArray.getStreetTypeById().success(function(data){
+            $scope.addressData.streetTypes = data.resources;
+            $scope.addressData.streetTypesPost = data.resources;
+            angular.forEach(data.resources,function(value){
+                $scope.addressData.streetTypeMap[value.id] = value.abbrName;
+            })
+        });
+    };
+    $scope.getStreetTypes();
+
+    (function (){
+        PersonRepo.getPersonById2(parseInt($routeParams.personId,10)).then(function(data){
+            $scope.getAddressData(data.id);
+        });
+    }());
+    $scope.getAddressData = function(id){
+        AddressDataArray.getAddressData(id).success(function(data){
+            data.resources[0].house = parseInt( data.resources[0].house,10);
+            data.resources[0].apartment = parseInt( data.resources[0].apartment,10);
+            data.resources[1].house = parseInt( data.resources[0].house,10);
+            data.resources[1].apartment = parseInt( data.resources[0].apartment,10);
+
+            $scope.addressObj = data.resources[0];
+            $scope.postAddressObj = data.resources[1];
+        });
+
+    };
+        (function (){
+            PersonRepo.getPersonById2(parseInt($routeParams.personId,10)).then(function(data){
+                $scope.getContactData(data.id);
+            });
+        }());
+        $scope.getContactData = function(id){
+            AddressDataArray.getContactData(id).success(function(data){
+                $scope.mPhoneObj = data.resources[1];
+                $scope.phoneObj = data.resources[5];
+                $scope.emailObj = data.resources[0];
+            });
+        };
+
 
 
 }]);
