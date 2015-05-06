@@ -1,39 +1,88 @@
 /**
  * Created by Oksana on 09.04.2015.
  */
-app.controller("MarkCtrl", ["$scope", "$http", "PersonDataMappingArray",
-    function ($scope, $http, PersonDataMappingArray) {
 
-        $scope.personDataArrForMark = [];
-        $scope.personDataArrForMark.enrolmentSubjects = [];
-        $scope.personDataArrForMark.personTypes = [];
-        $scope.personDataArrForMark.marriedTyps = [];
-        $scope.personDataArrForMark.genderTypes = [];
+persons.controller('MarkCtrl', ["$scope", "$http", function ($scope,$http) {
 
-        $scope.getCitizenCountries = function () {
-            PersonDataMappingArray.getMappedArray('persons/person/mark/citizenCountry.json').then(function (data) {
-                $scope.personDataArrForMark.citizenCountries = data;
-            });
-        };
-        $scope.getMarriedTypes = function () {
-            PersonDataMappingArray.getMappedArray('persons/person/mark/marriedTypes.json').then(function (data) {
-                $scope.personDataArrForMark.marriedTypes = data;
-            });
-        };
-        $scope.getPersonTypes = function () {
-            PersonDataMappingArray.getMappedArray('persons/person/mark/personsTypeId.json').then(function (data) {
-                $scope.personDataArrForMark.personTypes = data;
-            });
-        };
-        $scope.getGenderTypes = function () {
-            PersonDataMappingArray.getMappedArray('persons/person/mark/genderTypes.json').then(function (data) {
-                $scope.personDataArrForMark.genderTypes = data;
-            });
-        };
+    $scope.tempMarkArray = [];
+    $scope.personPaperId = "";
+    $scope.publicActivityAwardId = "";
+    $scope.bonus = "";
+    $scope.enrolmentSubjectId = "";
+    $scope.mark = "";
 
-        $scope.getGenderTypes();
-        $scope.getPersonTypes();
-        $scope.getCitizenCountries();
-        $scope.getMarriedTypes();
-    }]);
 
+    $scope.showModal = function (id) {
+        if (id === null) {
+            return;
+        }
+        setTimeout(function () {
+            $(id).modal('show');
+        }, 500);
+    };
+
+    $scope.AddNewZno = function () {
+        $("#addZnoModal").modal("hide");
+        $scope.tempZnoData = {};
+
+
+        $scope.tempZnoData.personPaperId = $scope.personPaperId;
+        $scope.tempZnoData.enrolmentSubjectId = $scope.enrolmentSubjectId;
+        $scope.tempZnoData.mark = $scope.mark;
+        $scope.tempMarkArray.push($scope.tempZnoData);
+
+        $scope.personPaperId = "";
+        $scope.enrolmentSubjectId = "";
+        $scope.mark = "";
+    };
+
+    $scope.AddNewMan = function () {
+        $("#addManModal").modal("hide");
+        $scope.tempManData = {};
+
+
+        $scope.tempManData.personPaperId = $scope.personPaperId;
+        $scope.tempManData.publicActivityAwardId = $scope.publicActivityAwardId;
+        $scope.tempManData.bonus = $scope.bonus;
+        $scope.tempMarkArray.push($scope.tempManData);
+
+        $scope.personPaperId = "";
+        $scope.publicActivityAwardId = "";
+        $scope.bonus = "";
+    };
+
+    $scope.markData = {
+        paper: [],
+        paperId: {},
+        enrolments: [],
+        enrolmentId: {},
+        mark: {},
+        activities: [],
+        activityId: {},
+        bonus: {}
+    };
+
+   // var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
+   // $scope.getUsages = function () {
+   //     DocumentsDataArray.getUsagesById().success(function (data) {
+   //         var addEl = document.getElementById("docsU");
+   //         addEl.addEventListener('change', function () {
+   //             $scope.getTypeDocumentsData($scope.documentData.usageId);
+   //         });
+   //         $scope.documentData.usages = data.resources;
+   //     });
+   // };
+   //// $scope.getUsages();
+   //
+   // $scope.getTypeDocumentsData = function (parentId) {
+   //     DocumentDataArray.getDocumentChildById(parentId).success(function (data) {
+   //         var addEl = document.getElementById("docsT");
+   //         addEl.addEventListener('change', function () {
+   //             $scope.getDocData($scope.documentData.typeId);
+   //         });
+   //         $scope.documentData.types = data.resources;
+   //         $scope.isUsageSelected = true;
+   //     });
+   // };
+
+}]);

@@ -19,7 +19,7 @@ var  name = "";
 
     var getData = function(offset,orderByKey,name){
 
-        return $http.get(BASEURL + "api/persons?limit=5&offset="+ offset+"&orderBy="+orderByKey+"&name="+name)
+        return $http.get(BASEURL + "api/papers/types")
                 .success(function (data) {
                     angular.forEach(data.resources,function(elem){
                         $scope.dataArr.push(elem);
@@ -34,7 +34,7 @@ var  name = "";
     };
     $scope.getZnoData = function(personId){
 
-        return $http.get(BASEURL + "api/persons/11/addresses")
+        return $http.get(BASEURL + "api/papers/types")
             .success(function (data) {
 
             })

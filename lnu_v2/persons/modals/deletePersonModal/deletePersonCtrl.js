@@ -9,7 +9,6 @@ persons.controller("DeletePersonModalCtrl",["$scope","$http","PersonsService",
         };
 
         $scope.cancel = function () {
-
             $('#deletePersonModalContent').modal("hide");
         };
 

@@ -1,5 +1,5 @@
-<div class="container" ng-show="isPersonTabSelected(6)">
-    <div class="row" ng-controller="DocumentsCtrl">
+<div class="container" ng-show="isPersonTabSelected(6)" ng-controller="DocumentsCtrl">
+    <div class="row">
         <div class="col-md-12">
             <br>
 
@@ -11,160 +11,151 @@
                         <button class="pull-right btn btn-primary border-none material-btn" title="Видалити">
                             <span class="glyphicon glyphicon-trash glyphicon-white"></span>
                         </button>
-                        <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати"  data-toggle="modal" data-target="#editModal1">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати">
                             <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
                         </button>
-                        <button class="pull-right btn btn-primary border-none material-btn" title="Додати">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Додати"
+                                ng-click="showModal('#addDocumentModal')">
                             <span class="glyphicon glyphicon-plus glyphicon-white"></span>
                         </button>
                     </div>
                 </div>
                 <div class="panel-body">
                     <div class="">
-                        <div class="svAddressHeader"><h4>Документи про освіту</h4></div>
+                        <div class="svAddressHeader"><h4>{{data.paperUsageId}}</h4></div>
                         <div class="row ">
-                            <div class="col-md-6 col-lg-6 container">
+                            <div class="col-md-8 col-lg-8 container">
                                 <div class="col-md-12 col-lg-12 general-info-item">
-                                    <label class="label-font-size-16" for="PIB">Тип:</label>
+                                    <label class="label-font-size-16" for="DocType">Документ:</label>
 
-                                    <div id="PIB" class="form-control general-info-text">{{"Атестат про повну загальну                                        середню освіту"}}
+                                    <div id="DocType" class="form-control general-info-text">{{data.paperTypeId}}</div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="DocIss">Виданий:</label>
+
+                                    <div id="DocIss" class="form-control general-info-text">{{data.docIssues}}</div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 general-info-item">
+                                    <label class="label-font-size-16" for="DocCh">Перевірений:</label>
+
+                                    <div id="DocCh" class="form-control general-info-text">{{data.isChecked}}
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-6 general-info-item">
-                                    <label class="label-font-size-16" for="birthdayPlace">Система оцінювання:</label>
+                                    <label class="label-font-size-16" for="DocF">Іноземного зразка:</label>
 
-                                    <div id="birthdayPlace" class="form-control general-info-text">{{"12"}}</div>
-                                </div>
-                                <div class="col-md-6 col-lg-6 general-info-item">
-                                    <label class="label-font-size-16" for="birthdayPlaceM">Бал:</label>
-
-                                    <div id="birthdayPlaceM" class="form-control general-info-text">{{"10,5"}}</div>
-                                </div>
-                                <div class="col-md-12 col-lg-12 general-info-item">
-                                    <label class="label-font-size-16" for="birthdayPlaceN">Оригінал:</label>
-
-                                    <div id="birthdayPlaceN" class="form-control general-info-text">{{"відповідає"}}
+                                    <div id="DocF" class="form-control general-info-text">{{data.isForeign}}
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="col-md-6 col-lg-6 container">
+                            <div class="col-md-4 col-lg-4 container">
                                 <div class="col-md-12 col-lg-12 general-info-item">
-                                    <label class="label-font-size-16" for="birthdayPlace1">Виданий:</label>
+                                    <label class="label-font-size-16" for="sernum">Серія та номер:</label>
 
-                                    <div id="birthdayPlace1" class="form-control general-info-text">{{"Технічний коледж                                         НУЛП"}}
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-lg-4 general-info-item">
-                                    <label class="label-font-size-16" for="ser">Серія:</label>
-
-                                    <div id="ser" class="form-control general-info-text">{{"ВК"}}</div>
-                                </div>
-                                <div class="col-md-8 col-lg-8 general-info-item">
-                                    <label class="label-font-size-16" for="num">№:</label>
-
-                                    <div id="num" class="form-control general-info-text">{{"37406514"}}</div>
+                                    <div id="sernum" class="form-control general-info-text">{{data.docSeries + data.docNum}}</div>
                                 </div>
                                 <div class="col-md-12 col-lg-12 general-info-item">
                                     <label class="label-font-size-16" for="birthdayPlaceD">Дата видачі:</label>
 
-                                    <div id="birthdayPlaceD" class="form-control general-info-text">{{"30.06.2009"}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr color="#337ab7">
-                    <div class="">
-                        <div class="svAddressHeader"><h4>Посвідчення особи</h4></div>
-                        <div class="row ">
-                            <div class="col-md-6 col-lg-6 container">
-                                <div class="col-md-12 col-lg-12 general-info-item">
-                                    <label class="label-font-size-16" for="TypeP">Тип:</label>
-
-                                    <div id="TypeP" class="form-control general-info-text">{{"Паспорт"}}
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-lg-12 general-info-item">
-                                    <label class="label-font-size-16" for="Comment">Оригінал:</label>
-
-                                    <div id="Comment" class="form-control general-info-text">{{"відповідає"}}</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 container">
-                                <div class="col-md-12 col-lg-12 general-info-item">
-                                    <label class="label-font-size-16" for="gaveBy">Виданий:</label>
-
-                                    <div id="gaveBy" class="form-control general-info-text">{{"Коломийським РВ УМВС в                                         Івано-Франківській області"}}
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-lg-2 general-info-item">
-                                    <label class="label-font-size-16" for="serP">Серія:</label>
-
-                                    <div id="serP" class="form-control general-info-text">{{"КС"}}</div>
-                                </div>
-                                <div class="col-md-4 col-lg-4 general-info-item">
-                                    <label class="label-font-size-16" for="numP">№:</label>
-
-                                    <div id="numP" class="form-control general-info-text">{{"830240"}}</div>
-                                </div>
-                                <div class="col-md-6 col-lg-6 general-info-item">
-                                    <label class="label-font-size-16" for="dateP">Дата видачі:</label>
-
-                                    <div id="dateP" class="form-control general-info-text">{{"24.03.2011"}}
+                                    <div id="birthdayPlaceD" class="form-control general-info-text">{{data.docDate}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
+
+    <!-- Adding modal -->
+    <div id="addDocumentModal" class="modal fade border-radius-0">
+        <div class="modal-dialog modal-lg border-radius-0">
+            <div class="modal-content border-radius-0">
+                <div class="modal-header custom-modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title text-center create-group-modal-title-header-text addDoc">Додати
+                        документ</h3>
+                </div>
+
+                <form name="addDocumentForm" class="form-group" ng-submit="addDocumentForm.$valid && AddNewDocument()" novalidate>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group col-md-6 col-lg-6">
+                                <label for="docsU">Виберіть тип документа:</label>
+                                <select id="docsU" class="form-control border-radius-0"
+                                        ng-model="documentsData.usageId"
+                                        ng-options="usages.id as usages.name for usages in documentsData.usages">
+                                </select>
+                            </div>
+                            <div class="form-group  col-md-6 col-lg-6" ng-show="isUsageSelected">
+                                <label for="docsT">Виберіть документ:</label>
+                                <select id="docsT" class="form-control border-radius-0" ng-model="documentsData.typeId"
+                                        ng-options="types.id as types.name for types in documentsData.types">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group  col-md-8 col-lg-8">
+                                <label>Документ виданий:</label>
+                                <input type="text" class="form-control border-radius-0"
+                                       ng-model="docIssues" name="docIssues" autofocus>
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4">
+                                <label>Виберіть дату видачі:</label>
+                                <input type="number" class="form-control border-radius-0" placeholder="Дата"
+                                       ng-model="docDate" name="docDate" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group  col-md-3 col-lg-3">
+                                <label>Введіть серію :</label>
+                                <input type="text" class="form-control border-radius-0" placeholder="Серія"
+                                       ng-model="docSeries" name="docSeries">
+                            </div>
+                            <div class="form-group  col-md-3 col-lg-3">
+                                <label>Введіть номер:</label>
+                                <input type="number" class="form-control border-radius-0" placeholder="Номер"
+                                       ng-model="docNum" name="docNum" required>
+                            </div>
+                            <div class="form-group  col-md-3 col-lg-3">
+                                <label>Введіть PIN:</label>
+                                <input type="number" class="form-control border-radius-0" placeholder="PIN"
+                                       ng-model="docPin" name="docPin">
+                            </div>
+                            <div class="form-group  col-md-3 col-lg-3">
+                                <label>Введіть бал:</label>
+                                <input type="number" class="form-control border-radius-0" placeholder="Бал"
+                                       ng-model="marl" name="marl">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <br>
+                            <div class="form-group col-lg-12">
+                                <input id="isc" type="checkbox" ng-model="isChecked"
+                                       ng-true-value="1" ng-false-value="0" ng-change="">
+                                <label for="isc">Документ відповідає оригіналу</label>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <input id="isf" type="checkbox" ng-model="isForeign"
+                                       ng-true-value="1" ng-false-value="0" ng-change="">
+                                <label for="isf">Документ іноземного зразка</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary border-radius-0 border-none" type="submit"
+                                value="Submit">Додати</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!-- /.modal -->
+    </div>
 </div>
-
-
-<!-- Man creating -->
-<!--<div class="">-->
-<!--<div class="svContactsHeader"><h4>Додаткові бали</h4></div>-->
-<!--<div class="row">-->
-<!--<div class="col-md-8 col-lg-8 ">-->
-<!--<label class="label-font-size-16" for="svAddressReg2">Тип активності:</label>-->
-
-<!--<div id="manType" class="form-control general-info-text svAddressFields">-->
-<!--{{"Підготовчі курси"}}-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="col-md-4 col-lg-4 ">-->
-<!--<label class="label-font-size-16" for="svAddressReg3"-->
-<!--style="display: block">Бонус:</label>-->
-
-<!--<div id="subOneMAN" class="form-control general-info-text svAddressFields">-->
-<!--{{"15"}}-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--<br>-->
-
-<!--<div class="row">-->
-<!--<div class="col-md-12 col-lg-12 ">-->
-<!--<label class="label-font-size-16" for="svAddressReg"-->
-<!--style="display: block">Примітка:</label>-->
-
-<!--<div id="Man28" class="form-control general-info-text">-->
-<!--{{"-"}}-->
-<!--</div>-->
-<!--</div>-->
-
-<!--</div>-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--</div>-->
-
-

@@ -121,8 +121,6 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$
 
             PersonsService.addNewPerson($scope.personGeneralInfoAddModalObj).then(function(data){
                 $scope.personData.push(data);
-               //.
-               // $location.path("/benefits");
             });
 
             $scope.personGeneralInfoAddModalObj = {};
