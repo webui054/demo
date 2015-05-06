@@ -75,7 +75,7 @@
                         адресу</h3>
                 </div>
                 <div class="modal-body border-radius-0 formAddress">
-                    <form name="addAddressForm" ng-submit="addAddressForm.$valid && AddNewAddress()" novalidate>
+                    <form name="addAddressForm" ng-submit="addAddressForm.$valid && addAddress()" novalidate>
                         <h4 class="addAddrs">Адреса реєстрації</h4>
                         <fieldset title="Виберіть населений пункт"  class="col-md-12 col-lg-12">
                             <div class="form-group col-md-4 col-lg-4  addrs">
@@ -129,7 +129,7 @@
                         <fieldset title="Додайте адресу"  class="col-md-12 col-lg-12 addrs">
                             <div class="form-group  col-md-2 col-lg-2  addrs">
                                 <label for="typeStr">Тип вулиці:</label>
-                                <select id="typeStr" class="form-control border-radius-0" ng-model="addressObj.streetType"
+                                <select id="typeStr" class="form-control border-radius-0" ng-model="addressObj.streetTypeId"
                                         ng-options="streetType as streetType.name for streetType in addressData.streetTypes">
                                 </select>
                             </div>
@@ -140,12 +140,12 @@
                             </div>
                             <div class="form-group  col-md-2 col-lg-2 addrs">
                                 <label>№ будинка:</label>
-                                <input type="number" class="form-control border-radius-0" placeholder="Будинок"
+                                <input type="text" class="form-control border-radius-0" placeholder="Будинок"
                                        ng-model="addressObj.house" name="house">
                             </div>
                             <div class="form-group  col-md-2 col-lg-2 addrs">
                                 <label>№ квартири:</label>
-                                <input type="number" class="form-control border-radius-0" placeholder="Квартира"
+                                <input type="text" class="form-control border-radius-0" placeholder="Квартира"
                                        ng-model="addressObj.apartment" name="apartment">
                             </div>
                         </fieldset>
@@ -208,7 +208,7 @@
                             <fieldset title="Додайте адресу"  class="col-md-12 col-lg-12">
                                 <div class="form-group col-md-2 col-lg-2  addrs">
                                     <label for="typeStrPost">Тип вулиці:</label>
-                                    <select id="typeStrPost" class="form-control border-radius-0" ng-model="postAddressObj.streetType"
+                                    <select id="typeStrPost" class="form-control border-radius-0" ng-model="postAddressObj.streetTypeId"
                                             ng-options="streetTypesPost as streetTypesPost.name for streetTypesPost in addressData.streetTypesPost">
                                     </select>
                                 </div>
@@ -219,12 +219,12 @@
                                 </div>
                                 <div class="form-group col-md-2 col-lg-2  addrs">
                                     <label>№ будинка:</label>
-                                    <input type="number" class="form-control border-radius-0" placeholder="Будинок"
+                                    <input type="text" class="form-control border-radius-0" placeholder="Будинок"
                                            ng-model="postAddressObj.house" name="housePost">
                                 </div>
                                 <div class="form-group  col-md-2 col-lg-2  addrs">
                                     <label>№ квартири:</label>
-                                    <input type="number" class="form-control border-radius-0" placeholder="Квартира"
+                                    <input type="text" class="form-control border-radius-0" placeholder="Квартира"
                                            ng-model="postAddressObj.apartment" name="apartmentPost">
                                 </div>
                             </fieldset>
