@@ -30,21 +30,16 @@ persons.factory("DocumentDataArray",["$q","$http",function($q,$http){
         });
     };
 
-    factory.addNewDocument = function(document){
-        var deferred = $q.defer();
-        var tempPerson =  personValidator(document);
-        $http.get(document.photo).success(function(){
-            $http.post(baseUrl+"api/persons/",tempPerson).success(function(data){
-                deferred.resolve(data);
-            });
-        }).error(function(){
-            tempPerson.photo = 'content/photo/na.jpg';
-            $http.post(baseUrl+"api/persons/", tempPerson).success(function(data){
-                deferred.resolve(data);
-            });
+    factory.addNewDocument = function(personId,document){
+        var tempDocument =  documentValidator(document);
+        return $http.post(baseUrl+"api/persons/"+personId+"/papers",tempDocument).success(function(data){
+            return data;
+        }).error(function(msg){
+            return msg;
         });
-        return deferred.promise;
+
     };
+
     var documentValidator = function(document){
         if(document.isChecked === undefined){
             document.isChecked = 0;
@@ -54,6 +49,7 @@ persons.factory("DocumentDataArray",["$q","$http",function($q,$http){
         }
         return document;
     };
+
 
     return factory;
 

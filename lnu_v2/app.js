@@ -17,7 +17,7 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
             templateUrl: 'propositions/propositionView.html',
             controller: 'ProposalsCTRL'
         });
-        $routeProvider.when('/person/:personId', {
+            $routeProvider.when('/person/:personId', {
             templateUrl: 'persons/person/person.html',
             controller: 'PersonCtrl'
 
