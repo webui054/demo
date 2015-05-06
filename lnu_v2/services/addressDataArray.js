@@ -68,9 +68,11 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
     //        });
     //    return deferred.promise;
     //};
-    factory.addNewAddress = function(){
-        $http.post(baseUrl+"api/persons/"+id+"/addresses").success(function(data){
-        }).error(function(){
+    factory.addAddress = function(personId,address){
+        return $http.post(baseUrl+"api/persons/"+personId+"/addresses").success(function(data){
+            return data;
+        }).error(function(msg){
+            return msg;
         });
     };
 

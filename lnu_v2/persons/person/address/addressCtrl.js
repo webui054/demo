@@ -14,7 +14,7 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.AddNewAddress = function () {
         $("#addAddressModal").modal("hide");
-        $scope.tempAddressArray.push($scope.tempData); //todo change method.NN
+        //$scope.tempAddressArray.push($scope.tempData); //todo change method.NN
 
         $scope.addressObj.zipCode = "";
         $scope.addressObj.streetTypeId = "";
@@ -316,5 +316,8 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
         };
 
 
+    $scope.addAddress = function(personId){
+        AddressDataArray.addAddress(personId)
+    };
 
 }]);
