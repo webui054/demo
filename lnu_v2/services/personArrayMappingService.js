@@ -16,10 +16,8 @@ var getTempData = function(str){
                     arr[key.id] = key.name;
                 });
             deferred.resolve(arr);
-
             }).error(function(err){
             deferred.resolve(err);
-            //deferred.reject();
         });
         return deferred.promise;
     };
@@ -29,9 +27,7 @@ var getTempData = function(str){
         $http.get(str).success(function (data){
             deferred.resolve(data);
         }).error(function(err){
-            //ExeptionHandler.Handle(err);
             deferred.resolve(err);
-            //deferred.reject();
         });
         return deferred.promise;
     };
@@ -40,6 +36,3 @@ var getTempData = function(str){
 
 
 }]);
-/**
- * Created by Dmytro on 07.04.2015.
- */

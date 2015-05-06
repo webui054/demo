@@ -51,8 +51,6 @@ persons.controller("EditNewPersonModalCtrl",["$scope","PersonDataMappingArray","
             $scope.personGeneralInfoEditModalObj.name = $scope.personGeneralInfoEditModalObj.firstName +
             " " + $scope.personGeneralInfoEditModalObj.surname + " " + $scope.personGeneralInfoEditModalObj.fatherName;
 
-            //$scope.personGeneralInfoEditModalObj.identifier = "";
-
             var tempDate = $scope.personGeneralInfoEditModalObj.year + "-"+$scope.personGeneralInfoEditModalObj.month +
                 "-"+$scope.personGeneralInfoEditModalObj.day;
             $scope.personGeneralInfoEditModalObj.begDate = tempDate;
