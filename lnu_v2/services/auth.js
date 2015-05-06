@@ -1,5 +1,4 @@
-auth.factory('AuthenticationService',
-    ['$http', '$rootScope', '$timeout',
+auth.factory('AuthenticationService',['$http', '$rootScope',
         function ($http, $rootScope) {
             var service = {};
 
