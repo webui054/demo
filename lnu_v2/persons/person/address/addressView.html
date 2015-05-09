@@ -86,13 +86,15 @@
                             <div class="form-group col-md-4 col-lg-4 addrs">
                                 <label for="addrsC">Виберіть країну:</label>
                                 <select id="addrsC" class="form-control border-radius-0" ng-model="addressData.country"
-                                        ng-options="countries as countries.name for countries in addressData.countries">
+                                        ng-options="countries as countries.name for countries in addressData.countries"
+                                        ng-change="getRegionPostAddressData(addressData.countryPost.id)">
                                 </select>
                             </div>
                             <div class="form-group  col-md-4 col-lg-4 addrs" ng-show="isCountrySelected">
                                 <label for="addrsR">Виберіть область:</label>
                                 <select id="addrsR" class="form-control border-radius-0" ng-model="addressData.region"
-                                        ng-options="regions as regions.name for regions in addressData.regions">
+                                        ng-options="regions as regions.name for regions in addressData.regions"
+                                        ng-change="getCdTypesPostAddressData(addressData.regionPost.id)">
                                 </select>
                             </div>
                             <div class="form-group  col-md-4 col-lg-4 addrs" ng-show="isRegionSelected">

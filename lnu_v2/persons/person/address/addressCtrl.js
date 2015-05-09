@@ -179,10 +179,10 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getCountriesPost = function(){
         AddressDataArray.getAddressById().success(function(data){
-            var addEl = document.getElementById("addrsCPost");
-            addEl.addEventListener('change',function(){
-                $scope.getRegionPostAddressData($scope.addressData.countryPost.id);
-            });
+            //var addEl = document.getElementById("addrsCPost");
+            //addEl.addEventListener('change',function(){
+            //    $scope.getRegionPostAddressData($scope.addressData.countryPost.id);
+            //});
             $scope.addressData.countriesPost = data.resources;
         });
     };
@@ -191,10 +191,10 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getRegionPostAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsRPost");
-            addEl.addEventListener('change',function(){
-                $scope.getCdTypesPostAddressData($scope.addressData.regionPost.id);
-            });
+            //var addEl = document.getElementById("addrsRPost");
+            //addEl.addEventListener('change',function(){
+            //    $scope.getCdTypesPostAddressData($scope.addressData.regionPost.id);
+            //});
             $scope.addressData.regionsPost = data.resources;
             if(data.count !== 0){
                 $scope.isCountryPostSelected = true;
