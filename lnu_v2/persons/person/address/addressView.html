@@ -17,46 +17,46 @@
                     </div>
                 </div>
                 <div class="row panel-body">
-                    <div class="svAddressContainer">
-                        <div class="svAddressHeader"><h4>Адреси</h4></div>
-                        <div class="svAddressRegContainer">
-                            <label class="label-font-size-16" for="svAddressReg">Адреса реєстрації:</label>
-                            <div id="svAddressReg" class="form-control general-info-text svAddressFields">
+                    <div class="lnu-person-addrs-address-container">
+                        <div class="lnu-person-addrs-address-header"><h4>Адреси</h4></div>
+                        <div class="lnu-person-addrs-reg-container">
+                            <label class="label-font-size-16" for="lnu-person-addrs-reg-id">Адреса реєстрації:</label>
+                            <div id="lnu-person-addrs-reg-id" class="form-control lnu-person-addrs-info-text lnu-person-addrs-fields">
                                 {{ addressObj.zipCode + " " + addressObj.adminUnitId + " "  + addressData.streetTypeMap[addressObj.streetTypeId] + " "  + addressObj.street}}
                                 <span ng-show="addressObj.house"> буд. </span> {{addressObj.house}} <span ng-show="addressObj.apartment"> кв. </span> {{ addressObj.apartment }}
                             </div>
 
                             
                         </div>
-                        <div class="svAddressPostContainer">
-                            <label class="label-font-size-16" for="svAddressPost">Поштова адреса:</label>
+                        <div class="lnu-person-addrs-post-container">
+                            <label class="label-font-size-16" for="lnu-person-addrs-post-id">Поштова адреса:</label>
                             <div ng-show="!addressData.isPostAddress">
-                                <div id="svAddressReg" class="form-control general-info-text svAddressFields">
+                                <div class="form-control lnu-person-addrs-info-text lnu-person-addrs-fields">
                                     {{ addressObj.zipCode + " " + addressObj.adminUnitId + " "  + addressData.streetTypeMap[addressObj.streetTypeId] + " "  + addressObj.street}}
                                     <span ng-show="addressObj.house"> буд. </span> {{addressObj.house}} <span ng-show="addressObj.apartment"> кв. </span> {{ addressObj.apartment }}
                                 </div>
                             </div>
                             <div ng-show="addressData.isPostAddress">
-                                <div id="svAddressPost" class="form-control general-info-text svAddressFields">
+                                <div id="lnu-person-addrs-post-id" class="form-control lnu-person-addrs-info-text lnu-person-addrs-fields">
                                     {{ postAddressObj.zipCode + " " + postAddressObj.adminUnitId + " "  + addressData.streetTypeMap[postAddressObj.streetTypeId] + " "  + postAddressObj.street}}
                                     <span ng-show="postAddressObj.house"> буд. </span> {{postAddressObj.house}} <span ng-show="postAddressObj.apartment"> кв. </span> {{ postAddressObj.apartment }}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="svContactsContainer">
-                        <div class="svContactsHeader"><h4>Контакти</h4></div>
+                    <div class="lnu-person-addrs-contacts-container">
+                        <div class="lnu-person-addrs-contacts-header"><h4>Контакти</h4></div>
                         <div class="col-md-4 col-lg-4 general-info-item">
                             <label class="label-font-size-16" for="svMobPhone">Мобільний телефон:</label>
-                            <div id="svMobPhone" class="form-control general-info-text">{{ mPhoneObj.value }}</div>
+                            <div id="svMobPhone" class="form-control lnu-person-addrs-info-text">{{ mPhoneObj.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
                             <label class="label-font-size-16" for="svHomePhone">Домашній телефон:</label>
-                            <div id="svHomePhone" class="form-control general-info-text">{{ phoneObj.value }}</div>
+                            <div id="svHomePhone" class="form-control lnu-person-addrs-info-text">{{ phoneObj.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
                                 <label class="label-font-size-16" for="svEmail">e-mail:</label>
-                                <div id="svEmail" class="form-control general-info-text">{{ emailObj.value}}</div>
+                                <div id="svEmail" class="form-control lnu-person-addrs-info-text">{{ emailObj.value}}</div>
                         </div>
                     </div>
                 </div>
