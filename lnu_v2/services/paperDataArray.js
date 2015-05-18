@@ -1,44 +1,44 @@
 /**
  * Created by Oksana on 05.05.2015.
  */
-persons.factory("DocumentDataArray",["$q","$http",function($q,$http){
-    var document = [];
+persons.factory("PaperDataArray",["$q","$http",function($q,$http){
+    var paper = [];
     var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
     var factory = {};
 
     var pushData = function(data){
-        document = data;
+        paper = data;
     };
-    factory.pushDocument = function(data){
+    factory.pushPaper = function(data){
         return pushData(data);
     };
-    factory.popDocument = function(){
-        return document;
+    factory.popPaper = function(){
+        return paper;
     };
 
-    factory.getDocumentById = function(){
+    factory.getPaperById = function(){
         return $http.get(baseUrl + "api/papers/usages").success(function(data){
             return data;
         }).error(function(msg){
         });
     };
-    factory.getPersonDocumentById = function(personId){
+    factory.getPersonPaperById = function(personId){
         return $http.get(baseUrl + "api/persons/"+personId+"/papers").success(function(data){
             return data;
         }).error(function(msg){
         });
     };
 
-    factory.getDocumentChildById = function(paperUsageId){
+    factory.getPaperChildById = function(paperUsageId){
         return $http.get(baseUrl + "api/papers/types?paperUsageId=" + paperUsageId).success(function(data){
             return data;
         }).error(function(msg){
         });
     };
 
-    factory.addNewDocument = function(personId,document){
-        var tempDocument =  documentValidator(document);
-        return $http.post(baseUrl+"api/persons/"+personId+"/papers",tempDocument).success(function(data){
+    factory.addNewPaper = function(personId,paper){
+        var tempPaper =  paperValidator(paper);
+        return $http.post(baseUrl+"api/persons/"+personId+"/papers",tempPaper).success(function(data){
             return data;
         }).error(function(msg){
             return msg;
@@ -53,17 +53,17 @@ persons.factory("DocumentDataArray",["$q","$http",function($q,$http){
         });
     };
 
-    var documentValidator = function(document){
-        if(document.isChecked === undefined){
-            document.isChecked = 0;
+    var paperValidator = function(paper){
+        if(paper.isChecked === undefined){
+            paper.isChecked = 0;
         }
-        if(document.isForeign === undefined){
-            document.isForeign = 0;
+        if(paper.isForeign === undefined){
+            paper.isForeign = 0;
         }
-        return document;
+        return paper;
     };
 
-    factory.deleteDocument = function(personId){
+    factory.deletePaper = function(personId){
         return $http.delete(baseUrl+"api/persons/"+personId+"/papers");
     };
 

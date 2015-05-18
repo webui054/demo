@@ -1382,7 +1382,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			ap = [ a ],
 			bp = [ b ];
 
-		// Parentless nodes are either documents or disconnected
+		// Parentless nodes are either papers or disconnected
 		if ( !aup || !bup ) {
 			return a === doc ? -1 :
 				b === doc ? 1 :

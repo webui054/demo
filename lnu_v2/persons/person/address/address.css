@@ -1,0 +1,21 @@
+/* Page styling */
+.lnu-person-addrs-address-container {padding-left: 15px;}
+.lnu-person-addrs-address-container:after {content: ""; display: block; clear: both;}
+    .lnu-person-addrs-address-header, .lnu-person-addrs-contacts-header {color: #2d6aa0; font-weight:bold;}
+    .lnu-person-addrs-reg-container, .lnu-person-addrs-post-container {padding-right: 30px;}
+    .lnu-person-addrs-reg-container:after {content: ""; display: block; clear: both;}
+    .lnu-person-addrs-post-container {margin-top: 15px;}
+    .lnu-person-addrs-post-container:after {content: ""; display: block; clear: both;}
+        #lnu-person-addrs-reg-id, #lnu-person-addrs-post-id {margin-bottom: 10px;}
+        .lnu-person-addrs-fields {float: left;}
+        .lnu-person-addrs-info-text {border-bottom: 1px solid #87cefa; border-left: 1px solid #87cefa;}
+.lnu-person-addrs-contacts-container {padding-left: 15px; padding-right:15px; margin-top: 15px;}
+.lnu-person-addrs-contacts-container:after {content: ""; display: block; clear: both;}
+    .lnu-person-addrs-contacts-container .general-info-item  {padding-left: 0;}
+
+/* Form styling */
+.lnu-person-addrs-form-titles {color: #2d6aa0;}
+    .lnu-person-addrs-form-fieldset {padding: 0;}
+        .form-group.col-md-2.col-lg-2.lnu-person-addrs-form, .form-group.col-md-4.col-lg-4.lnu-person-addrs-form, .form-group.col-md-6.col-lg-6.lnu-person-addrs-form {padding: 0 5px;}
+            #lnu-person-addrs-form-postaddrs-checkbox-id {margin-left: 20px;}
+    .lnu-person-addrs-form-submit-btn {margin-left: 82%;}

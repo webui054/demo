@@ -2428,7 +2428,7 @@ function jqLiteIsTextNode(html) {
 
 function jqLiteAcceptsData(node) {
   // The window object can accept data but has no nodeType
-  // Otherwise we are only interested in elements (1) and documents (9)
+  // Otherwise we are only interested in elements (1) and papers (9)
   var nodeType = node.nodeType;
   return nodeType === NODE_TYPE_ELEMENT || !nodeType || nodeType === NODE_TYPE_DOCUMENT;
 }
@@ -10701,7 +10701,7 @@ function LocationHashbangUrl(appBase, hashPrefix) {
     this.$$compose();
 
     /*
-     * In Windows, on an anchor node on documents loaded from
+     * In Windows, on an anchor node on papers loaded from
      * the filesystem, the browser will return a pathname
      * prefixed with the drive name ('/C:/path') when a
      * pathname without a drive is set:
