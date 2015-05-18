@@ -46,17 +46,17 @@
                     </div>
                     <div class="lnu-person-addrs-contacts-container">
                         <div class="lnu-person-addrs-contacts-header"><h4>Контакти</h4></div>
-                        <div class="col-md-4 col-lg-4 general-info-item">
-                            <label class="label-font-size-16" for="svMobPhone">Мобільний телефон:</label>
-                            <div id="svMobPhone" class="form-control lnu-person-addrs-info-text">{{ mPhoneObj.value }}</div>
+                        <div class="col-md-4 col-lg-4 general-info-item mobphone">
+                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-mobphone-id">Мобільний телефон:</label>
+                            <div id="lnu-person-addrs-contacts-mobphone-id" class="form-control lnu-person-addrs-info-text">{{ mPhoneObj.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
-                            <label class="label-font-size-16" for="svHomePhone">Домашній телефон:</label>
-                            <div id="svHomePhone" class="form-control lnu-person-addrs-info-text">{{ phoneObj.value }}</div>
+                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-homephone-id">Домашній телефон:</label>
+                            <div id="lnu-person-addrs-contacts-homephone-id" class="form-control lnu-person-addrs-info-text">{{ phoneObj.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
-                                <label class="label-font-size-16" for="svEmail">e-mail:</label>
-                                <div id="svEmail" class="form-control lnu-person-addrs-info-text">{{ emailObj.value}}</div>
+                                <label class="label-font-size-16" for="lnu-person-addrs-contacts-email-id">e-mail:</label>
+                                <div id="lnu-person-addrs-contacts-email-id" class="form-control lnu-person-addrs-info-text">{{ emailObj.value}}</div>
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                                 </select>
                             </div>
                         </fieldset>
-                        <fieldset title="Додайте адресу"  class="col-md-12 col-lg-12 lnu-person-addrs-form">
+                        <fieldset title="Додайте адресу"  class="col-md-12 col-lg-12 lnu-person-addrs-form-fieldset">
                             <div class="form-group  col-md-2 col-lg-2  lnu-person-addrs-form">
                                 <label for="typeStr">Тип вулиці:</label>
                                 <select id="typeStr" class="form-control border-radius-0" ng-model="addressObj.streetTypeId"
@@ -151,7 +151,7 @@
                                        ng-model="addressObj.apartment" name="apartment">
                             </div>
                         </fieldset>
-                        <h4 class="addAddrs">Поштова адреса</h4>
+                        <h4 class="lnu-person-addrs-form-titles">Поштова адреса</h4>
                         <div class="form-group">
                             <input id="lnu-person-addrs-form-postaddrs-checkbox-id" type="checkbox" ng-model="addressData.isPostAddress"
                                    ng-true-value="false" ng-false-value="true" ng-change="">
@@ -231,7 +231,7 @@
                                 </div>
                             </fieldset>
                         </div>
-                        <h4 class="addAddrs">Контакти</h4>
+                        <h4 class="lnu-person-addrs-form-titles">Контакти</h4>
                         <fieldset title="Додайте контакти" class="col-md-12 col-lg-12 lnu-person-addrs-form-fieldset">
                             <div class="form-group  col-md-4 col-lg-4  lnu-person-addrs-form">
                                 <label>Номер мобільного:</label>
