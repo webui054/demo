@@ -1,4 +1,4 @@
-<div class="container" ng-show="isPersonTabSelected(6)" ng-controller="DocumentsCtrl">
+<div class="container" ng-show="isPersonTabSelected(6)" ng-controller="PapersCtrl">
     <div class="row">
         <div class="col-md-12">
             <br>
@@ -8,43 +8,43 @@
                     <h4 class="pull-left">Документи персони</h4>
 
                     <div class="pull-right">
-                        <button class="pull-right btn btn-primary border-none material-btn" title="Видалити" ng-click="showModal('#deleteDocumentModal')" >
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Видалити" ng-click="showModal('#deletePaperModal')" >
                             <span class="glyphicon glyphicon-trash glyphicon-white"></span>
                         </button>
                         <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати">
                             <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
                         </button>
                         <button class="pull-right btn btn-primary border-none material-btn" title="Додати"
-                                ng-click="showModal('#addDocumentModal')">
+                                ng-click="showModal('#addPaperModal')">
                             <span class="glyphicon glyphicon-plus glyphicon-white"></span>
                         </button>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="" ng-repeat="data in documentsData">
+                    <div class="" ng-repeat="data in papersData">
                         <div class="svAddressHeader"><h4>{{data.paperUsageId}}</h4></div>
                         <div class="row ">
                             <div class="col-md-8 col-lg-8 container">
                                 <div class="col-md-12 col-lg-12 general-info-item">
-                                    <label class="label-font-size-16" for="DocType">Документ:</label>
+                                    <label class="label-font-size-16" for="PapType">Документ:</label>
 
-                                    <div id="DocType" class="form-control general-info-text">{{data.paperTypeId}}</div>
+                                    <div id="PapType" class="form-control general-info-text">{{data.paperTypeId}}</div>
                                 </div>
                                 <div class="col-md-12 col-lg-12 general-info-item">
-                                    <label class="label-font-size-16" for="DocIss">Виданий:</label>
+                                    <label class="label-font-size-16" for="PapIss">Виданий:</label>
 
-                                    <div id="DocIss" class="form-control general-info-text">{{data.docIssued}}</div>
+                                    <div id="PapIss" class="form-control general-info-text">{{data.docIssued}}</div>
                                 </div>
                                 <div class="col-md-6 col-lg-6 general-info-item">
-                                    <label class="label-font-size-16" for="DocCh">Перевірений:</label>
+                                    <label class="label-font-size-16" for="PapCh">Перевірений:</label>
 
-                                    <div id="DocCh" class="form-control general-info-text">{{data.isChecked | checkYesNo}}
+                                    <div id="PapCh" class="form-control general-info-text">{{data.isChecked | checkYesNo}}
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-6 general-info-item">
-                                    <label class="label-font-size-16" for="DocF">Іноземного зразка:</label>
+                                    <label class="label-font-size-16" for="PapF">Іноземного зразка:</label>
 
-                                    <div id="DocF" class="form-control general-info-text">{{data.isForeign | checkYesNo}}
+                                    <div id="PapF" class="form-control general-info-text">{{data.isForeign | checkYesNo}}
                                     </div>
                                 </div>
 
@@ -72,7 +72,7 @@
     </div>
 
     <!-- Adding modal -->
-    <div id="addDocumentModal" class="modal fade border-radius-0">
+    <div id="addPaperModal" class="modal fade border-radius-0">
         <div class="modal-dialog modal-lg border-radius-0">
             <div class="modal-content border-radius-0">
                 <div class="modal-header custom-modal-header">
@@ -80,24 +80,24 @@
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h3 class="modal-title text-center create-group-modal-title-header-text addDoc">Додати
+                    <h3 class="modal-title text-center create-group-modal-title-header-text addPap">Додати
                         документ</h3>
                 </div>
 
-                <form name="addDocumentForm" class="form-group" ng-submit="addDoc()" novalidate>
+                <form name="addPaperForm" class="form-group" ng-submit="addPap()" novalidate>
                     <div class="modal-body">
                         <div class="row">
                             <div class="form-group col-md-6 col-lg-6">
-                                <label for="docsU">Виберіть тип документа:</label>
-                                <select id="docsU" class="form-control border-radius-0"
-                                        ng-model="documentsData.usageId"
-                                        ng-options="usages.id as usages.name for usages in documentsUsages">
+                                <label for="papsU">Виберіть тип документа:</label>
+                                <select id="papsU" class="form-control border-radius-0"
+                                        ng-model="papersData.usageId"
+                                        ng-options="usages.id as usages.name for usages in papersUsages">
                                 </select>
                             </div>
                             <div class="form-group  col-md-6 col-lg-6" ng-show="isUsageSelected">
-                                <label for="docsT">Виберіть документ:</label>
-                                <select id="docsT" class="form-control border-radius-0" ng-model="paperTypeId"
-                                        ng-options="types.id as types.name for types in documentsTypes">
+                                <label for="papsT">Виберіть документ:</label>
+                                <select id="papsT" class="form-control border-radius-0" ng-model="paperTypeId"
+                                        ng-options="types.id as types.name for types in papersTypes">
                                 </select>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
 
     <!-- Deleting modal -->
 
-    <div class="modal fade  border-radius-0" id="deleteDocumentModal">
+    <div class="modal fade  border-radius-0" id="deletePaperModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
