@@ -75,10 +75,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getCountries = function(){
         AddressDataArray.getAddressById().success(function(data){
-            var addEl = document.getElementById("addrsC");
-            addEl.addEventListener('change',function(){
-                $scope.getRegionAddressData($scope.addressData.country.id);
-            });
             $scope.addressData.countries = data.resources;
         });
     };
@@ -87,10 +83,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getRegionAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsR");
-            addEl.addEventListener('change',function(){
-                $scope.getCdTypesAddressData($scope.addressData.region.id);
-            });
             $scope.addressData.regions = data.resources;
             if(data.count !== 0){
                 $scope.isCountrySelected = true;
@@ -105,10 +97,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getCdTypesAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsCD");
-            addEl.addEventListener('change',function(){
-                $scope.getDistrictAddressData($scope.addressData.cdType.id);
-            });
             $scope.addressData.cdTypes = data.resources;
             if(data.count !== 0){
                 $scope.isRegionSelected = true;
@@ -122,10 +110,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getDistrictAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsD");
-            addEl.addEventListener('change',function(){
-                $scope.getVTypeAddressData($scope.addressData.district.id);
-            });
             $scope.addressData.districts = data.resources;
             if(data.count !== 0){
                 $scope.iscdTypeSelected = true;
@@ -138,10 +122,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getVTypeAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsV");
-            addEl.addEventListener('change',function(){
-                $scope.getVillageAddressData($scope.addressData.vType.id);
-            });
             $scope.addressData.vTypes = data.resources;
             if(data.count !== 0){
                 $scope.isDistrictSelected = true;
@@ -154,10 +134,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getVillageAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsVi");
-            addEl.addEventListener('change',function(){
-                $scope.getAdditionAddressData($scope.addressData.village.id);
-            });
             $scope.addressData.villages = data.resources;
             if(data.count !== 0){
                 $scope.isVTypeSelected = true;
@@ -179,10 +155,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getCountriesPost = function(){
         AddressDataArray.getAddressById().success(function(data){
-            //var addEl = document.getElementById("addrsCPost");
-            //addEl.addEventListener('change',function(){
-            //    $scope.getRegionPostAddressData($scope.addressData.countryPost.id);
-            //});
             $scope.addressData.countriesPost = data.resources;
         });
     };
@@ -191,10 +163,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getRegionPostAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            //var addEl = document.getElementById("addrsRPost");
-            //addEl.addEventListener('change',function(){
-            //    $scope.getCdTypesPostAddressData($scope.addressData.regionPost.id);
-            //});
             $scope.addressData.regionsPost = data.resources;
             if(data.count !== 0){
                 $scope.isCountryPostSelected = true;
@@ -209,10 +177,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getCdTypesPostAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsCDPost");
-            addEl.addEventListener('change',function(){
-                $scope.getDistrictPostAddressData($scope.addressData.cdTypePost.id);
-            });
             $scope.addressData.cdTypesPost = data.resources;
             if(data.count !== 0){
                 $scope.isRegionPostSelected = true;
@@ -226,10 +190,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getDistrictPostAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsDPost");
-            addEl.addEventListener('change',function(){
-                $scope.getVTypePostAddressData($scope.addressData.districtPost.id);
-            });
             $scope.addressData.districtsPost = data.resources;
             if(data.count !== 0){
                 $scope.iscdTypePostSelected = true;
@@ -242,10 +202,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getVTypePostAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsVPost");
-            addEl.addEventListener('change',function(){
-                $scope.getVillagePostAddressData($scope.addressData.vTypePost.id);
-            });
             $scope.addressData.vTypesPost = data.resources;
             if(data.count !== 0){
                 $scope.isDistrictPostSelected = true;
@@ -258,10 +214,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
     $scope.getVillagePostAddressData = function(parentId){
         AddressDataArray.getAddressChildById(parentId).success(function(data){
-            var addEl = document.getElementById("addrsViPost");
-            addEl.addEventListener('change',function(){
-                $scope.getAdditionPostAddressData($scope.addressData.villagePost.id);
-            });
             $scope.addressData.villagesPost = data.resources;
             if(data.count !== 0){
                 $scope.isVTypePostSelected = true;
