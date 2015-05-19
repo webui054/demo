@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="modal-title" id="addNewPersonModalLabel">Додати новий документ</h4>
+                </div>
+                <form name="addPaperForm" class="form-group" ng-submit="addPap()" novalidate>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group col-md-6 col-lg-6">
+                                <label for="papsU">Виберіть тип документа:</label>
+                                <select id="papsU" class="form-control border-radius-0"
+                                        ng-model="papersData.usageId"
+                                        ng-options="usages.id as usages.name for usages in papersUsages">
+                                </select>
+                            </div>
+                            <div class="form-group  col-md-6 col-lg-6" ng-show="isUsageSelected">
+                                <label for="papsT">Виберіть документ:</label>
+                                <select id="papsT" class="form-control border-radius-0" ng-model="paperTypeId"
+                                        ng-options="types.id as types.name for types in papersTypes">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group  col-md-8 col-lg-8">
+                                <label>Документ виданий:</label>
+                                <input type="text" class="form-control border-radius-0"
+                                       ng-model="docIssued" name="docIssued">
+                            </div>
+                            <div class="form-group  col-md-4 col-lg-4">
+                                <label>Виберіть дату видачі:</label>
+                                <input type="date" class="form-control border-radius-0" placeholder="Дата"
+                                       ng-model="docDate" name="docDate" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group  col-md-3 col-lg-3">
+                                <label>Введіть серію :</label>
+                                <input type="text" class="form-control border-radius-0" placeholder="Серія"
+                                       ng-model="docSeries" name="docSeries">
+                            </div>
+                            <div class="form-group  col-md-3 col-lg-3">
+                                <label>Введіть номер:</label>
+                                <input type="number" class="form-control border-radius-0" placeholder="Номер"
+                                       ng-model="docNum" name="docNum" required>
+                            </div>
+                            <div class="form-group  col-md-3 col-lg-3">
+                                <label>Введіть PIN:</label>
+                                <input type="number" class="form-control border-radius-0" placeholder="PIN"
+                                       ng-model="docPin" name="docPin">
+                            </div>
+                            <div class="form-group  col-md-3 col-lg-3">
+                                <label>Введіть бал:</label>
+                                <input type="number" class="form-control border-radius-0" placeholder="Бал"
+                                       ng-model="mark" name="mark">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <br>
+
+                            <div class="form-group col-lg-12">
+                                <input id="isc" type="checkbox" ng-model="isChecked"
+                                       ng-true-value="1" ng-false-value="0" ng-change="">
+                                <label for="isc">Документ відповідає оригіналу</label>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <input id="isf" type="checkbox" ng-model="isForeign"
+                                       ng-true-value="1" ng-false-value="0" ng-change="">
+                                <label for="isf">Документ іноземного зразка</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                    <button ng-disabled="addPaperForm.$invalid" class="btn btn-primary border-radius-0 border-none" ng-click="goToZno()">Далі</button>
+            </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
