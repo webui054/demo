@@ -1,5 +1,6 @@
-persons.controller("EditGeneralPersonInfoCtrl",["$scope","PersonDataMappingArray","$http","PersonsService","PersonRepo","$routeParams",
-    function($scope,PersonDataMappingArray,$http,PersonsService,PersonRepo,$routeParams){
+persons.controller("EditGeneralPersonInfoCtrl",["$scope","PersonDataMappingArray","PersonsService","PersonRepo","$routeParams","Validator","$location",
+    function($scope,PersonDataMappingArray,PersonsService,PersonRepo,$routeParams,Validator,$location){
+        var personId = parseInt($routeParams.personId,10);
         $scope.allPersonsArrData = {
             personsTypes : [],
             marriedTypes : [],
@@ -13,15 +14,12 @@ persons.controller("EditGeneralPersonInfoCtrl",["$scope","PersonDataMappingArray
                 $scope.allPersonsArrData.citizenCountries = data;
             });
         };
-        $scope.getCitizenCountry();
 
         $scope.getLanguages = function(){
             PersonDataMappingArray.getDataArray('persons/person/general/languages.json').then(function(data){
                 $scope.allPersonsArrData.languages = data;
             });
         };
-        $scope.getLanguages();
-
 
         $scope.getMarriedTypes = function(){
             PersonDataMappingArray.getDataArray('persons/person/general/marriedTypes.json').then(function(data){
@@ -29,40 +27,45 @@ persons.controller("EditGeneralPersonInfoCtrl",["$scope","PersonDataMappingArray
             });
         };
 
-        $scope.getMarriedTypes();
-
         $scope.getPersonsType = function(){
             PersonDataMappingArray.getDataArray('persons/person/general/personsTypeId.json').then(function(data){
                 $scope.allPersonsArrData.personsTypes = data;
             });
-
         };
-        $scope.getPersonsType();
 
         $scope.getGenderTypes = function(){
             PersonDataMappingArray.getDataArray('persons/person/general/genderTypes.json').then(function(data){
                 $scope.allPersonsArrData.genderTypes = data;
             });
         };
-        $scope.getPerson = function (){
-            PersonRepo.getPersonById2(parseInt($routeParams.personId,10)).then(function(data){
 
+        $scope.getPerson = function (){
+            PersonRepo.getPersonById2(personId).then(function(data){
                     $scope.personGeneralInfoEditModalObj = data;
                     var tempDate = new Date(data.begDate);
-
                     $scope.personGeneralInfoEditModalObj.day = tempDate.getDate();
                     $scope.personGeneralInfoEditModalObj.month = (tempDate.getMonth()+1);
                     $scope.personGeneralInfoEditModalObj.year = tempDate.getFullYear();
                     $scope.personGeneralInfoObj = data;
-
                     $scope.isShowGeneralInfo = true;
-                    console.log(data)
                 }
             );
         };
-        $scope.getPerson();
 
+        $scope.getPerson();
+        $scope.getCitizenCountry();
+        $scope.getLanguages();
         $scope.getGenderTypes();
+        $scope.getMarriedTypes();
+        $scope.getPersonsType();
+
+        $scope.numericValidator = function(e){
+            Validator.numericValidator(e);
+        };
+
+        $scope.ukrValidator = function(e){
+            Validator.ukrValidator(e);
+        };
 
         $scope.editPerson = function(){
             $scope.personGeneralInfoEditModalObj.name = $scope.personGeneralInfoEditModalObj.firstName +
@@ -92,11 +95,8 @@ persons.controller("EditGeneralPersonInfoCtrl",["$scope","PersonDataMappingArray
                 docNum:  $scope.personGeneralInfoEditModalObj.docNum ,
                 docSeries:  $scope.personGeneralInfoEditModalObj.docSeries
             };
-
             PersonsService.editPerson($scope.personGeneralInfoEditModalObj.id,data).success(function(data){
-                console.log(data)
+                $location.path('/person/'+personId)
             });
-
         }
-
     }]);

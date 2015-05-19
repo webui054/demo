@@ -1,15 +1,11 @@
-persons.controller("DeletePersonModalCtrl",["$scope","$http","PersonsService",
-    function($scope,$http,PersonsService,$dialog,$location){
-
+persons.controller("DeletePersonModalCtrl",["$scope","PersonsService",
+    function($scope,PersonsService){
         $scope.ok = function () {
             $('#deletePersonModalContent').modal("hide");
             PersonsService.deletePerson($scope.personGeneralInfoEditModalObj.id).success(function(data){
-                console.log(data)
             });
         };
-
         $scope.cancel = function () {
             $('#deletePersonModalContent').modal("hide");
         };
-
     }]);

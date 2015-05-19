@@ -1,22 +1,22 @@
 app.factory("PersonDataMappingArray",["$http","$q",function($http,$q){
 
-        var factory = {};
-var getTempData = function(str){
-    $http.get(str).success(function (data){
-       return data;
-    }).error(function(){
-    });
-};
+    var factory = {};
+    var getTempData = function(str){
+        $http.get(str).success(function (data){
+            return data;
+        }).error(function(){
+        });
+    };
 
     factory.getMappedArray = function(str){
         var arr = [];
         var deferred = $q.defer();
         $http.get(str).success(function (data) {
-                angular.forEach(data,function(key){
-                    arr[key.id] = key.name;
-                });
+            angular.forEach(data,function(key){
+                arr[key.id] = key.name;
+            });
             deferred.resolve(arr);
-            }).error(function(err){
+        }).error(function(err){
             deferred.resolve(err);
         });
         return deferred.promise;
@@ -33,6 +33,4 @@ var getTempData = function(str){
     };
 
     return factory;
-
-
 }]);
