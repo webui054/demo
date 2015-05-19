@@ -1,98 +1,130 @@
-<div class="container" ng-show="isPersonTabSelected(1)" ng-controller="GeneralPersonInfoCTRL">
+<div class="container" id="addNewPersonModal">
     <div class="row">
         <div class="col-md-12">
-            <br>
             <div class="panel panel-primary only-border-radius-0">
                 <div class="panel-heading clearfix only-border-radius-0 background-image-none">
-                    <h4 class="pull-left">Загальна Інформація</h4>
-                    <div class="pull-right">
-                        <button class="pull-right btn btn-primary border-none material-btn" title="Видалити">
-                            <span class="glyphicon glyphicon-trash glyphicon-white"></span>
-                        </button>
-                        <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати"
-                                data-toggle="modal" data-target="#editPersonModal">
-                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
-                        </button>
-                    </div>
+                    <h4 class="modal-title" id="addNewPersonModalLabel">Додати нову персону</h4>
                 </div>
-                <div class="row panel-body">
-                    <div class="col-md-4 col-lg-3 container">
-                        <img height="320px" width="240px" src="{{personGeneralInfoObj.photo}}">
-                        <div class="col-md-4 col-lg-4 general-info-item">
-                            <label class="" for="ser">Серія :</label>
-                            <div id="ser" class="form-control general-info-text">{{personGeneralInfoObj.docSeries}}</div>
+                <form name="addNewPersonModalForm" role="form" ng-submit="addNewPerson()" class="form-group">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group col-lg-4 col-md-4">
+                                <label for="addNewPerson0">Прізвище</label>
+                                <input type="text" name="addNewPerson0" class="form-control" id="addNewPerson0"
+                                       maxlength="25" ng-paste="$event.preventDefault()"
+                                       ng-model="personGeneralInfoAddModalObj.firstName" pattern="['а-яА-ЯіїєІЇЄ]{1,25}"
+                                       placeholder="Введіть призвище" required>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4">
+                                <label for="addNewPerson1">Імя</label>
+                                <input type="text" name="addNewPerson1" class="form-control" id="addNewPerson1"
+                                       maxlength="25" ng-paste="$event.preventDefault()"
+                                       ng-model="personGeneralInfoAddModalObj.surname"  pattern="['а-яА-ЯіїєІЇЄ]{1,25}"
+                                       placeholder="Введіть ім'я" required>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4">
+                                <label for="addNewPerson2">По-батькові</label>
+                                <input type="text" name="addNewPerson2" class="form-control" id="addNewPerson2"
+                                       maxlength="25" ng-paste="$event.preventDefault()"
+                                       ng-model="personGeneralInfoAddModalObj.fatherName" pattern="['а-яА-ЯіїєІЇЄ]{1,25}"
+                                       placeholder="Введіть по-батькові" required>
+                            </div>
                         </div>
-                        <div class="col-md-8 col-lg-8 general-info-item">
-                            <label class="" for="num">№ :</label>
-                            <div id="num" class="form-control general-info-text">{{personGeneralInfoObj.docNum}}</div>
+                        <div class="row">
+                            <div class="form-group col-lg-8 col-md-8">
+                                <label for="sub4">Місце Народження</label>
+                                <input type="text" class="form-control" id="sub4"   ng-paste="$event.preventDefault()"
+                                       ng-model="personGeneralInfoAddModalObj.birthPlace"
+                                       placeholder="Введіть місце народження" required>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4">
+                                <label class="col-lg-12 col-md-12 pd-lf-0">Дата Народження</label>
+                                <label class="">д:</label>
+                                <input type="text" min="1" max="31" placeholder="день" maxlength="2" pattern="^([1-9]|[12]\d|3[01])$"
+                                       ng-paste="$event.preventDefault()"
+                                       class="form-control wtd-33 dspl-inline" id="dayAp"
+                                       ng-model="personGeneralInfoAddModalObj.begDate.day" required>
+                                <label class="">м:</label>
+                                <input type="text" placeholder="місяць" maxlength="2" minlength="1"  pattern="^([1-9]|1[012])$"
+                                       ng-paste="$event.preventDefault()"
+                                       class="form-control wtd-32 dspl-inline" id="monthAp"
+                                       ng-model="personGeneralInfoAddModalObj.begDate.month" required>
+                                <label class="">р:</label>
+                                <input type="text" placeholder="рік" maxlength="4" minlength="4"
+                                       ng-paste="$event.preventDefault()"
+                                       class="form-control wtd-33 dspl-inline" id="yearAp"
+                                       ng-model="personGeneralInfoAddModalObj.begDate.year" required>
+                            </div>
                         </div>
-
+                        <div class="row">
+                            <div class="form-group col-lg-3 col-md-3">
+                                <label for="sub9">Громадянство:</label>
+                                <select class="form-control" id="sub9" ng-model="personGeneralInfoAddModalObj.citizenCountryId" required
+                                        ng-options="citizenCountry.id as citizenCountry.name for citizenCountry in allPersonsArrData.citizenCountries">
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3 col-md-3">
+                                <label for="sub10">Громадянський стан:</label>
+                                <select id="sub10" class="form-control" ng-model="personGeneralInfoAddModalObj.marriedTypeId" required
+                                        ng-options="marriedType.id as marriedType.name for marriedType in allPersonsArrData.marriedTypes">
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3 col-md-3">
+                                <label for="sub11">Стать:</label>
+                                <select id="sub11" class="form-control" ng-model="personGeneralInfoAddModalObj.genderTypeId" required
+                                        ng-options="genderType.id as genderType.name for genderType in allPersonsArrData.genderTypes">
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3 col-md-3">
+                                <label for="sub12">Зайнятість:</label>
+                                <select id="sub12" class="form-control" ng-model="personGeneralInfoAddModalObj.personTypeId" required
+                                        ng-options="personType.id as personType.name for personType in allPersonsArrData.personsTypes">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group col-lg-12" style="padding-left: 0;padding-right: 0">
+                                    <label for="sub23">Шлях до фото</label>
+                                    <input type="text" class="form-control" id="sub23" ng-model="personGeneralInfoAddModalObj.photo" required>
+                                </div>
+                                <div class="form-group col-lg-5 col-md-5" style="padding-left: 0">
+                                    <label class="" for="docSeriesAp">Серія :</label>
+                                    <input type="text" class="form-control" id="docSeriesAp" name="docSeriesAp" maxlength="20"
+                                           ng-model="personGeneralInfoAddModalObj.docSeries" required>
+                                </div>
+                                <div class="form-group col-lg-7 col-md-7" style="padding-left: 0;padding-right: 0">
+                                    <label class="" for="docNumAp">№ :</label>
+                                    <input type="text" class="form-control" id="docNumAp" name="docNumAp" maxlength="20"
+                                           ng-model="personGeneralInfoAddModalObj.docNum" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4">
+                                <br>
+                                <div class="form-group col-lg-12">
+                                    <input id="sub6" type="checkbox" ng-model="personGeneralInfoAddModalObj.isMilitary"
+                                           ng-true-value="1" ng-false-value="0" ng-change="">
+                                    <label for="sub6">Військовозобовязаний</label>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <input id="sub7" type="checkbox" ng-model="personGeneralInfoAddModalObj.isHostel"
+                                           ng-true-value="1" ng-false-value="0" ng-change="">
+                                    <label for="sub7">Гуртожиток</label>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <input id="sub8" type="checkbox" ng-model="personGeneralInfoAddModalObj.resident"
+                                           ng-true-value="1" ng-false-value="0" ng-change="">
+                                    <label for="sub8">Резидент</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-5 col-lg-5 container">
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="PIB">ПІБ:</label>
-                            <div id="PIB" class="form-control general-info-text" ng-bind="personGeneralInfoObj.name"></div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="birthdayPlace">Місце Народження:</label>
-                            <div id="birthdayPlace" class="form-control general-info-text"
-                                 ng-bind="personGeneralInfoObj.birthPlace"></div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="birthdayDate">Дата Народження:</label>
-                            <div id="birthdayDate" class="form-control general-info-text"
-                                 ng-bind="personGeneralInfoObj.begDate | date:'dd.MM.yyyy'">
-
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="personTypeId">Зайнятість:</label>
-                            <div id="personTypeId" class="form-control general-info-text"
-                                 ng-bind="personDataArrFOrGeneralView.personTypes[personGeneralInfoObj.personTypeId]">
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-lg-6 general-info-item">
-                            <label class="label-font-size-16" for="military">Військовозобовязаний:</label>
-                            <div id="military" class="form-control general-info-text"
-                                 ng-bind="personGeneralInfoObj.isMilitary | checkYesNo">
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-lg-6 general-info-item">
-                            <label class="label-font-size-16" for="hostel">Гуртожиток:</label>
-                            <div id="hostel" class="form-control general-info-text"
-                                 ng-bind="personGeneralInfoObj.isHotel | checkYesNo">
-                            </div>
-                        </div>
+                    <div class="modal-footer">
+                        <input type="submit" ng-disabled="addNewPersonModalForm.$invalid" class="btn btn-primary border-radius-0 border-none" value="Зберегти зміни">
+                        <button ng-disabled="addNewPersonModalForm.$invalid" class="btn btn-primary border-radius-0 border-none" ng-click="goToAddress()">Next</button>
                     </div>
-                    <div class="col-md-3 col-lg-3 container">
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="Sex">Стать:</label>
-                            <div id="Sex" class="form-control general-info-text"
-                                 ng-bind="personDataArrFOrGeneralView.genderTypes[personGeneralInfoObj.genderTypeId]">
-                            </div>
-                        </div>
-                        <div class="col-md-12 ol-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="married">Громадянський стан:</label>
-                            <div id="married" class="form-control general-info-text"
-                                 ng-bind="personDataArrFOrGeneralView.marriedTypes[personGeneralInfoObj.marriedTypeId]">
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="citizen">Громадянство:</label>
-                            <div id="citizen" class="form-control general-info-text"
-                                 ng-bind="personDataArrFOrGeneralView.citizenCountries[personGeneralInfoObj.citizenCountryId]">
-                            </div>
-                        </div>
-                        <div class=" col-md-12 col-lg-12 general-info-item">
-                            <label class="label-font-size-16" for="resident">Резидент:</label>
-                            <div id="resident" class="form-control general-info-text"
-                                 ng-bind="personGeneralInfoObj.resident | checkYesNo">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-    <div ng-include="'persons/modals/editPersonModal/editPersonModalForGeneralInfoView.html'"></div>
 </div>

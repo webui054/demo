@@ -1,5 +1,10 @@
 app.factory("PersonRepo",["$q","$http",function($q,$http){
     var person = [];
+    var address = {};
+    var contact = {};
+    var papers = {};
+    var zno = {};
+    var man = {};
     var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
     var factory = {};
 
@@ -12,6 +17,58 @@ app.factory("PersonRepo",["$q","$http",function($q,$http){
     factory.popPerson = function(){
       return person;
     };
+
+    var pushAddressData = function(data){
+        address = data;
+    };
+    factory.pushAddress = function(data){
+        return pushAddressData(data);
+    };
+    factory.popAddress = function(){
+        return address;
+    };
+
+    var pushContactData = function(data){
+        contact = data;
+    };
+    factory.pushContact = function(data){
+        return pushContactData(data);
+    };
+    factory.popContact = function(){
+        return contact;
+    };
+
+    var pushPapersData = function(data){
+        papers = data;
+    };
+    factory.pushPapers = function(data){
+        return pushPapersData(data);
+    };
+    factory.popPapers = function(){
+        return papers;
+    };
+
+    var pushZnoData = function(data){
+        zno = data;
+    };
+    factory.pushZno = function(data){
+        return pushZnoData(data);
+    };
+    factory.popZno = function(){
+        return zno;
+    };
+
+    var pushManData = function(data){
+        man = data;
+    };
+    factory.pushMan = function(data){
+        return pushManData(data);
+    };
+    factory.popMan = function(){
+        return man;
+    };
+
+
     factory.getPersonById = function(id){
         var deferred = $q.defer();
         angular.forEach(person,function(elem){

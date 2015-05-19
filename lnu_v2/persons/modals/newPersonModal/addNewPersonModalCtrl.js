@@ -115,7 +115,13 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$
             $scope.personGeneralInfoAddModalObj.identifier = "123123";
 
             PersonRepo.pushPerson($scope.personGeneralInfoAddModalObj);
-            $location.path('/addPerson/address');
+
+            PersonsService.addNewPerson(PersonRepo.popPerson()).then(function(data){
+                console.log(data);
+                $location.path('/addPerson/address');
+            });
+
+            //$location.path('/addPerson/address');
 
             $scope.personGeneralInfoAddModalObj = {};
 
