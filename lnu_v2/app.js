@@ -30,7 +30,7 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
         //todo add correct address view
         $routeProvider.when('/addPerson/address', {
             templateUrl: 'persons/newPerson/address/addressModal.html',
-            controller: 'addressModalCtrl'
+            controller: 'AddressModalCtrl'
 
         });
         $routeProvider.when('/benefits', {
