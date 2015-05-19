@@ -1,4 +1,4 @@
-persons.controller("EditNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http","PersonsService","PersonRepo","$routeParams",
+persons.controller("EditGeneralPersonInfoCtrl",["$scope","PersonDataMappingArray","$http","PersonsService","PersonRepo","$routeParams",
     function($scope,PersonDataMappingArray,$http,PersonsService,PersonRepo,$routeParams){
         $scope.allPersonsArrData = {
             personsTypes : [],
