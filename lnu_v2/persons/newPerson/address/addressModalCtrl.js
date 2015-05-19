@@ -267,6 +267,15 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
             });
         };
 
+        $scope.goToPapers = function(){
+            AddressDataArray.pushAddress();
+
+            PersonsService.addAddress(AddressDataArray.popAddress()).then(function(data){
+                console.log(data);
+                $location.path('/addPerson/papers');
+            });
+        };
+
 
         $scope.addAddress = function(){
             $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
