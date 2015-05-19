@@ -3,14 +3,6 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
     $scope.tempData = {};
     $scope.tempAddressArray = [];
     $scope.tempAddressObj = [];
-    $scope.showModal = function (id) {
-        if (id === null) {
-            return;
-        }
-        setTimeout(function () {
-            $(id).modal('show');
-        }, 500);
-    };
 
         $scope.addressObj = {
                 streetTypeId:"",
