@@ -21,8 +21,8 @@
             </div>
             <span ng-bind="'з '+ (personsOffset+1) + ' по ' + (personData.length+personsOffset) + ' з ' + personsCount">
             </span>
-            <button class="btn btn-primary border-radius-0 svCreateNewPerson border-none" data-toggle="modal"
-                    data-target="#addNewPersonModal"><span class="glyphicon glyphicon-plus"></span>&nbsp;Додати персону</button>
+            <a  href="#/addPerson/generalInfo" class="btn btn-primary border-radius-0 svCreateNewPerson border-none">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;Додати персону</a>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-2" ng-include="'persons/personsSearchFilters.html'" ng-show="isMoreSearch">
@@ -42,5 +42,5 @@
         <div ng-include="'persons/modals/editPersonModal/editPersonModal.html'"></div>
     </div>
     <div ng-include="'persons/modals/deletePersonModal/deletePersonModal.html'"></div>
-    <div ng-include="'persons/modals/newPersonModal/addNewPersonModal.html'"></div>
+    <!--<div ng-include="'persons/modals/newPersonModal/addNewPersonModal.html'"></div>-->
 </div>

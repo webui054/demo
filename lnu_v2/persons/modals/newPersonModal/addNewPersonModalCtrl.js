@@ -1,5 +1,5 @@
-persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http","PersonsService","$location",
-    function($scope,PersonDataMappingArray,$http,PersonsService,$location){
+persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$http","PersonsService","$location","PersonRepo",
+    function($scope,PersonDataMappingArray,$http,PersonsService,$location,PersonRepo){
         $scope.allPersonsArrData = [];
         $scope.allPersonsArrData = {
             citizenCountries: [],
@@ -105,11 +105,7 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$
             });
         }());
 
-
-
-
-        $scope.addNewPerson = function(){
-            $('#addNewPersonModal').modal("hide");
+        $scope.goToAddress = function(){
             $scope.personGeneralInfoAddModalObj.name = $scope.personGeneralInfoAddModalObj.firstName +
             " " + $scope.personGeneralInfoAddModalObj.surname + " " + $scope.personGeneralInfoAddModalObj.fatherName;
 
@@ -117,10 +113,28 @@ persons.controller("AddNewPersonModalCtrl",["$scope","PersonDataMappingArray","$
             +($scope.personGeneralInfoAddModalObj.begDate.month)+"-"+$scope.personGeneralInfoAddModalObj.begDate.day);
 
             $scope.personGeneralInfoAddModalObj.identifier = "123123";
-            //$scope.personGeneralInfoAddModalObj.endDate = "2015-01-01";
+
+            PersonRepo.pushPerson($scope.personGeneralInfoAddModalObj);
+            $location.path('/addPerson/address');
+
+            $scope.personGeneralInfoAddModalObj = {};
+
+
+        };
+
+
+        $scope.addNewPerson = function(){
+            $scope.personGeneralInfoAddModalObj.name = $scope.personGeneralInfoAddModalObj.firstName +
+            " " + $scope.personGeneralInfoAddModalObj.surname + " " + $scope.personGeneralInfoAddModalObj.fatherName;
+
+            $scope.personGeneralInfoAddModalObj.begDate = new Date($scope.personGeneralInfoAddModalObj.begDate.year +"-"
+            +($scope.personGeneralInfoAddModalObj.begDate.month)+"-"+$scope.personGeneralInfoAddModalObj.begDate.day);
+
+            $scope.personGeneralInfoAddModalObj.identifier = "123123";
+
 
             PersonsService.addNewPerson($scope.personGeneralInfoAddModalObj).then(function(data){
-                $scope.personData.push(data);
+                $location.path('/persons');
             });
 
             $scope.personGeneralInfoAddModalObj = {};

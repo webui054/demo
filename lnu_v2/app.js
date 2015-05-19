@@ -22,6 +22,17 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
             controller: 'PersonCtrl'
 
         });
+        $routeProvider.when('/addPerson/generalInfo', {
+            templateUrl: 'persons/modals/newPersonModal/addNewPersonModal.html',
+            controller: 'AddNewPersonModalCtrl'
+
+        });
+        //todo add correct address view
+        $routeProvider.when('/addPerson/address', {
+            templateUrl: 'persons/modals/newPersonModal/addNewPersonModal.html',
+            controller: 'AddNewPersonModalCtrl'
+
+        });
         $routeProvider.when('/benefits', {
             templateUrl: 'benefits/benefitsView.html',
             controller: 'BenefitsCTRL'

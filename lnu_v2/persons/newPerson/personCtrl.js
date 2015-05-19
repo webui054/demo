@@ -1,4 +1,4 @@
-persons.controller("PersonCtrl",["$scope","PersonRepo",'$routeParams', function($scope,PersonRepo,$routeParams){
+persons.controller("AddPersonCtrl",["$scope","PersonRepo",'$routeParams', function($scope,PersonRepo,$routeParams){
     $scope.personTab = 1;
 
     $scope.selectPersonTab = function(setTab){
