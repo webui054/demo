@@ -21,7 +21,7 @@
                         <div class="lnu-person-addrs-address-header"><h4>Адреси</h4></div>
                         <div class="lnu-person-addrs-reg-container">
                             <label class="label-font-size-16" for="lnu-person-addrs-reg-id">Адреса реєстрації:</label>
-                            <div id="lnu-person-addrs-reg-id" class="form-control lnu-person-addrs-info-text lnu-person-addrs-fields">
+                            <div id="lnu-person-addrs-reg-id" class="form-control general-info-text lnu-person-addrs-fields">
                                 {{ addressObj.zipCode + " " + addressObj.adminUnitId + " "  + addressData.streetTypeMap[addressObj.streetTypeId] + " "  + addressObj.street}}
                                 <span ng-show="addressObj.house"> буд. </span> {{addressObj.house}} <span ng-show="addressObj.apartment"> кв. </span> {{ addressObj.apartment }}
                             </div>
@@ -31,13 +31,13 @@
                         <div class="lnu-person-addrs-post-container">
                             <label class="label-font-size-16" for="lnu-person-addrs-post-id">Поштова адреса:</label>
                             <div ng-show="!addressData.isPostAddress">
-                                <div class="form-control lnu-person-addrs-info-text lnu-person-addrs-fields">
+                                <div class="form-control general-info-text lnu-person-addrs-fields">
                                     {{ addressObj.zipCode + " " + addressObj.adminUnitId + " "  + addressData.streetTypeMap[addressObj.streetTypeId] + " "  + addressObj.street}}
                                     <span ng-show="addressObj.house"> буд. </span> {{addressObj.house}} <span ng-show="addressObj.apartment"> кв. </span> {{ addressObj.apartment }}
                                 </div>
                             </div>
                             <div ng-show="addressData.isPostAddress">
-                                <div id="lnu-person-addrs-post-id" class="form-control lnu-person-addrs-info-text lnu-person-addrs-fields">
+                                <div id="lnu-person-addrs-post-id" class="form-control general-info-text lnu-person-addrs-fields">
                                     {{ postAddressObj.zipCode + " " + postAddressObj.adminUnitId + " "  + addressData.streetTypeMap[postAddressObj.streetTypeId] + " "  + postAddressObj.street}}
                                     <span ng-show="postAddressObj.house"> буд. </span> {{postAddressObj.house}} <span ng-show="postAddressObj.apartment"> кв. </span> {{ postAddressObj.apartment }}
                                 </div>
@@ -48,15 +48,15 @@
                         <div class="lnu-person-addrs-contacts-header"><h4>Контакти</h4></div>
                         <div class="col-md-4 col-lg-4 general-info-item mobphone">
                             <label class="label-font-size-16" for="lnu-person-addrs-contacts-mobphone-id">Мобільний телефон:</label>
-                            <div id="lnu-person-addrs-contacts-mobphone-id" class="form-control lnu-person-addrs-info-text">{{ mPhoneObj.value }}</div>
+                            <div id="lnu-person-addrs-contacts-mobphone-id" class="form-control general-info-text">{{ mPhoneObj.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
                             <label class="label-font-size-16" for="lnu-person-addrs-contacts-homephone-id">Домашній телефон:</label>
-                            <div id="lnu-person-addrs-contacts-homephone-id" class="form-control lnu-person-addrs-info-text">{{ phoneObj.value }}</div>
+                            <div id="lnu-person-addrs-contacts-homephone-id" class="form-control general-info-text">{{ phoneObj.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
                                 <label class="label-font-size-16" for="lnu-person-addrs-contacts-email-id">e-mail:</label>
-                                <div id="lnu-person-addrs-contacts-email-id" class="form-control lnu-person-addrs-info-text">{{ emailObj.value}}</div>
+                                <div id="lnu-person-addrs-contacts-email-id" class="form-control general-info-text">{{ emailObj.value}}</div>
                         </div>
                     </div>
                 </div>
@@ -87,38 +87,42 @@
                                 <label for="addrsC">Виберіть країну:</label>
                                 <select id="addrsC" class="form-control border-radius-0" ng-model="addressData.country"
                                         ng-options="countries as countries.name for countries in addressData.countries"
-                                        ng-change="getRegionPostAddressData(addressData.countryPost.id)">
+                                        ng-change="getRegionAddressData(addressData.country.id)">
                                 </select>
                             </div>
                             <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isCountrySelected">
                                 <label for="addrsR">Виберіть область:</label>
                                 <select id="addrsR" class="form-control border-radius-0" ng-model="addressData.region"
                                         ng-options="regions as regions.name for regions in addressData.regions"
-                                        ng-change="getCdTypesPostAddressData(addressData.regionPost.id)">
+                                        ng-change="getCdTypesAddressData(addressData.region.id)">
                                 </select>
                             </div>
                             <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isRegionSelected">
                                 <label for="addrsCD">Виберіть підпорядкування:</label>
                                 <select id="addrsCD" class="form-control border-radius-0" ng-model="addressData.cdType"
-                                        ng-options="cdTypes as cdTypes.name for cdTypes in addressData.cdTypes">
+                                        ng-options="cdTypes as cdTypes.name for cdTypes in addressData.cdTypes"
+                                        ng-change="getDistrictAddressData(addressData.cdType.id)">
                                 </select>
                             </div>
                             <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="iscdTypeSelected">
                                 <label for="addrsD">Виберіть місто/район:</label>
                                 <select id="addrsD" class="form-control border-radius-0" ng-model="addressData.district"
-                                        ng-options="districts as districts.name for districts in addressData.districts">
+                                        ng-options="districts as districts.name for districts in addressData.districts"
+                                        ng-change="getVTypeAddressData(addressData.district.id)">
                                 </select>
                             </div>
                             <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isDistrictSelected">
                                 <label for="addrsV">Виберіть містечко/село/смт</label>
                                 <select id="addrsV" class="form-control border-radius-0" ng-model="addressData.vType"
-                                        ng-options="vTypes as vTypes.name for vTypes in addressData.vTypes">
+                                        ng-options="vTypes as vTypes.name for vTypes in addressData.vTypes"
+                                        ng-change="getVillageAddressData(addressData.vType.id)">
                                 </select>
                             </div>
                             <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isVTypeSelected">
                                 <label for="addrsVi">Виберіть назву міста/селища:</label>
                                 <select id="addrsVi" class="form-control border-radius-0" ng-model="addressData.village"
-                                        ng-options="villages as villages.name for villages in addressData.villages">
+                                        ng-options="villages as villages.name for villages in addressData.villages"
+                                        ng-change="getAdditionAddressData(addressData.village.id)">
                                 </select>
                             </div>
                             <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isVillageSelected">
@@ -167,37 +171,43 @@
                                 <div class="form-group col-md-4 col-lg-4 lnu-person-addrs-form">
                                     <label for="addrsCPost">Виберіть країну:</label>
                                     <select id="addrsCPost" class="form-control border-radius-0" ng-model="addressData.countryPost"
-                                            ng-options="countriesPost as countriesPost.name for countriesPost in addressData.countriesPost">
+                                            ng-options="countriesPost as countriesPost.name for countriesPost in addressData.countriesPost"
+                                            ng-change="getRegionPostAddressData(addressData.countryPost.id)">
                                     </select>
                                 </div>
                                 <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isCountryPostSelected">
                                     <label for="addrsRPost">Виберіть область:</label>
                                     <select id="addrsRPost" class="form-control border-radius-0" ng-model="addressData.regionPost"
-                                            ng-options="regionsPost as regionsPost.name for regionsPost in addressData.regionsPost">
+                                            ng-options="regionsPost as regionsPost.name for regionsPost in addressData.regionsPost"
+                                            ng-change="getCdTypesPostAddressData(addressData.regionPost.id)">
                                     </select>
                                 </div>
                                 <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isRegionPostSelected">
                                     <label for="addrsCDPost">Виберіть підпорядкування:</label>
                                     <select id="addrsCDPost" class="form-control border-radius-0" ng-model="addressData.cdTypePost"
-                                            ng-options="cdTypesPost as cdTypesPost.name for cdTypesPost in addressData.cdTypesPost">
+                                            ng-options="cdTypesPost as cdTypesPost.name for cdTypesPost in addressData.cdTypesPost"
+                                            ng-change="getDistrictPostAddressData(addressData.cdTypePost.id)">
                                     </select>
                                 </div>
                                 <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="iscdTypePostSelected">
                                     <label for="addrsDPost">Виберіть місто/район:</label>
                                     <select id="addrsDPost" class="form-control border-radius-0" ng-model="addressData.districtPost"
-                                            ng-options="districtsPost as districtsPost.name for districtsPost in addressData.districtsPost">
+                                            ng-options="districtsPost as districtsPost.name for districtsPost in addressData.districtsPost"
+                                            ng-change="getVTypePostAddressData(addressData.districtPost.id)">
                                     </select>
                                 </div>
                                 <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isDistrictPostSelected">
                                     <label for="addrsVPost">Виберіть містечко/село/смт</label>
                                     <select id="addrsVPost" class="form-control border-radius-0" ng-model="addressData.vTypePost"
-                                            ng-options="vTypesPost as vTypesPost.name for vTypesPost in addressData.vTypesPost">
+                                            ng-options="vTypesPost as vTypesPost.name for vTypesPost in addressData.vTypesPost"
+                                            ng-change="getVillagePostAddressData(addressData.vTypePost.id)">
                                     </select>
                                 </div>
                                 <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isVTypePostSelected">
                                     <label for="addrsViPost">Виберіть назву міста/селища:</label>
                                     <select id="addrsViPost" class="form-control border-radius-0" ng-model="addressData.villagePost"
-                                            ng-options="villagesPost as villagesPost.name for villagesPost in addressData.villagesPost">
+                                            ng-options="villagesPost as villagesPost.name for villagesPost in addressData.villagesPost"
+                                            ng-change="getAdditionPostAddressData(addressData.villagePost.id)">
                                     </select>
                                 </div>
                                 <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isVillagePostSelected">

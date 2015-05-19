@@ -8,7 +8,6 @@
     .lnu-person-addrs-post-container:after {content: ""; display: block; clear: both;}
         #lnu-person-addrs-reg-id, #lnu-person-addrs-post-id {margin-bottom: 10px;}
         .lnu-person-addrs-fields {float: left;}
-        .lnu-person-addrs-info-text {border-bottom: 1px solid #87cefa; border-left: 1px solid #87cefa;}
 .lnu-person-addrs-contacts-container {padding-left: 15px; padding-right:15px; margin-top: 15px;}
 .lnu-person-addrs-contacts-container:after {content: ""; display: block; clear: both;}
     .lnu-person-addrs-contacts-container .general-info-item  {padding-left: 0;}
