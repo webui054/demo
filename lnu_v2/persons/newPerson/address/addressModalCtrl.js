@@ -1,5 +1,5 @@
-persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'PersonRepo','$routeParams',
-    function ($scope,AddressDataArray, $http, PersonRepo, $routeParams) {
+persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'PersonRepo','$routeParams', '$location',
+    function ($scope,AddressDataArray, $http, PersonRepo, $routeParams, $location) {
         $scope.tempData = {};
         $scope.tempAddressArray = [];
         $scope.tempAddressObj = [];
@@ -268,29 +268,34 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         };
 
         $scope.goToPapers = function(){
-            AddressDataArray.pushAddress();
-
-            PersonsService.addAddress(AddressDataArray.popAddress()).then(function(data){
-                console.log(data);
-                $location.path('/addPerson/papers');
-            });
-        };
-
-
-        $scope.addAddress = function(){
             $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
             $scope.addressObj.adminUnitId = $scope.addressData.village.id;
-            $scope.addressObj.personId = parseInt($routeParams.personId,10);
+          //  $scope.addressObj.personId = parseInt($routeParams.personId,10);
             $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
             $scope.postAddressObj.adminUnitId = $scope.addressData.villagePost.id;
-            $scope.postAddressObj.personId = parseInt($routeParams.personId,10);
-            AddressDataArray.addAddress(parseInt($routeParams.personId,10),$scope.addressObj).then(function(data){
-                $scope.addressObj = data.data;
-                AddressDataArray.addAddress(parseInt($routeParams.personId,10),$scope.postAddressObj).then(function(data){
-                    $scope.postAddressObj = data.data;
-                });
-            });
-            $("#addAddressModal").modal("hide");
+           // $scope.postAddressObj.personId = parseInt($routeParams.personId,10);
+
+            AddressDataArray.pushAddress($scope.addressObj);
+            AddressDataArray.pushPostAddress($scope.postAddressObj);
+            $location.path('/addPerson/papers');
         };
+
+        //$scope.addAddress = function(){
+        //    $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
+        //    $scope.addressObj.adminUnitId = $scope.addressData.village.id;
+        //    $scope.addressObj.personId = parseInt($routeParams.personId,10);
+        //    $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
+        //    $scope.postAddressObj.adminUnitId = $scope.addressData.villagePost.id;
+        //    $scope.postAddressObj.personId = parseInt($routeParams.personId,10);
+        //    AddressDataArray.addAddress(parseInt($routeParams.personId,10),$scope.addressObj).then(function(data){
+        //        $scope.addressObj = data.data;
+        //        AddressDataArray.addAddress(parseInt($routeParams.personId,10),$scope.postAddressObj).then(function(data){
+        //            $scope.postAddressObj = data.data;
+        //        });
+        //    });
+        //    $("#addAddressModal").modal("hide");
+        //};
+
+
 
     }]);

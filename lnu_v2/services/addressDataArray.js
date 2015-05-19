@@ -9,6 +9,9 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
     factory.pushAddress = function(data){
         return pushData(data);
     };
+    factory.pushPostAddress = function(data){
+        return pushData(data);
+    };
     factory.popAddress = function(){
       return address;
     };
