@@ -25,6 +25,4 @@ app.factory("Validator",[function(){
     };
 
     return factory;
-}]);/**
- * Created by Dmytro on 19.05.2015.
- */
+}]);
