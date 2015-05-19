@@ -33,6 +33,19 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
             controller: 'AddNewPersonModalCtrl'
 
         });
+
+        // todo Papers
+        $routeProvider.when('/addPerson/papers', {
+            templateUrl: 'persons/newPerson/papers/papersView.html',
+            controller: 'AddPapersCtrl'
+
+        });
+        //// todo Mark
+        //$routeProvider.when('/addPerson/mark', {
+        //    templateUrl: 'benefits/benefitsView.html',
+        //    controller: 'BenefitsCTRL'
+        //});
+        //
         $routeProvider.when('/benefits', {
             templateUrl: 'benefits/benefitsView.html',
             controller: 'BenefitsCTRL'
@@ -44,7 +57,6 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
             }]
         });
 
-        $routeProvider.otherwise({ redirectTo: '/login' });
     }])
     .run(['$rootScope', '$location', '$http',
         function ($rootScope, $location, $http) {
