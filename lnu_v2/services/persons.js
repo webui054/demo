@@ -1,4 +1,4 @@
-persons.factory("PersonsService",["$q","$http",function($q, $http){
+persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,PersonRepo){
 
     var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
     var factory = {};
@@ -38,6 +38,7 @@ persons.factory("PersonsService",["$q","$http",function($q, $http){
         $http.get(person.photo).success(function(){
             $http.post(baseUrl+"api/persons/",tempPerson).success(function(data){
                 deferred.resolve(data);
+                addMoreInfo(data.id);
             });
         }).error(function(){
             tempPerson.photo = 'content/photo/na.jpg';
@@ -67,6 +68,41 @@ persons.factory("PersonsService",["$q","$http",function($q, $http){
             person.resident = 0;
         }
         return person;
+    };
+
+    var addMoreInfo = function(personId){
+        addContacts(personId);
+        addAddress(personId);
+        addPostAddress(personId);
+    };
+
+    var addContacts = function(personId){
+        var contacts = PersonRepo.popContact();
+        angular.forEach(contacts, function(value){
+            return $http.post(baseUrl+"api/persons/"+personId+"/contacts",value).success(function(data){
+                return data;
+            }).error(function(msg){
+                return msg;
+            });
+        });
+    };
+
+    var addAddress = function(personId){
+        var address = PersonRepo.popAddress();
+        return $http.post(baseUrl+"api/persons/"+personId+"/addresses",address).success(function(data){
+            return data;
+        }).error(function(msg){
+            return msg;
+        });
+    };
+
+    var addPostAddress = function(personId){
+        var addressPost = PersonRepo.popPostAddress();
+        return $http.post(baseUrl+"api/persons/"+personId+"/addresses",addressPost).success(function(data){
+            return data;
+        }).error(function(msg){
+            return msg;
+        });
     };
 
     return factory;

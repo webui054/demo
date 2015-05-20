@@ -59,7 +59,8 @@
                             <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isVillageSelected">
                                 <label for="addrsAd">Додатково:</label>
                                 <select id="addrsAd" class="form-control border-radius-0" ng-model="addressData.addition"
-                                        ng-options="additions as additions.name for additions in addressData.additions">
+                                        ng-options="additions as additions.name for additions in addressData.additions"
+                                        ng-change="bindAdditionId(addressData.addition.id)">
                                 </select>
                             </div>
                         </fieldset>
@@ -144,7 +145,8 @@
                                 <div class="form-group  col-md-4 col-lg-4 lnu-person-addrs-form" ng-show="isVillagePostSelected">
                                     <label for="addrsAdPost">Додатково:</label>
                                     <select id="addrsAdPost" class="form-control border-radius-0" ng-model="addressData.additionPost"
-                                            ng-options="additionsPost as additionsPost.name for additionsPost in addressData.additionsPost">
+                                            ng-options="additionsPost as additionsPost.name for additionsPost in addressData.additionsPost"
+                                            ng-change="bindAdditionPostId(addressData.additionPost.id)">
                                     </select>
                                 </div>
                             </fieldset>
@@ -177,22 +179,22 @@
                             <div class="form-group  col-md-4 col-lg-4  lnu-person-addrs-form">
                                 <label>Номер мобільного:</label>
                                 <input type="text" class="form-control border-radius-0" placeholder="Мобільний"
-                                       ng-model="mPhoneObj.mPhone" name="mPhone" autofocus>
+                                       ng-model="mPhoneObj.value" name="mPhone" autofocus>
                             </div>
                             <div class="form-group col-md-4 col-lg-4  lnu-person-addrs-form">
                                 <label>Номер дом. телефону:</label>
                                 <input type="text" class="form-control border-radius-0" placeholder="Домашній"
-                                       ng-model="phoneObj.phone" name="phone" autofocus>
+                                       ng-model="phoneObj.value" name="phone" autofocus>
                             </div>
                             <div class="form-group col-md-4 col-lg-4  lnu-person-addrs-form">
                                 <label>Введіть e-mail:</label>
                                 <input type="text" class="form-control border-radius-0" placeholder="E-mail"
-                                       ng-model="emailObj.mail" name="email" autofocus>
+                                       ng-model="emailObj.value" name="email" autofocus>
                             </div>
                         </fieldset>
                     </div>
                     <div class="modal-footer">
-                        <button ng-disabled="addAddressForm.$invalid" class="btn btn-primary border-radius-0 border-none" ng-click="goToPapers()">Next</button>
+                        <button ng-disabled="addAddressForm.$invalid" class="btn btn-primary border-radius-0 border-none" ng-click="goToPapers()">Далі</button>
                     </div>
                 </form>
             </div>

@@ -6,14 +6,29 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
     var pushData = function(data){
         address = data;
     };
+
     factory.pushAddress = function(data){
         return pushData(data);
     };
+
+    factory.pushContacts = function(data){
+        return pushData(data);
+    };
+
     factory.pushPostAddress = function(data){
         return pushData(data);
     };
+
     factory.popAddress = function(){
       return address;
+    };
+
+    factory.popPostAddress = function(){
+        return address;
+    };
+
+    factory.popContacts = function(){
+        return address;
     };
   
     factory.getAddressById = function(){
@@ -53,14 +68,6 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
             }).error(function(msg){
 
             });
-    };
-
-    factory.addAddress = function(personId,address){
-        return $http.post(baseUrl+"api/persons/"+personId+"/addresses",address).success(function(data){
-            return data;
-        }).error(function(msg){
-            return msg;
-        });
     };
 
     return factory;

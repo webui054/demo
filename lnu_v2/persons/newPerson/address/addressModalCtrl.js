@@ -1,8 +1,10 @@
 persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'PersonRepo','$routeParams', '$location',
-    function ($scope,AddressDataArray, $http, PersonRepo, $routeParams, $location) {
+    function ($scope, AddressDataArray, $http, PersonRepo, $routeParams, $location) {
         $scope.tempData = {};
         $scope.tempAddressArray = [];
         $scope.tempAddressObj = [];
+        var adminUnitId;
+        var adminUnitPostId;
 
         $scope.addressObj = {
             streetTypeId:"",
@@ -28,6 +30,12 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
             apartment:""
         };
 
+        $scope.contactsObj = {
+            mPhoneObj: {},
+            phoneObj: {},
+            emailObj: {}
+        };
+
         //Address Select for person address
         $scope.addressData = {
             countries:[],
@@ -43,6 +51,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
             district:{},
             vType:{},
             village:{},
+            addition:{},
             countriesPost:[],
             regionsPost:[],
             cdTypesPost:[],
@@ -56,13 +65,12 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
             districtPost:{},
             vTypePost:{},
             villagePost:{},
+            additionPost:{},
             isPostAddress: true,
             streetTypeId:{},
             streetTypes: [],
             streetTypePost:{},
-            streetTypesPost: [],
-            streetTypeMap: [],
-            cityNameMap: []
+            streetTypesPost: []
         };
 
         $scope.getCountries = function(){
@@ -72,10 +80,10 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         };
         $scope.getCountries();
 
-
         $scope.getRegionAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.regions = data.resources;
+                adminUnitId = parentId;
                 if(data.count !== 0){
                     $scope.isCountrySelected = true;
                 }
@@ -90,6 +98,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getCdTypesAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.cdTypes = data.resources;
+                adminUnitId = parentId;
                 if(data.count !== 0){
                     $scope.isRegionSelected = true;
                 }
@@ -103,6 +112,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getDistrictAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.districts = data.resources;
+                adminUnitId = parentId;
                 if(data.count !== 0){
                     $scope.iscdTypeSelected = true;
                 }
@@ -115,6 +125,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getVTypeAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.vTypes = data.resources;
+                adminUnitId = parentId;
                 if(data.count !== 0){
                     $scope.isDistrictSelected = true;
                 }
@@ -127,6 +138,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getVillageAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.villages = data.resources;
+                adminUnitId = parentId;
                 if(data.count !== 0){
                     $scope.isVTypeSelected = true;
                 }
@@ -137,14 +149,20 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getAdditionAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.additions = data.resources;
+                adminUnitId = parentId;
                 if(data.count !== 0){
                     $scope.isVillageSelected = true;
                 }
             });
         };
 
-        //Post Address
+        $scope.bindAdditionId = function(){
+            adminUnitId = $scope.addressData.addition.id;
+            console.log(adminUnitId);
+        };
 
+
+        //Post Address
         $scope.getCountriesPost = function(){
             AddressDataArray.getAddressById().success(function(data){
                 $scope.addressData.countriesPost = data.resources;
@@ -152,10 +170,10 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         };
         $scope.getCountriesPost();
 
-
         $scope.getRegionPostAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.regionsPost = data.resources;
+                adminUnitPostId = parentId;
                 if(data.count !== 0){
                     $scope.isCountryPostSelected = true;
                 }
@@ -170,6 +188,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getCdTypesPostAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.cdTypesPost = data.resources;
+                adminUnitPostId = parentId;
                 if(data.count !== 0){
                     $scope.isRegionPostSelected = true;
                 }
@@ -183,6 +202,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getDistrictPostAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.districtsPost = data.resources;
+                adminUnitPostId = parentId;
                 if(data.count !== 0){
                     $scope.iscdTypePostSelected = true;
                 }
@@ -195,6 +215,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getVTypePostAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.vTypesPost = data.resources;
+                adminUnitPostId = parentId;
                 if(data.count !== 0){
                     $scope.isDistrictPostSelected = true;
                 }
@@ -207,6 +228,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getVillagePostAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.villagesPost = data.resources;
+                adminUnitPostId = parentId;
                 if(data.count !== 0){
                     $scope.isVTypePostSelected = true;
                 }
@@ -217,13 +239,21 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         $scope.getAdditionPostAddressData = function(parentId){
             AddressDataArray.getAddressChildById(parentId).success(function(data){
                 $scope.addressData.additionsPost = data.resources;
+                adminUnitPostId = parentId;
                 if(data.count !== 0){
                     $scope.isVillagePostSelected = true;
                 }
             });
         };
+
+        $scope.bindAdditionPostId = function(){
+            adminUnitPostId = $scope.addressData.additionPost.id;
+            console.log(adminUnitPostId);
+        };
         //end for address selection
 
+
+        //street type selection
         $scope.getStreetTypes = function(){
             AddressDataArray.getStreetTypeById().success(function(data){
                 $scope.addressData.streetTypes = data.resources;
@@ -235,49 +265,20 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         };
         $scope.getStreetTypes();
 
-        (function (){
-            PersonRepo.getPersonById2(parseInt($routeParams.personId,10)).then(function(data){
-                $scope.getAddressData(data.id);
-            });
-        }());
-        $scope.getAddressData = function(id){
-            AddressDataArray.getAddressData(id).success(function(data){
-                if(data.resources[0]){
-                    data.resources[0].house = parseInt( data.resources[0].house,10);
-                    data.resources[0].apartment = parseInt( data.resources[0].apartment,10);
-                    data.resources[1].house = parseInt( data.resources[0].house,10);
-                    data.resources[1].apartment = parseInt( data.resources[0].apartment,10);
 
-                    $scope.addressObj = data.resources[0];
-                    $scope.postAddressObj = data.resources[1];
-                };
-            });
-
-        };
-        (function (){
-            PersonRepo.getPersonById2(parseInt($routeParams.personId,10)).then(function(data){
-                $scope.getContactData(data.id);
-            });
-        }());
-        $scope.getContactData = function(id){
-            AddressDataArray.getContactData(id).success(function(data){
-                $scope.mPhoneObj = data.resources[1];
-                $scope.phoneObj = data.resources[5];
-                $scope.emailObj = data.resources[2];
-            });
-        };
-
+        //push data from modal and go to next page
         $scope.goToPapers = function(){
-            $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
-            $scope.addressObj.adminUnitId = $scope.addressData.village.id;
-          //  $scope.addressObj.personId = parseInt($routeParams.personId,10);
-            $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
-            $scope.postAddressObj.adminUnitId = $scope.addressData.villagePost.id;
-           // $scope.postAddressObj.personId = parseInt($routeParams.personId,10);
+            if(adminUnitId !== undefined && adminUnitPostId !== undefined) {
+                $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
+                $scope.addressObj.adminUnitId = adminUnitId;
+                $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
+                $scope.postAddressObj.adminUnitId = adminUnitPostId;
 
-            AddressDataArray.pushAddress($scope.addressObj);
-            AddressDataArray.pushPostAddress($scope.postAddressObj);
-            $location.path('/addPerson/papers');
+                PersonRepo.pushAddress($scope.addressObj);
+                PersonRepo.pushPostAddress($scope.postAddressObj);
+                PersonRepo.pushContact($scope.contactsObj);
+                $location.path('/addPerson/papers');
+            }
         };
 
         //$scope.addAddress = function(){
