@@ -1,5 +1,3 @@
-
-
 app.controller("GeneralPersonInfoCTRL",["$scope","PersonRepo","$http","PersonDataMappingArray",
     function($scope,PersonRepo,$http,PersonDataMappingArray){
 
