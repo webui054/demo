@@ -293,8 +293,7 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
                     //    $scope.postAddressObj = data.data;
                     //});
                 }
-            }
-            if (adminUnitId !== undefined) {
+            } if (adminUnitId !== undefined) {
                 $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
                 $scope.addressObj.adminUnitId = adminUnitId;
                 $scope.postAddressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
