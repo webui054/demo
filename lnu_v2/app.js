@@ -27,6 +27,12 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
             controller: 'EditGeneralPersonInfoCtrl'
 
         });
+        //todo define correct template and controller
+        $routeProvider.when('/editPerson/:personId/papers', {
+            templateUrl: 'persons/editPerson/general/generalView.html',
+            controller: 'EditGeneralPersonInfoCtrl'
+
+        });
         $routeProvider.when('/addPerson/general', {
             templateUrl: 'persons/newPerson/general/generalView.html',
             controller: 'AddPersonGeneralInfoCtrl'
