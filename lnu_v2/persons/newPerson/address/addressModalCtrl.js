@@ -1,5 +1,5 @@
-persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'PersonRepo','$routeParams', '$location',
-    function ($scope, AddressDataArray, $http, PersonRepo, $routeParams, $location) {
+persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'PersonRepo','$routeParams', '$location', 'PersonsService',
+    function ($scope, AddressDataArray, $http, PersonRepo, $routeParams, $location, PersonsService) {
         $scope.tempData = {};
         $scope.tempAddressArray = [];
         $scope.tempAddressObj = [];
@@ -31,9 +31,15 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
         };
 
         $scope.contactsObj = {
-            mPhoneObj: {},
-            phoneObj: {},
-            emailObj: {}
+            mPhoneObj: {
+                contactTypeId:2
+            },
+            phoneObj: {
+                contactTypeId:1
+            },
+            emailObj: {
+                contactTypeId:3
+            }
         };
 
         //Address Select for person address
@@ -67,10 +73,12 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
             villagePost:{},
             additionPost:{},
             isPostAddress: true,
-            streetTypeId:{},
+            streetType:{},
             streetTypes: [],
             streetTypePost:{},
-            streetTypesPost: []
+            streetTypesPost: [],
+            streetTypeMap: [],
+            cityNameMap: []
         };
 
         $scope.getCountries = function(){
@@ -267,17 +275,40 @@ persons.controller('AddressModalCtrl', ["$scope", "AddressDataArray", "$http",'P
 
 
         //push data from modal and go to next page
-        $scope.goToPapers = function(){
-            if(adminUnitId !== undefined && adminUnitPostId !== undefined) {
+        $scope.goToPapers = function() {
+            if ($scope.addressData.isPostAddress == true) {
+                if (adminUnitId !== undefined && adminUnitPostId !== undefined) {
+                    $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
+                    $scope.addressObj.adminUnitId = adminUnitId;
+                    $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
+                    $scope.postAddressObj.adminUnitId = adminUnitPostId;
+
+                    PersonRepo.pushAddress($scope.addressObj);
+                    PersonRepo.pushPostAddress($scope.postAddressObj);
+                    PersonRepo.pushContact($scope.contactsObj);
+                    $location.path('/addPerson/papers');
+                    //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
+                    //    $scope.addressObj = data.data;
+                    //    $scope.contactsObj = data.data;
+                    //    $scope.postAddressObj = data.data;
+                    //});
+                }
+            }
+            if (adminUnitId !== undefined) {
                 $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
                 $scope.addressObj.adminUnitId = adminUnitId;
-                $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
-                $scope.postAddressObj.adminUnitId = adminUnitPostId;
+                $scope.postAddressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
+                $scope.postAddressObj.adminUnitId = adminUnitId;
 
                 PersonRepo.pushAddress($scope.addressObj);
-                PersonRepo.pushPostAddress($scope.postAddressObj);
+                PersonRepo.pushPostAddress($scope.addressObj);
                 PersonRepo.pushContact($scope.contactsObj);
                 $location.path('/addPerson/papers');
+                //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
+                //    $scope.addressObj = data.data;
+                //    $scope.contactsObj = data.data;
+                //    $scope.postAddressObj = data.data;
+                //});
             }
         };
 

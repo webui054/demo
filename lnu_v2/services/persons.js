@@ -32,10 +32,10 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
             });
     };
 
-    factory.addNewPerson = function(person){
+    factory.addNewPerson = function(){
         var deferred = $q.defer();
-        var tempPerson =  personValidator(person);
-        $http.get(person.photo).success(function(){
+        var tempPerson =  personValidator(PersonRepo.popPerson());
+        $http.get(tempPerson.photo).success(function(){
             $http.post(baseUrl+"api/persons/",tempPerson).success(function(data){
                 deferred.resolve(data);
                 addMoreInfo(data.id);
@@ -44,6 +44,7 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
             tempPerson.photo = 'content/photo/na.jpg';
             $http.post(baseUrl+"api/persons/", tempPerson).success(function(data){
                 deferred.resolve(data);
+                addMoreInfo(data.id);
             });
         });
         return deferred.promise;
@@ -79,6 +80,7 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
     var addContacts = function(personId){
         var contacts = PersonRepo.popContact();
         angular.forEach(contacts, function(value){
+            value.personId = personId;
             return $http.post(baseUrl+"api/persons/"+personId+"/contacts",value).success(function(data){
                 return data;
             }).error(function(msg){
@@ -89,6 +91,7 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
 
     var addAddress = function(personId){
         var address = PersonRepo.popAddress();
+        address.personId = personId;
         return $http.post(baseUrl+"api/persons/"+personId+"/addresses",address).success(function(data){
             return data;
         }).error(function(msg){
@@ -98,6 +101,7 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
 
     var addPostAddress = function(personId){
         var addressPost = PersonRepo.popPostAddress();
+        addressPost.personId = personId;
         return $http.post(baseUrl+"api/persons/"+personId+"/addresses",addressPost).success(function(data){
             return data;
         }).error(function(msg){

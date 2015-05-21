@@ -30,6 +30,10 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
         //Address Select for person address
         $scope.addressData = {
+            streetTypeId:{},
+            streetTypes: [],
+            streetTypePost:{},
+            streetTypesPost: [],
             streetTypeMap: [],
             cityNameMap: []
         };

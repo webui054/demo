@@ -90,7 +90,7 @@
                         <h4 class="lnu-person-addrs-form-titles">Поштова адреса</h4>
                         <div class="form-group">
                             <input id="lnu-person-addrs-form-postaddrs-checkbox-id" type="checkbox" ng-model="addressData.isPostAddress"
-                                   ng-true-value="false" ng-false-value="true" ng-change="">
+                                   ng-true-value="false" ng-false-value="true">
                             <label for="lnu-person-addrs-form-postaddrs-checkbox-id">Така ж, як адреса прописки</label>
                         </div>
                         <div ng-show="addressData.isPostAddress">
@@ -179,21 +179,22 @@
                             <div class="form-group  col-md-4 col-lg-4  lnu-person-addrs-form">
                                 <label>Номер мобільного:</label>
                                 <input type="text" class="form-control border-radius-0" placeholder="Мобільний"
-                                       ng-model="mPhoneObj.value" name="mPhone" autofocus>
+                                       ng-model="contactsObj.mPhoneObj.value" name="mPhone" autofocus>
                             </div>
                             <div class="form-group col-md-4 col-lg-4  lnu-person-addrs-form">
                                 <label>Номер дом. телефону:</label>
                                 <input type="text" class="form-control border-radius-0" placeholder="Домашній"
-                                       ng-model="phoneObj.value" name="phone" autofocus>
+                                       ng-model="contactsObj.phoneObj.value" name="phone" autofocus>
                             </div>
                             <div class="form-group col-md-4 col-lg-4  lnu-person-addrs-form">
                                 <label>Введіть e-mail:</label>
                                 <input type="text" class="form-control border-radius-0" placeholder="E-mail"
-                                       ng-model="emailObj.value" name="email" autofocus>
+                                       ng-model="contactsObj.emailObj.value" name="email" autofocus>
                             </div>
                         </fieldset>
                     </div>
                     <div class="modal-footer">
+
                         <button ng-disabled="addAddressForm.$invalid" class="btn btn-primary border-radius-0 border-none" ng-click="goToPapers()">Далі</button>
                     </div>
                 </form>
