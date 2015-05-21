@@ -75,6 +75,9 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
         addContacts(personId);
         addAddress(personId);
         addPostAddress(personId);
+        addPapers(personId);
+        addZno(personId);
+        addMan(personId);
     };
 
     var addContacts = function(personId){
@@ -103,6 +106,35 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
         var addressPost = PersonRepo.popPostAddress();
         addressPost.personId = personId;
         return $http.post(baseUrl+"api/persons/"+personId+"/addresses",addressPost).success(function(data){
+            return data;
+        }).error(function(msg){
+            return msg;
+        });
+    };
+
+    var addPapers = function(personId){
+        var papers = PersonRepo.popPaper();
+        papers.personId = personId;
+        return $http.post(baseUrl+"api/persons/"+personId+"/papers",papers).success(function(data){
+            return data;
+        }).error(function(msg){
+            return msg;
+        });
+    };
+
+    var addZno = function(personId){
+        var zno = PersonRepo.popZno();
+        zno.personId = personId;
+        return $http.post(baseUrl+"api/persons/"+personId+"/enrolments/subjects",zno).success(function(data){
+            return data;
+        }).error(function(msg){
+            return msg;
+        });
+    };
+    var addMan = function(personId){
+        var man = PersonRepo.popMan();
+        man.personId = personId;
+        return $http.post(baseUrl+"api/persons/"+personId+"/awards",man).success(function(data){
             return data;
         }).error(function(msg){
             return msg;

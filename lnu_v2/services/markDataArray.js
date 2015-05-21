@@ -48,7 +48,7 @@ persons.factory("MarkDataArray", ["$q", "$http", function ($q, $http) {
         });
     };
     factory.getZnoData = function (personId) {
-        return $http.get(baseUrl + "api/persons/" + personId + "/enrolmentsubjects")
+        return $http.get(baseUrl + "api/persons/" + personId + "/enrolments/subjects")
             .success(function (data) {
                 return data;
             }).error(function (msg) {
@@ -68,7 +68,7 @@ persons.factory("MarkDataArray", ["$q", "$http", function ($q, $http) {
 
     factory.addNewZno = function (personId, zno) {
         var tempZno = znoValidator(zno);
-        return $http.post(baseUrl + "api/persons/" + personId + "/enrolmentsubjects", tempZno).success(function (data) {
+        return $http.post(baseUrl + "api/persons/" + personId + "/enrolments/subjects", tempZno).success(function (data) {
             return data;
         }).error(function (msg) {
             return msg;
