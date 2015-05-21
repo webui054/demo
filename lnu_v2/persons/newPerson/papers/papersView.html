@@ -17,7 +17,7 @@
                             </div>
                             <div class="form-group  col-md-6 col-lg-6" ng-show="isUsageSelected">
                                 <label for="papsT">Виберіть документ:</label>
-                                <select id="papsT" class="form-control border-radius-0" ng-model="paperTypeId"
+                                <select id="papsT" class="form-control border-radius-0" ng-model="paperObj.paperTypeId"
                                         ng-options="types.id as types.name for types in papersTypes">
                                 </select>
                             </div>
@@ -26,46 +26,46 @@
                             <div class="form-group  col-md-8 col-lg-8">
                                 <label>Документ виданий:</label>
                                 <input type="text" class="form-control border-radius-0"
-                                       ng-model="docIssued" name="docIssued">
+                                       ng-model="paperObj.docIssued" name="docIssued">
                             </div>
                             <div class="form-group  col-md-4 col-lg-4">
                                 <label>Виберіть дату видачі:</label>
                                 <input type="date" class="form-control border-radius-0" placeholder="Дата"
-                                       ng-model="docDate" name="docDate" required>
+                                       ng-model="paperObj.docDate" name="docDate" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group  col-md-3 col-lg-3">
                                 <label>Введіть серію :</label>
                                 <input type="text" class="form-control border-radius-0" placeholder="Серія"
-                                       ng-model="docSeries" name="docSeries">
+                                       ng-model="paperObj.docSeries" name="docSeries">
                             </div>
                             <div class="form-group  col-md-3 col-lg-3">
                                 <label>Введіть номер:</label>
                                 <input type="number" class="form-control border-radius-0" placeholder="Номер"
-                                       ng-model="docNum" name="docNum" required>
+                                       ng-model="paperObj.docNum" name="docNum" required>
                             </div>
                             <div class="form-group  col-md-3 col-lg-3">
                                 <label>Введіть PIN:</label>
                                 <input type="number" class="form-control border-radius-0" placeholder="PIN"
-                                       ng-model="docPin" name="docPin">
+                                       ng-model="paperObj.docPin" name="docPin">
                             </div>
                             <div class="form-group  col-md-3 col-lg-3">
                                 <label>Введіть бал:</label>
                                 <input type="number" class="form-control border-radius-0" placeholder="Бал"
-                                       ng-model="mark" name="mark">
+                                       ng-model="paperObj.mark" name="mark">
                             </div>
                         </div>
                         <div class="row">
                             <br>
 
                             <div class="form-group col-lg-12">
-                                <input id="isc" type="checkbox" ng-model="isChecked"
+                                <input id="isc" type="checkbox" ng-model="paperObj.isChecked"
                                        ng-true-value="1" ng-false-value="0" ng-change="">
                                 <label for="isc">Документ відповідає оригіналу</label>
                             </div>
                             <div class="form-group col-lg-12">
-                                <input id="isf" type="checkbox" ng-model="isForeign"
+                                <input id="isf" type="checkbox" ng-model="paperObj.isForeign"
                                        ng-true-value="1" ng-false-value="0" ng-change="">
                                 <label for="isf">Документ іноземного зразка</label>
                             </div>

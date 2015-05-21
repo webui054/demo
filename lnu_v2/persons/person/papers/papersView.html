@@ -2,20 +2,13 @@
     <div class="row">
         <div class="col-md-12">
             <br>
-
             <div class="panel panel-primary only-border-radius-0">
                 <div class="panel-heading clearfix only-border-radius-0 background-image-none">
                     <h4 class="pull-left">Документи персони</h4>
-
                     <div class="pull-right">
-                        <button class="pull-right btn btn-primary border-none material-btn" title="Видалити">
-                            <span class="glyphicon glyphicon-trash glyphicon-white"></span>
-                        </button>
-                        <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати"
+                                ng-click="editPapers()">
                             <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
-                        </button>
-                        <button class="pull-right btn btn-primary border-none material-btn" title="Додати">
-                            <span class="glyphicon glyphicon-plus glyphicon-white"></span>
                         </button>
                     </div>
                 </div>
@@ -26,8 +19,7 @@
                             <div class="col-md-8 col-lg-8 container">
                                 <div class="col-md-12 col-lg-12 general-info-item">
                                     <label class="label-font-size-16" for="PapType">Документ:</label>
-
-                                    <div id="PapType" class="form-control general-info-text">{{data.paperTypeId}}</div>
+                                    <div id="PapType" class="form-control general-info-text" ng-bind="data.paperTypeId"></div>
                                 </div>
                                 <div class="col-md-12 col-lg-12 general-info-item">
                                     <label class="label-font-size-16" for="PapIss">Виданий:</label>
@@ -36,17 +28,14 @@
                                 </div>
                                 <div class="col-md-6 col-lg-6 general-info-item">
                                     <label class="label-font-size-16" for="PapCh">Перевірений:</label>
-
                                     <div id="PapCh" class="form-control general-info-text">{{data.isChecked | checkYesNo}}
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-6 general-info-item">
                                     <label class="label-font-size-16" for="PapF">Іноземного зразка:</label>
-
                                     <div id="PapF" class="form-control general-info-text">{{data.isForeign | checkYesNo}}
                                     </div>
                                 </div>
-
                             </div>
                             <div class="col-md-4 col-lg-4 container">
                                 <div class="col-md-12 col-lg-12 general-info-item">
@@ -56,7 +45,6 @@
                                 </div>
                                 <div class="col-md-12 col-lg-12 general-info-item">
                                     <label class="label-font-size-16" for="birthdayPlaceD">Дата видачі:</label>
-
                                     <div id="birthdayPlaceD" class="form-control general-info-text">{{data.docDate}}
                                     </div>
                                 </div>
@@ -64,112 +52,6 @@
                         </div>
                         <hr color="#337ab7">
                     </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Adding modal -->
-    <div id="container" class="modal fade border-radius-0">
-        <div class="modal-dialog modal-lg border-radius-0">
-            <div class="modal-content border-radius-0">
-                <div class="modal-header custom-modal-header">
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h3 class="modal-title text-center create-group-modal-title-header-text addPap">Додати
-                        документ</h3>
-                </div>
-
-                <form name="addPaperForm" class="form-group" ng-submit="addPap()" novalidate>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="papsU">Виберіть тип документа:</label>
-                                <select id="papsU" class="form-control border-radius-0"
-                                        ng-model="papersData.usageId"
-                                        ng-options="usages.id as usages.name for usages in papersUsages">
-                                </select>
-                            </div>
-                            <div class="form-group  col-md-6 col-lg-6" ng-show="isUsageSelected">
-                                <label for="papsT">Виберіть документ:</label>
-                                <select id="papsT" class="form-control border-radius-0" ng-model="paperTypeId"
-                                        ng-options="types.id as types.name for types in papersTypes">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group  col-md-8 col-lg-8">
-                                <label>Документ виданий:</label>
-                                <input type="text" class="form-control border-radius-0"
-                                       ng-model="docIssued" name="docIssued" >
-                            </div>
-                            <div class="form-group  col-md-4 col-lg-4">
-                                <label>Виберіть дату видачі:</label>
-                                <input type="date" class="form-control border-radius-0" placeholder="Дата"
-                                       ng-model="docDate" name="docDate" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group  col-md-3 col-lg-3">
-                                <label>Введіть серію :</label>
-                                <input type="text" class="form-control border-radius-0" placeholder="Серія"
-                                       ng-model="docSeries" name="docSeries">
-                            </div>
-                            <div class="form-group  col-md-3 col-lg-3">
-                                <label>Введіть номер:</label>
-                                <input type="number" class="form-control border-radius-0" placeholder="Номер"
-                                       ng-model="docNum" name="docNum" required>
-                            </div>
-                            <div class="form-group  col-md-3 col-lg-3">
-                                <label>Введіть PIN:</label>
-                                <input type="number" class="form-control border-radius-0" placeholder="PIN"
-                                       ng-model="docPin" name="docPin">
-                            </div>
-                            <div class="form-group  col-md-3 col-lg-3">
-                                <label>Введіть бал:</label>
-                                <input type="number" class="form-control border-radius-0" placeholder="Бал"
-                                       ng-model="mark" name="mark">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <br>
-                            <div class="form-group col-lg-12">
-                                <input id="isc" type="checkbox" ng-model="isChecked"
-                                       ng-true-value="1" ng-false-value="0" ng-change="">
-                                <label for="isc">Документ відповідає оригіналу</label>
-                            </div>
-                            <div class="form-group col-lg-12">
-                                <input id="isf" type="checkbox" ng-model="isForeign"
-                                       ng-true-value="1" ng-false-value="0" ng-change="">
-                                <label for="isf">Документ іноземного зразка</label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-primary border-radius-0 border-none" value="Додати">
-                    </div>
-                </form>
-            </div>
-
-        </div>
-        <!-- /.modal -->
-    </div>
-
-    <!-- Deleting modal -->
-
-    <div class="modal fade  border-radius-0" id="deletePaperModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h3 class="svModalContent">Ви впевнені, що хочете видалити цей документ?</h3>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary material-btn border-radius-0 border-none" ng-click="ok()">Видалити</button>
-                    <button class="btn btn-default material-btn border-radius-0" ng-click="cancel()">Відміна</button>
                 </div>
             </div>
         </div>

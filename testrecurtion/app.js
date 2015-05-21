@@ -169,7 +169,7 @@ var  name = "";
     $scope.getContactsData = function(id){
 
 
-        $http.get(BASEURL+"api/persons/"+id+"/contacts").success(function(data){
+        $http.get(BASEURL+"api/publicActivities/awards").success(function(data){
 
         }).error(function(msg){
 

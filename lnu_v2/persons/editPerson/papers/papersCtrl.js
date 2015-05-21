@@ -1,6 +1,6 @@
-persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http",'$routeParams', function ($scope, DocumentDataArray, $http,$routeParams) {
+persons.controller('PapersCtrl', ["$scope","PaperDataArray", "$http",'$routeParams', function ($scope, PaperDataArray, $http,$routeParams) {
 
-    $scope.tempDocumentsArray = [];
+    $scope.tempPapersArray = [];
     $scope.paperUsageId = "";
     $scope.paperTypeId = "";
     $scope.honorsTypeId = "";
@@ -12,14 +12,14 @@ persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http",'$rou
     $scope.mark = "";
     $scope.isChecked = "";
     $scope.isForeign = "";
-    $scope.documentsMapTypes = [];
-    var PersonIdDoc = parseInt($routeParams.personId,10);
+    $scope.papersMapTypes = [];
+    var PersonIdPap = parseInt($routeParams.personId,10);
 
     $scope.showModal = function (id) {
         if (id === null) {
             return;
         }
-        $scope.tempDocumentsArray = [];
+        $scope.tempPapersArray = [];
         $scope.paperUsageId = "";
         $scope.paperTypeId = "";
         $scope.honorsTypeId = "";
@@ -37,8 +37,8 @@ persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http",'$rou
         }, 500);
     };
 
-    $scope.AddNewDocument = function () {
-        $("#addDocumentModal").modal("hide");
+    $scope.addNewPaper = function () {
+        $("#addPaperModal").modal("hide");
         $scope.tempData = {};
 
 
@@ -53,7 +53,7 @@ persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http",'$rou
         $scope.tempData.mark = $scope.mark;
         $scope.tempData.isChecked = $scope.isChecked;
         $scope.tempData.isForeign = $scope.isForeign;
-        $scope.tempDocumentsArray.push($scope.tempData);
+        $scope.tempPapersArray.push($scope.tempData);
 
         $scope.paperUsageId = "";
         $scope.paperTypeId = "";
@@ -69,7 +69,7 @@ persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http",'$rou
     };
 
 
-    $scope.documentsData = [{
+    $scope.papersData = [{
         personId: 118,
         paperTypeId: 1,
         honorsTypeId: 1,
@@ -85,43 +85,43 @@ persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http",'$rou
 
     var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
     $scope.getUsages = function(){
-        DocumentDataArray.getDocumentById().success(function(data){
-            var addEl = document.getElementById("docsU");
+        PaperDataArray.getPaperById().success(function(data){
+            var addEl = paper.getElementById("papsU");
             addEl.addEventListener('change',function(){
-                $scope.getTypeDocumentsData($scope.documentsData.usageId);
+                $scope.getTypePapersData($scope.papersData.usageId);
             });
-            $scope.documentsUsages = data.resources;
+            $scope.papersUsages = data.resources;
         });
     };
     $scope.getUsages();
 
-    $scope.getTypeDocumentsData = function(paperUsageId){
-        DocumentDataArray.getDocumentChildById(paperUsageId).success(function(data){
-            $scope.documentsTypes = data.resources;
+    $scope.getTypePapersData = function(paperUsageId){
+        PaperDataArray.getPaperChildById(paperUsageId).success(function(data){
+            $scope.papersTypes = data.resources;
             $scope.isUsageSelected = true;
         });
     };
 
 
-    $scope.getPersonDocumentsData = function(){
-        DocumentDataArray.getPersonDocumentById(PersonIdDoc).success(function(data){
+    $scope.getPersonPapersData = function(){
+        PaperDataArray.getPersonPaperById(PersonIdPap).success(function(data){
             if(data.resources.length > 0){
-                $scope.documentsData = {};
+                $scope.papersData = {};
 
-                $scope.documentsData = data.resources;};
+                $scope.papersData = data.resources;};
 
-            console.log($scope.documentsData);
+            console.log($scope.papersData);
         });
     };
 
-    $scope.getPersonDocumentsData();
+    $scope.getPersonPapersData();
 
 
 
-    $scope.addDoc= function(){
-        $('#addDocumentModal').modal("hide");
+    $scope.addPap= function(){
+        $('#addPaperModal').modal("hide");
         var sasd = {
-            "personId" : PersonIdDoc,
+            "personId" : PersonIdPap,
             "paperTypeId" : 1,
             "honorsTypeId" : 1,
             "docSeries" : $scope.docSeries,
@@ -134,8 +134,8 @@ persons.controller('DocumentsCtrl', ["$scope","DocumentDataArray", "$http",'$rou
             "isForeign" : 0
         };
 
-        DocumentDataArray.addNewDocument(PersonIdDoc, sasd).then(function(data){
-            $scope.getPersonDocumentsData();
+        PaperDataArray.addNewPaper(PersonIdPap, sasd).then(function(data){
+            $scope.getPersonPapersData();
     })
 };
 
