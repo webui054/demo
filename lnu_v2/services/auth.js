@@ -6,7 +6,8 @@ auth.factory('AuthenticationService',['$http', '$rootScope',
                 var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
                 var authdata  = btoa(username + ':' + password);
                 $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
-                return $http.get(baseUrl + 'api/persons?limit=1');
+                return $http.get(baseUrl + '/api/contacts/types');
+               // return $http.get(baseUrl + 'api/persons?limit=1');
 
             };
 

@@ -1,6 +1,7 @@
 app.factory("PersonRepo",["$q","$http",function($q,$http){
     var person = [];
     var address = {};
+    var addressPost = {};
     var contact = {};
     var papers = {};
     var zno = {};
@@ -26,6 +27,16 @@ app.factory("PersonRepo",["$q","$http",function($q,$http){
     };
     factory.popAddress = function(){
         return address;
+    };
+
+    var pushPostAddressData = function(data){
+        addressPost = data;
+    };
+    factory.pushPostAddress = function(data){
+        return pushPostAddressData(data);
+    };
+    factory.popPostAddress = function(){
+        return addressPost;
     };
 
     var pushContactData = function(data){
