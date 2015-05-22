@@ -52,10 +52,10 @@ app.factory("PersonRepo",["$q","$http",function($q,$http){
     var pushPapersData = function(data){
         papers = data;
     };
-    factory.pushPapers = function(data){
+    factory.pushPaper = function(data){
         return pushPapersData(data);
     };
-    factory.popPapers = function(){
+    factory.popPaper = function(){
         return papers;
     };
 

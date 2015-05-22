@@ -76,8 +76,8 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
         addAddress(personId);
         addPostAddress(personId);
         addPapers(personId);
-        addZno(personId);
-        addMan(personId);
+        //addZno(personId);
+        //addMan(personId);
     };
 
     var addContacts = function(personId){

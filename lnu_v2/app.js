@@ -48,7 +48,7 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
         // todo Papers
         $routeProvider.when('/addPerson/papers', {
             templateUrl: 'persons/newPerson/papers/papersView.html',
-            controller: 'AddPapersCtrl'
+            controller: 'AddPaperCtrl'
 
         });
         //// todo Mark

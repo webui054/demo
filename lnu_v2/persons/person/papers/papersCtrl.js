@@ -1,6 +1,7 @@
 persons.controller('PapersCtrl', ["$scope","PaperDataArray", "$http",'$routeParams','$location',
     function ($scope, PaperDataArray, $http,$routeParams,$location) {
         $scope.papersMapTypes = [];
+
         var personId = parseInt($routeParams.personId,10);
         $scope.papersData = [{
             personId: 118,
