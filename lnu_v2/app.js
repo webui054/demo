@@ -40,8 +40,8 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
         });
 
         $routeProvider.when('/addPerson/address', {
-            templateUrl: 'persons/newPerson/address/addressModal.html',
-            controller: 'AddressModalCtrl'
+            templateUrl: 'persons/newPerson/address/addressAdd.html',
+            controller: 'AddressAddCtrl'
 
         });
 
