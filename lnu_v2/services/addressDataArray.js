@@ -52,6 +52,13 @@ persons.factory("AddressDataArray",["$q","$http",function($q,$http){
         });
     };
 
+    factory.getContactTypeById = function(){
+        return $http.get(baseUrl + "api/contacts/types").success(function(data){
+            return data;
+        }).error(function(msg){
+        });
+    };
+
     factory.getAddressData = function(id){
         return $http.get(baseUrl +"api/persons/"+id+"/addresses")
             .success(function(data){

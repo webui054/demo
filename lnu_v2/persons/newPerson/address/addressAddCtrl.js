@@ -39,6 +39,8 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
             },
             emailObj: {
                 contactTypeId:3
+            },
+            contactObj: {
             }
         };
 
@@ -78,7 +80,10 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
             streetTypePost:{},
             streetTypesPost: [],
             streetTypeMap: [],
-            cityNameMap: []
+            cityNameMap: [],
+            contactType:{},
+            contactTypes: []
+
         };
 
         $scope.getCountries = function(){
@@ -272,6 +277,14 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
             });
         };
         $scope.getStreetTypes();
+
+
+        $scope.getContactTypes = function(){
+            AddressDataArray.getContactTypeById().success(function(data){
+                $scope.addressData.contactTypes = data.resources;
+            });
+        };
+        $scope.getContactTypes();
 
 
         //push data from modal and go to next page

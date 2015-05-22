@@ -15,6 +15,8 @@
 /* Form styling */
 .lnu-person-addrs-form-titles {color: #2d6aa0;}
     .lnu-person-addrs-form-fieldset {padding: 0;}
-        .form-group.col-md-2.col-lg-2.lnu-person-addrs-form, .form-group.col-md-4.col-lg-4.lnu-person-addrs-form, .form-group.col-md-6.col-lg-6.lnu-person-addrs-form {padding: 0 5px;}
+        .form-group.col-md-2.col-lg-2.lnu-person-addrs-form, .form-group.col-md-3.col-lg-3.lnu-person-addrs-form, .form-group.col-md-4.col-lg-4.lnu-person-addrs-form, .form-group.col-md-6.col-lg-6.lnu-person-addrs-form {padding: 0 5px;}
+        .form-group.col-md-1.col-lg-1.lnu-person-addrs-form {padding: 0;}
             #lnu-person-addrs-form-postaddrs-checkbox-id {margin-left: 20px;}
+                .contact-add-button{margin-top: 27%;}
     .lnu-person-addrs-form-submit-btn {margin-left: 82%;}

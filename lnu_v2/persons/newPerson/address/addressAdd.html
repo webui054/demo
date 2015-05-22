@@ -175,21 +175,76 @@
                             </fieldset>
                         </div>
                         <h4 class="lnu-person-addrs-form-titles">Контакти</h4>
+                        <!--<fieldset title="Додайте контакти" class="col-md-12 col-lg-12 lnu-person-addrs-form-fieldset">-->
+                            <!--<div class="form-group  col-md-4 col-lg-4  lnu-person-addrs-form">-->
+                                <!--<label>Номер мобільного:</label>-->
+                                <!--<input type="text" class="form-control border-radius-0" placeholder="Мобільний"-->
+                                       <!--ng-model="contactsObj.mPhoneObj.value" name="mPhone" autofocus>-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-md-4 col-lg-4  lnu-person-addrs-form">-->
+                                <!--<label>Номер дом. телефону:</label>-->
+                                <!--<input type="text" class="form-control border-radius-0" placeholder="Домашній"-->
+                                       <!--ng-model="contactsObj.phoneObj.value" name="phone" autofocus>-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-md-4 col-lg-4  lnu-person-addrs-form">-->
+                                <!--<label>Введіть e-mail:</label>-->
+                                <!--<input type="text" class="form-control border-radius-0" placeholder="E-mail"-->
+                                       <!--ng-model="contactsObj.emailObj.value" name="email" autofocus>-->
+                            <!--</div>-->
+                        <!--</fieldset>-->
                         <fieldset title="Додайте контакти" class="col-md-12 col-lg-12 lnu-person-addrs-form-fieldset">
-                            <div class="form-group  col-md-4 col-lg-4  lnu-person-addrs-form">
-                                <label>Номер мобільного:</label>
-                                <input type="text" class="form-control border-radius-0" placeholder="Мобільний"
-                                       ng-model="contactsObj.mPhoneObj.value" name="mPhone" autofocus>
+                            <div class="form-group col-md-2 col-lg-2  lnu-person-addrs-form">
+                                <label for="typeContact">Тип контакту:</label>
+                                <select id="typeContact" class="form-control border-radius-0 lnu-person-addrs-form-contact" ng-model="contactsObj.contactObj"
+                                        ng-options="contactType as contactType.name for contactType in addressData.contactTypes">
+                                </select>
                             </div>
-                            <div class="form-group col-md-4 col-lg-4  lnu-person-addrs-form">
-                                <label>Номер дом. телефону:</label>
-                                <input type="text" class="form-control border-radius-0" placeholder="Домашній"
-                                       ng-model="contactsObj.phoneObj.value" name="phone" autofocus>
+                            <div class="form-group col-md-3 col-lg-3  lnu-person-addrs-form">
+                                <label for="typeContactValue">Значення контакту:</label>
+                                <input id="typeContactValue" type="text" class="form-control border-radius-0 lnu-person-addrs-form-contact" placeholder="значення"
+                                       ng-model="contactsObj.contactObj.value" name="contact1" autofocus>
                             </div>
-                            <div class="form-group col-md-4 col-lg-4  lnu-person-addrs-form">
-                                <label>Введіть e-mail:</label>
-                                <input type="text" class="form-control border-radius-0" placeholder="E-mail"
-                                       ng-model="contactsObj.emailObj.value" name="email" autofocus>
+                            <div class="form-group col-md-1 col-lg-1  lnu-person-addrs-form contact-button">
+                                <button class="btn btn-default border-none material-btn contact-add-button" title="Додати ще один контакт"
+                                        ng-click="contact2=true">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </div>
+                            <div ng-show="contact2">
+                                <div class="form-group col-md-2 col-lg-2  lnu-person-addrs-form">
+                                    <label for="typeContact2">Тип контакту:</label>
+                                    <select id="typeContact2" class="form-control border-radius-0 lnu-person-addrs-form-contact" ng-model="contactsObj.contactObj2"
+                                            ng-options="contactType as contactType.name for contactType in addressData.contactTypes">
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3 col-lg-3  lnu-person-addrs-form">
+                                    <label for="typeContactValue2">Значення контакту:</label>
+                                    <input id="typeContactValue2" type="text" class="form-control border-radius-0 lnu-person-addrs-form-contact" placeholder="значення"
+                                           ng-model="contactsObj.contactObj.value" name="contact1" autofocus>
+                                </div>
+                                <div class="form-group col-md-1 col-lg-1  lnu-person-addrs-form contact-button">
+                                    <button class="btn btn-default border-none material-btn contact-add-button" title="Додати ще один контакт" ng-click="contact3=true">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div ng-show="contact3">
+                                <div class="form-group col-md-2 col-lg-2  lnu-person-addrs-form">
+                                    <label for="typeContact3">Тип контакту:</label>
+                                    <select id="typeContact3" class="form-control border-radius-0 lnu-person-addrs-form-contact" ng-model="contactsObj.contactObj2"
+                                            ng-options="contactType as contactType.name for contactType in addressData.contactTypes">
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3 col-lg-3  lnu-person-addrs-form">
+                                    <label for="typeContactValue3">Значення контакту:</label>
+                                    <input id="typeContactValue3" type="text" class="form-control border-radius-0 lnu-person-addrs-form-contact" placeholder="значення"
+                                           ng-model="contactsObj.contactObj.value" name="contact1" autofocus>
+                                </div>
+                                <div class="form-group col-md-1 col-lg-1  lnu-person-addrs-form contact-button">
+                                    <button class="btn btn-default border-none material-btn contact-add-button" title="Додати ще один контакт">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
                             </div>
                         </fieldset>
                     </div>
