@@ -276,40 +276,39 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
 
         //push data from modal and go to next page
         $scope.goToPapers = function() {
-            if ($scope.addressData.isPostAddress == true) {
-                if (adminUnitId !== undefined && adminUnitPostId !== undefined) {
+            if ($scope.addressData.isPostAddress == false) {
+                if (adminUnitId !== undefined) {
                     $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
                     $scope.addressObj.adminUnitId = adminUnitId;
-                    $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
-                    $scope.postAddressObj.adminUnitId = adminUnitPostId;
 
                     PersonRepo.pushAddress($scope.addressObj);
-                    PersonRepo.pushPostAddress($scope.postAddressObj);
+                    PersonRepo.pushPostAddress($scope.addressObj);
                     PersonRepo.pushContact($scope.contactsObj);
-                    //$location.path('/addPerson/papers');
-                    PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
-                        $scope.addressObj = data.data;
-                        $scope.contactsObj = data.data;
-                        $scope.postAddressObj = data.data;
-                    });
-                }
+                    $location.path('/addPerson/papers');
+                    //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
+                    //    $scope.addressObj = data.data;
+                    //    $scope.contactsObj = data.data;
+                    //    $scope.postAddressObj = data.data;
+                    //});
+                };
             }
-            //if (adminUnitId !== undefined) {
-            //    $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
-            //    $scope.addressObj.adminUnitId = adminUnitId;
-            //    $scope.postAddressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
-            //    $scope.postAddressObj.adminUnitId = adminUnitId;
-            //
-            //    PersonRepo.pushAddress($scope.addressObj);
-            //    PersonRepo.pushPostAddress($scope.addressObj);
-            //    PersonRepo.pushContact($scope.contactsObj);
-            //    $location.path('/addPerson/papers');
-            //    //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
-            //    //    $scope.addressObj = data.data;
-            //    //    $scope.contactsObj = data.data;
-            //    //    $scope.postAddressObj = data.data;
-            //    //});
-            //}
+            if (adminUnitId !== undefined && adminUnitPostId !== undefined) {
+                $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
+                $scope.addressObj.adminUnitId = adminUnitId;
+                $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
+                $scope.postAddressObj.adminUnitId = adminUnitPostId;
+
+                PersonRepo.pushAddress($scope.addressObj);
+                PersonRepo.pushPostAddress($scope.postAddressObj);
+                PersonRepo.pushContact($scope.contactsObj);
+                $location.path('/addPerson/papers');
+                //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
+                //    $scope.addressObj = data.data;
+                //    $scope.contactsObj = data.data;
+                //    $scope.postAddressObj = data.data;
+                //});
+            }
+
         };
 
     }]);
