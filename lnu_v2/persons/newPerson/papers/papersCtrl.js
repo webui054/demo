@@ -1,9 +1,10 @@
-persons.controller("AddPaperCtrl", ["$scope", "$http", "$location", "PersonRepo", "PersonsService", "PaperDataArray", "Validator", function ($scope,$http, $location, PersonRepo, PersonsService, PaperDataArray, Validator) {
-    var baseURL =
+persons.controller("AddPaperCtrl", ["$scope", "$http", "$location", "PersonRepo", "PersonsService", "PaperDataArray", "Validator", "PersonDataMappingArray", function ($scope, $http, $location, PersonRepo, PersonsService, PaperDataArray, Validator, PersonDataMappingArray) {
+    var baseUrl = "http://104.236.29.16:8080/is-lnu-rest-api/";
     $scope.PapersArrData = [];
     $scope.PapersArrData = {
         papersUsages: [],
-        papersTypes: []
+        papersTypes: [],
+        honorTypes: []
     };
     $scope.paperObj = {
         honorsTypeId: 1
@@ -23,15 +24,7 @@ persons.controller("AddPaperCtrl", ["$scope", "$http", "$location", "PersonRepo"
         });
     };
 
-    $scope.getPaperUsage = function () {
-        PersonDataMappingArray.getDataArray(base).then(function (data) {
-            $scope.allPersonsArrData.citizenCountries = data;
-        });
-    };
-    // $scope.getCitizenCountry();
-
-
-
+// Validation
     $scope.numericValidator = function (e) {
         Validator.numericValidator(e);
     };
@@ -39,17 +32,17 @@ persons.controller("AddPaperCtrl", ["$scope", "$http", "$location", "PersonRepo"
     $scope.ukrValidator = function (e) {
         Validator.ukrValidator(e);
     };
-
+// Pushing data and moving to the next page
     $scope.goToZno = function () {
         PersonRepo.pushPaper($scope.paperObj);
-        $location.path('/addPerson/mark');
+        PersonsService.addNewPerson();
+        $location.path("/persons");
     };
 
     // THIS PART REFERS TO THE ENDING OF PAGES
     //$scope.goToZno = function(){
     //    PersonRepo.pushPaper($scope.paperObj);
-    //    PersonsService.addNewPerson();
-    //    //$location.path('/addPerson/mark');
+    //
     //};
 
 }]);

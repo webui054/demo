@@ -76,8 +76,9 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
         addAddress(personId);
         addPostAddress(personId);
         addPapers(personId);
-        //addZno(personId);
-        //addMan(personId);
+        addZno(personId);
+        addMan(personId);
+        $location.path('/persons/persons.html');
     };
 
     var addContacts = function(personId){
@@ -122,24 +123,24 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
         });
     };
 
-    var addZno = function(personId){
-        var zno = PersonRepo.popZno();
-        zno.personId = personId;
-        return $http.post(baseUrl+"api/persons/"+personId+"/enrolments/subjects",zno).success(function(data){
-            return data;
-        }).error(function(msg){
-            return msg;
-        });
-    };
-    var addMan = function(personId){
-        var man = PersonRepo.popMan();
-        man.personId = personId;
-        return $http.post(baseUrl+"api/persons/"+personId+"/awards",man).success(function(data){
-            return data;
-        }).error(function(msg){
-            return msg;
-        });
-    };
+    //var addZno = function(personId){
+    //    var zno = PersonRepo.popZno();
+    //    zno.personId = personId;
+    //    return $http.post(baseUrl+"api/persons/"+personId+"/enrolments/subjects",zno).success(function(data){
+    //        return data;
+    //    }).error(function(msg){
+    //        return msg;
+    //    });
+    //};
+    //var addMan = function(personId){
+    //    var man = PersonRepo.popMan();
+    //    man.personId = personId;
+    //    return $http.post(baseUrl+"api/persons/"+personId+"/awards",man).success(function(data){
+    //        return data;
+    //    }).error(function(msg){
+    //        return msg;
+    //    });
+    //};
 
     return factory;
 

@@ -36,6 +36,13 @@ persons.factory("PaperDataArray", ["$q", "$http", function ($q, $http) {
         });
     };
 
+    factory.getHonorById = function () {
+        return $http.get(baseUrl + "api/honors/types").success(function (data) {
+            return data;
+        }).error(function (msg) {
+        });
+    };
+
     factory.addNewPaper = function (personId, paper) {
         var tempPaper = paperValidator(paper);
         return $http.post(baseUrl + "api/persons/" + personId + "/papers", tempPaper).success(function (data) {
@@ -44,13 +51,6 @@ persons.factory("PaperDataArray", ["$q", "$http", function ($q, $http) {
             return msg;
         });
 
-    };
-
-    factory.getHonorById = function () {
-        return $http.get(baseUrl + "api/honors/types").success(function (data) {
-            return data;
-        }).error(function (msg) {
-        });
     };
 
     var paperValidator = function (paper) {

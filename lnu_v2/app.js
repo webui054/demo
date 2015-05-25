@@ -53,10 +53,10 @@ var app = angular.module('LnuApp', ['ui.bootstrap','ngRoute','Authentication','P
         });
         //// todo Mark
         //$routeProvider.when('/addPerson/mark', {
-        //    templateUrl: 'benefits/benefitsView.html',
-        //    controller: 'BenefitsCTRL'
+        //    templateUrl: 'persons/persons.html',
+        //    controller: 'AddMarkCtrl'
         //});
-        //
+
         $routeProvider.when('/benefits', {
             templateUrl: 'benefits/benefitsView.html',
             controller: 'BenefitsCTRL'
