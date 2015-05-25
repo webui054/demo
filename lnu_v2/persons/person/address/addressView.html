@@ -5,15 +5,9 @@
                 <div class="panel-heading clearfix only-border-radius-0 background-image-none">
                     <h4 class="pull-left">Адреси та Контакти</h4>
                     <div class="pull-right">
-                        <!--<button class="pull-right btn btn-primary border-none material-btn" title="Видалити" ng-click="">-->
-                            <!--<span class="glyphicon glyphicon-trash glyphicon-white"></span>-->
-                        <!--</button>-->
                         <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати" ng-click="">
                             <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
                         </button>
-                        <!--<button class="pull-right btn btn-primary border-none material-btn" title="Додати" ng-click="showModal('#addAddressModal')">-->
-                            <!--<span class="glyphicon glyphicon-plus glyphicon-white"></span>-->
-                        <!--</button>-->
                     </div>
                 </div>
                 <div class="row panel-body">
@@ -47,16 +41,16 @@
                     <div class="lnu-person-addrs-contacts-container">
                         <div class="lnu-person-addrs-contacts-header"><h4>Контакти</h4></div>
                         <div class="col-md-4 col-lg-4 general-info-item mobphone">
-                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-mobphone-id">Мобільний телефон:</label>
-                            <div id="lnu-person-addrs-contacts-mobphone-id" class="form-control general-info-text">{{ mPhoneObj.value }}</div>
+                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-mobphone-id">{{addressData.contactTypeMap[contactsObj.contactObj.contactTypeId]}}:</label>
+                            <div id="lnu-person-addrs-contacts-mobphone-id" class="form-control general-info-text">{{ contactsObj.contactObj.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
-                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-homephone-id">Домашній телефон:</label>
-                            <div id="lnu-person-addrs-contacts-homephone-id" class="form-control general-info-text">{{ phoneObj.value }}</div>
+                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-homephone-id">{{addressData.contactTypeMap[contactsObj.contactObj2.contactTypeId]}}:</label>
+                            <div id="lnu-person-addrs-contacts-homephone-id" class="form-control general-info-text">{{ contactsObj.contactObj2.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
-                                <label class="label-font-size-16" for="lnu-person-addrs-contacts-email-id">e-mail:</label>
-                                <div id="lnu-person-addrs-contacts-email-id" class="form-control general-info-text">{{ emailObj.value}}</div>
+                                <label class="label-font-size-16" for="lnu-person-addrs-contacts-email-id">{{addressData.contactTypeMap[contactsObj.contactObj3.contactTypeId]}}:</label>
+                                <div id="lnu-person-addrs-contacts-email-id" class="form-control general-info-text">{{ contactsObj.contactObj3.value}}</div>
                         </div>
                     </div>
                 </div>

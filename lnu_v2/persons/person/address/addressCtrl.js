@@ -35,7 +35,19 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
             streetTypePost:{},
             streetTypesPost: [],
             streetTypeMap: [],
-            cityNameMap: []
+            cityNameMap: [],
+            contactType:{},
+            contactTypes: [],
+            contactTypeMap: []
+        };
+
+        $scope.contactsObj = {
+            contactObj: {
+            },
+            contactObj2: {
+            },
+            contactObj3: {
+            }
         };
 
 
@@ -51,6 +63,16 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
         };
         $scope.getStreetTypes();
 
+        //contact type selection
+        $scope.getContactTypes = function(){
+            AddressDataArray.getContactTypeById().success(function(data){
+                $scope.addressData.contactTypes = data.resources;
+                angular.forEach(data.resources,function(value){
+                    $scope.addressData.contactTypeMap[value.id] = value.name;
+                })
+            });
+        };
+        $scope.getContactTypes();
 
         // get person's address information
         (function (){
@@ -82,9 +104,9 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
         $scope.getContactData = function(id){
             AddressDataArray.getContactData(id).success(function(data){
-                $scope.mPhoneObj = data.resources[1];
-                $scope.phoneObj = data.resources[5];
-                $scope.emailObj = data.resources[2];
+                $scope.contactsObj.contactObj = data.resources[0];
+                $scope.contactsObj.contactObj2 = data.resources[1];
+                $scope.contactsObj.contactObj3 = data.resources[2];
             });
         };
     }]);

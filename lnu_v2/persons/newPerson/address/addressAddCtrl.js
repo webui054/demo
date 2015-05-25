@@ -31,16 +31,11 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
         };
 
         $scope.contactsObj = {
-            mPhoneObj: {
-                contactTypeId:2
-            },
-            phoneObj: {
-                contactTypeId:1
-            },
-            emailObj: {
-                contactTypeId:3
-            },
             contactObj: {
+            },
+            contactObj2: {
+            },
+            contactObj3: {
             }
         };
 
@@ -298,12 +293,7 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
                     PersonRepo.pushPostAddress($scope.addressObj);
                     PersonRepo.pushContact($scope.contactsObj);
                     $location.path('/addPerson/papers');
-                    //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
-                    //    $scope.addressObj = data.data;
-                    //    $scope.contactsObj = data.data;
-                    //    $scope.postAddressObj = data.data;
-                    //});
-                };
+                }
             }
             if (adminUnitId !== undefined && adminUnitPostId !== undefined) {
                 $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
@@ -315,11 +305,6 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
                 PersonRepo.pushPostAddress($scope.postAddressObj);
                 PersonRepo.pushContact($scope.contactsObj);
                 $location.path('/addPerson/papers');
-                //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
-                //    $scope.addressObj = data.data;
-                //    $scope.contactsObj = data.data;
-                //    $scope.postAddressObj = data.data;
-                //});
             }
 
         };

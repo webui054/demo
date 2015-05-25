@@ -39,6 +39,7 @@ persons.factory("PersonsService",["$q","$http","PersonRepo",function($q, $http,P
             $http.post(baseUrl+"api/persons/",tempPerson).success(function(data){
                 deferred.resolve(data);
                 addMoreInfo(data.id);
+
             });
         }).error(function(){
             tempPerson.photo = 'content/photo/na.jpg';
