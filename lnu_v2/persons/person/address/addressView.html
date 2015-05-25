@@ -41,15 +41,15 @@
                     <div class="lnu-person-addrs-contacts-container">
                         <div class="lnu-person-addrs-contacts-header"><h4>Контакти</h4></div>
                         <div class="col-md-4 col-lg-4 general-info-item mobphone">
-                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-mobphone-id">Мобільний телефон:</label>
+                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-mobphone-id">{{addressData.contactTypeMap[contactsObj.contactObj.contactTypeId]}}:</label>
                             <div id="lnu-person-addrs-contacts-mobphone-id" class="form-control general-info-text">{{ contactsObj.contactObj.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
-                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-homephone-id">Домашній телефон:</label>
+                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-homephone-id">{{addressData.contactTypeMap[contactsObj.contactObj2.contactTypeId]}}:</label>
                             <div id="lnu-person-addrs-contacts-homephone-id" class="form-control general-info-text">{{ contactsObj.contactObj2.value }}</div>
                         </div>
                         <div class="col-md-4 col-lg-4 general-info-item">
-                                <label class="label-font-size-16" for="lnu-person-addrs-contacts-email-id">e-mail:</label>
+                                <label class="label-font-size-16" for="lnu-person-addrs-contacts-email-id">{{addressData.contactTypeMap[contactsObj.contactObj3.contactTypeId]}}:</label>
                                 <div id="lnu-person-addrs-contacts-email-id" class="form-control general-info-text">{{ contactsObj.contactObj3.value}}</div>
                         </div>
                     </div>

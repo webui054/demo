@@ -35,7 +35,10 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
             streetTypePost:{},
             streetTypesPost: [],
             streetTypeMap: [],
-            cityNameMap: []
+            cityNameMap: [],
+            contactType:{},
+            contactTypes: [],
+            contactTypeMap: []
         };
 
         $scope.contactsObj = {
@@ -60,6 +63,16 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
         };
         $scope.getStreetTypes();
 
+        //contact type selection
+        $scope.getContactTypes = function(){
+            AddressDataArray.getContactTypeById().success(function(data){
+                $scope.addressData.contactTypes = data.resources;
+                angular.forEach(data.resources,function(value){
+                    $scope.addressData.contactTypeMap[value.id] = value.name;
+                })
+            });
+        };
+        $scope.getContactTypes();
 
         // get person's address information
         (function (){
