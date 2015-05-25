@@ -31,16 +31,11 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
         };
 
         $scope.contactsObj = {
-            mPhoneObj: {
-                contactTypeId:2
-            },
-            phoneObj: {
-                contactTypeId:1
-            },
-            emailObj: {
-                contactTypeId:3
-            },
             contactObj: {
+            },
+            contactObj2: {
+            },
+            contactObj3: {
             }
         };
 
@@ -299,9 +294,9 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
                     PersonRepo.pushContact($scope.contactsObj);
                     $location.path('/addPerson/papers');
                     //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
-                    //    $scope.addressObj = data.data;
-                    //    $scope.contactsObj = data.data;
-                    //    $scope.postAddressObj = data.data;
+                    //    $scope.addressObj = data;
+                    //    $scope.contactsObj = data;
+                    //    $scope.postAddressObj = data;
                     //});
                 };
             }
@@ -316,9 +311,9 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
                 PersonRepo.pushContact($scope.contactsObj);
                 $location.path('/addPerson/papers');
                 //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
-                //    $scope.addressObj = data.data;
-                //    $scope.contactsObj = data.data;
-                //    $scope.postAddressObj = data.data;
+                //    $scope.addressObj = data;
+                //    $scope.contactsObj = data;
+                //    $scope.postAddressObj = data;
                 //});
             }
 
