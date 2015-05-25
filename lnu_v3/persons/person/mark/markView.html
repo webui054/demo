@@ -1,0 +1,123 @@
+<div class="container" ng-show="isPersonTabSelected(8)" ng-controller="MarkCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="pull-left">Бали</h4>
+
+                    <div class="pull-right">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати"
+                                ng-click="editMark()">
+                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="" ng-repeat="data in znoData">
+                        <div class="svAddressHeader"><h4>Зовнішнє незалежне оцінювання</h4></div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 container">
+                                <div class="col-md-8 col-lg-8 general-info-item">
+                                    <label class="label-font-size-16" for="znoSub1"> Предмет</label>
+
+                                    <div id="znoSub1" class="form-control general-info-text"
+                                         ng-bind="data.enrolmentSubjectId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 general-info-item">
+                                    <label class="label-font-size-16" for="znoMark1">Бал:</label>
+
+                                    <div id="znoMark1" class="form-control general-info-text"
+                                         ng-bind="data.mark"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 container">
+                                <div class="col-md-8 col-lg-8 general-info-item">
+                                    <label class="label-font-size-16" for="znoSub2"> Предмет</label>
+
+                                    <div id="znoSub2" class="form-control general-info-text"
+                                         ng-bind="data.enrolmentSubjectId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 general-info-item">
+                                    <label class="label-font-size-16" for="znoMark2">Бал:</label>
+
+                                    <div id="znoMark2" class="form-control general-info-text"
+                                         ng-bind="data.mark"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 container">
+                                <div class="col-md-8 col-lg-8 general-info-item">
+                                    <label class="label-font-size-16" for="znoSub3"> Предмет</label>
+
+                                    <div id="znoSub3" class="form-control general-info-text"
+                                         ng-bind="data.enrolmentSubjectId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 general-info-item">
+                                    <label class="label-font-size-16" for="znoMark3">Бал:</label>
+
+                                    <div id="znoMark3" class="form-control general-info-text"
+                                         ng-bind="data.mark"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                    </div>
+                    <hr color="#337ab7">
+
+                    <!-- Man creating -->
+                    <div class="" ng-repeat="data in manData">
+                        <div class="svAddressHeader"><h4>Додаткова активність:</h4></div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 container">
+                                <div class="col-md-8 col-lg-8 general-info-item">
+                                    <label class="label-font-size-16" for="manAct1"> Тип активності:</label>
+
+                                    <div id="manAct1" class="form-control general-info-text"
+                                         ng-bind="data.publicActivityAwardId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 general-info-item">
+                                    <label class="label-font-size-16" for="manBonus1">Бал:</label>
+
+                                    <div id="manBonus1" class="form-control general-info-text"
+                                         ng-bind="data.bonus"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 container">
+                                <div class="col-md-8 col-lg-8 general-info-item">
+                                    <label class="label-font-size-16" for="manAct2"> Предмет</label>
+
+                                    <div id="manAct2" class="form-control general-info-text"
+                                         ng-bind="data.enrolmentSubjectId">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 general-info-item">
+                                    <label class="label-font-size-16" for="manBonus2">Бал:</label>
+
+                                    <div id="manBonus2" class="form-control general-info-text"
+                                         ng-bind="data.mark"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,31 @@
+<div class="navbar navbar-inverse navbar-static-top custom-nav-header" ng-controller="LayoutCtrl">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="brand" href="#/persons" ng-click="selectTab(1)" ng-bind="brand"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" ng-show="isLoggedIn">
+                <li ng-class="{active:isSelected(1)}">
+                    <a href="#/persons" ng-click="selectTab(1)" ng-bind="personViewModel"></a>
+                </li>
+                <li ng-class="{active:isSelected(2)}">
+                    <a href="#/propositions" ng-click="selectTab(2)" ng-bind="propositionViewModel"></a>
+                </li>
+                <li ng-class="{active:isSelected(3)}">
+                    <a href="#/benefits" ng-click="selectTab(3)" ng-bind="benefitsViewModel"></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#/logout" ng-show="isLoggedIn">Вийти</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

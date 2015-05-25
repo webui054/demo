@@ -1,0 +1,19 @@
+<div class="container">
+        <section>
+            <ul class="nav nav-tabs">
+                <li ng-class="{active:isPropozTabSelected(21)}">
+                    <a href="" ng-click="selectPropozTab(21)">Пропозиція</a>
+                </li>
+                <li ng-class="{active:isPropozTabSelected(22)}">
+                    <a href="" ng-click="selectPropozTab(22)" title="Предмети пропозиції">Предмети</a>
+                </li>
+                <li ng-class="{active:isPropozTabSelected(23)}">
+                    <a href="" ng-click="selectPropozTab(23)" title="Пільги пропозиції">Пільги</a>
+                </li>
+            </ul>
+        </section>
+
+    <div ng-include="'propositions/generalView/generalView.html'"></div>
+    <div ng-include="'propositions/subjects/subjectsView.html'"></div>
+    <div ng-include="'propositions/specofferBenefits/specofferBenefitsView.html'"></div>
+</div>

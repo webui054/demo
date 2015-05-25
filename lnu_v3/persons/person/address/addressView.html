@@ -1,0 +1,61 @@
+<div class="container" ng-show="isPersonTabSelected(2)" ng-controller="AddressCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="pull-left">Адреси та Контакти</h4>
+                    <div class="pull-right">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати" ng-click="">
+                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row panel-body">
+                    <div class="lnu-person-addrs-address-container">
+                        <div class="lnu-person-addrs-address-header"><h4>Адреси</h4></div>
+                        <div class="lnu-person-addrs-reg-container">
+                            <label class="label-font-size-16" for="lnu-person-addrs-reg-id">Адреса реєстрації:</label>
+                            <div id="lnu-person-addrs-reg-id" class="form-control general-info-text lnu-person-addrs-fields">
+                                {{ addressObj.zipCode + " " + addressObj.adminUnitId + " "  + addressData.streetTypeMap[addressObj.streetTypeId] + " "  + addressObj.street}}
+                                <span ng-show="addressObj.house"> буд. </span> {{addressObj.house}} <span ng-show="addressObj.apartment"> кв. </span> {{ addressObj.apartment }}
+                            </div>
+
+                            
+                        </div>
+                        <div class="lnu-person-addrs-post-container">
+                            <label class="label-font-size-16" for="lnu-person-addrs-post-id">Поштова адреса:</label>
+                            <div ng-show="!addressData.isPostAddress">
+                                <div class="form-control general-info-text lnu-person-addrs-fields">
+                                    {{ addressObj.zipCode + " " + addressObj.adminUnitId + " "  + addressData.streetTypeMap[addressObj.streetTypeId] + " "  + addressObj.street}}
+                                    <span ng-show="addressObj.house"> буд. </span> {{addressObj.house}} <span ng-show="addressObj.apartment"> кв. </span> {{ addressObj.apartment }}
+                                </div>
+                            </div>
+                            <div ng-show="addressData.isPostAddress">
+                                <div id="lnu-person-addrs-post-id" class="form-control general-info-text lnu-person-addrs-fields">
+                                    {{ postAddressObj.zipCode + " " + postAddressObj.adminUnitId + " "  + addressData.streetTypeMap[postAddressObj.streetTypeId] + " "  + postAddressObj.street}}
+                                    <span ng-show="postAddressObj.house"> буд. </span> {{postAddressObj.house}} <span ng-show="postAddressObj.apartment"> кв. </span> {{ postAddressObj.apartment }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lnu-person-addrs-contacts-container">
+                        <div class="lnu-person-addrs-contacts-header"><h4>Контакти</h4></div>
+                        <div class="col-md-4 col-lg-4 general-info-item mobphone">
+                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-mobphone-id">{{addressData.contactTypeMap[contactsObj.contactObj.contactTypeId]}}:</label>
+                            <div id="lnu-person-addrs-contacts-mobphone-id" class="form-control general-info-text">{{ contactsObj.contactObj.value }}</div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 general-info-item">
+                            <label class="label-font-size-16" for="lnu-person-addrs-contacts-homephone-id">{{addressData.contactTypeMap[contactsObj.contactObj2.contactTypeId]}}:</label>
+                            <div id="lnu-person-addrs-contacts-homephone-id" class="form-control general-info-text">{{ contactsObj.contactObj2.value }}</div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 general-info-item">
+                                <label class="label-font-size-16" for="lnu-person-addrs-contacts-email-id">{{addressData.contactTypeMap[contactsObj.contactObj3.contactTypeId]}}:</label>
+                                <div id="lnu-person-addrs-contacts-email-id" class="form-control general-info-text">{{ contactsObj.contactObj3.value}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

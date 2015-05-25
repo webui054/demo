@@ -1,0 +1,32 @@
+
+    <div class="container" ng-show="isPersonTabSelected(4)">
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <div class="panel panel-primary only-border-radius-0">
+                    <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                        <h4 class="pull-left"></h4>
+                        <div class="pull-right">
+                            <button class="pull-right btn btn-primary border-none material-btn" title="Видалити">
+                            <span class="glyphicon glyphicon-trash glyphicon-white"></span>
+                        </button>
+                            <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати"
+                                    data-toggle="modal" data-target="#editEditForeingPersonModal">
+                                <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row panel-body">
+                         <div class="col-lg-offset-4 col-md-offset-4 col-md-5 col-lg-5 container">
+                            <div class="col-md-12 col-lg-12 general-info-item">
+                                <label class="label-font-size-16" for="PIB"></label>
+                                <div id="PIB" class="form-control general-info-text">{{tempForeinerObj.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-include="''"></div>
+    </div>
+

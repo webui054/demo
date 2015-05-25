@@ -1,0 +1,65 @@
+<div class="container" ng-show="isPersonTabSelected(6)" ng-controller="PapersCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="pull-left">Документи персони</h4>
+
+                    <div class="pull-right">
+                        <button class="pull-right btn btn-primary border-none material-btn" title="Редагувати"
+                                ng-click="editPapers()">
+                            <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="" ng-repeat="data in papersData">
+                        <div class="svAddressHeader" ng-bind="data.paperUsageId"><h4></h4></div>
+                        <div class="row ">
+                            <div class="col-md-8 col-lg-8 container">
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="PapType">Документ:</label>
+                                    <div id="PapType" class="form-control general-info-text"
+                                         ng-bind="PapersArrData.papersTypes[data.paperTypeId]"></div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="PapIss">Виданий:</label>
+                                    <div id="PapIss" class="form-control general-info-text"
+                                         ng-bind="data.docIssued"></div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 general-info-item">
+                                    <label class="label-font-size-16" for="PapCh">Перевірений:</label>
+                                    <div id="PapCh" class="form-control general-info-text"
+                                         ng-bind="data.isChecked | checkYesNo"></div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 general-info-item">
+                                    <label class="label-font-size-16" for="PapF">Іноземного зразка:</label>
+                                    <div id="PapF" class="form-control general-info-text"
+                                         ng-bind="data.isForeign | checkYesNo">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4 container">
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="sernum">Серія та номер:</label>
+                                    <div id="sernum" class="form-control general-info-text" ng-bind="data.docSeries +
+                                        data.docNum">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-12 general-info-item">
+                                    <label class="label-font-size-16" for="birthdayPlaceD">Дата видачі:</label>
+                                    <div id="birthdayPlaceD" class="form-control general-info-text"
+                                         ng-bind="data.docDate">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr color="#337ab7">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+.custom-navbar-header-for-persons{ display: inline; margin-right: 15px; }
+.max-width-109{ max-width: 109%; }
+.persons-header-text{ cursor: pointer; float: none; display: inline; }
+.persons-header-text:hover{ cursor: pointer; float: none; display: inline; color: #1e86ba; }
+.persons-header-text-active{ font-weight: bold; }
+.custom-nav-person-header { color: #fff; background-color: #5f9ea0; background-image: none; border-color: #5f9ea0; }
+.color-white{ color: #fff; }
+.custom-navbar-toggle{ background-color: #337ab7; color: #fff; }

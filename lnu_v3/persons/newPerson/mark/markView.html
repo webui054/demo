@@ -1,0 +1,94 @@
+<div class="container" ng-show="isPersonTabSelected(8)" ng-controller="AddMarkCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+
+            <div class="panel panel-primary only-border-radius-0">
+                <div class="panel-heading clearfix only-border-radius-0 background-image-none">
+                    <h4 class="pull-left">Бали</h4>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="">
+                    <fieldset title="Додайте предмети ЗНО" class="col-md-12 col-lg-12 lnu-person-addrs-form-fieldset">
+                        <div class="form-group col-md-2 col-lg-2  lnu-person-addrs-form">
+                            <label for="typeSubject">Предмет:</label>
+                            <select id="typeSubject" class="form-control border-radius-0 lnu-person-addrs-form-contact" ng-model="contactsObj.contactObj"
+                                    ng-options="contactType as contactType.name for contactType in addressData.contactTypes">
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3 col-lg-3  lnu-person-addrs-form">
+                            <label for="typeSubjectValue">Бал:</label>
+                            <input id="typeSubjectValue" type="text" class="form-control border-radius-0 lnu-person-addrs-form-contact"
+                                   ng-model="contactsObj.contactObj.value" name="subject1" autofocus>
+                        </div>
+                        <div class="form-group col-md-1 col-lg-1  lnu-person-addrs-form contact-button">
+                            <button class="btn btn-default border-none material-btn contact-add-button" title="Додати ще один контакт"
+                                    ng-click="contact2=true">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                        <div ng-show="subject2">
+                            <div class="form-group col-md-2 col-lg-2  lnu-person-addrs-form">
+                                <label for="typeSubject2">Предмет:</label>
+                                <select id="typeSubject2" class="form-control border-radius-0 lnu-person-addrs-form-contact" ng-model="contactsObj.contactObj2"
+                                        ng-options="contactType as contactType.name for contactType in addressData.contactTypes">
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3 col-lg-3  lnu-person-addrs-form">
+                                <label for="typeSubjectValue2">Бал:</label>
+                                <input id="typeSubjectValue2" type="text" class="form-control border-radius-0 lnu-person-addrs-form-contact"
+                                       ng-model="contactsObj.contactObj.value" name="contact1" autofocus>
+                            </div>
+                            <div class="form-group col-md-1 col-lg-1  lnu-person-addrs-form contact-button">
+                                <button class="btn btn-default border-none material-btn contact-add-button" title="Додати ще один контакт" ng-click="contact3=true">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div ng-show="subject3">
+                            <div class="form-group col-md-2 col-lg-2  lnu-person-addrs-form">
+                                <label for="typeSubject3">Предмет:</label>
+                                <select id="typeSubject3" class="form-control border-radius-0 lnu-person-addrs-form-contact" ng-model="contactsObj.contactObj2"
+                                        ng-options="contactType as contactType.name for contactType in addressData.contactTypes">
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3 col-lg-3  lnu-person-addrs-form">
+                                <label for="typeSubjectValue3">Бал:</label>
+                                <input id="typeSubjectValue3" type="text" class="form-control border-radius-0 lnu-person-addrs-form-contact"
+                                       ng-model="contactsObj.contactObj.value" name="contact1" autofocus>
+                            </div>
+                            <div class="form-group col-md-1 col-lg-1  lnu-person-addrs-form contact-button">
+                                <button class="btn btn-default border-none material-btn contact-add-button" title="Додати ще один контакт">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div ng-show="subject4">
+                            <div class="form-group col-md-2 col-lg-2  lnu-person-addrs-form">
+                                <label for="typeSubject4">Предмет:</label>
+                                <select id="typeSubject4" class="form-control border-radius-0 lnu-person-addrs-form-contact" ng-model="contactsObj.contactObj2"
+                                        ng-options="contactType as contactType.name for contactType in addressData.contactTypes">
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3 col-lg-3  lnu-person-addrs-form">
+                                <label for="typeSubjectValue4">Бал:</label>
+                                <input id="typeSubjectValue4" type="text" class="form-control border-radius-0 lnu-person-addrs-form-contact"
+                                       ng-model="contactsObj.contactObj.value" name="contact1" autofocus>
+                            </div>
+                            <div class="form-group col-md-1 col-lg-1  lnu-person-addrs-form contact-button">
+                                <button class="btn btn-default border-none material-btn contact-add-button" title="Додати ще один контакт">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

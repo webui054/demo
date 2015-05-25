@@ -1,0 +1,6 @@
+.addSubject { margin-top: 5px; margin-bottom: 5px; float: right;}
+#subjectTable th { font-weight: bold; text-align: center;}
+#subjectTable td { text-align: center;}
+#subjectTable td.nameSubject { text-align: left;}
+.addSubjectH { color: #2d6aa0;}
+.odd-color-theme{ background-color: #e4e4e4;}

@@ -1,0 +1,44 @@
+<div class="container" ng-controller="PersonsCtrl">
+    <div ng-show="!isShowGeneralInfo">
+        <div class="svButtonContainer">
+            <div class="col-lg-5 col-md-5 col-sm-5 pd-lf-0">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Пошук персони..." ng-model="searchObj.personName">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default material-btn" type="button" ng-click="searchPersonsByName()">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        <button class="btn btn-default material-btn" type="button" title="Показати розширений пошук"
+                                ng-show="!isMoreSearch" ng-click="showSearch(true)">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        <button class="btn btn-default material-btn" type="button" title="Приховати розширений пошук"
+                                ng-click="showSearch(false)" ng-show="isMoreSearch">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <span ng-bind="'з '+ (personsOffset+1) + ' по ' + (personData.length+personsOffset) + ' з ' + personsCount">
+            </span>
+            <a  href="#/addPerson/general" class="btn btn-primary border-radius-0 svCreateNewPerson border-none">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;Додати персону</a>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-2" ng-include="'persons/personsSearchFilters.html'" ng-show="isMoreSearch">
+
+            </div>
+            <div class="" ng-include="'persons/personsTable.html'" id="personsTable"
+                 ng-class="{'col-lg-12 col-md-12': !isMoreSearch,'col-lg-9 col-md-8':isMoreSearch}"></div>
+        </div>
+        <div class="row">
+            <div class="btn-group svCreateNewPerson pd-rt-15" role="group">
+                <button id="prevBtn" class="btn btn-default material-btn" ng-click="getPrevData()"
+                        ng-disabled="($scope.personData.length+$scope.personsOffset) >= $scope.personsCount">Prev</button>
+                <button id="nextBtn" class="btn btn-default material-btn" ng-click="getNextData()"
+                        ng-disabled="($scope.personsOffset) === 0">Next</button>
+            </div>
+        </div>
+    </div>
+    <div ng-include="'persons/modals/deletePersonModal/deletePersonModal.html'"></div>
+</div>

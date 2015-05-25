@@ -1,0 +1,25 @@
+.mainPersonTable tbody tr:hover{ background-color: #e0ffff; }
+.PersonTableContentRow td{text-align: center}
+.svCreateNewPerson{float: right;}
+.svButtonContainer:after{content: ""; display: table; clear: both;}
+.mainPersonTable{margin-top:15px;}
+.personTableHeaderRow th{color: #337ab7; text-align: center; font-weight:bold; padding:10px;}
+.PersonTableContentRow a:hover{cursor: pointer;}
+.svButtonContainerRow{padding-left: 25px;}
+th.mainPersonTable-col-name:hover{text-decoration: underline; cursor: pointer;}
+th.mainPersonTable-col-gender:hover{ text-decoration: underline; cursor: pointer;}
+th.mainPersonTable-col-type:hover{text-decoration: underline;cursor: pointer;}
+th.mainPersonTable-col-resid:hover{text-decoration: underline;cursor: pointer;}
+th.mainPersonTable-col-citiz:hover{text-decoration: underline;cursor: pointer;}
+.pd-lf-0{padding-left: 0;}
+.pd-rt-15{padding-right: 15px;}
+.txt-decor-none{text-decoration: none;}
+.txt-decor-none:hover{text-decoration: none;}
+.crs-pntr{cursor: pointer;}
+.crs-dflt{cursor: default;}
+.wtd-33{width: 20%;}
+.wtd-32{width: 32%;}
+.dspl-inline{display: inline;}
+.form-control {padding: 5px 10px;}
+input.ng-invalid.ng-dirty {color:#a94442;border-color: #a94442;background-color: #f2dede;}
+input.ng-valid.ng-dirty { color:#3c763d;border-color: #3c763d;background-color: #dff0d8;}
