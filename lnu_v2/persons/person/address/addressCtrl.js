@@ -38,6 +38,15 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
             cityNameMap: []
         };
 
+        $scope.contactsObj = {
+            contactObj: {
+            },
+            contactObj2: {
+            },
+            contactObj3: {
+            }
+        };
+
 
         //street type selection
         $scope.getStreetTypes = function(){
@@ -82,9 +91,9 @@ persons.controller('AddressCtrl', ["$scope", "AddressDataArray", "$http",'Person
 
         $scope.getContactData = function(id){
             AddressDataArray.getContactData(id).success(function(data){
-                $scope.mPhoneObj = data.resources[1];
-                $scope.phoneObj = data.resources[5];
-                $scope.emailObj = data.resources[2];
+                $scope.contactsObj.contactObj = data.resources[0];
+                $scope.contactsObj.contactObj2 = data.resources[1];
+                $scope.contactsObj.contactObj3 = data.resources[2];
             });
         };
     }]);

@@ -292,12 +292,12 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
                     PersonRepo.pushAddress($scope.addressObj);
                     PersonRepo.pushPostAddress($scope.addressObj);
                     PersonRepo.pushContact($scope.contactsObj);
-                    $location.path('/addPerson/papers');
-                    //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
-                    //    $scope.addressObj = data;
-                    //    $scope.contactsObj = data;
-                    //    $scope.postAddressObj = data;
-                    //});
+                    //$location.path('/addPerson/papers');
+                    PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
+                        $scope.addressObj = data;
+                        $scope.contactsObj = data;
+                        $scope.postAddressObj = data;
+                    });
                 };
             }
             if (adminUnitId !== undefined && adminUnitPostId !== undefined) {
@@ -309,12 +309,12 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
                 PersonRepo.pushAddress($scope.addressObj);
                 PersonRepo.pushPostAddress($scope.postAddressObj);
                 PersonRepo.pushContact($scope.contactsObj);
-                $location.path('/addPerson/papers');
-                //PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
-                //    $scope.addressObj = data;
-                //    $scope.contactsObj = data;
-                //    $scope.postAddressObj = data;
-                //});
+                //$location.path('/addPerson/papers');
+                PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
+                    $scope.addressObj = data;
+                    $scope.contactsObj = data;
+                    $scope.postAddressObj = data;
+                });
             }
 
         };
