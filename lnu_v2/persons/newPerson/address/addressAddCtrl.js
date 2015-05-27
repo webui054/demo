@@ -10,7 +10,7 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
             streetTypeId:"",
             adminUnitId:"",
             addressTypeId: 1,
-            begDate:"1212-12-12",
+            begDate:"",
             endDate:"1212-12-12",
             house:"",
             zipCode:"",
@@ -22,7 +22,7 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
             streetTypeId:"",
             adminUnitId:"",
             addressTypeId: 2,
-            begDate:"1212-12-12",
+            begDate:"",
             endDate:"1212-12-12",
             house:"",
             zipCode:"",
@@ -288,14 +288,20 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
                 if (adminUnitId !== undefined) {
                     $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
                     $scope.addressObj.adminUnitId = adminUnitId;
+                    $scope.addressObj.begDate = new Date($scope.addressObj.begDate.year +"-"
+                        +($scope.addressObj.begDate.month)+"-"+$scope.addressObj.begDate.day);
 
                     PersonRepo.pushAddress($scope.addressObj);
                     PersonRepo.pushPostAddress($scope.addressObj);
                     PersonRepo.pushContact($scope.contactsObj);
-                    $location.path('/addPerson/papers');
+                    //$location.path('/addPerson/papers');
+                    PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
+                        $scope.addressObj = data;
+                        $scope.contactsObj = data;
+                        $scope.postAddressObj = data;
+                    });
                 }
-            }
-            if (adminUnitId !== undefined && adminUnitPostId !== undefined) {
+            } if (adminUnitId !== undefined && adminUnitPostId !== undefined) {
                 $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
                 $scope.addressObj.adminUnitId = adminUnitId;
                 $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
@@ -304,7 +310,12 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
                 PersonRepo.pushAddress($scope.addressObj);
                 PersonRepo.pushPostAddress($scope.postAddressObj);
                 PersonRepo.pushContact($scope.contactsObj);
-                $location.path('/addPerson/papers');
+                //$location.path('/addPerson/papers');
+                PersonsService.addNewPerson(PersonRepo.popPerson()).then(function (data) {
+                    $scope.addressObj = data;
+                    $scope.contactsObj = data;
+                    $scope.postAddressObj = data;
+                });
             }
 
         };

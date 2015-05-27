@@ -172,6 +172,26 @@
                                     <input type="text" class="form-control border-radius-0" placeholder="Квартира"
                                            ng-model="postAddressObj.apartment" name="apartmentPost">
                                 </div>
+                                // date for address
+                                <div class="form-group col-lg-4 col-md-4">
+                                    <label class="col-lg-12 col-md-12 pd-lf-0">Дата поселення за адресою:</label>
+                                    <label class="">д:</label>
+                                    <input type="text" min="1" max="31" placeholder="день" maxlength="2" pattern="^([1-9]|[12]\d|3[01])$"
+                                           ng-paste="$event.preventDefault()" ng-keydown="numericValidator($event)"
+                                           class="form-control wtd-33 dspl-inline" id="dayAp"
+                                           ng-model="addressObj.begDate.day" required>
+                                    <label class="">м:</label>
+                                    <input type="text" placeholder="місяць" maxlength="2" minlength="1"  pattern="^([1-9]|1[012])$"
+                                           ng-paste="$event.preventDefault()" ng-keydown="numericValidator($event)"
+                                           class="form-control wtd-32 dspl-inline" id="monthAp"
+                                           ng-model="addressObj.begDate.month" required>
+                                    <label class="">р:</label>
+                                    <input type="text" placeholder="рік" maxlength="4" minlength="4"
+                                           ng-paste="$event.preventDefault()" ng-keydown="numericValidator($event)"
+                                           class="form-control wtd-33 dspl-inline" id="yearAp"
+                                           ng-model="addressObj.begDate.year" required>
+                                </div>
+                                // need to add material activities
                             </fieldset>
                         </div>
                         <h4 class="lnu-person-addrs-form-titles">Контакти</h4>
