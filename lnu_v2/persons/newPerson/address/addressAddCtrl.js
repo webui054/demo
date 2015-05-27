@@ -11,7 +11,7 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
             adminUnitId:"",
             addressTypeId: 1,
             begDate:"",
-            endDate:"1212-12-12",
+            endDate:"",
             house:"",
             zipCode:"",
             street:"",
@@ -23,7 +23,7 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
             adminUnitId:"",
             addressTypeId: 2,
             begDate:"",
-            endDate:"1212-12-12",
+            endDate:"",
             house:"",
             zipCode:"",
             street:"",
@@ -304,8 +304,12 @@ persons.controller('AddressAddCtrl', ["$scope", "AddressDataArray", "$http",'Per
             } if (adminUnitId !== undefined && adminUnitPostId !== undefined) {
                 $scope.addressObj.streetTypeId = $scope.addressObj.streetTypeId.id;
                 $scope.addressObj.adminUnitId = adminUnitId;
+                $scope.addressObj.begDate = new Date($scope.addressObj.begDate.year +"-"
+                    +($scope.addressObj.begDate.month)+"-"+$scope.addressObj.begDate.day);
                 $scope.postAddressObj.streetTypeId = $scope.postAddressObj.streetTypeId.id;
                 $scope.postAddressObj.adminUnitId = adminUnitPostId;
+                $scope.postAddressObj.begDate = new Date($scope.postAddressObj.begDate.year +"-"
+                    +($scope.postAddressObj.begDate.month)+"-"+$scope.postAddressObj.begDate.day);
 
                 PersonRepo.pushAddress($scope.addressObj);
                 PersonRepo.pushPostAddress($scope.postAddressObj);
